@@ -39,7 +39,7 @@
   display: inline-flex;
   align-items: center;
   padding: $space-4 $space-10;
-  background: $black;
+  background: $primary;
   color: $ivory;
   font-size: $fs-xs;
   font-weight: $fw-semibold;
@@ -50,8 +50,8 @@
   transition: background $transition-base, color $transition-base;
 
   &:hover {
-    background: $gold;
-    color: $black;
+    background: $primary;
+    color: $white;
   }
 }
 
@@ -289,7 +289,7 @@
   justify-content: center;
   width: 100%;
   padding: $space-4;
-  background: $black;
+  background: $primary;
   color: $ivory;
   font-size: $fs-sm;
   font-weight: $fw-semibold;
@@ -300,8 +300,8 @@
   transition: background $transition-base, color $transition-base;
 
   &:hover {
-    background: $gold;
-    color: $black;
+    background: $primary;
+    color: $white;
   }
 }
 

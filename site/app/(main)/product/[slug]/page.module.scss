@@ -150,8 +150,8 @@
   text-transform: uppercase;
   z-index: 2;
 
-  &.badgeNew { background: $black; color: $ivory; }
-  &.badgeSale { background: $gold; color: $black; }
+  &.badgeNew { background: $primary; color: $ivory; }
+  &.badgeSale { background: $primary; color: $white; }
 }
 
 // ─── Info Column ─────────────────────────────────────────────────────────────
@@ -179,7 +179,7 @@
   display: flex;
   align-items: center;
   gap: 2px;
-  color: $gold;
+  color: $primary;
 }
 
 .ratingNum {
@@ -292,7 +292,7 @@
 
 .sizeGuide {
   font-size: $fs-xs;
-  color: $gold;
+  color: $primary;
   text-decoration: underline;
   background: none;
   border: none;
@@ -300,7 +300,7 @@
   font-family: $font-primary;
   transition: color $transition-fast;
 
-  &:hover { color: $gold-dark; }
+  &:hover { color: $primary-dark; }
 }
 
 .sizeOptions {
@@ -331,7 +331,7 @@
 .sizeActive {
   border-color: $black;
   border-width: 2px;
-  background: $black;
+  background: $primary;
   color: $ivory;
 }
 
@@ -352,7 +352,7 @@
 .btnAddToCart {
   width: 100%;
   height: 52px;
-  background: $black;
+  background: $primary;
   color: $ivory;
   border: 2px solid $black;
   font-size: $fs-sm;
@@ -364,16 +364,16 @@
   transition: background $transition-base, color $transition-base;
 
   &:hover {
-    background: $gold;
-    border-color: $gold;
-    color: $black;
+    background: $primary;
+    border-color: $primary;
+    color: $white;
   }
 }
 
 .btnAdded {
-  background: $gold;
-  border-color: $gold;
-  color: $black;
+  background: $primary;
+  border-color: $primary;
+  color: $white;
 }
 
 .btnBuyNow {
@@ -394,7 +394,7 @@
   transition: background $transition-base, color $transition-base;
 
   &:hover {
-    background: $black;
+    background: $primary;
     color: $ivory;
   }
 }
@@ -426,7 +426,7 @@
   cursor: pointer;
   transition: color $transition-fast;
 
-  &:hover { color: $gold; }
+  &:hover { color: $primary; }
 }
 
 .accordionContent {
@@ -491,11 +491,11 @@
   color: $black;
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover { background: $black; color: $ivory; }
+  &:hover { background: $primary; color: $ivory; }
 }
 
 .galleryBtnActive {
-  background: $black;
+  background: $primary;
   color: $ivory;
   &:hover { background: #c0392b; color: $ivory; }
 }
@@ -660,7 +660,7 @@
 }
 
 .reviewQuote {
-  color: $gold;
+  color: $primary;
   opacity: 0.4;
   flex-shrink: 0;
 }
@@ -714,7 +714,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: $black;
+  background: $primary;
   color: $ivory;
   font-size: $fs-xs;
   font-weight: $fw-bold;
@@ -759,9 +759,9 @@
 }
 
 .reviewFormLink {
-  color: $gold;
+  color: $primary;
   text-decoration: underline;
-  &:hover { color: $gold-dark; }
+  &:hover { color: $primary-dark; }
 }
 
 .reviewFormSuccess {
@@ -836,7 +836,7 @@
 .reviewFormSubmit {
   align-self: flex-start;
   padding: 13px 36px;
-  background: $black;
+  background: $primary;
   color: $ivory;
   border: 2px solid $black;
   font-family: $font-primary;
@@ -847,7 +847,7 @@
   cursor: pointer;
   transition: background $transition-base, color $transition-base;
 
-  &:hover { background: $gold; border-color: $gold; color: $black; }
+  &:hover { background: $primary-dark; border-color: $primary; color: $white; }
   &:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 

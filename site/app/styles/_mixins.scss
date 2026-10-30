@@ -7,9 +7,42 @@
 @mixin xl { @media (min-width: $bp-xl) { @content; } }
 @mixin xxl { @media (min-width: $bp-2xl) { @content; } }
 
-// ─── Cadre produit (noir, avec effet hover) ──────────────────────────────────
+// ─── Conteneur de page ───────────────────────────────────────────────────────
+@mixin container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 $space-4;
+
+  @media (min-width: $bp-md) { padding: 0 $space-8; }
+}
+
+// ─── Titre de section (sur-titre + titre) ────────────────────────────────────
+@mixin eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $primary;
+}
+
+@mixin section-title {
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+  font-weight: $fw-bold;
+  line-height: 1.15;
+  color: $black;
+
+  em { font-style: italic; color: $primary; }
+}
+
+// ─── Cadre produit (carte arrondie, ombre douce au hover) ────────────────────
 @mixin product-frame {
   border: $frame-border;
+  border-radius: $radius;
   box-shadow: $frame-shadow;
   transition:
     box-shadow $transition-base,
@@ -19,7 +52,7 @@
   &:hover {
     border: $frame-border-hover;
     box-shadow: $frame-shadow-hover;
-    transform: translateY(-2px);
+    transform: translateY(-4px);
   }
 }
 
@@ -39,9 +72,9 @@
   }
 }
 
-// ─── Texte or (accent premium) ───────────────────────────────────────────────
-@mixin gold-text {
-  color: $gold;
+// ─── Texte couleur primaire (accent) ─────────────────────────────────────────
+@mixin primary-text {
+  color: $primary;
   font-weight: $fw-semibold;
 }
 
@@ -51,19 +84,20 @@
   align-items: center;
   justify-content: center;
   padding: $space-3 $space-8;
-  background-color: $black;
-  color: $ivory;
+  background-color: $primary;
+  color: $white;
   font-size: $fs-sm;
   font-weight: $fw-medium;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  border: 2px solid $black;
+  border: 2px solid $primary;
+  border-radius: $radius-pill;
   cursor: pointer;
   transition: background-color $transition-base, color $transition-base;
 
   &:hover {
-    background-color: $ivory;
-    color: $black;
+    background-color: $primary-dark;
+    border-color: $primary-dark;
   }
 }
 
@@ -74,18 +108,19 @@
   justify-content: center;
   padding: $space-3 $space-8;
   background-color: transparent;
-  color: $black;
+  color: $primary;
   font-size: $fs-sm;
   font-weight: $fw-medium;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  border: 2px solid $black;
+  border: 2px solid $primary;
+  border-radius: $radius-pill;
   cursor: pointer;
   transition: background-color $transition-base, color $transition-base;
 
   &:hover {
-    background-color: $black;
-    color: $ivory;
+    background-color: $primary;
+    color: $white;
   }
 }
 

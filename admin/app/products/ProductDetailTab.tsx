@@ -95,7 +95,7 @@ function BoostCard({ boost }: { boost: AdminBoost }) {
   const typeInfo = BOOST_TYPES.find((t) => t.value === boost.type);
   return (
     <Box sx={{ p: 2, border: '1px solid #F3F4F6', borderRadius: 2, display: 'flex', gap: 2, alignItems: 'flex-start' }}>
-      <Box sx={{ color: '#D45D00', mt: '2px', flexShrink: 0 }}>{typeInfo?.icon}</Box>
+      <Box sx={{ color: '#7B1E3A', mt: '2px', flexShrink: 0 }}>{typeInfo?.icon}</Box>
       <Box sx={{ flex: 1, minWidth: 0 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap', mb: 0.5 }}>
           <Typography sx={{ fontSize: 13, fontWeight: 600 }}>{typeInfo?.label ?? boost.type}</Typography>
@@ -206,14 +206,14 @@ function PromotionsPanel({ product }: { product: any }) {
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
 
       {/* ── Vedette ── */}
-      <Box sx={{ p: 2.5, border: '1px solid #F3F4F6', borderRadius: 2, bgcolor: product.isFeatured ? 'rgba(212,93,0,0.04)' : '#FAFAFA' }}>
+      <Box sx={{ p: 2.5, border: '1px solid #F3F4F6', borderRadius: 2, bgcolor: product.isFeatured ? 'rgba(123, 30, 58,0.04)' : '#FAFAFA' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}>
           <Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
               <Star size={16} style={{ color: '#F59E0B' }} />
               <Typography sx={{ fontSize: 14, fontWeight: 600 }}>Produit vedette</Typography>
               {product.isFeatured && (
-                <Chip label="Actif" size="small" sx={{ bgcolor: 'rgba(212,93,0,0.1)', color: '#D45D00', fontWeight: 700, fontSize: 10 }} />
+                <Chip label="Actif" size="small" sx={{ bgcolor: 'rgba(123, 30, 58,0.1)', color: '#7B1E3A', fontWeight: 700, fontSize: 10 }} />
               )}
             </Box>
             <Typography sx={{ fontSize: 12, color: '#6B7280' }}>
@@ -226,7 +226,7 @@ function PromotionsPanel({ product }: { product: any }) {
                 checked={product.isFeatured}
                 onChange={handleFeatureToggle}
                 disabled={featureMutation.isPending}
-                sx={{ '& .MuiSwitch-switchBase.Mui-checked': { color: '#D45D00' }, '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#D45D00' } }}
+                sx={{ '& .MuiSwitch-switchBase.Mui-checked': { color: '#7B1E3A' }, '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#7B1E3A' } }}
               />
             }
             label=""
@@ -513,7 +513,7 @@ export default function ProductDetailTab() {
                 sx={{ bgcolor: `${st.color}18`, color: st.color, fontWeight: 600, fontSize: 11 }}
               />
               {product.isFeatured && (
-                <Chip label="⭐ Vedette" size="small" sx={{ bgcolor: 'rgba(212,93,0,0.1)', color: '#D45D00', fontWeight: 600, fontSize: 11 }} />
+                <Chip label="⭐ Vedette" size="small" sx={{ bgcolor: 'rgba(123, 30, 58,0.1)', color: '#7B1E3A', fontWeight: 600, fontSize: 11 }} />
               )}
               {product.discountPrice != null && (
                 <Chip label="🏷️ En promo" size="small" sx={{ bgcolor: 'rgba(16,185,129,0.1)', color: '#10B981', fontWeight: 600, fontSize: 11 }} />
@@ -533,7 +533,7 @@ export default function ProductDetailTab() {
           {/* Métriques rapides */}
           <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap', alignItems: 'flex-start' }}>
             <Box sx={{ textAlign: 'center' }}>
-              <Typography sx={{ fontSize: 20, fontWeight: 700, color: '#D45D00' }}>{formatAmount(product.price)}</Typography>
+              <Typography sx={{ fontSize: 20, fontWeight: 700, color: '#7B1E3A' }}>{formatAmount(product.price)}</Typography>
               <Typography sx={{ fontSize: 11, color: '#9CA3AF' }}>Prix</Typography>
             </Box>
             {product.discountPrice != null && (
@@ -564,7 +564,7 @@ export default function ProductDetailTab() {
             variant="outlined"
             size="small"
             startIcon={<Pencil size={14} />}
-            sx={{ borderColor: '#D45D00', color: '#D45D00', '&:hover': { borderColor: '#B34A00', bgcolor: 'transparent' } }}
+            sx={{ borderColor: '#7B1E3A', color: '#7B1E3A', '&:hover': { borderColor: '#B34A00', bgcolor: 'transparent' } }}
             onClick={() => setActiveTab('product-edit', { productId: product.id })}
           >
             Modifier
@@ -618,8 +618,8 @@ export default function ProductDetailTab() {
           sx={{
             borderBottom: '1px solid #F3F4F6', px: 2,
             '& .MuiTab-root': { fontSize: 13, fontWeight: 600, textTransform: 'none', minWidth: 'auto', px: 2 },
-            '& .Mui-selected': { color: '#D45D00' },
-            '& .MuiTabs-indicator': { bgcolor: '#D45D00' },
+            '& .Mui-selected': { color: '#7B1E3A' },
+            '& .MuiTabs-indicator': { bgcolor: '#7B1E3A' },
           }}
         >
           <Tab label="Informations" icon={<FileText size={14} />} iconPosition="start" />
@@ -692,7 +692,7 @@ export default function ProductDetailTab() {
                     <Avatar
                       src={product.store.logo ?? undefined}
                       variant="rounded"
-                      sx={{ width: 36, height: 36, bgcolor: 'rgba(212,93,0,0.1)', color: '#D45D00', fontWeight: 700, fontSize: 13 }}
+                      sx={{ width: 36, height: 36, bgcolor: 'rgba(123, 30, 58,0.1)', color: '#7B1E3A', fontWeight: 700, fontSize: 13 }}
                     >
                       {product.store.name.slice(0, 2).toUpperCase()}
                     </Avatar>
@@ -726,7 +726,7 @@ export default function ProductDetailTab() {
                         sx={{
                           display: 'block',
                           width: 120, height: 120, borderRadius: 2, overflow: 'hidden',
-                          border: img.isPrimary ? '2px solid #D45D00' : '1px solid #F3F4F6',
+                          border: img.isPrimary ? '2px solid #7B1E3A' : '1px solid #F3F4F6',
                           backgroundImage: `url(${getAssetUrl(img.url)})`,
                           backgroundSize: 'cover', backgroundPosition: 'center',
                         }}
@@ -734,7 +734,7 @@ export default function ProductDetailTab() {
                       {img.isPrimary && (
                         <Chip label="Principale" size="small" sx={{
                           position: 'absolute', bottom: 4, left: '50%', transform: 'translateX(-50%)',
-                          bgcolor: '#D45D00', color: '#fff', fontWeight: 700, fontSize: 9,
+                          bgcolor: '#7B1E3A', color: '#fff', fontWeight: 700, fontSize: 9,
                         }} />
                       )}
                     </Box>
@@ -803,7 +803,7 @@ export default function ProductDetailTab() {
             <Box>
               <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 2, mb: 3 }}>
                 {[
-                  { label: 'Prix de vente',  value: formatAmount(product.price),          color: '#D45D00' },
+                  { label: 'Prix de vente',  value: formatAmount(product.price),          color: '#7B1E3A' },
                   { label: 'Stock actuel',   value: product.stock,                         color: product.stock === 0 ? '#EF4444' : '#10B981' },
                   { label: 'Avis clients',   value: product.reviewCount,                   color: '#8B5CF6' },
                   { label: 'Variantes',      value: product.variantCount,                  color: '#3B82F6' },

@@ -142,10 +142,9 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
       <Box className={`${styles.sidebar} ${open ? styles.open : ''}`}>
         {/* Logo */}
         <Box className={styles.logoArea}>
-          <img 
-            src={"/images/logo/logo_footer.png"} 
-            alt={"Chez Precious"} 
-            width={100} height={"auto"} />
+          <Typography className={styles.logoText}>
+            Chez<span>Precious</span>
+          </Typography>
         </Box>
 
         {/* Navigation */}
@@ -225,7 +224,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           <Box className={styles.userCard}>
             <Avatar
               src={admin?.avatar ?? undefined}
-              sx={{ width: 36, height: 36, bgcolor: '#D45D00', fontSize: 14 }}
+              sx={{ width: 36, height: 36, bgcolor: '#7B1E3A', fontSize: 14 }}
             >
               {admin ? getInitials(admin.fullName, admin.email) : '?'}
             </Avatar>

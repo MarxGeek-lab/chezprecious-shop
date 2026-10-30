@@ -81,7 +81,7 @@ function SetPasswordContent() {
             Votre mot de passe a été défini avec succès. Vous pouvez maintenant vous connecter.
           </Typography>
           <Button fullWidth variant="contained" onClick={() => router.push('/login')}
-            sx={{ py: 1.5, bgcolor: '#D45D00', '&:hover': { bgcolor: '#A34800' }, fontWeight: 600 }}>
+            sx={{ py: 1.5, bgcolor: '#7B1E3A', '&:hover': { bgcolor: '#5A1229' }, fontWeight: 600 }}>
             Se connecter
           </Button>
         </Paper>
@@ -93,8 +93,8 @@ function SetPasswordContent() {
     <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: '#F0F2F5', p: 2 }}>
       <Paper elevation={0} sx={{ width: '100%', maxWidth: 420, p: 4, borderRadius: 3, border: '1px solid #E5E7EB' }}>
         <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <Box sx={{ width: 56, height: 56, borderRadius: 2, bgcolor: '#FFF3E8', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
-            <ShieldCheck size={28} color="#D45D00" />
+          <Box sx={{ width: 56, height: 56, borderRadius: 2, bgcolor: '#F8E9ED', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
+            <ShieldCheck size={28} color="#7B1E3A" />
           </Box>
           <Typography variant="h5" fontWeight={700} sx={{ color: '#1A1A2E' }}>
             Définir votre mot de passe
@@ -108,7 +108,7 @@ function SetPasswordContent() {
 
         {verifyToken.isPending && (
           <Box sx={{ textAlign: 'center', py: 4 }}>
-            <CircularProgress sx={{ color: '#D45D00' }} size={36} />
+            <CircularProgress sx={{ color: '#7B1E3A' }} size={36} />
             <Typography sx={{ color: '#6B7280', fontSize: 14, mt: 2 }}>Vérification du lien...</Typography>
           </Box>
         )}
@@ -146,7 +146,7 @@ function SetPasswordContent() {
                 }}
               />
               <Button type="submit" fullWidth variant="contained" disabled={setPasswordMutation.isPending}
-                sx={{ py: 1.5, bgcolor: '#D45D00', '&:hover': { bgcolor: '#A34800' }, fontSize: 15, fontWeight: 600 }}>
+                sx={{ py: 1.5, bgcolor: '#7B1E3A', '&:hover': { bgcolor: '#5A1229' }, fontSize: 15, fontWeight: 600 }}>
                 {setPasswordMutation.isPending ? <CircularProgress size={22} sx={{ color: '#fff' }} /> : 'Définir le mot de passe'}
               </Button>
             </form>
@@ -161,7 +161,7 @@ export default function SetPasswordPage() {
   return (
     <Suspense fallback={
       <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: '#F0F2F5' }}>
-        <CircularProgress sx={{ color: '#D45D00' }} />
+        <CircularProgress sx={{ color: '#7B1E3A' }} />
       </Box>
     }>
       <SetPasswordContent />

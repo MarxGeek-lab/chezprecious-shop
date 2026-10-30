@@ -78,7 +78,7 @@ const PRESETS = [
 // ─── Constantes ────────────────────────────────
 
 const PIE_COLORS = [
-  '#D45D00', '#3B82F6', '#10B981', '#8B5CF6',
+  '#7B1E3A', '#3B82F6', '#10B981', '#8B5CF6',
   '#F59E0B', '#EF4444', '#EC4899', '#14B8A6',
   '#F97316', '#6366F1',
 ];
@@ -280,8 +280,8 @@ export default function AnalyticsTab() {
           value={`${fmt(data?.kpis.totalRevenue ?? 0)} F`}
           sub="vs période précédente"
           icon={DollarSign}
-          color="#D45D00"
-          bg="rgba(212,93,0,0.1)"
+          color="#7B1E3A"
+          bg="rgba(123, 30, 58,0.1)"
           trend={data?.kpis.revenueThisMonth.trend}
           loading={isLoading}
         />
@@ -345,8 +345,8 @@ export default function AnalyticsTab() {
                 <AreaChart data={data?.revenueChart ?? []}>
                   <defs>
                     <linearGradient id="gradRevA" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#D45D00" stopOpacity={0.25} />
-                      <stop offset="95%" stopColor="#D45D00" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#7B1E3A" stopOpacity={0.25} />
+                      <stop offset="95%" stopColor="#7B1E3A" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
@@ -368,7 +368,7 @@ export default function AnalyticsTab() {
                   <Area
                     type="monotone"
                     dataKey="revenue"
-                    stroke="#D45D00"
+                    stroke="#7B1E3A"
                     strokeWidth={2.5}
                     fill="url(#gradRevA)"
                     name="revenue"

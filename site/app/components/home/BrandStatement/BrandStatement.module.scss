@@ -23,7 +23,7 @@
   font-weight: $fw-semibold;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary;
 
   &::before,
   &::after {
@@ -31,7 +31,7 @@
     display: block;
     width: 28px;
     height: 1px;
-    background-color: $gold;
+    background-color: $primary;
   }
 }
 
@@ -44,7 +44,7 @@
 
   em {
     font-style: italic;
-    color: $gold;
+    color: $primary;
   }
 }
 
@@ -70,7 +70,7 @@
   transition: border-color $transition-base, background-color $transition-base;
 
   &:hover {
-    border-color: $gold;
-    background-color: rgba(200, 162, 74, 0.08);
+    border-color: $primary;
+    background-color: rgba(123, 30, 58, 0.08);
   }
 }

@@ -1,0 +1,180 @@
+@use '../../../styles/_variables' as *;
+@use '../../../styles/_mixins' as *;
+
+.section {
+  padding: $space-4 0 $space-16;
+}
+
+.inner { @include container; }
+
+.banner {
+  position: relative;
+  display: grid;
+  gap: $space-8;
+  align-items: center;
+  padding: $space-8 $space-6;
+  border-radius: 24px;
+  overflow: hidden;
+  color: $white;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.12), transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(0, 0, 0, 0.25), transparent 50%),
+    linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+
+  @include lg {
+    grid-template-columns: 1.1fr 1fr;
+    padding: $space-12;
+    gap: $space-12;
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: 6px $space-4;
+  border-radius: $radius-pill;
+  background-color: rgba(255, 255, 255, 0.14);
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: $space-5;
+  font-family: $font-display;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: $fw-bold;
+  line-height: 1.1;
+
+  em { font-style: italic; color: $primary-on-dark; }
+}
+
+.desc {
+  margin-top: $space-4;
+  max-width: 30rem;
+  font-size: $fs-base;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+  margin-top: $space-8;
+}
+
+.btnLight {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  height: 52px;
+  padding: 0 $space-8;
+  border-radius: $radius-pill;
+  background-color: $white;
+  color: $primary;
+  font-weight: $fw-semibold;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  svg { transition: transform $transition-base; }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+
+    svg { transform: translateX(4px); }
+  }
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 $space-8;
+  border-radius: $radius-pill;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: $white;
+  font-weight: $fw-semibold;
+  transition: border-color $transition-base, background-color $transition-base;
+
+  &:hover {
+    border-color: $white;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* ── Visuel de repli ── */
+.visual {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3);
+
+  img { object-fit: cover; }
+}
+
+/* ── Produits en promotion ── */
+.deals {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-4;
+}
+
+.deal {
+  padding: $space-2;
+  border-radius: 18px;
+  background-color: $white;
+  color: $black;
+  transition: transform $transition-base;
+
+  &:hover { transform: translateY(-4px); }
+}
+
+.dealImage {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
+  overflow: hidden;
+
+  img { object-fit: cover; }
+}
+
+.dealBadge {
+  position: absolute;
+  top: $space-2;
+  left: $space-2;
+  padding: 4px 10px;
+  border-radius: $radius-pill;
+  background-color: $primary;
+  color: $white;
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+}
+
+.dealName {
+  margin-top: $space-3;
+  padding: 0 $space-1;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dealPrice {
+  display: flex;
+  align-items: baseline;
+  gap: $space-2;
+  padding: 2px $space-1 $space-1;
+  font-weight: $fw-bold;
+  color: $primary;
+
+  s {
+    font-size: $fs-xs;
+    font-weight: $fw-regular;
+    color: rgba(31, 20, 22, 0.4);
+  }
+}

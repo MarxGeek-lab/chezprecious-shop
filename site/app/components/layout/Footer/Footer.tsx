@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { Mail, MapPin, Phone, ShieldCheck, Truck, RotateCcw } from "lucide-react";
 import NewsletterForm from "./NewsletterForm";
 import { usePublicSettings } from "@/app/hooks/usePublicSettings";
 import styles from "./Footer.module.scss";
 
-const LINKS = {
-  boutique: {
+const COLUMNS = [
+  {
     title: "Boutique",
     items: [
       { label: "Nouveautés", href: "/shop?filter=new" },
@@ -15,15 +16,31 @@ const LINKS = {
       { label: "Tous les produits", href: "/shop" },
     ],
   },
-  aide: {
+  {
     title: "Aide",
     items: [
       { label: "Livraison & retours", href: "/livraison" },
       { label: "FAQ", href: "/faq" },
+      { label: "Avis clients", href: "/avis" },
       { label: "Contact", href: "/contact" },
     ],
   },
-};
+  {
+    title: "Mon compte",
+    items: [
+      { label: "Connexion", href: "/auth" },
+      { label: "Mes commandes", href: "/account/orders" },
+      { label: "Mes favoris", href: "/account/wishlist" },
+      { label: "À propos", href: "/about" },
+    ],
+  },
+];
+
+const PERKS = [
+  { icon: Truck, label: "Livraison offerte dès 80 €" },
+  { icon: RotateCcw, label: "Retours gratuits 30 jours" },
+  { icon: ShieldCheck, label: "Paiement sécurisé" },
+];
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
   instagram: (
@@ -66,8 +83,8 @@ const SOCIAL_KEYS = ["instagram", "tiktok", "facebook", "youtube", "twitter", "l
 export default function Footer() {
   const { data: settings } = usePublicSettings();
 
-  const siteName = settings?.siteName ?? "Chez Precious";
-  const tagline = settings?.siteSlogan ?? "Vêtements premium. Design épuré. Qualité sans compromis.";
+  const siteName = settings?.siteName ?? "ChezPrecious";
+  const tagline = settings?.siteSlogan ?? "Des pièces choisies avec soin pour révéler votre élégance au quotidien.";
   const address = [settings?.address, settings?.city].filter(Boolean).join(", ") || null;
   const email = settings?.contactEmail ?? null;
   const phone = settings?.phoneMain ?? null;
@@ -78,18 +95,48 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
+      {/* Bandeau newsletter */}
+      <div className={styles.newsletterBand}>
+        <div className={styles.newsletterInner}>
+          <div>
+            <p className={styles.newsletterTitle}>Rejoignez le cercle <em>ChezPrecious</em></p>
+            <p className={styles.newsletterSub}>
+              Nouveautés, offres et ventes privées : recevez-les en avant-première.
+            </p>
+          </div>
+          <NewsletterForm />
+        </div>
+      </div>
+
       <div className={styles.top}>
-        {/* Branding + Contact */}
+        {/* Marque + contact */}
         <div className={styles.brand}>
           <Link href="/" className={styles.logo}>
-            <img 
-              src={"/images/logo/logo_footer.png"} 
-              alt={"Chez Precious"} 
-              width={100} height={"auto"} />
+            Chez<em>Precious</em>
           </Link>
           <p className={styles.tagline}>{tagline}</p>
 
-          {/* Réseaux sociaux */}
+          <div className={styles.contact}>
+            {address && (
+              <p className={styles.contactItem}>
+                <MapPin size={15} strokeWidth={1.75} />
+                {address}
+              </p>
+            )}
+            {email && (
+              <a href={`mailto:${email}`} className={styles.contactItem}>
+                <Mail size={15} strokeWidth={1.75} />
+                {email}
+              </a>
+            )}
+            {phone && (
+              <a href={`tel:${phone.replace(/\s/g, "")}`} className={styles.contactItem}>
+                <Phone size={15} strokeWidth={1.75} />
+                {phone}
+              </a>
+            )}
+          </div>
+
           {socials.length > 0 && (
             <div className={styles.socials}>
               {socials.map((s) => (
@@ -100,38 +147,10 @@ export default function Footer() {
               ))}
             </div>
           )}
-
-          {/* Adresse & contact */}
-          <div className={styles.contact}>
-            {address && (
-              <p className={styles.contactItem}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-                </svg>
-                {address}
-              </p>
-            )}
-            {email && (
-              <a href={`mailto:${email}`} className={styles.contactLink}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-                </svg>
-                {email}
-              </a>
-            )}
-            {phone && (
-              <a href={`tel:${phone.replace(/\s/g, "")}`} className={styles.contactLink}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.56a16 16 0 0 0 6.53 6.53l1.06-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-                {phone}
-              </a>
-            )}
-          </div>
         </div>
 
         {/* Colonnes liens */}
-        {Object.values(LINKS).map((col) => (
+        {COLUMNS.map((col) => (
           <div key={col.title} className={styles.col}>
             <span className={styles.colTitle}>{col.title}</span>
             <ul className={styles.colLinks}>
@@ -145,15 +164,15 @@ export default function Footer() {
             </ul>
           </div>
         ))}
+      </div>
 
-        {/* Newsletter */}
-        <div className={styles.col}>
-          <span className={styles.newsletterTitle}>Newsletter</span>
-          <p className={styles.newsletterSub}>
-            Accédez en avant-première aux nouvelles collections.
-          </p>
-          <NewsletterForm />
-        </div>
+      <div className={styles.perks}>
+        {PERKS.map(({ icon: Icon, label }) => (
+          <span key={label} className={styles.perk}>
+            <Icon size={16} strokeWidth={1.75} />
+            {label}
+          </span>
+        ))}
       </div>
 
       <div className={styles.bottom}>
@@ -163,6 +182,7 @@ export default function Footer() {
         <nav className={styles.legal}>
           <Link href="/mentions" className={styles.legalLink}>Mentions légales</Link>
           <Link href="/confidentialite" className={styles.legalLink}>Confidentialité</Link>
+          <Link href="/livraison" className={styles.legalLink}>CGV & retours</Link>
         </nav>
       </div>
     </footer>

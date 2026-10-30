@@ -52,7 +52,11 @@ export default function ProductCard({ product }: { product: ApiProduct }) {
             sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
         )}
-        {isSale && <span className={`${styles.badge} ${styles.sale}`}>Soldes</span>}
+        {isSale && (
+          <span className={`${styles.badge} ${styles.sale}`}>
+            -{Math.round((1 - price / comparePrice!) * 100)}%
+          </span>
+        )}
         {isNew && <span className={`${styles.badge} ${styles.new}`}>Nouveau</span>}
 
         <button

@@ -1,107 +1,188 @@
 @use '../../../styles/_variables' as *;
+@use '../../../styles/_mixins' as *;
 
 .footer {
-  background-color: $black;
-  color: $ivory;
+  margin-top: auto;
+  background-color: $primary-dark;
+  background-image:
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.06), transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(0, 0, 0, 0.25), transparent 45%);
+  color: rgba(255, 255, 255, 0.82);
+
+  // Laisse la place à la barre de navigation fixe en bas sur mobile
+  @media (max-width: 899px) { padding-bottom: 64px; }
 }
 
-.top {
-  padding: $space-16 $space-8 $space-12;
-  max-width: 1280px;
-  margin: 0 auto;
+/* ── Bandeau newsletter ── */
+.newsletterBand {
+  background-color: $primary-soft;
+  color: $black;
+}
+
+.newsletterInner {
+  @include container;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: $space-12;
+  gap: $space-5;
+  align-items: center;
+  padding-top: $space-10;
+  padding-bottom: $space-10;
 
-  @media (min-width: 768px) {
-    grid-template-columns: 1.8fr 1fr 1fr 1.4fr;
-    gap: $space-8;
-  }
+  @include lg { grid-template-columns: 1fr 1fr; gap: $space-12; }
 }
 
-/* ── Branding ── */
+.newsletterTitle {
+  font-family: $font-display;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: $fw-bold;
+  line-height: 1.2;
+  color: $black;
+
+  em { font-style: italic; color: $primary; }
+}
+
+.newsletterSub {
+  margin-top: $space-2;
+  font-size: $fs-sm;
+  color: $muted;
+}
+
+.newsletterForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  padding: 6px;
+  border-radius: $radius-pill;
+  background-color: $white;
+  box-shadow: 0 10px 30px rgba(123, 30, 58, 0.12);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  padding: 0 $space-5;
+  border: none;
+  border-radius: $radius-pill;
+  background: transparent;
+  font: inherit;
+  font-size: $fs-sm;
+  color: $black;
+
+  &::placeholder { color: rgba(31, 20, 22, 0.45); }
+  &:focus { outline: none; }
+}
+
+.submitBtn {
+  height: 48px;
+  padding: 0 $space-6;
+  border-radius: $radius-pill;
+  background-color: $primary;
+  color: $white;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  white-space: nowrap;
+  transition: background-color $transition-fast;
+
+  &:hover:not(:disabled) { background-color: $primary-dark; }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+.newsletterSuccess {
+  padding: $space-4 $space-5;
+  border-radius: $radius;
+  background-color: rgba(42, 122, 59, 0.1);
+  color: #2a7a3b;
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+}
+
+.newsletterError {
+  flex-basis: 100%;
+  padding: 0 $space-5 $space-2;
+  font-size: $fs-xs;
+  color: #c0392b;
+}
+
+/* ── Colonnes ── */
+.top {
+  @include container;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-10 $space-6;
+  padding-top: $space-16;
+  padding-bottom: $space-12;
+
+  @include lg { grid-template-columns: 1.6fr repeat(3, 1fr); gap: $space-12; }
+}
+
 .brand {
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
-  gap: $space-4;
+  gap: $space-5;
+
+  @include lg { grid-column: auto; }
 }
 
 .logo {
   font-family: $font-display;
-  font-size: $fs-2xl;
+  font-size: 1.9rem;
   font-weight: $fw-bold;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: $ivory;
+  color: $white;
+  line-height: 1;
 
-  span {
-    color: $gold;
-  }
+  em { font-style: italic; color: $primary-on-dark; }
 }
 
 .tagline {
+  max-width: 320px;
   font-size: $fs-sm;
-  color: rgba(244, 241, 236, 0.45);
   line-height: 1.7;
-  max-width: 260px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.socials {
-  display: flex;
-  gap: $space-3;
-  margin-top: $space-2;
-}
-
-.socialBtn {
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(244, 241, 236, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(244, 241, 236, 0.5);
-  transition: border-color $transition-fast, color $transition-fast;
-
-  &:hover {
-    border-color: $gold;
-    color: $gold;
-  }
-}
-
-/* ── Contact ── */
 .contact {
   display: flex;
   flex-direction: column;
   gap: $space-2;
-  margin-top: $space-2;
 }
 
 .contactItem {
-  display: flex;
-  align-items: flex-start;
-  gap: $space-2;
-  font-size: $fs-xs;
-  color: rgba(244, 241, 236, 0.4);
-  line-height: 1.5;
-
-  svg { flex-shrink: 0; margin-top: 1px; }
-}
-
-.contactLink {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: $space-2;
-  font-size: $fs-xs;
-  color: rgba(244, 241, 236, 0.4);
-  text-decoration: none;
+  width: fit-content;
+  font-size: $fs-sm;
+  color: rgba(255, 255, 255, 0.8);
   transition: color $transition-fast;
 
-  svg { flex-shrink: 0; }
+  svg { color: $primary-on-dark; flex-shrink: 0; }
 
-  &:hover { color: $gold; }
+  &[href]:hover { color: $white; }
 }
 
-/* ── Colonnes liens ── */
+.socials {
+  display: flex;
+  gap: $space-2;
+}
+
+.socialBtn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: $white;
+  transition: background-color $transition-fast, color $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background-color: $white;
+    color: $primary;
+    transform: translateY(-2px);
+  }
+}
+
 .col {
   display: flex;
   flex-direction: column;
@@ -109,11 +190,11 @@
 }
 
 .colTitle {
-  font-size: $fs-xs;
+  font-size: $fs-sm;
   font-weight: $fw-semibold;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: $gold;
+  color: $white;
 }
 
 .colLinks {
@@ -124,117 +205,65 @@
 
 .colLink {
   font-size: $fs-sm;
-  color: rgba(244, 241, 236, 0.5);
-  transition: color $transition-fast;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color $transition-fast, padding-left $transition-fast;
 
   &:hover {
-    color: $ivory;
+    color: $white;
+    padding-left: 4px;
   }
 }
 
-/* ── Newsletter ── */
-.newsletterTitle {
-  font-size: $fs-xs;
-  font-weight: $fw-semibold;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: $gold;
-  margin-bottom: $space-1;
-}
-
-.newsletterSub {
-  font-size: $fs-sm;
-  color: rgba(244, 241, 236, 0.45);
-  line-height: 1.5;
-  margin-bottom: $space-4;
-}
-
-.newsletterForm {
+/* ── Engagements ── */
+.perks {
+  @include container;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $space-3 $space-8;
+  padding-top: $space-6;
+  padding-bottom: $space-6;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.perk {
+  display: inline-flex;
+  align-items: center;
   gap: $space-2;
-}
-
-.input {
-  width: 100%;
-  padding: $space-3 $space-4;
-  background-color: rgba(244, 241, 236, 0.06);
-  border: 1px solid rgba(244, 241, 236, 0.15);
-  color: $ivory;
   font-size: $fs-sm;
-  font-family: $font-primary;
-  outline: none;
-  transition: border-color $transition-fast;
+  color: rgba(255, 255, 255, 0.85);
 
-  &::placeholder {
-    color: rgba(244, 241, 236, 0.3);
-  }
-
-  &:focus {
-    border-color: $gold;
-  }
+  svg { color: $primary-on-dark; }
 }
 
-.submitBtn {
-  padding: $space-3 $space-4;
-  background-color: $gold;
-  color: $black;
-  font-size: $fs-xs;
-  font-weight: $fw-bold;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  transition: background-color $transition-fast;
-  font-family: $font-primary;
-
-  &:hover {
-    background-color: $gold-dark;
-  }
-}
-
-.newsletterSuccess {
-  font-size: 13px;
-  color: #10b981;
-  margin-top: 8px;
-}
-
-.newsletterError {
-  font-size: 12px;
-  color: #ef4444;
-  margin-top: 6px;
-  width: 100%;
-}
-
-/* ── Bottom ── */
+/* ── Bas de page ── */
 .bottom {
-  border-top: 1px solid rgba(244, 241, 236, 0.08);
-  padding: $space-6 $space-8;
-  max-width: 1280px;
-  margin: 0 auto;
+  @include container;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: $space-4;
+  gap: $space-3;
+  padding-top: $space-5;
+  padding-bottom: $space-5;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .copy {
   font-size: $fs-xs;
-  color: rgba(244, 241, 236, 0.3);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .legal {
   display: flex;
-  gap: $space-6;
+  flex-wrap: wrap;
+  gap: $space-5;
 }
 
 .legalLink {
   font-size: $fs-xs;
-  color: rgba(244, 241, 236, 0.3);
+  color: rgba(255, 255, 255, 0.55);
   transition: color $transition-fast;
 
-  &:hover {
-    color: rgba(244, 241, 236, 0.7);
-  }
+  &:hover { color: $white; }
 }

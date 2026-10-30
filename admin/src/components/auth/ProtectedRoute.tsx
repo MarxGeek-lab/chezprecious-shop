@@ -22,7 +22,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
         justifyContent: 'center', minHeight: '100vh', gap: 2,
         bgcolor: '#F0F2F5',
       }}>
-        <CircularProgress sx={{ color: '#D45D00' }} size={48} />
+        <CircularProgress sx={{ color: '#7B1E3A' }} size={48} />
         <Typography sx={{ fontSize: 14, color: '#6B7280' }}>
           Chargement...
         </Typography>

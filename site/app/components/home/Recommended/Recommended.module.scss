@@ -1,9 +1,12 @@
 @use '../../../styles/_variables' as *;
+@use '../../../styles/_mixins' as *;
 
 .section {
-  padding: $space-20 0;
+  padding: $space-16 0;
   background-color: $ivory;
   overflow: hidden;
+
+  @include lg { padding: $space-20 0; }
 }
 
 /* ── En-tête ── */
@@ -11,7 +14,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  padding: 0 $space-4;
+  flex-wrap: wrap;
   margin-bottom: $space-8;
   gap: $space-4;
 }
@@ -22,58 +25,27 @@
   gap: $space-2;
 }
 
-.eyebrow {
-  font-size: $fs-xs;
+.eyebrow { @include eyebrow; }
+
+.title { @include section-title; }
+
+.seeAll {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  height: 44px;
+  padding: 0 $space-6;
+  border-radius: $radius-pill;
+  border: 2px solid $primary;
+  color: $primary;
+  font-size: $fs-sm;
   font-weight: $fw-semibold;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: $gold;
-  display: flex;
-  align-items: center;
-  gap: $space-2;
-
-  &::before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 1px;
-    background-color: $gold;
-  }
-}
-
-.title {
-  font-family: $font-display;
-  font-size: $fs-3xl;
-  font-weight: $fw-bold;
-  color: $black;
-  line-height: 1.1;
-
-  @media (min-width: $bp-md) {
-    font-size: $fs-4xl;
-  }
-}
-
-.controls {
-  display: flex;
-  gap: $space-2;
-  flex-shrink: 0;
-}
-
-.arrow {
-  width: 40px;
-  height: 40px;
-  border: 1.5px solid $black;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: $black;
-  transition: background-color $transition-fast, color $transition-fast;
+  white-space: nowrap;
+  transition: background-color $transition-base, color $transition-base;
 
   &:hover {
-    background-color: $black;
-    color: $ivory;
+    background-color: $primary;
+    color: $white;
   }
 }
 
@@ -107,7 +79,7 @@
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  border: 1.5px solid $black;
+  border-radius: $radius;
   transition: border-width $transition-base;
 
   .card:hover & {
@@ -133,8 +105,8 @@
   text-transform: uppercase;
   z-index: 2;
 
-  &.badgeNew  { background-color: $black; color: $ivory; }
-  &.badgeSale { background-color: $gold;  color: $black; }
+  &.badgeNew  { background-color: $primary; color: $ivory; }
+  &.badgeSale { background-color: $primary;  color: $white; }
 }
 
 .wishlist {
@@ -155,7 +127,7 @@
   transition: opacity $transition-fast, background-color $transition-fast;
 
   .card:hover & { opacity: 1; }
-  &:hover { background-color: $black; color: $ivory; }
+  &:hover { background-color: $primary; color: $ivory; }
 }
 
 .quickView {
@@ -189,7 +161,7 @@
   font-weight: $fw-semibold;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary;
   margin-bottom: 2px;
 }
 

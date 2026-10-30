@@ -78,7 +78,7 @@ function ResetPasswordContent() {
         </div>
         <Image
           src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=85"
-          alt="Collection Chez Precious"
+          alt="Collection ChezPrecious"
           fill
           className={styles.leftImage}
           priority

@@ -12,7 +12,7 @@
   position: relative;
   height: 220px;
   overflow: hidden;
-  background-color: $black;
+  background-color: $primary-dark;
 
   @media (min-width: $bp-md) { height: 400px; }
 }
@@ -71,8 +71,8 @@
   font-weight: $fw-semibold;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: $gold;
-  border: 1px solid rgba(200,162,74,0.4);
+  color: $primary-on-dark;
+  border: 1px solid rgba(244, 188, 203, 0.45);
   padding: 3px $space-3;
   margin-top: $space-3;
   width: fit-content;
@@ -137,7 +137,7 @@
 
 .clearAll {
   font-size: $fs-xs;
-  color: $gold-dark;
+  color: $primary-dark;
   text-decoration: underline;
   transition: color $transition-fast;
 
@@ -171,7 +171,7 @@
   color: $black;
   transition: color $transition-fast;
 
-  &:hover { color: $gold; }
+  &:hover { color: $primary; }
 }
 
 .accordionBody {
@@ -201,7 +201,7 @@
 }
 
 .filterPillActive {
-  background-color: $black;
+  background-color: $primary;
   border-color: $black;
   color: $ivory;
 }
@@ -229,7 +229,7 @@
     background-color: rgba(10,10,10,0.18);
     border-radius: 99px;
 
-    &:hover { background-color: $gold; }
+    &:hover { background-color: $primary; }
   }
 }
 
@@ -277,7 +277,7 @@
 .clearPrice {
   display: block;
   font-size: $fs-xs;
-  color: $gold-dark;
+  color: $primary-dark;
   text-decoration: underline;
   margin-top: $space-3;
   text-align: left;
@@ -319,8 +319,8 @@
   position: absolute;
   top: -6px; right: -6px;
   width: 16px; height: 16px;
-  background-color: $gold;
-  color: $black;
+  background-color: $primary;
+  color: $white;
   font-size: 9px;
   font-weight: $fw-bold;
   border-radius: 50%;
@@ -342,7 +342,7 @@
   align-items: center;
   gap: $space-1;
   padding: 3px $space-3;
-  background-color: $black;
+  background-color: $primary;
   color: $ivory;
   font-size: $fs-xs;
   font-weight: $fw-medium;
@@ -413,7 +413,7 @@
 }
 
 .viewBtnActive {
-  background-color: $black;
+  background-color: $primary;
   color: $ivory;
 }
 
@@ -484,8 +484,8 @@
   padding: 2px $space-2;
 }
 
-.badgeNew  { background-color: $black; color: $ivory; }
-.badgeSale { background-color: $gold;  color: $black; }
+.badgeNew  { background-color: $primary; color: $ivory; }
+.badgeSale { background-color: $primary;  color: $white; }
 
 .listBody {
   display: flex;
@@ -512,7 +512,7 @@
   display: flex;
   align-items: center;
   gap: 3px;
-  color: $gold;
+  color: $primary;
 }
 
 .listRatingNum {
@@ -561,7 +561,7 @@
 
 .emptyBtn {
   padding: $space-3 $space-6;
-  background-color: $black;
+  background-color: $primary;
   color: $ivory;
   font-size: $fs-xs;
   font-weight: $fw-bold;
@@ -569,7 +569,7 @@
   text-transform: uppercase;
   transition: background-color $transition-fast;
 
-  &:hover { background-color: $gold; color: $black; }
+  &:hover { background-color: $primary-dark; color: $white; }
 }
 
 /* ── Pagination ── */
@@ -598,7 +598,7 @@
   cursor: pointer;
 
   &:hover:not(:disabled) {
-    background-color: $black;
+    background-color: $primary;
     color: $ivory;
     border-color: $black;
   }
@@ -610,7 +610,7 @@
 }
 
 .pageBtnActive {
-  background-color: $black;
+  background-color: $primary;
   color: $ivory;
   border-color: $black;
 }
@@ -655,7 +655,7 @@
 .applyBtn {
   width: 100%;
   padding: $space-4;
-  background-color: $black;
+  background-color: $primary;
   color: $ivory;
   font-size: $fs-sm;
   font-weight: $fw-bold;
@@ -663,5 +663,5 @@
   text-transform: uppercase;
   transition: background-color $transition-fast;
 
-  &:hover { background-color: $gold; color: $black; }
+  &:hover { background-color: $primary-dark; color: $white; }
 }

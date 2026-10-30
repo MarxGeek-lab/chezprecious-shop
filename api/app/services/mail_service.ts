@@ -82,7 +82,7 @@ class MailService {
         <div style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
           <!-- Header -->
           <div style="background: linear-gradient(135deg, #D45D00 0%, #FF7A1A 100%); padding: 28px; text-align: center;">
-            <h1 style="margin: 0; font-size: 28px; color: #ffffff; font-weight: 700;">Chez Precious </h1>
+            <h1 style="margin: 0; font-size: 28px; color: #ffffff; font-weight: 700;">ChezPrecious </h1>
           </div>
           <!-- Content -->
           <div style="padding: 32px;">
@@ -111,7 +111,7 @@ class MailService {
         Bienvenue ${fullName} !
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 24px 0;">
-        Merci de vous être inscrit sur notre marketplace. Pour activer votre compte et commencer vos achats, cliquez sur le bouton ci-dessous :
+        Merci de vous être inscrit sur ChezPrecious. Pour activer votre compte et commencer vos achats, cliquez sur le bouton ci-dessous :
       </p>
       <div style="text-align: center; margin: 32px 0;">
         <a href="${activationUrl}"
@@ -135,7 +135,7 @@ class MailService {
     return await this.sendMailWithRetry({
       from: this.fromAddress,
       to: email,
-      subject: 'Activez votre compte - Chez Precious',
+      subject: 'Activez votre compte - ChezPrecious',
       html,
     })
   }
@@ -178,7 +178,7 @@ class MailService {
     return await this.sendMailWithRetry({
       from: this.fromAddress,
       to: email,
-      subject: 'Réinitialisation de mot de passe - Chez Precious',
+      subject: 'Réinitialisation de mot de passe - ChezPrecious',
       html,
     })
   }
@@ -193,7 +193,7 @@ class MailService {
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 24px 0;">
         Bonjour ${fullName},<br><br>
-        Votre compte Chez Precious a été activé avec succès. Vous pouvez maintenant profiter de toutes les fonctionnalités de notre plateforme.
+        Votre compte ChezPrecious a été activé avec succès. Vous pouvez maintenant profiter de toutes les fonctionnalités de notre plateforme.
       </p>
       <div style="background-color: #ecfdf5; border-left: 4px solid #10b981; padding: 16px; margin: 24px 0; border-radius: 0 8px 8px 0;">
         <p style="margin: 0 0 12px 0; font-size: 14px; color: #065f46; font-weight: 600;">
@@ -217,7 +217,7 @@ class MailService {
     return await this.sendMailWithRetry({
       from: this.fromAddress,
       to: email,
-      subject: 'Bienvenue sur Chez Precious !',
+      subject: 'Bienvenue sur ChezPrecious !',
       html,
     })
   }
@@ -258,7 +258,7 @@ class MailService {
     return await this.sendMailWithRetry({
       from: this.fromAddress,
       to: email,
-      subject: 'Demande vendeur reçue - Chez Precious',
+      subject: 'Demande vendeur reçue - ChezPrecious',
       html,
     })
   }
@@ -300,7 +300,7 @@ class MailService {
     return await this.sendMailWithRetry({
       from: this.fromAddress,
       to: email,
-      subject: 'Votre boutique est approuvée - Chez Precious',
+      subject: 'Votre boutique est approuvée - ChezPrecious',
       html,
     })
   }
@@ -335,7 +335,7 @@ class MailService {
     return await this.sendMailWithRetry({
       from: this.fromAddress,
       to: email,
-      subject: 'Demande vendeur - Chez Precious',
+      subject: 'Demande vendeur - ChezPrecious',
       html,
     })
   }
@@ -502,7 +502,7 @@ class MailService {
     return await this.sendMailWithRetry({
       from: this.fromAddress,
       to: email,
-      subject: `Confirmation de commande #${orderData.orderNumber} - Chez Precious`,
+      subject: `Confirmation de commande #${orderData.orderNumber} - ChezPrecious`,
       html,
     })
   }
@@ -647,7 +647,7 @@ class MailService {
     return await this.sendMailWithRetry({
       from: this.fromAddress,
       to: email,
-      subject: 'Nouvelle connexion à votre compte - Chez Precious',
+      subject: 'Nouvelle connexion à votre compte - ChezPrecious',
       html,
     })
   }
@@ -672,7 +672,7 @@ class MailService {
         Bonjour ${firstName} ${lastName},
       </p>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 24px 0;">
-        Suite à votre commande, un compte Chez Precious a été créé automatiquement pour vous.
+        Suite à votre commande, un compte ChezPrecious a été créé automatiquement pour vous.
         Vous pouvez dès maintenant suivre vos commandes et bénéficier d'une expérience personnalisée.
       </p>
 
@@ -721,7 +721,7 @@ class MailService {
     return await this.sendMailWithRetry({
       from: this.fromAddress,
       to: email,
-      subject: 'Votre compte Chez Precious a été créé — Définissez votre mot de passe',
+      subject: 'Votre compte ChezPrecious a été créé — Définissez votre mot de passe',
       html,
     })
   }
@@ -917,7 +917,7 @@ class MailService {
         Bonjour ${fullName || 'Administrateur'},
       </p>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 24px 0;">
-        Vous avez demandé à réinitialiser votre mot de passe pour le panneau d'administration Chez Precious. Cliquez sur le bouton ci-dessous pour en créer un nouveau :
+        Vous avez demandé à réinitialiser votre mot de passe pour le panneau d'administration ChezPrecious. Cliquez sur le bouton ci-dessous pour en créer un nouveau :
       </p>
       <div style="text-align: center; margin: 32px 0;">
         <a href="${resetUrl}"
@@ -941,7 +941,7 @@ class MailService {
     return await this.sendMailWithRetry({
       from: this.fromAddress,
       to: email,
-      subject: 'Réinitialisation de mot de passe — Chez Precious Admin',
+      subject: 'Réinitialisation de mot de passe — ChezPrecious Admin',
       html,
     })
   }
@@ -979,7 +979,7 @@ class MailService {
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 24px 0;">
         ${data.isResend
           ? 'Un nouveau lien de configuration a été généré pour votre compte administrateur .'
-          : 'Votre compte administrateur Chez Precious a été créé. Cliquez ci-dessous pour définir votre mot de passe et accéder au tableau de bord.'}
+          : 'Votre compte administrateur ChezPrecious a été créé. Cliquez ci-dessous pour définir votre mot de passe et accéder au tableau de bord.'}
       </p>
       <div style="background-color: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 8px; padding: 16px 20px; margin: 0 0 24px 0;">
         <table style="width: 100%; border-collapse: collapse;">
@@ -1018,8 +1018,8 @@ class MailService {
       from: this.fromAddress,
       to,
       subject: data.isResend
-        ? 'Nouveau lien de configuration — Chez Precious Admin'
-        : 'Invitation à rejoindre Chez Precious Admin',
+        ? 'Nouveau lien de configuration — ChezPrecious Admin'
+        : 'Invitation à rejoindre ChezPrecious Admin',
       html,
     })
   }
@@ -1058,7 +1058,7 @@ class MailService {
     return await this.sendMailWithRetry({
       from: this.fromAddress,
       to,
-      subject: 'Nouveau message de Chez Precious',
+      subject: 'Nouveau message de ChezPrecious',
       html,
     })
   }
@@ -1353,8 +1353,8 @@ class MailService {
   ): Promise<{ success: boolean; error?: any }> {
     const isSecond = reminderNumber === 2
     const subject = isSecond
-      ? `⏰ Dernière chance — votre panier Chez Precious vous attend`
-      : `🛒 Vous avez oublié quelque chose chez Chez Precious`
+      ? `⏰ Dernière chance — votre panier ChezPrecious vous attend`
+      : `🛒 Vous avez oublié quelque chose chez ChezPrecious`
 
     const urgencyBanner = isSecond
       ? `<div style="background:#FEF3C7;border-left:4px solid #D45D00;padding:12px 16px;margin-bottom:24px;border-radius:4px;">

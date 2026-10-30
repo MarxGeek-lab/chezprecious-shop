@@ -11,7 +11,7 @@ const CATEGORIES = [
     href: "/shop?cat=femme",
     image:
       "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=85",
-    alt: "Collection Femme Chez Precious",
+    alt: "Collection Femme ChezPrecious",
   },
   {
     tag: "Collection Homme",
@@ -19,7 +19,7 @@ const CATEGORIES = [
     href: "/shop?cat=homme",
     image:
       "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=900&q=85",
-    alt: "Collection Homme Chez Precious",
+    alt: "Collection Homme ChezPrecious",
   },
 ];
 

@@ -28,7 +28,7 @@
   font-weight: $fw-bold;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary;
   margin-bottom: $space-3;
 }
 
@@ -66,9 +66,9 @@
   transition: background $transition-fast, border-color $transition-fast, color $transition-fast;
 
   &:hover {
-    background: $gold;
-    border-color: $gold;
-    color: $black;
+    background: $primary;
+    border-color: $primary;
+    color: $white;
   }
 }
 
@@ -136,7 +136,7 @@
   border: 1.5px solid rgba(244, 241, 236, 0.12);
   transition: border-color $transition-base;
 
-  .card:hover & { border-color: $gold; }
+  .card:hover & { border-color: $primary; }
 }
 
 .img {
@@ -167,11 +167,11 @@
   opacity: 1;
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover { background: $gold; color: $black; }
+  &:hover { background: $primary; color: $white; }
 }
 
 .wishBtnActive {
-  background: $gold;
+  background: $primary;
   color: $black;
   &:hover { background: #c0392b; color: $ivory; }
 }
@@ -187,7 +187,7 @@
   justify-content: center;
   gap: $space-2;
   padding: $space-3;
-  background: $gold;
+  background: $primary;
   color: $black;
   border: none;
   font-family: $font-primary;
@@ -225,7 +225,7 @@
 .price {
   font-size: $fs-sm;
   font-weight: $fw-semibold;
-  color: $gold;
+  color: $primary;
 }
 
 /* ── Dots ── */
@@ -246,7 +246,7 @@
 }
 
 .dotActive {
-  background: $gold;
+  background: $primary;
   width: 40px;
 }
 

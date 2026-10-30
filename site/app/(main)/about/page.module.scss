@@ -47,7 +47,7 @@
   font-weight: $fw-bold;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary;
   margin-bottom: $space-4;
 }
 
@@ -92,13 +92,13 @@
 
 /* ── Values ── */
 .values {
-  background: $black;
+  background: $primary-dark;
   padding: $space-24 $space-8;
 }
 .valuesInner {
   max-width: 1200px;
   margin: 0 auto;
-  .eyebrow { color: $gold; }
+  .eyebrow { color: $primary-on-dark; }
   .sectionTitle { color: $ivory; }
 }
 .valuesGrid {
@@ -116,7 +116,7 @@
   font-size: $fs-xs;
   font-weight: $fw-bold;
   letter-spacing: 0.15em;
-  color: $gold;
+  color: $primary-on-dark;
 }
 .valueLabel {
   font-family: $font-display;
@@ -165,7 +165,7 @@
   font-size: $fs-xs;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary;
 }
 
 /* ── CTA ── */
@@ -188,7 +188,7 @@
 .ctaBtn {
   display: inline-block;
   padding: 14px $space-10;
-  background: $black;
+  background: $primary;
   color: $ivory;
   font-size: 11px;
   font-weight: $fw-bold;
@@ -196,5 +196,5 @@
   text-transform: uppercase;
   text-decoration: none;
   transition: background $transition-fast, color $transition-fast;
-  &:hover { background: $gold; color: $black; }
+  &:hover { background: $primary-dark; color: $white; }
 }

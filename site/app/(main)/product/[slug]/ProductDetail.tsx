@@ -58,7 +58,7 @@ function StarsInput({ value, onChange }: { value: number; onChange: (v: number) 
             size={22}
             fill={(hover || value) >= n ? "currentColor" : "none"}
             strokeWidth={1.5}
-            style={{ color: (hover || value) >= n ? "#C8A24A" : "rgba(10,10,10,0.25)" }}
+            style={{ color: (hover || value) >= n ? "#7B1E3A" : "rgba(10,10,10,0.25)" }}
           />
         </button>
       ))}
@@ -463,7 +463,7 @@ export default function ProductDetail({ product }: { product: ApiProduct }) {
 
           <div className={styles.accordion}>
             <AccordionItem title="Description">
-              <p>{description ?? "Pièce signature Chez Precious, confectionnée avec soin."}</p>
+              <p>{description ?? "Pièce signature ChezPrecious, confectionnée avec soin."}</p>
             </AccordionItem>
             <AccordionItem title="Composition & Entretien">
               <p>Matières naturelles sélectionnées. Lavage machine 30°C, cycle délicat. Ne pas essorer. Sécher à plat.</p>

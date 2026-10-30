@@ -19,7 +19,7 @@ type TabKey = (typeof TABS)[number]["key"];
 export function ProductSkeleton() {
   return (
     <Grid size={{ xs: 6, sm: 4, md: 3 }}>
-      <div style={{ aspectRatio: "3/4", background: "#f0f0f0", borderRadius: 4 }} />
+      <div style={{ aspectRatio: "3/4", background: "#F6ECE8", borderRadius: 14 }} />
     </Grid>
   );
 }
@@ -31,7 +31,7 @@ export default function FeaturedProducts() {
   const featuredQuery = useFeaturedProducts(8);
 
   const query = active === "new" ? newQuery : featuredQuery;
-  const products: ApiProduct[] = (query.data ?? []).slice(0, 4);
+  const products: ApiProduct[] = (query.data ?? []).slice(0, 8);
   const loading = query.isLoading;
 
   return (
@@ -41,7 +41,7 @@ export default function FeaturedProducts() {
         <div className={styles.header}>
           <div className={styles.titleGroup}>
             <span className={styles.eyebrow}>Notre sélection</span>
-            <h2 className={styles.title}>Pièces phares</h2>
+            <h2 className={styles.title}>Nos pièces <em>coup de cœur</em></h2>
           </div>
 
           <nav className={styles.tabs} aria-label="Filtrer les produits">
@@ -63,7 +63,7 @@ export default function FeaturedProducts() {
 
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {loading ? (
-            Array.from({ length: 4 }).map((_, i) => <ProductSkeleton key={i} />)
+            Array.from({ length: 8 }).map((_, i) => <ProductSkeleton key={i} />)
           ) : products.length > 0 ? (
             products.map((product) => (
               <Grid key={product.id} size={{ xs: 6, sm: 4, md: 3 }}>

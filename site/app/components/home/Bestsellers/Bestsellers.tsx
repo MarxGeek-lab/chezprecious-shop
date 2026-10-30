@@ -15,7 +15,7 @@ export default function Bestsellers() {
     return (
       <section className={styles.section}>
         <Container maxWidth="xl">
-          <div style={{ height: 300, background: "#f5f5f5", borderRadius: 4 }} />
+          <div style={{ height: 300, background: "#F6ECE8", borderRadius: 14 }} />
         </Container>
       </section>
     );
@@ -35,7 +35,7 @@ export default function Bestsellers() {
               <TrendingUp size={13} strokeWidth={2} />
               Tendances
             </span>
-            <h2 className={styles.title}>Meilleures ventes</h2>
+            <h2 className={styles.title}>Nos <em>meilleures ventes</em></h2>
           </div>
           <Link href="/shop?sort=populaires" className={styles.seeAll}>
             Voir tout →
@@ -65,7 +65,7 @@ export default function Bestsellers() {
                   <p className={styles.heroName}>{hero.name}</p>
                   {hero.rating ? (
                     <div className={styles.ratingRow}>
-                      <Star size={12} strokeWidth={0} fill="#C8A24A" />
+                      <Star size={12} strokeWidth={0} fill="#7B1E3A" />
                       <span className={styles.ratingVal}>{hero.rating.toFixed(1)}</span>
                       <span className={styles.ratingCount}>({hero.reviewCount} avis)</span>
                     </div>
@@ -99,7 +99,7 @@ export default function Bestsellers() {
                       <p className={styles.name}>{product.name}</p>
                       {product.rating ? (
                         <div className={styles.ratingRow}>
-                          <Star size={10} strokeWidth={0} fill="#C8A24A" />
+                          <Star size={10} strokeWidth={0} fill="#7B1E3A" />
                           <span className={styles.ratingVal}>{product.rating.toFixed(1)}</span>
                           <span className={styles.ratingCount}>({product.reviewCount})</span>
                         </div>

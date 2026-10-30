@@ -17,7 +17,7 @@ interface HeaderProps {
 }
 
 const pageTitles: Record<AdminTabType, { title: string; subtitle: string }> = {
-  dashboard:      { title: 'Tableau de bord', subtitle: 'Vue d\'ensemble de la marketplace' },
+  dashboard:      { title: 'Tableau de bord', subtitle: 'Vue d\'ensemble de la boutique' },
   analytics:      { title: 'Analytiques',     subtitle: 'Statistiques détaillées' },
   users:          { title: 'Utilisateurs',    subtitle: 'Gestion des comptes utilisateurs' },
   'user-detail':  { title: 'Utilisateur',     subtitle: 'Détail du compte' },
@@ -71,7 +71,7 @@ function StatusDot({ status }: { status: string }) {
 
 export default function Header({ onMenuToggle }: HeaderProps) {
   const { activeTab, setActiveTab } = useAdminTab();
-  const pageInfo = pageTitles[activeTab] || { title: 'Admin', subtitle: 'MarketPlace' };
+  const pageInfo = pageTitles[activeTab] || { title: 'Admin', subtitle: 'ChezPrecious' };
 
   const [query, setQuery]           = useState('');
   const [searchType, setSearchType] = useState<SearchType>('all');
@@ -159,7 +159,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
         <Box className={styles.searchWrapper} ref={anchorRef}>
           <Box
             className={styles.searchBar}
-            sx={{ borderColor: focused ? '#D45D00 !important' : undefined }}
+            sx={{ borderColor: focused ? '#7B1E3A !important' : undefined }}
           >
             {/* Type selector */}
             <button

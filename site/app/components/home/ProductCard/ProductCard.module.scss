@@ -3,29 +3,37 @@
 .card {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  padding: $space-2;
+  border-radius: $radius;
+  background-color: $white;
+  border: 1px solid rgba(31, 20, 22, 0.06);
   cursor: pointer;
   text-decoration: none;
+  transition: box-shadow $transition-base, transform $transition-base, border-color $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(123, 30, 58, 0.18);
+    box-shadow: 0 18px 40px rgba(123, 30, 58, 0.12);
+  }
 }
 
-/* ── Image : cadre noir, zoom fluide au hover ── */
+/* ── Image : coins arrondis, zoom fluide au hover ── */
 .imageWrapper {
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  border: 1.5px solid $black;
-  transition: border-width $transition-base;
-
-  .card:hover & {
-    border-width: 2.5px;
-  }
+  border-radius: 10px;
+  background-color: $ivory-dark;
 }
 
 .image {
   object-fit: cover;
-  transition: transform 0.55s ease;
+  transition: transform 0.6s ease;
 
   .card:hover & {
-    transform: scale(1.05);
+    transform: scale(1.06);
   }
 }
 
@@ -34,15 +42,16 @@
   position: absolute;
   top: $space-3;
   left: $space-3;
-  padding: 3px $space-3;
-  font-size: 9px;
+  padding: 4px 10px;
+  border-radius: $radius-pill;
+  font-size: 10px;
   font-weight: $fw-bold;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   z-index: 2;
 
-  &.new  { background-color: $black; color: $ivory; }
-  &.sale { background-color: $gold;  color: $black; }
+  &.new  { background-color: $white; color: $primary; box-shadow: 0 4px 10px rgba(31, 20, 22, 0.1); }
+  &.sale { background-color: $primary; color: $white; }
 }
 
 /* ── Wishlist ── */
@@ -50,51 +59,54 @@
   position: absolute;
   top: $space-3;
   right: $space-3;
-  width: 32px;
-  height: 32px;
-  background-color: rgba(244, 241, 236, 0.92);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.95);
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
-  opacity: 1;
-  transition: opacity $transition-base, background-color $transition-fast, color $transition-fast;
   color: $black;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(31, 20, 22, 0.1);
+  transition: background-color $transition-fast, color $transition-fast, transform $transition-fast;
 
-  &:hover { background-color: $black; color: $ivory; }
+  svg { width: 18px; height: 18px; }
+
+  &:hover { color: $primary; transform: scale(1.08); }
 }
 
 .wishlistActive {
-  background-color: $black;
-  color: $ivory;
+  background-color: $primary;
+  color: $white;
 
-  &:hover { background-color: #c0392b; color: $ivory; }
+  &:hover { background-color: $primary-dark; color: $white; }
 }
 
 /* ── Bouton "Ajouter au panier" (desktop, sur l'image) ── */
 .addToCart {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: $space-3;
+  left: $space-3;
+  right: $space-3;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: $space-2;
-  padding: $space-3;
-  background-color: $black;
-  color: $ivory;
+  height: 44px;
+  border-radius: $radius-pill;
+  background-color: $primary;
+  color: $white;
   border: none;
   font-family: $font-primary;
-  font-size: 10px;
+  font-size: $fs-sm;
   font-weight: $fw-semibold;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   cursor: pointer;
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(10px);
+  box-shadow: 0 10px 24px rgba(123, 30, 58, 0.3);
   transition: opacity $transition-base, transform $transition-base, background-color $transition-fast;
   z-index: 2;
 
@@ -103,41 +115,41 @@
     transform: translateY(0);
   }
 
-  &:hover {
-    background-color: $gold;
-    color: $black;
-  }
+  &:hover { background-color: $primary-dark; }
 
-  /* Hidden on mobile — mobileCartBtn takes over */
+  /* Masqué sur mobile — mobileCartBtn prend le relais */
   @media (max-width: 767px) {
     display: none;
   }
 }
 
 .addToCartDone {
-  background-color: $gold;
-  color: $black;
+  background-color: #2a7a3b;
   opacity: 1 !important;
   transform: translateY(0) !important;
+
+  &:hover { background-color: #2a7a3b; }
 }
 
 /* ── Infos texte ── */
 .info {
-  padding: $space-3 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: $space-3 $space-2 $space-2;
 }
 
 .nameRow {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: $space-2;
+  flex-direction: column-reverse;
+  gap: 2px;
 }
 
 .name {
   font-size: $fs-sm;
-  font-weight: $fw-medium;
+  font-weight: $fw-semibold;
   color: $black;
-  line-height: 1.3;
+  line-height: 1.35;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -145,70 +157,42 @@
 }
 
 .category {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: $fw-semibold;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: $gold;
-  white-space: nowrap;
-  flex-shrink: 0;
+  color: $muted;
 }
 
 .priceRow {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: $space-2;
-  margin-top: 4px;
 }
 
 .price {
-  font-size: $fs-sm;
-  font-weight: $fw-semibold;
-  color: $black;
+  font-size: $fs-base;
+  font-weight: $fw-bold;
+  color: $primary;
 }
 
 .priceOld {
   font-size: $fs-xs;
-  color: rgba(10, 10, 10, 0.35);
+  color: rgba(31, 20, 22, 0.4);
   text-decoration: line-through;
 }
 
 /* ── Stock ── */
 .lowStock {
-  font-size: 9px;
-  font-weight: $fw-semibold;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-top: 4px;
+  font-size: 11px;
+  font-weight: $fw-medium;
 }
 
-.inStock     { color: #2a7a3b; }
+.inStock      { color: #2a7a3b; }
 .lowStockWarn { color: #c0392b; }
-.outOfStock  { color: rgba(10, 10, 10, 0.4); }
+.outOfStock   { color: rgba(31, 20, 22, 0.45); }
 
-/* ── Pastilles couleur ── */
-.colorDots {
-  display: flex;
-  gap: $space-2;
-  margin-top: $space-2;
-}
-
-.colorDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 1px solid rgba(10, 10, 10, 0.18);
-  transition: transform $transition-fast;
-
-  &:hover { transform: scale(1.3); }
-
-  &.active {
-    outline: 1.5px solid $black;
-    outline-offset: 2px;
-  }
-}
-
-/* ── Mobile cart button (below info, mobile only) ── */
+/* ── Bouton panier mobile (sous les infos) ── */
 .mobileCartBtn {
   display: none;
 
@@ -219,29 +203,24 @@
     justify-content: center;
     gap: $space-2;
     width: 100%;
-    margin-top: $space-3;
-    padding: 10px $space-3;
-    background-color: $black;
-    color: $ivory;
+    margin-top: auto;
+    height: 40px;
+    border-radius: $radius-pill;
+    background-color: $primary;
+    color: $white;
     border: none;
     font-family: $font-primary;
-    font-size: 10px;
+    font-size: $fs-xs;
     font-weight: $fw-semibold;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
     cursor: pointer;
-    transition: background-color $transition-fast, color $transition-fast;
+    transition: background-color $transition-fast;
 
-    &:active {
-      background-color: $gold;
-      color: $black;
-    }
+    &:active { background-color: $primary-dark; }
   }
 }
 
 .mobileCartBtnDone {
   @media (max-width: 767px) {
-    background-color: $gold !important;
-    color: $black !important;
+    background-color: #2a7a3b !important;
   }
 }

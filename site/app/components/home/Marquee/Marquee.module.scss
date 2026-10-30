@@ -1,7 +1,7 @@
 @use '../../../styles/_variables' as *;
 
 .wrapper {
-  background-color: $black;
+  background-color: $primary-dark;
   overflow: hidden;
   padding: $space-4 0;
   border-top: 1px solid rgba(244, 241, 236, 0.08);
@@ -38,7 +38,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: $gold;
+  background-color: $primary;
   flex-shrink: 0;
 }
 

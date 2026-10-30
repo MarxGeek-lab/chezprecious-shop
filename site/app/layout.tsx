@@ -18,18 +18,48 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://chezprecious.com";
+const SITE_NAME = "ChezPrecious";
+
+// Métadonnées communes : aperçu des liens partagés (WhatsApp, Facebook, X…).
+// L'image vient de app/opengraph-image.tsx.
+function buildMetadata(title: string, description: string): Metadata {
+  return {
+    metadataBase: new URL(SITE_URL),
+    title,
+    description,
+    applicationName: SITE_NAME,
+    openGraph: {
+      type: "website",
+      locale: "fr_FR",
+      url: SITE_URL,
+      siteName: SITE_NAME,
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
+const DEFAULT_TITLE = "ChezPrecious — Boutique de mode en ligne";
+const DEFAULT_DESCRIPTION = "Des pièces choisies avec soin pour révéler votre élégance au quotidien. Livraison rapide et paiement sécurisé.";
+
 export async function generateMetadata(): Promise<Metadata> {
   try {
     const apiUrl = process.env.API_BACKEND_URL ?? "http://localhost:3333";
     const res = await fetch(`${apiUrl}/api/settings/public`, { next: { revalidate: 300 } });
     if (!res.ok) throw new Error("settings fetch failed");
     const { settings } = await res.json();
-    return {
-      title: settings.metaTitle ?? `${settings.siteName} — Collection`,
-      description: settings.metaDescription ?? settings.siteSlogan ?? "Vêtements premium",
-    };
+    return buildMetadata(
+      settings.metaTitle ?? DEFAULT_TITLE,
+      settings.metaDescription ?? settings.siteSlogan ?? DEFAULT_DESCRIPTION,
+    );
   } catch {
-    return { title: "Chez Precious — Collection", description: "Vêtements premium" };
+    return buildMetadata(DEFAULT_TITLE, DEFAULT_DESCRIPTION);
   }
 }
 

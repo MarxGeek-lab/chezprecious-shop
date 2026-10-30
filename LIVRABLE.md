@@ -1,4 +1,4 @@
-# Chez Precious — Documentation des fonctionnalités livrées
+# ChezPrecious — Documentation des fonctionnalités livrées
 **Date :** Avril 2026  
 **Version :** 1.0  
 
@@ -6,7 +6,7 @@
 
 ## Vue d'ensemble
 
-La plateforme Chez Precious est composée de trois applications distinctes :
+La plateforme ChezPrecious est composée de trois applications distinctes :
 
 | Application | URL de production | Description |
 |---|---|---|
@@ -21,7 +21,7 @@ La plateforme Chez Precious est composée de trois applications distinctes :
 ### 1.1 Page d'accueil
 - Bannière hero avec visuel et bouton d'action
 - Section **Nouveautés** — carrousel des derniers produits
-- Section **Collection permanente** — carrousel auto-défilant des essentiels Chez Precious
+- Section **Collection permanente** — carrousel auto-défilant des essentiels ChezPrecious
 - Section **Recommandés pour vous** — sélection personnalisée
 - Section **Meilleures ventes** — produits les plus populaires
 
@@ -209,7 +209,7 @@ Accessible après connexion sur `/account`.
 ---
 
 ### 2.8 Messages (`/account/messages`)
-- Interface de chat avec le support Chez Precious
+- Interface de chat avec le support ChezPrecious
 - Affichage chronologique des messages
 - Messages client (droite, orange) / Support (gauche, blanc)
 - Envoi par bouton ou touche Entrée

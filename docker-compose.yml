@@ -1,4 +1,4 @@
-# Chez Precious — site, admin, API et base de données.
+# ChezPrecious — site, admin, API et base de données.
 #
 # Les services ne sont publiés que sur 127.0.0.1 ; nginx (sur l'hôte) fait
 # le reverse proxy HTTPS :

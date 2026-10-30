@@ -60,7 +60,7 @@ function AuthContent() {
         </div>
         <Image
           src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=85"
-          alt="Collection Chez Precious"
+          alt="Collection ChezPrecious"
           fill
           className={styles.leftImage}
           priority
@@ -153,7 +153,7 @@ function LoginForm({ onSwitch }: { onSwitch: (v: View) => void }) {
 
       <div className={styles.formHeader}>
         <h1 className={styles.formTitle}>Bon retour</h1>
-        <p className={styles.formSub}>Connectez-vous à votre compte Chez Precious</p>
+        <p className={styles.formSub}>Connectez-vous à votre compte ChezPrecious</p>
       </div>
 
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -245,7 +245,7 @@ function RegisterForm({ onSwitch }: { onSwitch: (v: View) => void }) {
 
       <div className={styles.formHeader}>
         <h1 className={styles.formTitle}>Créer un compte</h1>
-        <p className={styles.formSub}>Rejoignez la communauté Chez Precious</p>
+        <p className={styles.formSub}>Rejoignez la communauté ChezPrecious</p>
       </div>
 
       <form className={styles.form} onSubmit={handleSubmit}>

@@ -78,7 +78,7 @@ export default function ContactPage() {
             <iframe
               src="https://www.openstreetmap.org/export/embed.html?bbox=2.39%2C6.34%2C2.43%2C6.38&layer=mapnik"
               className={styles.map}
-              title="Localisation Chez Precious"
+              title="Localisation ChezPrecious"
               loading="lazy"
             />
           </div>

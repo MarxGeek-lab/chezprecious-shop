@@ -5,7 +5,7 @@ const ITEMS = [
   "Livraison offerte dès 150 €",
   "Qualité premium",
   "Retours gratuits",
-  "Chez Precious — 2025",
+  "ChezPrecious — 2025",
   "Pièces exclusives",
 ];
 

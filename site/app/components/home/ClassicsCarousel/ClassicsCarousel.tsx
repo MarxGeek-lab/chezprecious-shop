@@ -116,7 +116,7 @@ export default function ClassicsCarousel() {
           <div>
             <span className={styles.eyebrow}>Collection permanente</span>
             <h2 className={styles.title}>De tout temps</h2>
-            <p className={styles.subtitle}>Les essentiels Chez Precious — toujours disponibles, toujours parfaits.</p>
+            <p className={styles.subtitle}>Les essentiels ChezPrecious — toujours disponibles, toujours parfaits.</p>
           </div>
           <div className={styles.controls}>
             <button className={styles.ctrlBtn} onClick={prev} aria-label="Précédent">

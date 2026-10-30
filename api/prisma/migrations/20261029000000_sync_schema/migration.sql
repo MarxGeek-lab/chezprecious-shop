@@ -21,7 +21,7 @@ ALTER TABLE "order_items" DROP COLUMN "store_id";
 ALTER TABLE "site_settings" DROP COLUMN "boost_pricing",
 DROP COLUMN "commission",
 DROP COLUMN "seller_registration",
-ALTER COLUMN "site_name" SET DEFAULT 'Chez Precious',
+ALTER COLUMN "site_name" SET DEFAULT 'ChezPrecious',
 ALTER COLUMN "primary_color" SET DEFAULT '#C8A24A',
 ALTER COLUMN "secondary_color" SET DEFAULT '#0A0A0A',
 ALTER COLUMN "accent_color" SET DEFAULT '#F4F1EC',

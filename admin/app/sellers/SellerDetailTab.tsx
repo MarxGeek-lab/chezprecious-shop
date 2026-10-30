@@ -123,7 +123,7 @@ function InfoRow({ icon: Icon, label, value }: { icon: React.ElementType; label:
   );
 }
 
-function StatBox({ label, value, color = '#D45D00' }: { label: string; value: string | number; color?: string }) {
+function StatBox({ label, value, color = '#7B1E3A' }: { label: string; value: string | number; color?: string }) {
   return (
     <Box sx={{ textAlign: 'center', p: 2, bgcolor: '#F9FAFB', borderRadius: 2 }}>
       <Typography sx={{ fontSize: 20, fontWeight: 700, color }}>{value}</Typography>
@@ -144,7 +144,7 @@ function DocLink({ label, url }: { label: string; url: string | null }) {
       </Box>
       {url ? (
         <a href={url} target="_blank" rel="noopener noreferrer">
-          <Chip label="Voir" size="small" sx={{ bgcolor: 'rgba(212,93,0,0.1)', color: '#D45D00', fontWeight: 600, cursor: 'pointer' }} />
+          <Chip label="Voir" size="small" sx={{ bgcolor: 'rgba(123, 30, 58,0.1)', color: '#7B1E3A', fontWeight: 600, cursor: 'pointer' }} />
         </a>
       ) : (
         <Chip label="Non fourni" size="small" sx={{ bgcolor: '#F3F4F6', color: '#9CA3AF' }} />
@@ -186,7 +186,7 @@ function InfoTab({ seller }: { seller: any }) {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
           <Avatar
             src={seller.owner.avatar ?? undefined}
-            sx={{ width: 40, height: 40, bgcolor: '#D45D00', fontSize: 14, fontWeight: 700 }}
+            sx={{ width: 40, height: 40, bgcolor: '#7B1E3A', fontSize: 14, fontWeight: 700 }}
           >
             {(seller.owner.fullName ?? seller.owner.email).slice(0, 2).toUpperCase()}
           </Avatar>
@@ -312,7 +312,7 @@ function OrdersTab({ orders, stats }: { orders: any[]; stats: any }) {
               '&:hover': { bgcolor: '#F9FAFB' },
             }}>
               <Box>
-                <Typography sx={{ fontWeight: 600, fontSize: 14, color: '#D45D00' }}>{order.orderNumber}</Typography>
+                <Typography sx={{ fontWeight: 600, fontSize: 14, color: '#7B1E3A' }}>{order.orderNumber}</Typography>
                 <Typography sx={{ fontSize: 12, color: '#9CA3AF' }}>
                   {order.customerName || order.customerEmail} · {formatDate(order.createdAt)}
                 </Typography>
@@ -409,7 +409,7 @@ export default function SellerDetailTab() {
           <Avatar
             src={seller.logo ?? undefined}
             variant="rounded"
-            sx={{ width: 72, height: 72, bgcolor: 'rgba(212,93,0,0.1)', color: '#D45D00', fontWeight: 700, fontSize: 22 }}
+            sx={{ width: 72, height: 72, bgcolor: 'rgba(123, 30, 58,0.1)', color: '#7B1E3A', fontWeight: 700, fontSize: 22 }}
           >
             {seller.name.slice(0, 2).toUpperCase()}
           </Avatar>
@@ -544,8 +544,8 @@ export default function SellerDetailTab() {
           sx={{
             borderBottom: '1px solid #F3F4F6', px: 2,
             '& .MuiTab-root': { fontSize: 13, fontWeight: 600, textTransform: 'none', minWidth: 'auto', px: 2 },
-            '& .Mui-selected': { color: '#D45D00' },
-            '& .MuiTabs-indicator': { bgcolor: '#D45D00' },
+            '& .Mui-selected': { color: '#7B1E3A' },
+            '& .MuiTabs-indicator': { bgcolor: '#7B1E3A' },
           }}
         >
           <Tab label="Informations" icon={<Building2 size={14} />} iconPosition="start" />

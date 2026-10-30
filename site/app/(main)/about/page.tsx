@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.scss";
 
-export const metadata = { title: "À propos — Chez Precious" };
+export const metadata = { title: "À propos — ChezPrecious" };
 
 const VALUES = [
   { label: "Qualité", text: "Chaque pièce est confectionnée à partir de matières sélectionnées pour leur tenue, leur toucher et leur durabilité." },
@@ -25,7 +25,7 @@ export default function AboutPage() {
         <div className={styles.heroBg}>
           <Image
             src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85"
-            alt="Chez Precious atelier"
+            alt="ChezPrecious atelier"
             fill
             className={styles.heroBgImg}
             priority
@@ -35,7 +35,7 @@ export default function AboutPage() {
         <div className={styles.heroInner}>
           <span className={styles.eyebrow}>Notre histoire</span>
           <h1 className={styles.heroTitle}>Une maison de mode<br />née à Cotonou</h1>
-          <p className={styles.heroSub}>Depuis 2018, Chez Precious incarne une vision moderne du vêtement premium africain.</p>
+          <p className={styles.heroSub}>Depuis 2018, ChezPrecious incarne une vision moderne du vêtement premium africain.</p>
         </div>
       </section>
 
@@ -45,7 +45,7 @@ export default function AboutPage() {
           <div className={styles.storyImg}>
             <Image
               src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=700&q=85"
-              alt="Atelier Chez Precious"
+              alt="Atelier ChezPrecious"
               fill
               className={styles.storyImgEl}
             />
@@ -53,7 +53,7 @@ export default function AboutPage() {
           <div className={styles.storyText}>
             <span className={styles.eyebrow}>Notre origine</span>
             <h2 className={styles.sectionTitle}>Né d'une passion pour l'excellence</h2>
-            <p>Chez Precious a été fondée avec une conviction simple : le prêt-à-porter de qualité ne devrait pas être un privilège réservé à quelques-uns. Chaque collection est pensée pour s'inscrire dans la durée, loin des tendances éphémères.</p>
+            <p>ChezPrecious a été fondée avec une conviction simple : le prêt-à-porter de qualité ne devrait pas être un privilège réservé à quelques-uns. Chaque collection est pensée pour s'inscrire dans la durée, loin des tendances éphémères.</p>
             <p>Nos pièces sont imaginées à Cotonou, produites en collaboration avec des artisans locaux, et pensées pour une clientèle exigeante qui ne fait pas de compromis sur la qualité.</p>
           </div>
         </div>
@@ -79,7 +79,7 @@ export default function AboutPage() {
       {/* Équipe */}
       <section className={styles.team}>
         <div className={styles.teamInner}>
-          <span className={styles.eyebrow}>Les visages de Chez Precious</span>
+          <span className={styles.eyebrow}>Les visages de ChezPrecious</span>
           <h2 className={styles.sectionTitle}>Notre équipe</h2>
           <div className={styles.teamGrid}>
             {TEAM.map((m) => (

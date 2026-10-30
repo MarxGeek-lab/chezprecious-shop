@@ -377,10 +377,10 @@ function BoostsPanel({ pendingCount }: { pendingCount: number }) {
               onClick={() => { setTypeFilter(t); setPage(1); }}
               sx={{
                 textTransform: 'none', fontSize: 12, borderRadius: '8px', px: 1.5,
-                bgcolor: typeFilter === t ? 'rgba(212,93,0,0.1)' : 'transparent',
-                color:   typeFilter === t ? '#D45D00' : 'text.secondary',
+                bgcolor: typeFilter === t ? 'rgba(123, 30, 58,0.1)' : 'transparent',
+                color:   typeFilter === t ? '#7B1E3A' : 'text.secondary',
                 fontWeight: typeFilter === t ? 700 : 400,
-                '&:hover': { bgcolor: 'rgba(212,93,0,0.08)' },
+                '&:hover': { bgcolor: 'rgba(123, 30, 58,0.08)' },
               }}
             >
               {t === '' ? 'Tous types' : BOOST_TYPE_CONFIG[t as BoostType].label}
@@ -398,7 +398,7 @@ function BoostsPanel({ pendingCount }: { pendingCount: number }) {
       {/* List */}
       {isLoading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
-          <CircularProgress size={32} sx={{ color: '#D45D00' }} />
+          <CircularProgress size={32} sx={{ color: '#7B1E3A' }} />
         </Box>
       ) : boosts.length === 0 ? (
         <div className={styles.empty}>
@@ -556,7 +556,7 @@ function FeaturedPanel() {
 
       {isLoading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
-          <CircularProgress size={32} sx={{ color: '#D45D00' }} />
+          <CircularProgress size={32} sx={{ color: '#7B1E3A' }} />
         </Box>
       ) : (
         <Box sx={{ p: 2 }}>
@@ -596,8 +596,8 @@ function FeaturedPanel() {
                               onChange={() => handleToggle(p.id, isFeatured)}
                               disabled={featureMut.isPending}
                               sx={{
-                                '& .MuiSwitch-switchBase.Mui-checked': { color: '#D45D00' },
-                                '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#D45D00' },
+                                '& .MuiSwitch-switchBase.Mui-checked': { color: '#7B1E3A' },
+                                '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#7B1E3A' },
                               }}
                             />
                           }
@@ -659,7 +659,7 @@ function PricingPanel() {
   if (isLoading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
-        <CircularProgress size={32} sx={{ color: '#D45D00' }} />
+        <CircularProgress size={32} sx={{ color: '#7B1E3A' }} />
       </Box>
     );
   }
@@ -682,7 +682,7 @@ function PricingPanel() {
           onClick={handleSave}
           disabled={updatePricing.isPending}
           startIcon={updatePricing.isPending ? <CircularProgress size={14} color="inherit" /> : <DollarSign size={16} />}
-          sx={{ bgcolor: '#D45D00', '&:hover': { bgcolor: '#B84E00' }, textTransform: 'none', borderRadius: '10px', fontWeight: 600 }}
+          sx={{ bgcolor: '#7B1E3A', '&:hover': { bgcolor: '#5A1229' }, textTransform: 'none', borderRadius: '10px', fontWeight: 600 }}
         >
           Enregistrer la grille
         </Button>
@@ -710,7 +710,7 @@ function PricingPanel() {
                     sx={{
                       width: 130,
                       '& .MuiOutlinedInput-root': { borderRadius: '8px', fontSize: 13 },
-                      '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#D45D00' },
+                      '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#7B1E3A' },
                     }}
                   />
                 </div>
@@ -742,7 +742,7 @@ export default function PromotionsTab() {
   const stats = statsData?.data;
 
   const kpis = [
-    { icon: Zap,          label: 'Total boosts',     value: stats?.total     ?? '—', color: '#D45D00', bg: 'rgba(212,93,0,0.1)'    },
+    { icon: Zap,          label: 'Total boosts',     value: stats?.total     ?? '—', color: '#7B1E3A', bg: 'rgba(123, 30, 58,0.1)'    },
     { icon: Clock,        label: 'En attente',        value: stats?.pending   ?? '—', color: '#D97706', bg: 'rgba(245,158,11,0.1)'  },
     { icon: CheckCircle,  label: 'Actifs',            value: stats?.approved  ?? '—', color: '#059669', bg: 'rgba(16,185,129,0.1)'  },
     { icon: XCircle,      label: 'Rejetés',           value: stats?.rejected  ?? '—', color: '#DC2626', bg: 'rgba(239,68,68,0.1)'   },

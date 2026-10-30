@@ -444,7 +444,7 @@ model PromoCode {
 model SiteSettings {
   id              String   @id @default("default")
 
-  siteName        String   @default("Chez Precious") @map("site_name")
+  siteName        String   @default("ChezPrecious") @map("site_name")
   siteSlogan      String?  @map("site_slogan")
   siteDescription String?  @map("site_description")
   siteUrl         String?  @map("site_url")

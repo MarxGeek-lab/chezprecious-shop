@@ -1,6 +1,6 @@
 import styles from "./page.module.scss";
 
-export const metadata = { title: "Mentions légales — Chez Precious" };
+export const metadata = { title: "Mentions légales — ChezPrecious" };
 
 export default function MentionsPage() {
   return (
@@ -15,7 +15,7 @@ export default function MentionsPage() {
 
         <section className={styles.section}>
           <h2 className={styles.h2}>Éditeur du site</h2>
-          <p className={styles.para}>Le site <strong>chezprecious.com</strong> est édité par la société <strong>Chez Precious</strong>, société par actions simplifiée au capital de 10 000 €, immatriculée au RCS de Paris sous le numéro 123 456 789.</p>
+          <p className={styles.para}>Le site <strong>chezprecious.com</strong> est édité par la société <strong>ChezPrecious</strong>, société par actions simplifiée au capital de 10 000 €, immatriculée au RCS de Paris sous le numéro 123 456 789.</p>
           <ul className={styles.list}>
             <li className={styles.listItem}><strong>Siège social :</strong> 12 rue du Faubourg Saint-Antoine, 75012 Paris, France</li>
             <li className={styles.listItem}><strong>Téléphone :</strong> +33 1 00 00 00 00</li>
@@ -31,13 +31,13 @@ export default function MentionsPage() {
 
         <section className={styles.section}>
           <h2 className={styles.h2}>Propriété intellectuelle</h2>
-          <p className={styles.para}>L'ensemble des éléments figurant sur ce site (textes, photographies, visuels, logos, illustrations) est la propriété exclusive de Chez Precious ou de ses partenaires, et est protégé par les lois en vigueur sur la propriété intellectuelle.</p>
-          <p className={styles.para}>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de Chez Precious.</p>
+          <p className={styles.para}>L'ensemble des éléments figurant sur ce site (textes, photographies, visuels, logos, illustrations) est la propriété exclusive de ChezPrecious ou de ses partenaires, et est protégé par les lois en vigueur sur la propriété intellectuelle.</p>
+          <p className={styles.para}>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de ChezPrecious.</p>
         </section>
 
         <section className={styles.section}>
           <h2 className={styles.h2}>Responsabilité</h2>
-          <p className={styles.para}>Chez Precious ne saurait être tenu responsable des dommages directs ou indirects résultant de l'accès ou de l'utilisation du site, y compris l'inaccessibilité, la perte de données, les dégâts, la destruction et tout virus pouvant affecter l'équipement informatique de l'utilisateur.</p>
+          <p className={styles.para}>ChezPrecious ne saurait être tenu responsable des dommages directs ou indirects résultant de l'accès ou de l'utilisation du site, y compris l'inaccessibilité, la perte de données, les dégâts, la destruction et tout virus pouvant affecter l'équipement informatique de l'utilisateur.</p>
         </section>
 
         <section className={styles.section}>

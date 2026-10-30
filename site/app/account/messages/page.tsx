@@ -98,7 +98,7 @@ export default function CustomerMessagesPage() {
                 Service Client
               </Typography>
               <Typography sx={{ fontSize: 12, color: '#9CA3AF' }}>
-                Chez Precious — Réponse sous 24h
+                ChezPrecious — Réponse sous 24h
               </Typography>
             </Box>
           </Box>

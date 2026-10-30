@@ -38,13 +38,13 @@
 }
 
 .stepDone {
-  background-color: $gold;
-  border-color: $gold;
-  color: $black;
+  background-color: $primary;
+  border-color: $primary;
+  color: $white;
 }
 
 .stepActive {
-  background-color: $black;
+  background-color: $primary;
   border-color: $black;
   color: $ivory;
 }
@@ -223,7 +223,7 @@ select.input {
 .submitBtn {
   width: 100%;
   height: 52px !important;
-  background: $black;
+  background: $primary;
   color: $ivory;
   border: 2px solid $black;
   font-family: $font-primary;
@@ -235,9 +235,9 @@ select.input {
   transition: background $transition-base, color $transition-base, border-color $transition-base;
 
   &:hover:not(:disabled) {
-    background: $gold;
-    border-color: $gold;
-    color: $black;
+    background: $primary;
+    border-color: $primary;
+    color: $white;
   }
 
   &:disabled {
@@ -363,11 +363,11 @@ select.input {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background-color: $gold;
+  background-color: $primary;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $black;
+  color: $white;
 }
 
 .confirmTitle {
@@ -415,7 +415,7 @@ select.input {
   display: inline-flex;
   align-items: center;
   padding: $space-4 $space-10;
-  background: $black;
+  background: $primary;
   color: $ivory;
   font-size: $fs-xs;
   font-weight: $fw-semibold;
@@ -426,8 +426,8 @@ select.input {
   transition: background $transition-base, color $transition-base;
 
   &:hover {
-    background: $gold;
-    color: $black;
+    background: $primary;
+    color: $white;
   }
 }
 
@@ -513,11 +513,11 @@ select.input {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: $gold;
+  background: $primary;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $black;
+  color: $white;
   flex-shrink: 0;
 }
 

@@ -1,109 +1,78 @@
 @use '../../../styles/_variables' as *;
+@use '../../../styles/_mixins' as *;
 
 .section {
-  padding: $space-20 0;
+  padding: $space-12 0 $space-16;
   background-color: $ivory;
+
+  @include lg { padding: $space-16 0 $space-20; }
 }
 
 /* ── En-tête ── */
 .header {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: $space-10;
+  margin-bottom: $space-8;
   gap: $space-4;
   flex-wrap: wrap;
-  padding: 0 $space-4;
 }
 
 .titleGroup {
   display: flex;
   flex-direction: column;
   gap: $space-2;
-  flex-shrink: 0;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: $space-3;
-  font-size: $fs-xs;
-  font-weight: $fw-semibold;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: $gold;
+.eyebrow { @include eyebrow; }
 
-  &::before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 1px;
-    background-color: $gold;
-  }
-}
-
-.title {
-  font-family: $font-display;
-  font-size: $fs-3xl;
-  font-weight: $fw-bold;
-  color: $black;
-  line-height: 1.1;
-
-  @media (min-width: $bp-md) {
-    font-size: $fs-4xl;
-  }
-}
+.title { @include section-title; }
 
 /* ── Onglets ── */
 .tabs {
   display: flex;
-  gap: 0;
-  border: 1.5px solid rgba(10, 10, 10, 0.12);
+  gap: 4px;
+  padding: 4px;
+  border-radius: $radius-pill;
+  background-color: $primary-soft;
 }
 
 .tab {
   padding: $space-2 $space-5;
-  font-size: $fs-xs;
-  font-weight: $fw-medium;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(10, 10, 10, 0.45);
+  border-radius: $radius-pill;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: $primary;
   background: transparent;
   border: none;
   cursor: pointer;
-  transition: background-color $transition-fast, color $transition-fast;
+  transition: background-color $transition-fast, color $transition-fast, box-shadow $transition-fast;
 
-  & + & {
-    border-left: 1.5px solid rgba(10, 10, 10, 0.12);
-  }
-
-  &:hover {
-    color: $black;
-    background-color: rgba(10, 10, 10, 0.04);
-  }
+  &:hover { background-color: rgba(255, 255, 255, 0.6); }
 
   &.tabActive {
-    background-color: $black;
-    color: $ivory;
-    font-weight: $fw-semibold;
+    background-color: $primary;
+    color: $white;
+    box-shadow: 0 6px 16px rgba(123, 30, 58, 0.25);
   }
 }
 
 /* ── Voir tout ── */
 .seeAll {
-  font-size: $fs-xs;
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 $space-6;
+  border-radius: $radius-pill;
+  border: 2px solid $primary;
+  color: $primary;
+  font-size: $fs-sm;
   font-weight: $fw-semibold;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: $black;
-  padding: $space-3 $space-6;
-  border: 1.5px solid $black;
   white-space: nowrap;
-  flex-shrink: 0;
   transition: background-color $transition-base, color $transition-base;
 
   &:hover {
-    background-color: $black;
-    color: $ivory;
+    background-color: $primary;
+    color: $white;
   }
 }

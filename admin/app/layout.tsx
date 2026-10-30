@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'MarketPlace Admin - Super Admin Dashboard',
-  description: 'Dashboard d\'administration de la marketplace',
+  title: 'ChezPrecious Admin',
+  description: 'Administration de la boutique ChezPrecious',
 };
 
 export default function RootLayout({

@@ -159,17 +159,17 @@ function ShopContent() {
             step={10}
             disableSwap
             sx={{
-              color: "#C8A24A",
+              color: "#7B1E3A",
               height: 2,
               padding: "10px 0",
               "& .MuiSlider-thumb": {
                 width: 14,
                 height: 14,
-                backgroundColor: "#C8A24A",
+                backgroundColor: "#7B1E3A",
                 border: "2px solid #fff",
-                boxShadow: "0 0 0 2px #C8A24A",
+                boxShadow: "0 0 0 2px #7B1E3A",
                 "&:hover, &.Mui-active": {
-                  boxShadow: "0 0 0 3px rgba(200,162,74,0.25)",
+                  boxShadow: "0 0 0 3px rgba(123, 30, 58,0.25)",
                 },
               },
               "& .MuiSlider-rail": {
@@ -177,7 +177,7 @@ function ShopContent() {
                 opacity: 1,
               },
               "& .MuiSlider-track": {
-                backgroundColor: "#C8A24A",
+                backgroundColor: "#7B1E3A",
                 border: "none",
               },
             }}
@@ -201,7 +201,7 @@ function ShopContent() {
       <div className={styles.pageHeader}>
         <Image
           src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1600&q=85"
-          alt="Chez Precious Boutique"
+          alt="ChezPrecious Boutique"
           fill
           className={styles.pageHeaderBg}
           priority

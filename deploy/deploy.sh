@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Déploie Chez Precious sur le serveur depuis ce poste.
+# Déploie ChezPrecious sur le serveur depuis ce poste.
 #
 #   ./deploy/deploy.sh
 #

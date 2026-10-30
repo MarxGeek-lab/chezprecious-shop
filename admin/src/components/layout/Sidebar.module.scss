@@ -63,7 +63,7 @@
   font-weight: $font-weight-bold;
   color: $text-white;
 
-  span { color: $primary-light; }
+  span { color: $text-sidebar-active; }
 }
 
 // Navigation
@@ -156,7 +156,7 @@
 
 .navBadgeOrange {
   background: rgba($primary, 0.2);
-  color: $primary-light;
+  color: $text-sidebar-active;
 }
 
 .navBadgeRed {
@@ -203,5 +203,5 @@
 
 .userRole {
   font-size: 11px;
-  color: $primary-light;
+  color: $text-sidebar-active;
 }

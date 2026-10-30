@@ -15,7 +15,7 @@
 .left {
   display: none;
   position: relative;
-  background-color: $black;
+  background-color: $primary-dark;
 
   @media (min-width: $bp-lg) {
     display: block;
@@ -56,7 +56,7 @@
   color: $ivory;
   text-decoration: none;
 
-  span { color: $gold; }
+  span { color: $primary-on-dark; }
 }
 
 .quote {
@@ -77,7 +77,7 @@
   font-weight: $fw-semibold;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary-on-dark;
   margin-top: $space-4;
 }
 
@@ -144,7 +144,7 @@
   &:hover { color: $black; }
 
   &.tabActive {
-    background: $black;
+    background: $primary;
     color: $ivory;
     font-weight: $fw-semibold;
   }
@@ -309,7 +309,7 @@
   gap: $space-2;
   width: 100%;
   height: 52px;
-  background: $black;
+  background: $primary;
   color: $ivory;
   border: 2px solid $black;
   font-family: $font-primary;
@@ -322,9 +322,9 @@
   text-decoration: none;
 
   &:hover:not(:disabled) {
-    background: $gold;
-    border-color: $gold;
-    color: $black;
+    background: $primary;
+    border-color: $primary;
+    color: $white;
   }
 
   &:disabled {
@@ -336,7 +336,7 @@
 /* ── Liens texte ── */
 .link {
   font-size: inherit;
-  color: $gold;
+  color: $primary;
   font-weight: $fw-semibold;
   background: none;
   border: none;
@@ -346,7 +346,7 @@
   text-decoration: underline;
   transition: color $transition-fast;
 
-  &:hover { color: $gold-dark; }
+  &:hover { color: $primary-dark; }
 }
 
 .backLink {
@@ -395,11 +395,11 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background-color: $gold;
+  background-color: $primary;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $black;
+  color: $white;
 }
 
 /* ── Error box ── */

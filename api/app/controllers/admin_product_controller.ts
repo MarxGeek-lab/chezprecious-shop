@@ -18,7 +18,7 @@ const MAX_VIDEOS = 2
 // ==========================================
 // AdminProductController
 // Création/édition de produits par un admin.
-// Les produits sont rattachés à la boutique système "Chez Precious Admin".
+// Les produits sont rattachés à la boutique système "ChezPrecious Admin".
 // Chaque opération est tracée dans l'ActivityLog.
 // ==========================================
 

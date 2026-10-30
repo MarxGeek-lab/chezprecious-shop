@@ -66,11 +66,11 @@ export default function AdminLoginPage() {
         <Box sx={{ textAlign: 'center', mb: 4 }}>
           <Box sx={{
             width: 56, height: 56, borderRadius: 2,
-            bgcolor: '#FFF3E8', display: 'flex',
+            bgcolor: '#F8E9ED', display: 'flex',
             alignItems: 'center', justifyContent: 'center',
             mx: 'auto', mb: 2,
           }}>
-            <ShieldCheck size={28} color="#D45D00" />
+            <ShieldCheck size={28} color="#7B1E3A" />
           </Box>
           <Typography variant="h5" fontWeight={700} sx={{ color: '#1A1A2E' }}>
             Administration
@@ -141,8 +141,8 @@ export default function AdminLoginPage() {
             disabled={loading || !email || !password}
             sx={{
               py: 1.5,
-              bgcolor: '#D45D00',
-              '&:hover': { bgcolor: '#A34800' },
+              bgcolor: '#7B1E3A',
+              '&:hover': { bgcolor: '#5A1229' },
               fontSize: 15,
               fontWeight: 600,
             }}
@@ -158,7 +158,7 @@ export default function AdminLoginPage() {
         <Button
           fullWidth
           onClick={() => router.push('/forgot-password')}
-          sx={{ mt: 2, textTransform: 'none', color: '#D45D00', fontSize: 13 }}
+          sx={{ mt: 2, textTransform: 'none', color: '#7B1E3A', fontSize: 13 }}
         >
           Mot de passe oublié ?
         </Button>

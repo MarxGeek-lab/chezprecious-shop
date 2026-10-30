@@ -8,11 +8,16 @@ import {
   ChevronDown, Package, MessageSquare, MapPin, Settings, LogOut, Bell,
 } from "lucide-react";
 import { useCart } from "@/app/store/cartStore";
+import { useWishlist } from "@/app/context/WishlistContext";
 import { searchApi } from "@/app/lib/api";
 import type { AuthUser } from "@/app/lib/api";
-import { usePublicSettings } from "@/app/hooks/usePublicSettings";
 import styles from "./Navbar.module.scss";
-import Image from "next/image";
+
+const ANNOUNCEMENTS = [
+  <>Livraison offerte dès <strong>80 €</strong> d&apos;achat</>,
+  <>Retours gratuits sous <strong>30 jours</strong></>,
+  <>Paiement <strong>100 % sécurisé</strong></>,
+];
 
 const NAV_LINKS = [
   { label: "Nouveautés", href: "/shop?filter=new" },
@@ -41,8 +46,9 @@ export default function Navbar() {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [user, setUser] = useState<AuthUser | null>(null);
+  const [announcement, setAnnouncement] = useState(0);
   const { totalItems } = useCart();
-  const { data: siteSettings } = usePublicSettings();
+  const { items: wishlistItems } = useWishlist();
   const inputRef = useRef<HTMLInputElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
@@ -79,6 +85,11 @@ export default function Navbar() {
     }, 300);
     return () => clearTimeout(timer);
   }, [query]);
+
+  useEffect(() => {
+    const id = setInterval(() => setAnnouncement((i) => (i + 1) % ANNOUNCEMENTS.length), 4000);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -136,15 +147,14 @@ export default function Navbar() {
       <div className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
 
         <div className={styles.announcementBar}>
-          Livraison offerte dès <span>80 €</span> · Retours gratuits 30 jours
+          <span key={announcement} className={styles.announcementText}>
+            {ANNOUNCEMENTS[announcement]}
+          </span>
         </div>
 
         <nav className={styles.navbar}>
-          <Link href="/" className={styles.logo}>
-            <img 
-              src={"/images/logo/logo_header.png"} 
-              alt={siteSettings?.siteName ?? "Chez Precious"} 
-              width={100} height={"auto"} />
+          <Link href="/" className={styles.logo} aria-label="ChezPrecious — Accueil">
+            Chez<em>Precious</em>
           </Link>
 
           <div className={styles.navLinks}>
@@ -154,9 +164,17 @@ export default function Navbar() {
           </div>
 
           <div className={styles.icons}>
-            <button className={styles.iconBtn} aria-label="Rechercher" onClick={openSearch}>
-              <Search size={18} strokeWidth={1.5} />
+            <button className={styles.searchPill} onClick={openSearch}>
+              <Search size={16} strokeWidth={1.75} />
+              <span>Rechercher un article…</span>
             </button>
+
+            <Link href="/account/wishlist" className={styles.iconBtn} aria-label="Favoris">
+              <Heart size={19} strokeWidth={1.5} />
+              {wishlistItems.length > 0 && (
+                <span className={styles.cartBadge}>{wishlistItems.length > 9 ? "9+" : wishlistItems.length}</span>
+              )}
+            </Link>
 
             {user ? (
               /* ── Dropdown desktop ── */
@@ -262,7 +280,7 @@ export default function Navbar() {
       {menuOpen && <div className={styles.sidebarOverlay} onClick={closeMenu} aria-hidden="true" />}
       <aside className={`${styles.sidebar} ${menuOpen ? styles.sidebarOpen : ""}`} aria-hidden={!menuOpen}>
         <div className={styles.sidebarHeader}>
-          <Link href="/" className={styles.sidebarLogo} onClick={closeMenu}>Chez Precious</Link>
+          <Link href="/" className={styles.sidebarLogo} onClick={closeMenu}>ChezPrecious</Link>
           <button className={styles.sidebarClose} onClick={closeMenu} aria-label="Fermer">
             <X size={20} strokeWidth={1.5} />
           </button>

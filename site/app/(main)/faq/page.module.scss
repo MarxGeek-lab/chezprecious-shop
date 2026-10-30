@@ -3,7 +3,7 @@
 .main { background: $ivory; min-height: 100vh; }
 
 .hero {
-  background: $black;
+  background: $primary-dark;
   color: $ivory;
   padding: 8rem $space-8 $space-20;
   text-align: center;
@@ -14,7 +14,7 @@
   font-weight: $fw-bold;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary-on-dark;
   margin-bottom: $space-4;
 }
 .heroTitle {
@@ -74,11 +74,11 @@
 }
 .tabActive {
   color: $black;
-  border-left-color: $gold;
+  border-left-color: $primary;
   font-weight: $fw-semibold;
   @media (max-width: $bp-md) {
     border-left-color: transparent;
-    border-bottom-color: $gold;
+    border-bottom-color: $primary;
   }
 }
 
@@ -105,8 +105,8 @@
   text-align: left;
   cursor: pointer;
   transition: color $transition-fast;
-  .itemOpen & { color: $gold; }
-  svg { flex-shrink: 0; color: $gold; }
+  .itemOpen & { color: $primary; }
+  svg { flex-shrink: 0; color: $primary; }
 }
 .answer {
   font-size: $fs-sm;
@@ -132,7 +132,7 @@
 .contactBtn {
   display: inline-block;
   padding: 12px $space-8;
-  background: $black;
+  background: $primary;
   color: $ivory;
   font-size: 11px;
   font-weight: $fw-bold;
@@ -140,5 +140,5 @@
   text-transform: uppercase;
   text-decoration: none;
   transition: background $transition-fast, color $transition-fast;
-  &:hover { background: $gold; color: $black; }
+  &:hover { background: $primary-dark; color: $white; }
 }

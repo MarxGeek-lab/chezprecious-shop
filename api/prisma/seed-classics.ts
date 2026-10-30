@@ -12,11 +12,11 @@ const classics = [
   {
     slug: 'tshirt-signature-ivoire',
     name: 'T-Shirt Signature — Ivoire',
-    shortDescription: 'Le t-shirt essentiel Chez Precious en coton premium, coupe oversize, broderie signature.',
-    description: 'Le t-shirt fondateur de la maison Chez Precious. Confectionné dans un coton 280g/m² oversize, il arbore la broderie signature Chez Precious sur la poitrine gauche. Coloris ivoire chaud, intemporel par définition.',
+    shortDescription: 'Le t-shirt essentiel ChezPrecious en coton premium, coupe oversize, broderie signature.',
+    description: 'Le t-shirt fondateur de la maison ChezPrecious. Confectionné dans un coton 280g/m² oversize, il arbore la broderie signature ChezPrecious sur la poitrine gauche. Coloris ivoire chaud, intemporel par définition.',
     category: 'T-Shirts',
     subCategory: 'Hauts & Blouses',
-    brand: 'Chez Precious',
+    brand: 'ChezPrecious',
     condition: 'NEW' as const,
     price: 25000,
     comparePrice: null,
@@ -25,7 +25,7 @@ const classics = [
     isFeatured: true,
     tags: ['tshirt', 'signature', 'classique', 'collection-permanente', 'homme', 'unisexe'],
     images: [
-      { url: `${BASE}/products/tshirt-ivoire.jpg`, alt: 'T-Shirt Signature Ivoire — Chez Precious', position: 0, isPrimary: true },
+      { url: `${BASE}/products/tshirt-ivoire.jpg`, alt: 'T-Shirt Signature Ivoire — ChezPrecious', position: 0, isPrimary: true },
     ],
     variants: [
       { combination: { Couleur: 'Ivoire', Taille: 'S' },  price: 25000, stock: 20 },
@@ -37,11 +37,11 @@ const classics = [
   {
     slug: 'tshirt-signature-blanc',
     name: 'T-Shirt Signature — Blanc',
-    shortDescription: 'T-shirt Chez Precious en coton premium oversize, logo brodé doré sur blanc immaculé.',
-    description: 'La version blanc pur du t-shirt signature Chez Precious. Broderie logo doré sur fond blanc immaculé. Coton 280g/m² oversize pour un confort optimal et une silhouette moderne.',
+    shortDescription: 'T-shirt ChezPrecious en coton premium oversize, logo brodé doré sur blanc immaculé.',
+    description: 'La version blanc pur du t-shirt signature ChezPrecious. Broderie logo doré sur fond blanc immaculé. Coton 280g/m² oversize pour un confort optimal et une silhouette moderne.',
     category: 'T-Shirts',
     subCategory: 'Hauts & Blouses',
-    brand: 'Chez Precious',
+    brand: 'ChezPrecious',
     condition: 'NEW' as const,
     price: 25000,
     comparePrice: null,
@@ -50,7 +50,7 @@ const classics = [
     isFeatured: true,
     tags: ['tshirt', 'signature', 'classique', 'collection-permanente', 'homme', 'unisexe'],
     images: [
-      { url: `${BASE}/products/tshirt-blanc.jpg`, alt: 'T-Shirt Signature Blanc — Chez Precious', position: 0, isPrimary: true },
+      { url: `${BASE}/products/tshirt-blanc.jpg`, alt: 'T-Shirt Signature Blanc — ChezPrecious', position: 0, isPrimary: true },
     ],
     variants: [
       { combination: { Couleur: 'Blanc', Taille: 'S' },  price: 25000, stock: 20 },
@@ -62,11 +62,11 @@ const classics = [
   {
     slug: 'tshirt-signature-noir-gold',
     name: 'T-Shirt Signature — Noir / Or',
-    shortDescription: 'T-shirt Chez Precious noir oversize, logo brodé doré — l\'alliance du luxe et de la sobriété.',
-    description: 'Le classique absolu : noir profond, broderie or. Ce t-shirt signature Chez Precious en coton 280g/m² oversize conjugue sobriété et prestige. Le logo brodé or sur la poitrine fait de chaque pièce une déclaration.',
+    shortDescription: 'T-shirt ChezPrecious noir oversize, logo brodé doré — l\'alliance du luxe et de la sobriété.',
+    description: 'Le classique absolu : noir profond, broderie or. Ce t-shirt signature ChezPrecious en coton 280g/m² oversize conjugue sobriété et prestige. Le logo brodé or sur la poitrine fait de chaque pièce une déclaration.',
     category: 'T-Shirts',
     subCategory: 'Hauts & Blouses',
-    brand: 'Chez Precious',
+    brand: 'ChezPrecious',
     condition: 'NEW' as const,
     price: 28000,
     comparePrice: null,
@@ -75,7 +75,7 @@ const classics = [
     isFeatured: true,
     tags: ['tshirt', 'signature', 'classique', 'collection-permanente', 'homme', 'unisexe', 'premium'],
     images: [
-      { url: `${BASE}/products/tshirt-noir-gold.jpg`, alt: 'T-Shirt Signature Noir Or — Chez Precious', position: 0, isPrimary: true },
+      { url: `${BASE}/products/tshirt-noir-gold.jpg`, alt: 'T-Shirt Signature Noir Or — ChezPrecious', position: 0, isPrimary: true },
     ],
     variants: [
       { combination: { Couleur: 'Noir / Or', Taille: 'S' },  price: 28000, stock: 20 },
@@ -87,11 +87,11 @@ const classics = [
   {
     slug: 'tshirt-signature-noir-blanc',
     name: 'T-Shirt Signature — Noir / Blanc',
-    shortDescription: 'T-shirt Chez Precious noir oversize, logo brodé blanc — minimalisme à l\'état pur.',
-    description: 'Noir et blanc, le duo intemporel. Ce t-shirt signature Chez Precious en coton 280g/m² oversize arbore le logo Chez Precious brodé en blanc sur fond noir. Discret et impactant à la fois.',
+    shortDescription: 'T-shirt ChezPrecious noir oversize, logo brodé blanc — minimalisme à l\'état pur.',
+    description: 'Noir et blanc, le duo intemporel. Ce t-shirt signature ChezPrecious en coton 280g/m² oversize arbore le logo ChezPrecious brodé en blanc sur fond noir. Discret et impactant à la fois.',
     category: 'T-Shirts',
     subCategory: 'Hauts & Blouses',
-    brand: 'Chez Precious',
+    brand: 'ChezPrecious',
     condition: 'NEW' as const,
     price: 25000,
     comparePrice: null,
@@ -100,7 +100,7 @@ const classics = [
     isFeatured: true,
     tags: ['tshirt', 'signature', 'classique', 'collection-permanente', 'homme', 'unisexe'],
     images: [
-      { url: `${BASE}/products/tshirt-noir-white.jpg`, alt: 'T-Shirt Signature Noir Blanc — Chez Precious', position: 0, isPrimary: true },
+      { url: `${BASE}/products/tshirt-noir-white.jpg`, alt: 'T-Shirt Signature Noir Blanc — ChezPrecious', position: 0, isPrimary: true },
     ],
     variants: [
       { combination: { Couleur: 'Noir / Blanc', Taille: 'S' },  price: 25000, stock: 20 },
@@ -112,11 +112,11 @@ const classics = [
   {
     slug: 'tshirt-signature-noir-outline',
     name: 'T-Shirt Signature — Noir / Outline',
-    shortDescription: 'T-shirt Chez Precious noir oversize, logo outline blanc — édition graphique.',
-    description: 'L\'édition la plus graphique de la collection permanente Chez Precious. Logo outline en blanc sur noir intense. Coton 280g/m² oversize pour un confort maximum et une présence affirmée.',
+    shortDescription: 'T-shirt ChezPrecious noir oversize, logo outline blanc — édition graphique.',
+    description: 'L\'édition la plus graphique de la collection permanente ChezPrecious. Logo outline en blanc sur noir intense. Coton 280g/m² oversize pour un confort maximum et une présence affirmée.',
     category: 'T-Shirts',
     subCategory: 'Hauts & Blouses',
-    brand: 'Chez Precious',
+    brand: 'ChezPrecious',
     condition: 'NEW' as const,
     price: 25000,
     comparePrice: null,
@@ -125,7 +125,7 @@ const classics = [
     isFeatured: true,
     tags: ['tshirt', 'signature', 'classique', 'collection-permanente', 'homme', 'unisexe'],
     images: [
-      { url: `${BASE}/products/tshirt-noir-outline.jpg`, alt: 'T-Shirt Signature Noir Outline — Chez Precious', position: 0, isPrimary: true },
+      { url: `${BASE}/products/tshirt-noir-outline.jpg`, alt: 'T-Shirt Signature Noir Outline — ChezPrecious', position: 0, isPrimary: true },
     ],
     variants: [
       { combination: { Couleur: 'Noir / Outline', Taille: 'S' },  price: 25000, stock: 20 },
@@ -137,7 +137,7 @@ const classics = [
 ]
 
 async function main() {
-  console.log('🌱 Seeding collection permanente Chez Precious...\n')
+  console.log('🌱 Seeding collection permanente ChezPrecious...\n')
 
   for (const p of classics) {
     const { images, variants, ...productData } = p

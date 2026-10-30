@@ -1,293 +1,234 @@
 @use '../../../styles/_variables' as *;
+@use '../../../styles/_mixins' as *;
 
-/* ── Hero : plein écran sous le header ── */
 .hero {
   position: relative;
-  width: 100%;
-  margin-top: 94px; /* announcement 30px + navbar 64px */
-  height: calc(100vh - 90px);
   overflow: hidden;
-  background-color: $black;
-}
-
-/* ── Images en crossfade ── */
-.bg {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.9s ease;
-  z-index: 0;
-}
-
-.bgActive {
-  opacity: 1;
-  z-index: 1;
-}
-
-.bgImg {
-  object-fit: cover;
-  object-position: center top;
-  transform: scale(1.04);
-  animation: slowZoom 7s ease forwards;
-}
-
-@keyframes slowZoom {
-  from { transform: scale(1.04); }
-  to   { transform: scale(1);    }
-}
-
-/* ── Overlay ── */
-.overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
+  // Compense le header fixe (bandeau + barre)
+  padding: calc(94px + #{$space-10}) 0 $space-16;
   background:
-    linear-gradient(to right,  rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.1) 60%, transparent 100%),
-    linear-gradient(to top,    rgba(10,10,10,0.55) 0%, transparent 50%);
-}
+    radial-gradient(circle at 85% 20%, rgba(123, 30, 58, 0.12), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(123, 30, 58, 0.08), transparent 40%),
+    linear-gradient(180deg, $primary-soft 0%, $ivory 100%);
 
-/* ── Contenu éditorial ── */
-.content {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  padding: 0 $space-8 $space-16;
-
-  @media (min-width: $bp-md) {
-    padding: 0 $space-16 $space-16;
-  }
-
-  /* Animation entrée */
-  animation: fadeUp 0.7s ease both;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  @include lg { padding: calc(94px + #{$space-12}) 0 $space-20; }
 }
 
 .inner {
-  max-width: 620px;
+  @include container;
+  display: grid;
+  gap: $space-12;
+  align-items: center;
+
+  @include lg { grid-template-columns: 1.05fr 1fr; gap: $space-16; }
 }
 
-/* Tag */
+/* ── Texte ── */
+.content {
+  animation: rise 0.7s ease both;
+}
+
 .tag {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: $fw-bold;
-  letter-spacing: 0.22em;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: 6px $space-4;
+  border-radius: $radius-pill;
+  background-color: $white;
+  color: $primary;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: $gold;
-  border: 1px solid rgba(200, 162, 74, 0.5);
-  padding: 4px $space-4;
-  margin-bottom: $space-5;
+  box-shadow: 0 4px 14px rgba(123, 30, 58, 0.1);
 }
 
-/* Titre */
 .title {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: $space-5;
-  line-height: 1.02;
-}
-
-.titleLine {
+  margin-top: $space-6;
   font-family: $font-display;
-  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
   font-weight: $fw-bold;
-  color: $ivory;
-  letter-spacing: -0.01em;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: $black;
+  isolation: isolate; // garde le surlignage de <em> au-dessus du fond
+
+  em {
+    font-style: italic;
+    color: $primary;
+    position: relative;
+    white-space: nowrap;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0.08em;
+      height: 0.18em;
+      background-color: rgba(123, 30, 58, 0.15);
+      border-radius: 4px;
+      z-index: -1;
+    }
+  }
 }
 
-.titleEm {
-  font-family: $font-display;
-  font-size: clamp(2.8rem, 6vw, 5.2rem);
-  font-weight: $fw-regular;
-  font-style: italic;
-  color: $gold;
-  letter-spacing: -0.01em;
-}
-
-/* Description */
 .desc {
-  font-size: clamp($fs-sm, 1.5vw, $fs-base);
-  color: rgba(244, 241, 236, 0.65);
+  margin-top: $space-6;
+  max-width: 34rem;
+  font-size: $fs-lg;
   line-height: 1.7;
-  max-width: 440px;
-  margin-bottom: $space-8;
+  color: $muted;
 }
 
-/* Actions */
 .actions {
   display: flex;
-  align-items: center;
-  gap: $space-6;
   flex-wrap: wrap;
+  gap: $space-3;
+  margin-top: $space-8;
 }
 
 .btnPrimary {
   display: inline-flex;
   align-items: center;
-  gap: $space-3;
-  padding: $space-4 $space-8;
-  background-color: $gold;
-  color: $black;
-  font-size: $fs-xs;
-  font-weight: $fw-bold;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background-color $transition-base, gap $transition-base;
+  gap: $space-2;
+  height: 54px;
+  padding: 0 $space-8;
+  border-radius: $radius-pill;
+  background-color: $primary;
+  color: $white;
+  font-size: $fs-base;
+  font-weight: $fw-semibold;
+  box-shadow: 0 12px 28px rgba(123, 30, 58, 0.3);
+  transition: transform $transition-base, background-color $transition-base, box-shadow $transition-base;
+
+  svg { transition: transform $transition-base; }
 
   &:hover {
-    background-color: $gold-light;
-    gap: $space-4;
-  }
-}
+    background-color: $primary-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(123, 30, 58, 0.35);
 
-.btnArrow {
-  transition: transform $transition-base;
-  .btnPrimary:hover & { transform: translateX(3px); }
+    svg { transform: translateX(4px); }
+  }
 }
 
 .btnSecondary {
-  font-size: $fs-xs;
-  font-weight: $fw-semibold;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(244, 241, 236, 0.7);
-  text-decoration: none;
-  position: relative;
-  padding-bottom: 3px;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 0; height: 1px;
-    background-color: $gold;
-    transition: width $transition-base;
-  }
-
-  &:hover {
-    color: $ivory;
-    &::after { width: 100%; }
-  }
-}
-
-/* ── Navigation bas ── */
-.nav {
-  position: absolute;
-  bottom: $space-8;
-  left: 0;
-  right: 0;
-  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  height: 54px;
   padding: 0 $space-8;
-  display: flex;
-  align-items: center;
-  gap: $space-6;
-
-  @media (min-width: $bp-md) {
-    padding: 0 $space-16;
-  }
-}
-
-.navNum {
-  font-size: $fs-xs;
-  color: $ivory;
-  letter-spacing: 0.1em;
-
-  strong {
-    font-size: $fs-base;
-    font-weight: $fw-bold;
-  }
-}
-
-.navTotal {
-  color: rgba(244, 241, 236, 0.35);
-  margin-left: 2px;
-}
-
-.dots {
-  display: flex;
-  gap: $space-2;
-}
-
-.dot {
-  height: 2px;
-  width: 24px;
-  background-color: rgba(244, 241, 236, 0.3);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: background-color $transition-base, width $transition-base;
-}
-
-.dotActive {
-  background-color: $gold;
-  width: 44px;
-}
-
-.arrows {
-  margin-left: auto;
-  display: flex;
-  gap: $space-2;
-}
-
-.arrow {
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(244, 241, 236, 0.25);
-  background: rgba(10, 10, 10, 0.3);
-  color: $ivory;
+  border-radius: $radius-pill;
+  border: 2px solid rgba(123, 30, 58, 0.25);
+  background-color: $white;
+  color: $primary;
   font-size: $fs-base;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  backdrop-filter: blur(4px);
-  transition: border-color $transition-fast, background-color $transition-fast;
+  font-weight: $fw-semibold;
+  transition: border-color $transition-base, background-color $transition-base;
 
   &:hover {
-    border-color: $gold;
-    background-color: rgba(200, 162, 74, 0.2);
-    color: $gold;
+    border-color: $primary;
+    background-color: $primary-soft;
   }
 }
 
-/* ── Scroll hint ── */
-.scrollHint {
+.proof {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $space-3;
+  margin-top: $space-8;
+  font-size: $fs-sm;
+  color: $muted;
+
+  strong { color: $black; }
+}
+
+.stars {
+  display: flex;
+  color: #E0A526;
+}
+
+/* ── Visuel ── */
+.visual {
+  position: relative;
+  min-height: 420px;
+  animation: rise 0.8s 0.1s ease both;
+
+  @include md { min-height: 540px; }
+}
+
+.mainImage {
+  position: relative;
+  margin-left: auto;
+  width: 82%;
+  aspect-ratio: 4 / 5;
+  border-radius: 240px 240px 28px 28px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(90, 18, 41, 0.22);
+
+  img { object-fit: cover; }
+}
+
+.sideImage {
   position: absolute;
-  right: $space-8;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 4;
-  display: none;
-  flex-direction: column;
+  left: 0;
+  bottom: 8%;
+  width: 38%;
+  aspect-ratio: 3 / 4;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 6px solid $ivory;
+  box-shadow: 0 20px 40px rgba(31, 20, 22, 0.18);
+
+  img { object-fit: cover; }
+}
+
+.floatCard {
+  position: absolute;
+  top: 10%;
+  left: 4%;
+  display: flex;
   align-items: center;
   gap: $space-3;
+  padding: $space-3 $space-5 $space-3 $space-3;
+  border-radius: $radius;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 14px 30px rgba(31, 20, 22, 0.14);
+  animation: float 5s ease-in-out infinite;
 
-  @media (min-width: $bp-lg) { display: flex; }
+  strong {
+    display: block;
+    font-size: $fs-sm;
+    color: $black;
+  }
+
+  small {
+    font-size: $fs-xs;
+    color: $primary;
+    font-weight: $fw-medium;
+  }
 }
 
-.scrollLine {
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(to bottom, transparent, rgba(244, 241, 236, 0.5));
-  animation: scrollPulse 2s ease-in-out infinite;
+.floatIcon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: $primary;
+  color: $white;
 }
 
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
-  50%       { opacity: 1;   transform: scaleY(1);   }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.scrollLabel {
-  font-size: 9px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(244, 241, 236, 0.35);
-  writing-mode: vertical-rl;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content, .visual, .floatCard { animation: none; }
 }

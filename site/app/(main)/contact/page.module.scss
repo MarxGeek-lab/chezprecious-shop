@@ -4,7 +4,7 @@
 
 /* ── Hero ── */
 .hero {
-  background: $black;
+  background: $primary-dark;
   padding: 8rem $space-8 $space-20;
   text-align: center;
   color: $ivory;
@@ -15,7 +15,7 @@
   font-weight: $fw-bold;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary-on-dark;
   margin-bottom: $space-4;
 }
 .heroTitle {
@@ -54,7 +54,7 @@
 .infoIcon {
   width: 40px;
   height: 40px;
-  background: $black;
+  background: $primary;
   color: $ivory;
   display: flex;
   align-items: center;
@@ -66,14 +66,14 @@
   font-weight: $fw-bold;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary;
   margin-bottom: $space-1;
 }
 .infoValue {
   font-size: $fs-sm;
   color: $black;
   text-decoration: none;
-  &:hover { color: $gold; }
+  &:hover { color: $primary; }
 }
 
 .mapBox {
@@ -132,7 +132,7 @@
   justify-content: center;
   gap: $space-2;
   padding: 14px $space-8;
-  background: $black;
+  background: $primary;
   color: $ivory;
   border: none;
   font-family: $font-primary;
@@ -143,7 +143,7 @@
   cursor: pointer;
   transition: background $transition-fast, color $transition-fast;
   align-self: flex-start;
-  &:hover:not(:disabled) { background: $gold; color: $black; }
+  &:hover:not(:disabled) { background: $primary-dark; color: $white; }
   &:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 
@@ -155,7 +155,7 @@
 .successIcon {
   width: 64px;
   height: 64px;
-  background: $black;
+  background: $primary;
   color: $ivory;
   border-radius: 50%;
   display: flex;
@@ -179,7 +179,7 @@
 }
 .successBtn {
   padding: 12px $space-8;
-  background: $black;
+  background: $primary;
   color: $ivory;
   border: none;
   font-family: $font-primary;
@@ -189,5 +189,5 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: background $transition-fast, color $transition-fast;
-  &:hover { background: $gold; color: $black; }
+  &:hover { background: $primary-dark; color: $white; }
 }

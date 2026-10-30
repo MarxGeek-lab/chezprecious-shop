@@ -47,7 +47,7 @@ function ActivationContent() {
         </div>
         <Image
           src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=85"
-          alt="Collection Chez Precious"
+          alt="Collection ChezPrecious"
           fill
           className={styles.leftImage}
           priority
@@ -77,7 +77,7 @@ function ActivationContent() {
               </div>
               <h1 className={styles.formTitle}>Compte activé !</h1>
               <p className={styles.formSub}>
-                Votre compte Chez Precious est maintenant actif. Vous pouvez vous connecter.
+                Votre compte ChezPrecious est maintenant actif. Vous pouvez vous connecter.
               </p>
               <Link href="/auth" className={styles.submitBtn} style={{ display: "inline-flex", justifyContent: "center" }}>
                 Se connecter

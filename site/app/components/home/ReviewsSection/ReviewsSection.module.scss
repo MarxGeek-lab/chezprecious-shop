@@ -1,70 +1,67 @@
 @use '../../../styles/_variables' as *;
+@use '../../../styles/_mixins' as *;
 
 .section {
-  padding: $space-20 0;
-  background-color: $black;
-  color: $ivory;
+  padding: $space-16 0;
+  background: linear-gradient(180deg, $ivory 0%, $primary-soft 100%);
+  color: $black;
   overflow: hidden;
+
+  @include lg { padding: $space-20 0; }
 }
 
 .skeleton {
   height: 320px;
-  background: rgba(255,255,255,0.05);
   margin: 0 $space-8;
+  border-radius: $radius;
+  background: rgba(123, 30, 58, 0.06);
 }
 
 // ── Header ────────────────────────────────────────────────────────────────────
 
 .header {
   text-align: center;
-  padding: 0 $space-8;
-  margin-bottom: $space-12;
+  padding: 0 $space-4;
+  margin-bottom: $space-10;
 }
 
 .overline {
-  font-size: $fs-xs;
-  font-weight: $fw-bold;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: $gold;
+  @include eyebrow;
   margin-bottom: $space-2;
 }
 
 .title {
-  font-family: $font-display;
-  font-size: $fs-4xl;
-  font-weight: $fw-semibold;
-  color: $ivory;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  @include section-title;
   margin-bottom: $space-4;
-
-  @media (max-width: $bp-md) { font-size: $fs-3xl; }
 }
 
 .globalStats {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: $space-2;
+  padding: $space-2 $space-5;
+  border-radius: $radius-pill;
+  background-color: $white;
+  box-shadow: 0 6px 18px rgba(31, 20, 22, 0.06);
 }
 
 .stars {
   display: flex;
   align-items: center;
   gap: 2px;
-  color: $gold;
+  color: #E0A526;
 }
 
 .avgScore {
   font-size: $fs-lg;
-  font-weight: $fw-semibold;
-  color: $ivory;
+  font-weight: $fw-bold;
+  color: $black;
 }
 
 .totalCount {
   font-size: $fs-sm;
-  color: rgba(244, 241, 236, 0.5);
+  color: $muted;
 }
 
 // ── Carousel infini ───────────────────────────────────────────────────────────
@@ -72,6 +69,7 @@
 .carouselWrapper {
   position: relative;
   overflow: hidden;
+  padding: $space-2 0 $space-6;
 }
 
 // Masques fondu sur les bords
@@ -87,14 +85,14 @@
   @media (max-width: $bp-md) { width: 40px; }
 }
 
-.fadeLeft  { left: 0;  background: linear-gradient(to right, $black, transparent); }
-.fadeRight { right: 0; background: linear-gradient(to left,  $black, transparent); }
+.fadeLeft  { left: 0;  background: linear-gradient(to right, $primary-soft, transparent); }
+.fadeRight { right: 0; background: linear-gradient(to left,  $primary-soft, transparent); }
 
 .track {
   display: flex;
   gap: $space-6;
   width: max-content;
-  animation: scrollLeft 30s linear infinite;
+  animation: scrollLeft 40s linear infinite;
 
   &:hover { animation-play-state: paused; }
 }
@@ -102,6 +100,10 @@
 @keyframes scrollLeft {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
 }
 
 .slide {
@@ -114,21 +116,26 @@
 // ── Card ──────────────────────────────────────────────────────────────────────
 
 .card {
-  border: 1px solid rgba(244, 241, 236, 0.12);
-  padding: $space-8;
   display: flex;
   flex-direction: column;
   gap: $space-4;
-  background: rgba(255,255,255,0.03);
   height: 100%;
-  transition: border-color $transition-base;
+  padding: $space-6;
+  border-radius: $radius;
+  background: $white;
+  border: 1px solid rgba(123, 30, 58, 0.08);
+  box-shadow: 0 10px 30px rgba(31, 20, 22, 0.06);
+  transition: transform $transition-base, box-shadow $transition-base;
 
-  &:hover { border-color: rgba(200, 162, 74, 0.35); }
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(123, 30, 58, 0.12);
+  }
 }
 
 .quoteIcon {
-  color: $gold;
-  opacity: 0.5;
+  color: $primary;
+  opacity: 0.35;
   flex-shrink: 0;
 }
 
@@ -136,13 +143,13 @@
   font-family: $font-display;
   font-size: $fs-lg;
   font-weight: $fw-semibold;
-  color: $ivory;
+  color: $black;
   line-height: 1.3;
 }
 
 .cardContent {
   font-size: $fs-sm;
-  color: rgba(244, 241, 236, 0.72);
+  color: $muted;
   line-height: 1.75;
   flex: 1;
   display: -webkit-box;
@@ -155,17 +162,17 @@
   display: flex;
   align-items: center;
   gap: $space-3;
-  border-top: 1px solid rgba(244, 241, 236, 0.1);
+  border-top: 1px solid rgba(31, 20, 22, 0.08);
   padding-top: $space-4;
   margin-top: auto;
 }
 
 .avatar {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: $gold;
-  color: $black;
+  background: $primary;
+  color: $white;
   font-size: $fs-xs;
   font-weight: $fw-bold;
   display: flex;
@@ -185,56 +192,47 @@
 .authorName {
   font-size: $fs-sm;
   font-weight: $fw-semibold;
-  color: $ivory;
+  color: $black;
 }
 
 .productLink {
   font-size: $fs-xs;
-  color: $gold;
+  color: $primary;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: color $transition-fast;
 
-  &:hover { color: $gold-light; }
+  &:hover { color: $primary-dark; }
 }
 
 .date {
   font-size: $fs-xs;
-  color: rgba(244, 241, 236, 0.4);
+  color: rgba(31, 20, 22, 0.45);
 }
 
 .verified {
   flex-shrink: 0;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: $fw-bold;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: #2a7a3b;
-  background: rgba(42, 122, 59, 0.15);
-  padding: 3px 8px;
+  background: rgba(42, 122, 59, 0.1);
+  padding: 4px 10px;
+  border-radius: $radius-pill;
 }
 
 // ── CTA ───────────────────────────────────────────────────────────────────────
 
 .cta {
   text-align: center;
-  margin-top: $space-12;
+  margin-top: $space-6;
 }
 
 .ctaLink {
-  display: inline-block;
-  padding: 14px 40px;
-  border: 1.5px solid $gold;
-  color: $gold;
-  font-size: $fs-sm;
+  @include btn-outline;
+  background-color: $white;
+  text-transform: none;
+  letter-spacing: 0;
   font-weight: $fw-semibold;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-family: $font-primary;
-  transition: background $transition-base, color $transition-base;
-
-  &:hover { background: $gold; color: $black; }
 }

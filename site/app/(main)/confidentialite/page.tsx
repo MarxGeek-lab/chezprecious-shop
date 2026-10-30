@@ -1,6 +1,6 @@
 import styles from "./page.module.scss";
 
-export const metadata = { title: "Politique de confidentialité — Chez Precious" };
+export const metadata = { title: "Politique de confidentialité — ChezPrecious" };
 
 export default function ConfidentialitePage() {
   return (
@@ -15,7 +15,7 @@ export default function ConfidentialitePage() {
 
         <section className={styles.section}>
           <h2 className={styles.h2}>1. Responsable du traitement</h2>
-          <p className={styles.para}>Chez Precious, 12 rue du Commerce, Cotonou, Bénin. Email : contact@chezprecious.com. En tant que responsable du traitement, Chez Precious s'engage à protéger vos données personnelles conformément aux réglementations applicables.</p>
+          <p className={styles.para}>ChezPrecious, 12 rue du Commerce, Cotonou, Bénin. Email : contact@chezprecious.com. En tant que responsable du traitement, ChezPrecious s'engage à protéger vos données personnelles conformément aux réglementations applicables.</p>
         </section>
 
         <section className={styles.section}>
@@ -25,7 +25,7 @@ export default function ConfidentialitePage() {
             <li className={styles.listItem}><strong>Données d'identification :</strong> nom, prénom, adresse email, numéro de téléphone.</li>
             <li className={styles.listItem}><strong>Données de livraison :</strong> adresse postale, ville, pays.</li>
             <li className={styles.listItem}><strong>Données de navigation :</strong> adresse IP, type de navigateur, pages visitées (anonymisées).</li>
-            <li className={styles.listItem}><strong>Données de paiement :</strong> gérées directement par nos prestataires de paiement sécurisés (non stockées par Chez Precious).</li>
+            <li className={styles.listItem}><strong>Données de paiement :</strong> gérées directement par nos prestataires de paiement sécurisés (non stockées par ChezPrecious).</li>
           </ul>
         </section>
 
@@ -54,7 +54,7 @@ export default function ConfidentialitePage() {
 
         <section className={styles.section}>
           <h2 className={styles.h2}>5. Partage des données</h2>
-          <p className={styles.para}>Chez Precious ne vend pas vos données personnelles à des tiers. Vos données peuvent être partagées avec :</p>
+          <p className={styles.para}>ChezPrecious ne vend pas vos données personnelles à des tiers. Vos données peuvent être partagées avec :</p>
           <ul className={styles.list}>
             <li className={styles.listItem}>Nos prestataires logistiques (uniquement les données nécessaires à la livraison)</li>
             <li className={styles.listItem}>Nos prestataires de paiement sécurisé</li>

@@ -1,11 +1,16 @@
 // ─── Couleurs ───────────────────────────────────────────────────────────────
-$ivory:  #F4F1EC;
-$black:  #0A0A0A;
-$gold:   #C8A24A;
+// Fond clair chaud, texte presque noir, couleur primaire rouge vin
+$ivory:  #FFFAF7;
+$black:  #1F1416;
+$primary: #7B1E3A;
 
-$ivory-dark:  #EAE6DF;
-$gold-light:  #DFC07F;
-$gold-dark:   #A8832D;
+$ivory-dark:    #F6ECE8;
+$primary-light: #A23B5A;
+$primary-dark:  #5A1229;
+$primary-soft:  #F8E9ED;
+$primary-on-dark: #F4BCCB; // accent lisible sur fond rouge vin foncé
+$white:         #FFFFFF;
+$muted:         #6F6266;
 
 // ─── Typographie ────────────────────────────────────────────────────────────
 $font-primary:   var(--font-inter), sans-serif;
@@ -53,7 +58,10 @@ $transition-base:   0.25s ease;
 $transition-slow:   0.4s ease;
 
 // ─── Cadres produit ─────────────────────────────────────────────────────────
-$frame-border:        2px solid $black;
-$frame-border-hover:  3px solid $black;
-$frame-shadow:        4px 4px 0px $black;
-$frame-shadow-hover:  6px 6px 0px $black;
+$frame-border:        1px solid rgba(31, 20, 22, 0.08);
+$frame-border-hover:  1px solid rgba(123, 30, 58, 0.35);
+$frame-shadow:        0 2px 10px rgba(31, 20, 22, 0.05);
+$frame-shadow-hover:  0 14px 32px rgba(123, 30, 58, 0.14);
+$radius:              14px;
+$radius-sm:           8px;
+$radius-pill:         999px;

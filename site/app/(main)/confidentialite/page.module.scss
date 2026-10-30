@@ -3,7 +3,7 @@
 .main { background: $ivory; min-height: 100vh; }
 
 .hero {
-  background: $black;
+  background: $primary-dark;
   color: $ivory;
   padding: 8rem $space-8 $space-16;
   text-align: center;
@@ -14,7 +14,7 @@
   font-weight: $fw-bold;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary-on-dark;
   margin-bottom: $space-4;
 }
 .heroTitle {
@@ -82,12 +82,12 @@
     top: 9px;
     width: 6px;
     height: 1.5px;
-    background: $gold;
+    background: $primary;
   }
 }
 
 .link {
-  color: $gold;
+  color: $primary;
   text-decoration: underline;
   &:hover { color: $black; }
 }

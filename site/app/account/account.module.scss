@@ -75,7 +75,7 @@
   align-items: center;
   gap: $space-4;
   padding: $space-6;
-  background: $black;
+  background: $primary-dark;
   color: $ivory;
   flex-shrink: 0;
 }
@@ -137,14 +137,14 @@
   }
 
   &.active {
-    background: rgba($gold, 0.1) !important;
+    background: rgba($primary, 0.1) !important;
 
     .navIcon {
-      color: $gold;
+      color: $primary;
     }
 
     .navLabel {
-      color: $gold;
+      color: $primary;
       font-weight: $fw-semibold;
     }
   }
@@ -167,8 +167,8 @@
   min-width: 22px;
   height: 22px;
   padding: 0 $space-1;
-  background: $gold;
-  color: $black;
+  background: $primary;
+  color: $white;
   font-size: 11px;
   font-weight: $fw-bold;
   border-radius: 99px;
@@ -243,14 +243,14 @@
 }
 
 .primaryButton {
-  background: $black !important;
+  background: $primary !important;
   text-transform: none !important;
   font-weight: $fw-semibold !important;
   border-radius: 0 !important;
   padding: $space-3 $space-6 !important;
 
   &:hover {
-    background: $gold !important;
+    background: $primary !important;
   }
 }
 
@@ -313,8 +313,8 @@
   }
 
   &[data-color="primary"] {
-    background: rgba($gold, 0.12);
-    color: $gold;
+    background: rgba($primary, 0.12);
+    color: $primary;
   }
 
   &[data-color="success"] {
@@ -380,7 +380,7 @@
 .orderNumber {
   font-size: $fs-sm !important;
   font-weight: $fw-semibold !important;
-  color: $gold;
+  color: $primary;
   font-family: 'Courier New', monospace;
 }
 
@@ -450,8 +450,8 @@
   flex-shrink: 0;
 
   &[data-type="order"] {
-    background: rgba($gold, 0.12);
-    color: $gold;
+    background: rgba($primary, 0.12);
+    color: $primary;
   }
 
   &[data-type="review"] {
@@ -507,7 +507,7 @@
   }
 
   &.defaultAddress {
-    border-color: $gold;
+    border-color: $primary;
     border-width: 2px;
   }
 }
@@ -545,8 +545,8 @@
   min-height: 200px;
 
   &:hover {
-    border-color: $gold;
-    background: rgba($gold, 0.03);
+    border-color: $primary;
+    background: rgba($primary, 0.03);
   }
 }
 
@@ -614,7 +614,7 @@
 .wishlistPrice {
   font-size: $fs-lg !important;
   font-weight: $fw-bold !important;
-  color: $gold;
+  color: $primary;
 }
 
 .wishlistActions {
@@ -652,7 +652,7 @@
 .profileAvatar {
   width: 100px !important;
   height: 100px !important;
-  background: $black !important;
+  background: $primary !important;
   font-size: $fs-2xl !important;
   font-weight: $fw-bold !important;
 }
@@ -742,7 +742,7 @@
 }
 
 .bottomNavActive {
-  color: $gold !important;
+  color: $primary !important;
 }
 
 .bottomNavIcon {
@@ -758,8 +758,8 @@
   right: -8px;
   min-width: 16px;
   height: 16px;
-  background: $gold;
-  color: $black;
+  background: $primary;
+  color: $white;
   font-size: 9px;
   font-weight: $fw-bold;
   border-radius: 99px;

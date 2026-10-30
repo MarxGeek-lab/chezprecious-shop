@@ -21,7 +21,7 @@
   font-weight: $fw-bold;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary;
   margin-bottom: $space-3;
 }
 
@@ -54,7 +54,7 @@
   display: flex;
   align-items: center;
   gap: 2px;
-  color: $gold;
+  color: $primary;
 }
 
 // ── Layout ───────────────────────────────────────────────────────────────────
@@ -148,7 +148,7 @@
 
 .ratingBarFill {
   height: 100%;
-  background: $gold;
+  background: $primary;
   transition: width 0.4s ease;
 }
 
@@ -192,10 +192,10 @@
 
 .filterBtnActive {
   border-color: $black;
-  background: $black;
+  background: $primary;
   color: $ivory;
 
-  &:hover { background: $black; color: $ivory; }
+  &:hover { background: $primary-dark; color: $ivory; }
 }
 
 // ── List ─────────────────────────────────────────────────────────────────────
@@ -258,7 +258,7 @@
   cursor: pointer;
   transition: background $transition-fast, color $transition-fast;
 
-  &:hover { background: $black; color: $ivory; }
+  &:hover { background: $primary; color: $ivory; }
 }
 
 // ── Card ─────────────────────────────────────────────────────────────────────
@@ -279,7 +279,7 @@
 }
 
 .quoteIcon {
-  color: $gold;
+  color: $primary;
   opacity: 0.45;
   flex-shrink: 0;
 }
@@ -330,7 +330,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: $black;
+  background: $primary;
   color: $ivory;
   font-size: $fs-xs;
   font-weight: $fw-bold;
@@ -355,14 +355,14 @@
 
 .productLink {
   font-size: $fs-xs;
-  color: $gold;
+  color: $primary;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: color $transition-fast;
 
-  &:hover { color: $gold-dark; }
+  &:hover { color: $primary-dark; }
 }
 
 .date {
@@ -399,7 +399,7 @@
 }
 
 .pageBtnActive {
-  background: $black;
+  background: $primary;
   border-color: $black;
   color: $ivory;
 }

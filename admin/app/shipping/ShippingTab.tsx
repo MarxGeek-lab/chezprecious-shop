@@ -64,7 +64,7 @@ function ShippingDetailDialog({ orderId, onClose }: { orderId: string; onClose: 
       <DialogContent dividers>
         {isLoading ? (
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
-            <CircularProgress size={28} sx={{ color: '#D45D00' }} />
+            <CircularProgress size={28} sx={{ color: '#7B1E3A' }} />
           </Box>
         ) : !order ? (
           <Typography color="text.secondary">Commande introuvable.</Typography>
@@ -84,7 +84,7 @@ function ShippingDetailDialog({ orderId, onClose }: { orderId: string; onClose: 
                   sx={{
                     height: 8, borderRadius: 4, bgcolor: '#F3F4F6',
                     '& .MuiLinearProgress-bar': {
-                      bgcolor: cfg.progress === 100 ? '#059669' : '#D45D00',
+                      bgcolor: cfg.progress === 100 ? '#059669' : '#7B1E3A',
                       borderRadius: 4,
                     },
                   }}
@@ -110,7 +110,7 @@ function ShippingDetailDialog({ orderId, onClose }: { orderId: string; onClose: 
             <Box>
               <Typography sx={{ fontSize: 11, fontWeight: 700, color: 'text.secondary', textTransform: 'uppercase', letterSpacing: '0.05em', mb: 1 }}>Adresse de livraison</Typography>
               <Box sx={{ display: 'flex', gap: 1, alignItems: 'flex-start' }}>
-                <MapPin size={16} color="#D45D00" style={{ marginTop: 2, flexShrink: 0 }} />
+                <MapPin size={16} color="#7B1E3A" style={{ marginTop: 2, flexShrink: 0 }} />
                 <Box>
                   <Typography sx={{ fontSize: 14, fontWeight: 600 }}>{order.shippingAddress}</Typography>
                   <Typography sx={{ fontSize: 13, color: 'text.secondary' }}>
@@ -190,7 +190,7 @@ export default function ShippingTab() {
   const totalPages = meta.totalPages ?? 1;
 
   const kpis = [
-    { icon: Truck,         label: 'Expédiées',   value: String(orders.filter((o) => o.status === 'SHIPPED').length),    color: '#D45D00', bg: 'rgba(212,93,0,0.1)'    },
+    { icon: Truck,         label: 'Expédiées',   value: String(orders.filter((o) => o.status === 'SHIPPED').length),    color: '#7B1E3A', bg: 'rgba(123, 30, 58,0.1)'    },
     { icon: CheckCircle,   label: 'Livrées',     value: String(meta.delivered ?? 0),                                     color: '#059669', bg: 'rgba(5,150,105,0.1)'   },
     { icon: Package,       label: 'Préparation', value: String(meta.processing ?? 0),                                    color: '#3B82F6', bg: 'rgba(59,130,246,0.1)'  },
     { icon: AlertTriangle, label: 'Annulées',    value: String(meta.cancelled ?? 0),                                     color: '#DC2626', bg: 'rgba(239,68,68,0.1)'   },
@@ -241,7 +241,7 @@ export default function ShippingTab() {
           </Box>
 
           {/* Search */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flex: 1, minWidth: 180, border: '1px solid', borderColor: 'divider', borderRadius: '10px', px: 1.5, py: 0.75, '&:focus-within': { borderColor: '#D45D00' } }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flex: 1, minWidth: 180, border: '1px solid', borderColor: 'divider', borderRadius: '10px', px: 1.5, py: 0.75, '&:focus-within': { borderColor: '#7B1E3A' } }}>
             <Search size={15} color="#9CA3AF" />
             <InputBase
               placeholder="N° commande, client, email…"
@@ -260,7 +260,7 @@ export default function ShippingTab() {
             startIcon={exporting ? <CircularProgress size={14} /> : <Download size={15} />}
             disabled={exporting}
             onClick={handleExport}
-            sx={{ textTransform: 'none', borderRadius: '8px', fontSize: 13, borderColor: 'divider', color: 'text.secondary', flexShrink: 0, '&:hover': { borderColor: '#D45D00', color: '#D45D00' } }}
+            sx={{ textTransform: 'none', borderRadius: '8px', fontSize: 13, borderColor: 'divider', color: 'text.secondary', flexShrink: 0, '&:hover': { borderColor: '#7B1E3A', color: '#7B1E3A' } }}
           >
             Exporter CSV
           </Button>
@@ -269,7 +269,7 @@ export default function ShippingTab() {
         {/* Table */}
         {isLoading ? (
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
-            <CircularProgress size={32} sx={{ color: '#D45D00' }} />
+            <CircularProgress size={32} sx={{ color: '#7B1E3A' }} />
           </Box>
         ) : orders.length === 0 ? (
           <Box sx={{ textAlign: 'center', py: 6, color: 'text.secondary' }}>
@@ -300,7 +300,7 @@ export default function ShippingTab() {
                   return (
                     <tr key={o.id}>
                       <td>
-                        <Typography sx={{ fontFamily: 'monospace', fontWeight: 700, fontSize: 13, color: '#D45D00' }}>
+                        <Typography sx={{ fontFamily: 'monospace', fontWeight: 700, fontSize: 13, color: '#7B1E3A' }}>
                           {o.orderNumber}
                         </Typography>
                       </td>
@@ -316,7 +316,7 @@ export default function ShippingTab() {
                           </Typography>
                           {(o as { shippingCountry?: string }).shippingCountry && (
                             <>
-                              <ArrowRight size={11} color="#D45D00" />
+                              <ArrowRight size={11} color="#7B1E3A" />
                               <Typography sx={{ fontSize: 12, color: 'text.secondary' }}>
                                 {(o as { shippingCountry?: string }).shippingCountry}
                               </Typography>
@@ -332,7 +332,7 @@ export default function ShippingTab() {
                             sx={{
                               height: 5, borderRadius: 3, bgcolor: '#F3F4F6',
                               '& .MuiLinearProgress-bar': {
-                                bgcolor: cfg.progress === 100 ? '#059669' : cfg.progress === 0 ? '#EF4444' : '#D45D00',
+                                bgcolor: cfg.progress === 100 ? '#059669' : cfg.progress === 0 ? '#EF4444' : '#7B1E3A',
                                 borderRadius: 3,
                               },
                             }}

@@ -210,7 +210,7 @@ export default function UsersTab() {
         {[
           { icon: Users,     label: 'Total',    value: stats?.total    ?? '—', color: '#3B82F6', bg: 'rgba(59,130,246,0.1)' },
           { icon: UserCheck, label: 'Actifs',   value: stats?.active   ?? '—', color: '#10B981', bg: 'rgba(16,185,129,0.1)' },
-          { icon: Shield,    label: 'Vendeurs', value: stats?.sellers  ?? '—', color: '#D45D00', bg: 'rgba(212,93,0,0.1)' },
+          { icon: Shield,    label: 'Vendeurs', value: stats?.sellers  ?? '—', color: '#7B1E3A', bg: 'rgba(123, 30, 58,0.1)' },
           { icon: UserX,     label: 'Inactifs', value: stats?.inactive ?? '—', color: '#6B7280', bg: 'rgba(107,114,128,0.1)' },
         ].map((stat) => (
           <Box key={stat.label} className={styles.statCard}>

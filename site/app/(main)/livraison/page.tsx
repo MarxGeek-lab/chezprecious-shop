@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Truck, RotateCcw, Package, Shield, Clock, MapPin } from "lucide-react";
 import styles from "./page.module.scss";
 
-export const metadata = { title: "Livraison & Retours — Chez Precious" };
+export const metadata = { title: "Livraison & Retours — ChezPrecious" };
 
 const SHIPPING = [
   {

@@ -1,0 +1,53 @@
+@use '../../../styles/_variables' as *;
+@use '../../../styles/_mixins' as *;
+
+.section {
+  position: relative;
+  z-index: 1;
+  margin-top: -$space-8;
+}
+
+.inner {
+  @include container;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-3;
+
+  @include lg { grid-template-columns: repeat(4, 1fr); gap: $space-4; }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4;
+  border-radius: $radius;
+  background-color: $white;
+  border: 1px solid rgba(123, 30, 58, 0.08);
+  box-shadow: 0 10px 30px rgba(31, 20, 22, 0.06);
+
+  @include md { padding: $space-5 $space-6; gap: $space-4; }
+}
+
+.icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: $primary-soft;
+  color: $primary;
+}
+
+.title {
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: $black;
+}
+
+.text {
+  margin-top: 2px;
+  font-size: $fs-xs;
+  color: $muted;
+}

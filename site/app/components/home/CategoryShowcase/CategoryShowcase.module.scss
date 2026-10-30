@@ -1,0 +1,112 @@
+@use '../../../styles/_variables' as *;
+@use '../../../styles/_mixins' as *;
+
+.section {
+  padding: $space-16 0 $space-8;
+
+  @include lg { padding: $space-20 0 $space-10; }
+}
+
+.inner { @include container; }
+
+.header {
+  margin-bottom: $space-8;
+  text-align: center;
+}
+
+.eyebrow { @include eyebrow; }
+
+.title {
+  @include section-title;
+  margin-top: $space-2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 200px;
+  gap: $space-3;
+
+  @include md {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-auto-rows: 250px;
+    gap: $space-4;
+  }
+}
+
+.tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius;
+  isolation: isolate;
+
+  &:hover .image { transform: scale(1.06); }
+  &:hover .arrow { background-color: $primary; color: $white; transform: rotate(45deg); }
+}
+
+.tileLarge {
+  grid-column: span 2;
+
+  @include md {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+}
+
+// 4e tuile en pleine largeur pour combler la grille (mobile et desktop)
+.tile:nth-child(4) { grid-column: span 2; }
+
+.image {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(31, 20, 22, 0.7) 100%);
+}
+
+.label {
+  position: absolute;
+  left: $space-4;
+  right: $space-4;
+  bottom: $space-4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: $space-3;
+  color: $white;
+
+  strong {
+    display: block;
+    font-family: $font-display;
+    font-size: $fs-xl;
+    font-weight: $fw-bold;
+
+    .tileLarge & { font-size: $fs-3xl; }
+  }
+
+  small {
+    font-size: $fs-xs;
+    opacity: 0.85;
+  }
+
+  @include md {
+    left: $space-6;
+    right: $space-6;
+    bottom: $space-6;
+  }
+}
+
+.arrow {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $white;
+  color: $primary;
+  transition: background-color $transition-base, color $transition-base, transform $transition-base;
+}

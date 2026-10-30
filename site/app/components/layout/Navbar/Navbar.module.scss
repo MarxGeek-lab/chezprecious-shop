@@ -1,5 +1,7 @@
 @use '../../../styles/_variables' as *;
 
+// Hauteur totale (bandeau 30px + barre 64px) inchangée : les pages compensent
+// le header fixe avec un padding-top d'environ 100px.
 .header {
   position: fixed;
   top: 0;
@@ -7,74 +9,103 @@
   right: 0;
   z-index: 200;
 
-  &.scrolled {
-    box-shadow: 0 2px 16px rgba(10, 10, 10, 0.09);
+  &.scrolled .navbar {
+    background-color: rgba(255, 250, 247, 0.92);
+    backdrop-filter: saturate(1.4) blur(10px);
+    box-shadow: 0 6px 24px rgba(31, 20, 22, 0.08);
   }
 }
 
 .announcementBar {
-  background-color: $black;
-  color: $ivory;
-  text-align: center;
-  padding: 7px $space-4;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, $primary-dark, $primary, $primary-dark);
+  color: $white;
+  padding: 0 $space-4;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  overflow: hidden;
 
-  span { color: $gold; }
+  strong { font-weight: $fw-bold; color: #FFD9E2; }
+}
+
+.announcementText {
+  animation: announceIn 0.45s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes announceIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Navbar ── */
 .navbar {
   background-color: $ivory;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+  border-bottom: 1px solid rgba(123, 30, 58, 0.08);
   height: 64px;
-  padding: 0 $space-8;
+  padding: 0 $space-4;
   display: flex;
   align-items: center;
+  gap: $space-6;
+  transition: background-color $transition-base, box-shadow $transition-base;
+
+  @media (min-width: $bp-md) { padding: 0 $space-8; }
 }
 
 .logo {
   font-family: $font-display;
-  font-size: $fs-xl;
+  font-size: 1.45rem;
   font-weight: $fw-bold;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
   color: $black;
   flex-shrink: 0;
   text-decoration: none;
-  margin-right: $space-16;
+  line-height: 1;
+  white-space: nowrap;
 
-  span { color: $gold; }
+  em {
+    font-style: italic;
+    color: $primary;
+  }
+
+  @media (min-width: $bp-md) { font-size: 1.65rem; }
 }
 
 .navLinks {
   display: none;
   align-items: center;
-  gap: $space-10;
+  justify-content: center;
+  gap: $space-8;
   flex: 1;
 
   @media (min-width: 900px) { display: flex; }
 }
 
 .navLink {
-  font-size: $fs-xs;
+  font-size: $fs-sm;
   font-weight: $fw-medium;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: $black;
   white-space: nowrap;
   position: relative;
-  padding-bottom: 2px;
+  padding: $space-2 0;
+  transition: color $transition-fast;
 
   &::after {
     content: '';
     position: absolute;
-    bottom: 0; left: 0;
-    width: 0; height: 1px;
-    background-color: $gold;
+    bottom: 0; left: 50%;
+    width: 0; height: 2px;
+    border-radius: 2px;
+    background-color: $primary;
+    transform: translateX(-50%);
     transition: width $transition-base;
   }
+  &:hover { color: $primary; }
   &:hover::after { width: 100%; }
 }
 
@@ -86,21 +117,53 @@
   gap: $space-1;
 }
 
-.iconBtn {
-  width: 40px;
+.searchPill {
+  display: none;
+  align-items: center;
+  gap: $space-2;
   height: 40px;
+  padding: 0 $space-4;
+  margin-right: $space-2;
+  min-width: 220px;
+  border-radius: $radius-pill;
+  background-color: $white;
+  border: 1px solid rgba(31, 20, 22, 0.1);
+  color: $muted;
+  font-size: $fs-sm;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    border-color: rgba(123, 30, 58, 0.4);
+    box-shadow: 0 0 0 3px $primary-soft;
+  }
+
+  @media (min-width: $bp-xl) { display: inline-flex; }
+}
+
+.iconBtn {
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
   color: $black;
-  transition: color $transition-fast;
+  transition: color $transition-fast, background-color $transition-fast;
   position: relative;
   text-decoration: none;
   flex-shrink: 0;
 
-  &:hover { color: $gold; }
+  &:hover {
+    color: $primary;
+    background-color: $primary-soft;
+  }
 
-  /* Cacher Search + Login sur mobile — ils sont dans la bottom nav / sidebar */
+  /* Recherche loupe seulement là où le champ n'est pas affiché */
+  &[aria-label="Rechercher"] {
+    @media (min-width: $bp-xl) { display: none; }
+  }
+
+  /* Cacher les icônes secondaires sur mobile — elles sont dans la bottom nav / sidebar */
   @media (max-width: 899px) {
     &:not([aria-label="Panier"]):not([aria-label="Ouvrir le menu"]):not([aria-label="Fermer le menu"]) {
       display: none;
@@ -111,14 +174,21 @@
 .loginBtn {
   width: auto;
   gap: $space-2;
-  padding: 0 $space-3;
+  padding: 0 $space-4;
+  border-radius: $radius-pill;
+  background-color: $primary;
+  color: $white;
+  margin-left: $space-2;
+
+  &:hover {
+    background-color: $primary-dark;
+    color: $white;
+  }
 }
 
 .loginLabel {
-  font-size: $fs-xs;
-  font-weight: $fw-medium;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
   white-space: nowrap;
 
   @media (max-width: 900px) { display: none; }
@@ -135,7 +205,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: $black;
+  background-color: $primary;
   color: $ivory;
   font-size: 11px;
   font-weight: $fw-bold;
@@ -148,7 +218,7 @@
 
 .chevron {
   transition: transform $transition-fast;
-  color: rgba(10, 10, 10, 0.5);
+  color: rgba(31, 20, 22, 0.5);
 }
 
 .chevronUp {
@@ -166,8 +236,8 @@
   right: 0;
   width: 240px;
   background: $ivory;
-  border: 1px solid rgba(10, 10, 10, 0.1);
-  box-shadow: 0 8px 32px rgba(10, 10, 10, 0.12);
+  border: 1px solid rgba(31, 20, 22, 0.1);
+  box-shadow: 0 8px 32px rgba(31, 20, 22, 0.12);
   z-index: 200;
   animation: fadeSlideDown 0.15s ease;
 }
@@ -179,7 +249,7 @@
 
 .userDropdownHeader {
   padding: $space-4 $space-5;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+  border-bottom: 1px solid rgba(31, 20, 22, 0.08);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -193,7 +263,7 @@
 
 .userDropdownEmail {
   font-size: $fs-xs;
-  color: rgba(10, 10, 10, 0.45);
+  color: rgba(31, 20, 22, 0.45);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -211,18 +281,18 @@
   gap: $space-3;
   padding: $space-2 $space-5;
   font-size: $fs-sm;
-  color: rgba(10, 10, 10, 0.7);
+  color: rgba(31, 20, 22, 0.7);
   text-decoration: none;
   transition: background $transition-fast, color $transition-fast;
 
   &:hover {
-    background: rgba(10, 10, 10, 0.04);
+    background: rgba(31, 20, 22, 0.04);
     color: $black;
   }
 }
 
 .userDropdownFooter {
-  border-top: 1px solid rgba(10, 10, 10, 0.08);
+  border-top: 1px solid rgba(31, 20, 22, 0.08);
   padding: $space-2 0;
 }
 
@@ -252,15 +322,15 @@
   align-items: center;
   gap: $space-4;
   padding: $space-5 $space-6;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.06);
-  background: rgba(10, 10, 10, 0.02);
+  border-bottom: 1px solid rgba(31, 20, 22, 0.06);
+  background: rgba(31, 20, 22, 0.02);
 }
 
 .sidebarAvatar {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: $black;
+  background: $primary;
   color: $ivory;
   font-size: 13px;
   font-weight: $fw-bold;
@@ -289,7 +359,7 @@
 
 .sidebarUserEmail {
   font-size: $fs-xs;
-  color: rgba(10, 10, 10, 0.45);
+  color: rgba(31, 20, 22, 0.45);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -300,7 +370,7 @@
   font-weight: $fw-semibold;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(10, 10, 10, 0.35);
+  color: rgba(31, 20, 22, 0.35);
   margin-bottom: $space-1;
 }
 
@@ -319,13 +389,15 @@
 
 .cartBadge {
   position: absolute;
-  top: 5px; right: 5px;
-  width: 15px; height: 15px;
-  background-color: $gold;
-  color: $black;
+  top: 4px; right: 2px;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  background-color: $primary;
+  color: $white;
+  border: 2px solid $ivory;
+  border-radius: $radius-pill;
   font-size: 9px;
   font-weight: $fw-bold;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -339,7 +411,7 @@
   color: $black;
   transition: color $transition-fast;
 
-  &:hover { color: $gold; }
+  &:hover { color: $primary; }
 
   @media (min-width: 1024px) { display: none; }
 }
@@ -348,7 +420,7 @@
 .searchOverlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(10, 10, 10, 0.45);
+  background-color: rgba(31, 20, 22, 0.45);
   z-index: 300;
   display: flex;
   align-items: flex-start;
@@ -366,7 +438,7 @@
   width: 100%;
   max-width: 640px;
   background-color: $ivory;
-  box-shadow: 0 8px 48px rgba(10, 10, 10, 0.18);
+  box-shadow: 0 8px 48px rgba(31, 20, 22, 0.18);
   animation: slideDown 0.2s ease;
   overflow: hidden;
   margin: 0 $space-4;
@@ -381,13 +453,13 @@
   display: flex;
   align-items: center;
   padding: 0 $space-4;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+  border-bottom: 1px solid rgba(31, 20, 22, 0.08);
   height: 56px;
   gap: $space-3;
 }
 
 .searchIcon {
-  color: rgba(10, 10, 10, 0.35);
+  color: rgba(31, 20, 22, 0.35);
   flex-shrink: 0;
 }
 
@@ -400,7 +472,7 @@
   font-family: $font-primary;
   color: $black;
 
-  &::placeholder { color: rgba(10, 10, 10, 0.3); }
+  &::placeholder { color: rgba(31, 20, 22, 0.3); }
 }
 
 .searchClose {
@@ -408,7 +480,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(10, 10, 10, 0.4);
+  color: rgba(31, 20, 22, 0.4);
   flex-shrink: 0;
   transition: color $transition-fast;
 
@@ -424,10 +496,10 @@
   padding: $space-3 $space-5;
   transition: background-color $transition-fast;
   text-decoration: none;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.05);
+  border-bottom: 1px solid rgba(31, 20, 22, 0.05);
 
   &:last-child { border-bottom: none; }
-  &:hover { background-color: rgba(10, 10, 10, 0.03); }
+  &:hover { background-color: rgba(31, 20, 22, 0.03); }
 }
 
 .suggestionName {
@@ -438,14 +510,14 @@
 
 .suggestionMeta {
   font-size: $fs-xs;
-  color: rgba(10, 10, 10, 0.4);
+  color: rgba(31, 20, 22, 0.4);
   letter-spacing: 0.04em;
 }
 
 .noResults {
   padding: $space-5;
   font-size: $fs-sm;
-  color: rgba(10, 10, 10, 0.4);
+  color: rgba(31, 20, 22, 0.4);
   text-align: center;
 }
 
@@ -453,7 +525,7 @@
 .sidebarOverlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(10, 10, 10, 0.5);
+  background-color: rgba(31, 20, 22, 0.5);
   z-index: 250;
   animation: fadeIn 0.22s ease;
 
@@ -472,7 +544,7 @@
   flex-direction: column;
   transform: translateX(100%);
   transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: -8px 0 40px rgba(10, 10, 10, 0.12);
+  box-shadow: -8px 0 40px rgba(31, 20, 22, 0.12);
 
   @media (min-width: 1024px) { display: none; }
 }
@@ -486,7 +558,7 @@
   align-items: center;
   justify-content: space-between;
   padding: $space-5 $space-6;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+  border-bottom: 1px solid rgba(31, 20, 22, 0.08);
   height: 64px;
 }
 
@@ -499,7 +571,7 @@
   color: $black;
   text-decoration: none;
 
-  span { color: $gold; }
+  span { color: $primary; }
 }
 
 .sidebarClose {
@@ -507,7 +579,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(10, 10, 10, 0.45);
+  color: rgba(31, 20, 22, 0.45);
   transition: color $transition-fast;
 
   &:hover { color: $black; }
@@ -529,17 +601,17 @@
   text-transform: uppercase;
   color: $black;
   text-decoration: none;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.05);
+  border-bottom: 1px solid rgba(31, 20, 22, 0.05);
   transition: color $transition-fast, padding-left $transition-fast;
 
   &:hover {
-    color: $gold;
+    color: $primary;
     padding-left: $space-8;
   }
 }
 
 .sidebarFooter {
-  border-top: 1px solid rgba(10, 10, 10, 0.08);
+  border-top: 1px solid rgba(31, 20, 22, 0.08);
   padding: $space-5 $space-6;
   display: flex;
   flex-direction: column;
@@ -551,7 +623,7 @@
   align-items: center;
   gap: $space-3;
   font-size: $fs-sm;
-  color: rgba(10, 10, 10, 0.6);
+  color: rgba(31, 20, 22, 0.6);
   text-decoration: none;
   transition: color $transition-fast;
   position: relative;
@@ -561,8 +633,8 @@
 
 .sidebarBadge {
   margin-left: auto;
-  background-color: $gold;
-  color: $black;
+  background-color: $primary;
+  color: $white;
   font-size: 10px;
   font-weight: $fw-bold;
   width: 18px; height: 18px;
@@ -580,7 +652,7 @@
   right: 0;
   height: 64px;
   background-color: $ivory;
-  border-top: 1px solid rgba(10, 10, 10, 0.08);
+  border-top: 1px solid rgba(31, 20, 22, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -598,7 +670,7 @@
   align-items: center;
   justify-content: center;
   gap: 3px;
-  color: rgba(10, 10, 10, 0.45);
+  color: rgba(31, 20, 22, 0.45);
   text-decoration: none;
   transition: color $transition-fast;
   position: relative;
@@ -616,8 +688,8 @@
   position: absolute;
   top: 4px;
   right: calc(50% - 18px);
-  background-color: $gold;
-  color: $black;
+  background-color: $primary;
+  color: $white;
   font-size: 9px;
   font-weight: $fw-bold;
   min-width: 15px; height: 15px;
@@ -633,17 +705,17 @@
   flex-shrink: 0;
   width: 52px; height: 52px;
   border-radius: 50%;
-  background-color: $black;
+  background-color: $primary;
   color: $ivory;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 $space-2;
-  box-shadow: 0 4px 16px rgba(10, 10, 10, 0.2);
+  box-shadow: 0 4px 16px rgba(31, 20, 22, 0.2);
   transition: background-color $transition-fast, transform $transition-fast;
 
   &:hover {
-    background-color: $gold;
+    background-color: $primary;
     transform: scale(1.06);
   }
 }

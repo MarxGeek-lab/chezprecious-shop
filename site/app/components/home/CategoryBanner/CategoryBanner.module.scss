@@ -66,7 +66,7 @@
   font-weight: $fw-semibold;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary;
   margin-bottom: $space-2;
 }
 
@@ -105,7 +105,7 @@
   }
 
   &:hover {
-    border-color: $gold;
-    color: $gold;
+    border-color: $primary;
+    color: $primary;
   }
 }

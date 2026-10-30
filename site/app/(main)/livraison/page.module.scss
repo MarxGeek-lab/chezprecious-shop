@@ -3,7 +3,7 @@
 .main { background: $ivory; min-height: 100vh; }
 
 .hero {
-  background: $black;
+  background: $primary-dark;
   color: $ivory;
   padding: 8rem $space-8 $space-20;
   text-align: center;
@@ -14,7 +14,7 @@
   font-weight: $fw-bold;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary-on-dark;
   margin-bottom: $space-4;
 }
 .heroTitle {
@@ -26,7 +26,7 @@
 .heroSub { font-size: $fs-base; opacity: 0.7; max-width: 500px; margin: 0 auto; }
 
 .section { padding: $space-16 $space-8; }
-.sectionDark { background: $black; }
+.sectionDark { background: $primary-dark; }
 .sectionIvory { background: $ivory-dark; }
 .inner { max-width: 1000px; margin: 0 auto; }
 
@@ -53,7 +53,7 @@
   flex-direction: column;
   gap: $space-2;
 }
-.shippingIcon { color: $gold; margin-bottom: $space-3; }
+.shippingIcon { color: $primary; margin-bottom: $space-3; }
 .shippingTitle {
   font-size: $fs-base;
   font-weight: $fw-semibold;
@@ -67,7 +67,7 @@
 .shippingPrice {
   font-size: $fs-lg;
   font-weight: $fw-bold;
-  color: $gold;
+  color: $primary;
 }
 .shippingNote {
   font-size: $fs-xs;
@@ -86,7 +86,7 @@
   font-weight: $fw-bold;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: $gold;
+  color: $primary-on-dark;
 }
 .tableRow {
   display: grid;
@@ -107,7 +107,7 @@
   padding: $space-8;
   border: 1.5px solid $black;
   background: #fff;
-  color: $gold;
+  color: $primary;
   @media (max-width: $bp-sm) { flex-direction: column; }
 }
 .trackTitle {
@@ -118,7 +118,7 @@
   color: $black;
 }
 .trackText { font-size: $fs-sm; line-height: 1.8; color: rgba(10,10,10,0.7); }
-.trackLink { color: $gold; text-decoration: underline; &:hover { color: $black; } }
+.trackLink { color: $primary; text-decoration: underline; &:hover { color: $black; } }
 
 /* ── Return steps ── */
 .returnHeader {
@@ -126,7 +126,7 @@
   gap: $space-5;
   align-items: flex-start;
   margin-bottom: $space-10;
-  color: $gold;
+  color: $primary;
 }
 .returnSub { font-size: $fs-sm; color: rgba(10,10,10,0.6); margin-top: $space-2; }
 .steps {
@@ -142,7 +142,7 @@
   font-size: $fs-xs;
   font-weight: $fw-bold;
   letter-spacing: 0.15em;
-  color: $gold;
+  color: $primary;
   margin-bottom: $space-3;
 }
 .stepTitle {

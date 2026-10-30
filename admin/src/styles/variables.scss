@@ -2,12 +2,12 @@
 // VARIABLES SCSS - Admin Dashboard Theme
 // ==============================================
 
-// Couleur primaire (même que le site pour cohérence)
-$primary: #C8A24A;
-$primary-light: #C8A24A;
-$primary-lighter: #FFA54D;
-$primary-dark: #A34800;
-$primary-darker: #7A3600;
+// Couleur primaire rouge vin (même que le site pour cohérence)
+$primary: #7B1E3A;
+$primary-light: #A23B5A;
+$primary-lighter: #C25B78;
+$primary-dark: #5A1229;
+$primary-darker: #3F0C1C;
 
 // Couleurs secondaires
 $secondary: #1A1A2E;
@@ -15,9 +15,9 @@ $secondary-light: #2D2D44;
 $secondary-dark: #0F0F1A;
 
 // Couleurs de fond admin
-$bg-body: #F4F1EC;
-$bg-sidebar: #0F172A;
-$bg-sidebar-hover: #1E293B;
+$bg-body: #FBF7F5;
+$bg-sidebar: #2A0F18;
+$bg-sidebar-hover: #3D1624;
 $bg-sidebar-active: rgba($primary, 0.15);
 $bg-card: #FFFFFF;
 $bg-gray: #F5F5F7;
@@ -28,8 +28,8 @@ $text-primary: #1A1A2E;
 $text-secondary: #6B7280;
 $text-light: #9CA3AF;
 $text-white: #FFFFFF;
-$text-sidebar: #94A3B8;
-$text-sidebar-active: $primary-light;
+$text-sidebar: #D9C2C9;
+$text-sidebar-active: #F4BCCB;
 
 // Couleurs d'état
 $success: #10B981;
