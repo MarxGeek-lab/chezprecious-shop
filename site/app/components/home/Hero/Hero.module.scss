@@ -1,0 +1,293 @@
+@use '../../../styles/_variables' as *;
+
+/* ── Hero : plein écran sous le header ── */
+.hero {
+  position: relative;
+  width: 100%;
+  margin-top: 94px; /* announcement 30px + navbar 64px */
+  height: calc(100vh - 90px);
+  overflow: hidden;
+  background-color: $black;
+}
+
+/* ── Images en crossfade ── */
+.bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  z-index: 0;
+}
+
+.bgActive {
+  opacity: 1;
+  z-index: 1;
+}
+
+.bgImg {
+  object-fit: cover;
+  object-position: center top;
+  transform: scale(1.04);
+  animation: slowZoom 7s ease forwards;
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1.04); }
+  to   { transform: scale(1);    }
+}
+
+/* ── Overlay ── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(to right,  rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.1) 60%, transparent 100%),
+    linear-gradient(to top,    rgba(10,10,10,0.55) 0%, transparent 50%);
+}
+
+/* ── Contenu éditorial ── */
+.content {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  padding: 0 $space-8 $space-16;
+
+  @media (min-width: $bp-md) {
+    padding: 0 $space-16 $space-16;
+  }
+
+  /* Animation entrée */
+  animation: fadeUp 0.7s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.inner {
+  max-width: 620px;
+}
+
+/* Tag */
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: $gold;
+  border: 1px solid rgba(200, 162, 74, 0.5);
+  padding: 4px $space-4;
+  margin-bottom: $space-5;
+}
+
+/* Titre */
+.title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $space-5;
+  line-height: 1.02;
+}
+
+.titleLine {
+  font-family: $font-display;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: $fw-bold;
+  color: $ivory;
+  letter-spacing: -0.01em;
+}
+
+.titleEm {
+  font-family: $font-display;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: $fw-regular;
+  font-style: italic;
+  color: $gold;
+  letter-spacing: -0.01em;
+}
+
+/* Description */
+.desc {
+  font-size: clamp($fs-sm, 1.5vw, $fs-base);
+  color: rgba(244, 241, 236, 0.65);
+  line-height: 1.7;
+  max-width: 440px;
+  margin-bottom: $space-8;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $space-6;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4 $space-8;
+  background-color: $gold;
+  color: $black;
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color $transition-base, gap $transition-base;
+
+  &:hover {
+    background-color: $gold-light;
+    gap: $space-4;
+  }
+}
+
+.btnArrow {
+  transition: transform $transition-base;
+  .btnPrimary:hover & { transform: translateX(3px); }
+}
+
+.btnSecondary {
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 236, 0.7);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 3px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background-color: $gold;
+    transition: width $transition-base;
+  }
+
+  &:hover {
+    color: $ivory;
+    &::after { width: 100%; }
+  }
+}
+
+/* ── Navigation bas ── */
+.nav {
+  position: absolute;
+  bottom: $space-8;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  padding: 0 $space-8;
+  display: flex;
+  align-items: center;
+  gap: $space-6;
+
+  @media (min-width: $bp-md) {
+    padding: 0 $space-16;
+  }
+}
+
+.navNum {
+  font-size: $fs-xs;
+  color: $ivory;
+  letter-spacing: 0.1em;
+
+  strong {
+    font-size: $fs-base;
+    font-weight: $fw-bold;
+  }
+}
+
+.navTotal {
+  color: rgba(244, 241, 236, 0.35);
+  margin-left: 2px;
+}
+
+.dots {
+  display: flex;
+  gap: $space-2;
+}
+
+.dot {
+  height: 2px;
+  width: 24px;
+  background-color: rgba(244, 241, 236, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color $transition-base, width $transition-base;
+}
+
+.dotActive {
+  background-color: $gold;
+  width: 44px;
+}
+
+.arrows {
+  margin-left: auto;
+  display: flex;
+  gap: $space-2;
+}
+
+.arrow {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(244, 241, 236, 0.25);
+  background: rgba(10, 10, 10, 0.3);
+  color: $ivory;
+  font-size: $fs-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: border-color $transition-fast, background-color $transition-fast;
+
+  &:hover {
+    border-color: $gold;
+    background-color: rgba(200, 162, 74, 0.2);
+    color: $gold;
+  }
+}
+
+/* ── Scroll hint ── */
+.scrollHint {
+  position: absolute;
+  right: $space-8;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-3;
+
+  @media (min-width: $bp-lg) { display: flex; }
+}
+
+.scrollLine {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, rgba(244, 241, 236, 0.5));
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+  50%       { opacity: 1;   transform: scaleY(1);   }
+}
+
+.scrollLabel {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 236, 0.35);
+  writing-mode: vertical-rl;
+}

@@ -1,0 +1,169 @@
+@use '../../styles/_variables' as *;
+
+.main { background: $ivory; min-height: 100vh; }
+
+.hero {
+  background: $black;
+  color: $ivory;
+  padding: 8rem $space-8 $space-20;
+  text-align: center;
+}
+.eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-4;
+}
+.heroTitle {
+  font-family: $font-display;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: $fw-regular;
+  margin: 0 0 $space-4;
+}
+.heroSub { font-size: $fs-base; opacity: 0.7; max-width: 500px; margin: 0 auto; }
+
+.section { padding: $space-16 $space-8; }
+.sectionDark { background: $black; }
+.sectionIvory { background: $ivory-dark; }
+.inner { max-width: 1000px; margin: 0 auto; }
+
+.sectionTitle {
+  font-family: $font-display;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: $fw-regular;
+  margin: 0 0 $space-10;
+  color: $black;
+}
+.sectionTitleLight { color: $ivory; }
+
+/* ── Shipping cards ── */
+.cardsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-6;
+  @media (max-width: $bp-sm) { grid-template-columns: 1fr; }
+}
+.shippingCard {
+  border: 1.5px solid $black;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+.shippingIcon { color: $gold; margin-bottom: $space-3; }
+.shippingTitle {
+  font-size: $fs-base;
+  font-weight: $fw-semibold;
+  margin: 0;
+}
+.shippingDelay {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  color: $black;
+}
+.shippingPrice {
+  font-size: $fs-lg;
+  font-weight: $fw-bold;
+  color: $gold;
+}
+.shippingNote {
+  font-size: $fs-xs;
+  color: rgba(10,10,10,0.5);
+  margin-top: $space-2;
+}
+
+/* ── Table ── */
+.table { border: 1px solid rgba(244,241,236,0.15); }
+.tableHead {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: $space-4 $space-6;
+  background: rgba(244,241,236,0.08);
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $gold;
+}
+.tableRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: $space-4 $space-6;
+  border-top: 1px solid rgba(244,241,236,0.1);
+  font-size: $fs-sm;
+  color: rgba(244,241,236,0.85);
+  transition: background $transition-fast;
+  &:hover { background: rgba(244,241,236,0.04); }
+}
+
+/* ── Track box ── */
+.trackBox {
+  display: flex;
+  gap: $space-6;
+  align-items: flex-start;
+  padding: $space-8;
+  border: 1.5px solid $black;
+  background: #fff;
+  color: $gold;
+  @media (max-width: $bp-sm) { flex-direction: column; }
+}
+.trackTitle {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: $fw-regular;
+  margin: 0 0 $space-3;
+  color: $black;
+}
+.trackText { font-size: $fs-sm; line-height: 1.8; color: rgba(10,10,10,0.7); }
+.trackLink { color: $gold; text-decoration: underline; &:hover { color: $black; } }
+
+/* ── Return steps ── */
+.returnHeader {
+  display: flex;
+  gap: $space-5;
+  align-items: flex-start;
+  margin-bottom: $space-10;
+  color: $gold;
+}
+.returnSub { font-size: $fs-sm; color: rgba(10,10,10,0.6); margin-top: $space-2; }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-6;
+  @media (max-width: $bp-md) { grid-template-columns: 1fr 1fr; }
+  @media (max-width: $bp-sm) { grid-template-columns: 1fr; }
+}
+.step { border-top: 2px solid $black; padding-top: $space-5; }
+.stepNum {
+  display: inline-block;
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.15em;
+  color: $gold;
+  margin-bottom: $space-3;
+}
+.stepTitle {
+  font-size: $fs-base;
+  font-weight: $fw-semibold;
+  margin: 0 0 $space-3;
+}
+.stepText { font-size: $fs-sm; line-height: 1.7; color: rgba(10,10,10,0.65); }
+
+/* ── Guarantee ── */
+.guaranteeBox {
+  display: flex;
+  gap: $space-6;
+  align-items: flex-start;
+  color: $black;
+  @media (max-width: $bp-sm) { flex-direction: column; }
+}
+.guaranteeTitle {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: $fw-regular;
+  margin: 0 0 $space-3;
+}
+.guaranteeText { font-size: $fs-sm; line-height: 1.8; color: rgba(10,10,10,0.7); }

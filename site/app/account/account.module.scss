@@ -1,0 +1,857 @@
+// ==============================================
+// DASHBOARD UTILISATEUR - Styles
+// ==============================================
+
+@use '../styles/_variables' as *;
+
+// ==============================================
+// LAYOUT
+// ==============================================
+
+.accountLayout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+
+  @media (max-width: calc($bp-md - 1px)) {
+    flex-direction: column;
+    height: 100dvh;
+  }
+}
+
+// ==============================================
+// MOBILE HEADER
+// ==============================================
+
+.mobileHeader {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4;
+  background: $ivory;
+  border-bottom: 1px solid rgba($black, 0.08);
+  flex-shrink: 0;
+}
+
+.burgerBtn {
+  color: $black !important;
+}
+
+.mobileTitle {
+  font-size: $fs-lg !important;
+  font-weight: $fw-semibold !important;
+  color: $black;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-4 $space-6;
+  border-bottom: 1px solid rgba($black, 0.08);
+}
+
+// ==============================================
+// SIDEBAR
+// ==============================================
+
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  height: 100%;
+}
+
+.sidebarCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-right: 1px solid rgba($black, 0.08);
+  border-radius: 0 !important;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-6;
+  background: $black;
+  color: $ivory;
+  flex-shrink: 0;
+}
+
+.userAvatar {
+  width: 48px !important;
+  height: 48px !important;
+  border: 2px solid rgba($ivory, 0.3);
+  font-size: $fs-lg !important;
+  font-weight: $fw-bold !important;
+}
+
+.userName {
+  font-size: $fs-base !important;
+  font-weight: $fw-semibold !important;
+  color: $ivory;
+}
+
+.userEmail {
+  font-size: $fs-xs !important;
+  color: rgba($ivory, 0.6);
+}
+
+.navBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.navLinks {
+  flex: 1;
+  overflow-y: auto;
+  padding: $space-2 0;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($black, 0.1);
+    border-radius: 2px;
+  }
+}
+
+.navFooter {
+  flex-shrink: 0;
+  padding-bottom: $space-2;
+}
+
+.navItem {
+  padding: $space-3 $space-6 !important;
+  margin: 2px $space-3 !important;
+  border-radius: 4px !important;
+  transition: all $transition-fast !important;
+
+  &:hover {
+    background: rgba($black, 0.04) !important;
+  }
+
+  &.active {
+    background: rgba($gold, 0.1) !important;
+
+    .navIcon {
+      color: $gold;
+    }
+
+    .navLabel {
+      color: $gold;
+      font-weight: $fw-semibold;
+    }
+  }
+}
+
+.navIcon {
+  min-width: 36px !important;
+  color: rgba($black, 0.45);
+}
+
+.navLabel {
+  font-size: 14px !important;
+  color: $black;
+}
+
+.navBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 $space-1;
+  background: $gold;
+  color: $black;
+  font-size: 11px;
+  font-weight: $fw-bold;
+  border-radius: 99px;
+}
+
+.logoutItem {
+  color: #dc2626 !important;
+
+  .navIcon {
+    color: #dc2626 !important;
+  }
+}
+
+// ==============================================
+// MAIN CONTENT
+// ==============================================
+
+.mainContent {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding: $space-6;
+  background: $ivory;
+
+  @media (max-width: calc($bp-md - 1px)) {
+    padding: $space-3;
+  }
+
+  @media (max-width: 639px) {
+    &::after {
+      content: '';
+      display: block;
+      height: 80px;
+      width: 100%;
+    }
+  }
+}
+
+.mainContentMobile {
+  padding-bottom: 80px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-6;
+  flex-wrap: wrap;
+  gap: $space-4;
+}
+
+.pageTitle {
+  h1 {
+    font-size: $fs-2xl !important;
+    font-weight: $fw-bold !important;
+    color: $black;
+    margin-bottom: $space-1 !important;
+    font-family: $font-display;
+  }
+
+  p {
+    font-size: $fs-sm !important;
+    color: rgba($black, 0.5);
+    margin: 0;
+  }
+}
+
+.pageActions {
+  display: flex;
+  gap: $space-3;
+}
+
+.primaryButton {
+  background: $black !important;
+  text-transform: none !important;
+  font-weight: $fw-semibold !important;
+  border-radius: 0 !important;
+  padding: $space-3 $space-6 !important;
+
+  &:hover {
+    background: $gold !important;
+  }
+}
+
+.outlineButton {
+  border-color: rgba($black, 0.2) !important;
+  color: $black !important;
+  text-transform: none !important;
+  font-weight: $fw-medium !important;
+  border-radius: 0 !important;
+  padding: $space-3 $space-6 !important;
+}
+
+// ==============================================
+// STATS CARDS
+// ==============================================
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-4;
+  margin-bottom: $space-8;
+
+  @media (max-width: calc($bp-lg - 1px)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: calc($bp-md - 1px)) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-3;
+  }
+}
+
+.statCard {
+  background: white;
+  border-radius: 4px;
+  border: 1px solid rgba($black, 0.08);
+  padding: $space-6;
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+
+  @media (max-width: calc($bp-md - 1px)) {
+    padding: $space-4;
+    gap: $space-3;
+  }
+}
+
+.statIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  flex-shrink: 0;
+
+  @media (max-width: calc($bp-md - 1px)) {
+    width: 36px;
+    height: 36px;
+  }
+
+  &[data-color="primary"] {
+    background: rgba($gold, 0.12);
+    color: $gold;
+  }
+
+  &[data-color="success"] {
+    background: rgba(#16a34a, 0.1);
+    color: #16a34a;
+  }
+
+  &[data-color="warning"] {
+    background: rgba(#d97706, 0.1);
+    color: #d97706;
+  }
+
+  &[data-color="info"] {
+    background: rgba(#3b82f6, 0.1);
+    color: #3b82f6;
+  }
+
+  &[data-color="error"] {
+    background: rgba(#dc2626, 0.1);
+    color: #dc2626;
+  }
+}
+
+.statValue {
+  font-size: $fs-xl !important;
+  font-weight: $fw-bold !important;
+  color: $black;
+}
+
+.statLabel {
+  font-size: $fs-xs !important;
+  color: rgba($black, 0.5);
+}
+
+// ==============================================
+// TABLES & CARDS COMMUNS
+// ==============================================
+
+.card {
+  border-radius: 4px !important;
+  border: 1px solid rgba($black, 0.08);
+  overflow: hidden;
+
+  &:not(:last-child) {
+    margin-bottom: $space-6;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-6;
+  border-bottom: 1px solid rgba($black, 0.08);
+}
+
+.cardTitle {
+  font-size: $fs-lg !important;
+  font-weight: $fw-semibold !important;
+  color: $black;
+}
+
+.orderNumber {
+  font-size: $fs-sm !important;
+  font-weight: $fw-semibold !important;
+  color: $gold;
+  font-family: 'Courier New', monospace;
+}
+
+.orderDate {
+  font-size: $fs-xs !important;
+  color: rgba($black, 0.45);
+}
+
+.cellPrimary {
+  font-size: $fs-sm !important;
+  font-weight: $fw-medium !important;
+  color: $black;
+}
+
+.cellSecondary {
+  font-size: $fs-xs !important;
+  color: rgba($black, 0.45);
+}
+
+.cellBold {
+  font-size: $fs-sm !important;
+  font-weight: $fw-semibold !important;
+  color: $black;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-20 $space-8;
+  text-align: center;
+  color: rgba($black, 0.45);
+
+  svg {
+    opacity: 0.3;
+    margin-bottom: $space-4;
+  }
+}
+
+// ==============================================
+// DASHBOARD PAGE
+// ==============================================
+
+.activityList {
+  padding: $space-4 $space-6;
+}
+
+.activityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-4;
+  padding: $space-4 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba($black, 0.06);
+  }
+}
+
+.activityIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &[data-type="order"] {
+    background: rgba($gold, 0.12);
+    color: $gold;
+  }
+
+  &[data-type="review"] {
+    background: rgba(#d97706, 0.1);
+    color: #d97706;
+  }
+
+  &[data-type="wishlist"] {
+    background: rgba(#dc2626, 0.1);
+    color: #dc2626;
+  }
+
+  &[data-type="delivery"] {
+    background: rgba(#16a34a, 0.1);
+    color: #16a34a;
+  }
+}
+
+.activityText {
+  font-size: $fs-sm !important;
+  color: $black;
+}
+
+.activityTime {
+  font-size: $fs-xs !important;
+  color: rgba($black, 0.45);
+}
+
+// ==============================================
+// ADDRESSES PAGE
+// ==============================================
+
+.addressesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $space-4;
+
+  @media (max-width: calc($bp-md - 1px)) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.addressCard {
+  border: 1px solid rgba($black, 0.08);
+  border-radius: 4px;
+  padding: $space-6;
+  position: relative;
+  transition: box-shadow $transition-fast;
+  background: white;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba($black, 0.1);
+  }
+
+  &.defaultAddress {
+    border-color: $gold;
+    border-width: 2px;
+  }
+}
+
+.addressName {
+  font-size: $fs-base !important;
+  font-weight: $fw-semibold !important;
+  color: $black;
+  margin-bottom: $space-3 !important;
+}
+
+.addressLine {
+  font-size: $fs-sm !important;
+  color: rgba($black, 0.55);
+  line-height: 1.7;
+}
+
+.addressActions {
+  display: flex;
+  gap: $space-3;
+  margin-top: $space-4;
+}
+
+.addAddressCard {
+  border: 2px dashed rgba($black, 0.2);
+  border-radius: 4px;
+  padding: $space-6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: $space-3;
+  cursor: pointer;
+  transition: all $transition-fast;
+  min-height: 200px;
+
+  &:hover {
+    border-color: $gold;
+    background: rgba($gold, 0.03);
+  }
+}
+
+// ==============================================
+// WISHLIST PAGE
+// ==============================================
+
+.wishlistGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: $space-4;
+
+  @media (max-width: calc($bp-lg - 1px)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: calc($bp-md - 1px)) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-3;
+  }
+}
+
+.wishlistCard {
+  border: 1px solid rgba($black, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow $transition-fast;
+  background: white;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba($black, 0.1);
+  }
+}
+
+.wishlistImage {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background: $ivory;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba($black, 0.3);
+  overflow: hidden;
+
+  @media (max-width: calc($bp-md - 1px)) {
+    height: 130px;
+  }
+}
+
+.wishlistInfo {
+  padding: $space-4;
+}
+
+.wishlistName {
+  font-size: $fs-sm !important;
+  font-weight: $fw-semibold !important;
+  color: $black;
+  margin-bottom: $space-1 !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wishlistPrice {
+  font-size: $fs-lg !important;
+  font-weight: $fw-bold !important;
+  color: $gold;
+}
+
+.wishlistActions {
+  display: flex;
+  gap: $space-3;
+  padding: 0 $space-4 $space-4;
+}
+
+// ==============================================
+// PROFILE & SECURITY
+// ==============================================
+
+.formSection {
+  margin-bottom: $space-8;
+}
+
+.sectionTitle {
+  font-size: $fs-lg !important;
+  font-weight: $fw-semibold !important;
+  color: $black;
+  margin-bottom: $space-6 !important;
+}
+
+.avatarSection {
+  display: flex;
+  align-items: center;
+  gap: $space-6;
+  margin-bottom: $space-8;
+
+  @media (max-width: calc($bp-md - 1px)) {
+    flex-wrap: wrap;
+  }
+}
+
+.profileAvatar {
+  width: 100px !important;
+  height: 100px !important;
+  background: $black !important;
+  font-size: $fs-2xl !important;
+  font-weight: $fw-bold !important;
+}
+
+// ==============================================
+// REVIEWS PAGE
+// ==============================================
+
+.reviewCard {
+  border: 1px solid rgba($black, 0.08);
+  border-radius: 4px;
+  padding: $space-6;
+  background: white;
+
+  &:not(:last-child) {
+    margin-bottom: $space-4;
+  }
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-3;
+
+  @media (max-width: calc($bp-md - 1px)) {
+    flex-wrap: wrap;
+    gap: $space-3;
+  }
+}
+
+.reviewProduct {
+  font-size: $fs-sm !important;
+  font-weight: $fw-semibold !important;
+  color: $black;
+}
+
+.reviewComment {
+  font-size: $fs-sm !important;
+  color: rgba($black, 0.55);
+  line-height: 1.7;
+  margin-top: $space-3;
+}
+
+// ==============================================
+// BOTTOM NAVIGATION — mobile phone only
+// ==============================================
+
+.bottomNav {
+  display: none;
+
+  @media (max-width: 639px) {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1200;
+    background: $ivory;
+    border-top: 1px solid rgba($black, 0.08);
+    height: 64px;
+    box-shadow: 0 -4px 16px rgba($black, 0.06);
+  }
+}
+
+.bottomNavItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
+  color: rgba($black, 0.4);
+  font-size: 10px;
+  font-weight: $fw-medium;
+  transition: color $transition-fast;
+  padding: $space-2;
+  position: relative;
+  background: none;
+  border: none;
+  outline: none;
+
+  &:hover {
+    color: $black;
+  }
+}
+
+.bottomNavActive {
+  color: $gold !important;
+}
+
+.bottomNavIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bottomNavBadge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  min-width: 16px;
+  height: 16px;
+  background: $gold;
+  color: $black;
+  font-size: 9px;
+  font-weight: $fw-bold;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+// ==============================================
+// TABLE WRAPPER
+// ==============================================
+
+.tableWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @media (max-width: calc($bp-md - 1px)) {
+    display: none;
+  }
+}
+
+// ==============================================
+// MOBILE CARD LIST
+// ==============================================
+
+.mobileCardList {
+  display: none;
+
+  @media (max-width: calc($bp-md - 1px)) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.mobileCard {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4 $space-6;
+  border-bottom: 1px solid rgba($black, 0.06);
+  cursor: pointer;
+  background: white;
+
+  &:hover {
+    background: $ivory;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.mobileCardIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mobileCardInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.mobileCardTitle {
+  font-size: $fs-sm !important;
+  font-weight: $fw-semibold !important;
+  color: $black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobileCardSub {
+  font-size: $fs-xs !important;
+  color: rgba($black, 0.45);
+}
+
+.mobileCardRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.mobileCardAmount {
+  font-size: $fs-sm !important;
+  font-weight: $fw-semibold !important;
+  color: $black;
+}

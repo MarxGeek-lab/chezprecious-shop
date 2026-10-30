@@ -1,0 +1,76 @@
+@use '../../../styles/_variables' as *;
+
+.section {
+  background-color: $black;
+  padding: $space-24 $space-8;
+  text-align: center;
+}
+
+.inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-8;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-4;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: $gold;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background-color: $gold;
+  }
+}
+
+.statement {
+  font-family: $font-display;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-weight: $fw-bold;
+  color: $ivory;
+  line-height: 1.25;
+
+  em {
+    font-style: italic;
+    color: $gold;
+  }
+}
+
+.sub {
+  font-size: $fs-base;
+  color: rgba(244, 241, 236, 0.5);
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4 $space-10;
+  border: 1.5px solid rgba(244, 241, 236, 0.3);
+  color: $ivory;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: $space-4;
+  transition: border-color $transition-base, background-color $transition-base;
+
+  &:hover {
+    border-color: $gold;
+    background-color: rgba(200, 162, 74, 0.08);
+  }
+}

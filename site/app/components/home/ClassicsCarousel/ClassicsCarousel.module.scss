@@ -1,0 +1,271 @@
+@use '../../../styles/_variables' as *;
+
+/* ── Section ── */
+.section {
+  background: $black;
+  padding: $space-20 0;
+  overflow: hidden;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 $space-8;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: $space-10;
+  gap: $space-6;
+}
+
+.eyebrow {
+  display: block;
+  font-size: 10px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-3;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: $fw-regular;
+  color: $ivory;
+  margin: 0 0 $space-2;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: $fs-sm;
+  color: rgba(244, 241, 236, 0.55);
+}
+
+/* ── Controls ── */
+.controls {
+  display: flex;
+  gap: $space-3;
+  flex-shrink: 0;
+}
+
+.ctrlBtn {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(244, 241, 236, 0.2);
+  background: transparent;
+  color: $ivory;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background $transition-fast, border-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: $gold;
+    border-color: $gold;
+    color: $black;
+  }
+}
+
+/* ── Track ── */
+.trackWrap {
+  position: relative;
+  // Fade edges
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, $black, transparent);
+  }
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, $black, transparent);
+  }
+}
+
+.track {
+  display: flex;
+  gap: $space-6;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+  padding: $space-4 $space-6;
+}
+
+/* ── Slide ── */
+.slide {
+  flex: 0 0 280px;
+  scroll-snap-align: center;
+  opacity: 0.55;
+  transform: scale(0.94);
+  transition: opacity $transition-slow, transform $transition-slow;
+  cursor: pointer;
+
+  @media (max-width: $bp-sm) { flex: 0 0 240px; }
+}
+
+.slideActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Card ── */
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.imgWrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1.5px solid rgba(244, 241, 236, 0.12);
+  transition: border-color $transition-base;
+
+  .card:hover & { border-color: $gold; }
+}
+
+.img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  .card:hover & { transform: scale(1.04); }
+}
+
+/* ── Wish button ── */
+.wishBtn {
+  position: absolute;
+  top: $space-3;
+  right: $space-3;
+  width: 32px;
+  height: 32px;
+  background: rgba(10, 10, 10, 0.6);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  color: $ivory;
+  cursor: pointer;
+  opacity: 1;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover { background: $gold; color: $black; }
+}
+
+.wishBtnActive {
+  background: $gold;
+  color: $black;
+  &:hover { background: #c0392b; color: $ivory; }
+}
+
+/* ── Cart button ── */
+.cartBtn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-3;
+  background: $gold;
+  color: $black;
+  border: none;
+  font-family: $font-primary;
+  font-size: 10px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity $transition-base, transform $transition-base;
+  z-index: 2;
+
+  .card:hover & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:hover { background: $ivory; }
+}
+
+/* ── Info ── */
+.info {
+  padding: $space-3 0 0;
+  text-align: center;
+}
+
+.name {
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  color: $ivory;
+  margin-bottom: $space-1;
+}
+
+.price {
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: $gold;
+}
+
+/* ── Dots ── */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: $space-2;
+  margin-top: $space-8;
+}
+
+.dot {
+  width: 24px;
+  height: 2px;
+  background: rgba(244, 241, 236, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: background $transition-fast, width $transition-fast;
+}
+
+.dotActive {
+  background: $gold;
+  width: 40px;
+}
+
+/* ── Skeleton ── */
+.skeletonRow {
+  display: flex;
+  gap: $space-6;
+  overflow: hidden;
+}
+
+.skeleton {
+  flex: 0 0 280px;
+  aspect-ratio: 3 / 4;
+  background: rgba(244, 241, 236, 0.06);
+  animation: shimmer 1.6s infinite;
+}
+
+@keyframes shimmer {
+  0%   { opacity: 0.4; }
+  50%  { opacity: 0.8; }
+  100% { opacity: 0.4; }
+}

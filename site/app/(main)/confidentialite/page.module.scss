@@ -1,0 +1,93 @@
+@use '../../styles/_variables' as *;
+
+.main { background: $ivory; min-height: 100vh; }
+
+.hero {
+  background: $black;
+  color: $ivory;
+  padding: 8rem $space-8 $space-16;
+  text-align: center;
+}
+.eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-4;
+}
+.heroTitle {
+  font-family: $font-display;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: $fw-regular;
+  margin: 0 0 $space-3;
+}
+.heroDate {
+  font-size: $fs-sm;
+  opacity: 0.5;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $space-16 $space-8 $space-24;
+  display: flex;
+  flex-direction: column;
+  gap: $space-10;
+}
+
+.section {
+  border-top: 1px solid rgba(10,10,10,0.1);
+  padding-top: $space-8;
+  &:first-child { border-top: none; padding-top: 0; }
+}
+
+.h2 {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: $fw-regular;
+  margin: 0 0 $space-5;
+  color: $black;
+}
+
+.para {
+  font-size: $fs-sm;
+  line-height: 1.9;
+  color: rgba(10,10,10,0.72);
+  margin-bottom: $space-4;
+  &:last-child { margin-bottom: 0; }
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: $space-4 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.listItem {
+  font-size: $fs-sm;
+  line-height: 1.7;
+  color: rgba(10,10,10,0.72);
+  padding-left: $space-5;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 1.5px;
+    background: $gold;
+  }
+}
+
+.link {
+  color: $gold;
+  text-decoration: underline;
+  &:hover { color: $black; }
+}

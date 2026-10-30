@@ -1,0 +1,207 @@
+// ==============================================
+// SIDEBAR - Admin Dashboard
+// ==============================================
+
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: $sidebar-width;
+  background: $bg-sidebar;
+  color: $text-sidebar;
+  z-index: $z-sidebar;
+  display: flex;
+  flex-direction: column;
+  transition: width $transition-medium;
+  overflow: hidden;
+
+  @include max-width($breakpoint-lg) {
+    transform: translateX(-100%);
+    &.open { transform: translateX(0); }
+  }
+}
+
+.overlay {
+  display: none;
+  @include max-width($breakpoint-lg) {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: $z-sidebar - 1;
+  }
+}
+
+// Logo
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: 0 $spacing-lg;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  min-height: $header-height;
+}
+
+.logoIcon {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: linear-gradient(135deg, $primary, $primary-light);
+  color: $text-white;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-md;
+}
+
+.logoText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+
+  span { color: $primary-light; }
+}
+
+// Navigation
+.nav {
+  flex: 1;
+  padding: $spacing-md 0;
+  overflow-y: auto;
+  @include custom-scrollbar;
+}
+
+.navSection {
+  margin-bottom: $spacing-md;
+}
+
+.navSectionTitle {
+  padding: $spacing-sm $spacing-lg;
+  font-size: 11px;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(148, 163, 184, 0.5);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: 10px $spacing-lg;
+  margin: 2px $spacing-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $text-sidebar;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all $transition-fast;
+  text-decoration: none;
+  position: relative;
+
+  &:hover {
+    background: $bg-sidebar-hover;
+    color: $text-white;
+  }
+
+  &.active {
+    background: $bg-sidebar-active;
+    color: $text-sidebar-active;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 24px;
+      background: $primary;
+      border-radius: 0 $radius-sm $radius-sm 0;
+    }
+  }
+}
+
+.navSubItem {
+  padding-left: calc(#{$spacing-lg} + 28px); // indentation par rapport aux items parent
+  font-size: 13px;
+  margin-top: 1px;
+  opacity: 0.85;
+
+  &:hover { opacity: 1; }
+  &.active { opacity: 1; }
+}
+
+.navIcon {
+  @include flex-center;
+  width: 20px;
+  min-width: 20px;
+}
+
+.navBadge {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-full;
+}
+
+.navBadgeOrange {
+  background: rgba($primary, 0.2);
+  color: $primary-light;
+}
+
+.navBadgeRed {
+  background: rgba($error, 0.2);
+  color: $error;
+}
+
+.navBadgeGreen {
+  background: rgba($success, 0.2);
+  color: $success;
+}
+
+// Footer
+.sidebarFooter {
+  padding: $spacing-md $spacing-lg;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-sm;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $bg-sidebar-hover;
+  }
+}
+
+.userInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.userName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $text-white;
+  @include truncate;
+}
+
+.userRole {
+  font-size: 11px;
+  color: $primary-light;
+}

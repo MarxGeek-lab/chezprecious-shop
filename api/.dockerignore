@@ -1,0 +1,8 @@
+node_modules
+build
+tmp
+Dockerfile
+.dockerignore
+.env*
+public/uploads
+npm-debug.log*

@@ -1,0 +1,240 @@
+@use '../../../styles/_variables' as *;
+
+.section {
+  padding: $space-20 0;
+  background-color: $black;
+  color: $ivory;
+  overflow: hidden;
+}
+
+.skeleton {
+  height: 320px;
+  background: rgba(255,255,255,0.05);
+  margin: 0 $space-8;
+}
+
+// ── Header ────────────────────────────────────────────────────────────────────
+
+.header {
+  text-align: center;
+  padding: 0 $space-8;
+  margin-bottom: $space-12;
+}
+
+.overline {
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-2;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: $fs-4xl;
+  font-weight: $fw-semibold;
+  color: $ivory;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: $space-4;
+
+  @media (max-width: $bp-md) { font-size: $fs-3xl; }
+}
+
+.globalStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: $gold;
+}
+
+.avgScore {
+  font-size: $fs-lg;
+  font-weight: $fw-semibold;
+  color: $ivory;
+}
+
+.totalCount {
+  font-size: $fs-sm;
+  color: rgba(244, 241, 236, 0.5);
+}
+
+// ── Carousel infini ───────────────────────────────────────────────────────────
+
+.carouselWrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+// Masques fondu sur les bords
+.fadeLeft,
+.fadeRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+
+  @media (max-width: $bp-md) { width: 40px; }
+}
+
+.fadeLeft  { left: 0;  background: linear-gradient(to right, $black, transparent); }
+.fadeRight { right: 0; background: linear-gradient(to left,  $black, transparent); }
+
+.track {
+  display: flex;
+  gap: $space-6;
+  width: max-content;
+  animation: scrollLeft 30s linear infinite;
+
+  &:hover { animation-play-state: paused; }
+}
+
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.slide {
+  width: 340px;
+  flex-shrink: 0;
+
+  @media (max-width: $bp-md) { width: 280px; }
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+
+.card {
+  border: 1px solid rgba(244, 241, 236, 0.12);
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  background: rgba(255,255,255,0.03);
+  height: 100%;
+  transition: border-color $transition-base;
+
+  &:hover { border-color: rgba(200, 162, 74, 0.35); }
+}
+
+.quoteIcon {
+  color: $gold;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-family: $font-display;
+  font-size: $fs-lg;
+  font-weight: $fw-semibold;
+  color: $ivory;
+  line-height: 1.3;
+}
+
+.cardContent {
+  font-size: $fs-sm;
+  color: rgba(244, 241, 236, 0.72);
+  line-height: 1.75;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  border-top: 1px solid rgba(244, 241, 236, 0.1);
+  padding-top: $space-4;
+  margin-top: auto;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: $gold;
+  color: $black;
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.authorInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.authorName {
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: $ivory;
+}
+
+.productLink {
+  font-size: $fs-xs;
+  color: $gold;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color $transition-fast;
+
+  &:hover { color: $gold-light; }
+}
+
+.date {
+  font-size: $fs-xs;
+  color: rgba(244, 241, 236, 0.4);
+}
+
+.verified {
+  flex-shrink: 0;
+  font-size: 9px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2a7a3b;
+  background: rgba(42, 122, 59, 0.15);
+  padding: 3px 8px;
+}
+
+// ── CTA ───────────────────────────────────────────────────────────────────────
+
+.cta {
+  text-align: center;
+  margin-top: $space-12;
+}
+
+.ctaLink {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1.5px solid $gold;
+  color: $gold;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: $font-primary;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover { background: $gold; color: $black; }
+}

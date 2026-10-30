@@ -1,0 +1,41 @@
+// ==============================================
+// ADMIN LAYOUT
+// ==============================================
+
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+
+.layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1;
+  margin-left: $sidebar-width;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left $transition-medium;
+  @include custom-scrollbar;
+
+  @include max-width($breakpoint-lg) {
+    margin-left: 0;
+  }
+}
+
+.content {
+  flex: 1;
+  padding: $spacing-xl;
+
+  @include max-width($breakpoint-md) {
+    padding: $spacing-md;
+  }
+
+  @include max-width($breakpoint-sm) {
+    padding: $spacing-sm;
+  }
+}

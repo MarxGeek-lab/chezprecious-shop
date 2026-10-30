@@ -1,0 +1,85 @@
+# Chez Precious — site, admin, API et base de données.
+#
+# Les services ne sont publiés que sur 127.0.0.1 ; nginx (sur l'hôte) fait
+# le reverse proxy HTTPS :
+#   chezprecious.com        -> 127.0.0.1:9010 (site)
+#   api.chezprecious.com    -> 127.0.0.1:9011 (api)
+#   admin.chezprecious.com  -> 127.0.0.1:9012 (admin)
+#
+# Les secrets sont dans .env (racine) et api/.env.production — voir les
+# fichiers .example correspondants.
+
+name: chezprecious
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: chezprecious
+      POSTGRES_DB: chezprecious
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD manquant dans .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chezprecious -d chezprecious"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: ./api
+    image: chezprecious-api
+    restart: unless-stopped
+    env_file: ./api/.env.production
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3333
+      DATABASE_URL: postgresql://chezprecious:${POSTGRES_PASSWORD}@db:5432/chezprecious
+      DB_SSL: "false"
+      # Connexion Lucid (non utilisée par Prisma, mais lue par config/database.ts)
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: chezprecious
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_DATABASE: chezprecious
+    volumes:
+      - uploads:/app/public/uploads
+    ports:
+      - "127.0.0.1:9011:3333"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  site:
+    build:
+      context: ./site
+      args:
+        API_BACKEND_URL: http://api:3333
+    image: chezprecious-site
+    restart: unless-stopped
+    environment:
+      API_BACKEND_URL: http://api:3333
+    ports:
+      - "127.0.0.1:9010:3000"
+    depends_on:
+      - api
+
+  admin:
+    build:
+      context: ./admin
+      args:
+        API_BACKEND_URL: http://api:3333
+    image: chezprecious-admin
+    restart: unless-stopped
+    environment:
+      API_BACKEND_URL: http://api:3333
+    ports:
+      - "127.0.0.1:9012:3000"
+    depends_on:
+      - api
+
+volumes:
+  pgdata:
+  uploads:

@@ -1,0 +1,494 @@
+// ==============================================
+// ANALYTICS PAGE
+// ==============================================
+
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+
+// ─── Filter bar ────────────────────────────────
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+  padding: $spacing-md $spacing-lg;
+  @include admin-card;
+  flex-wrap: wrap;
+
+  @include max-width($breakpoint-sm) {
+    flex-direction: column;
+    align-items: stretch;
+    padding: $spacing-md;
+  }
+}
+
+.filterLeft {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+
+  @include max-width($breakpoint-sm) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.filterPresets {
+  display: flex;
+  background: $bg-body;
+  border-radius: $radius-md;
+  padding: 3px;
+  gap: 2px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @include max-width($breakpoint-sm) {
+    justify-content: flex-start;
+  }
+}
+
+.filterBtn {
+  padding: 6px 14px;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  border: none;
+  background: transparent;
+  color: $text-secondary;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: all $transition-fast;
+  white-space: nowrap;
+
+  &.active {
+    background: $primary;
+    color: $text-white;
+    box-shadow: $shadow-sm;
+  }
+
+  &:hover:not(.active) {
+    background: $bg-card;
+    color: $text-primary;
+  }
+}
+
+.filterDivider {
+  width: 1px;
+  height: 24px;
+  background: $border-light;
+  flex-shrink: 0;
+}
+
+.filterDateGroup {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+
+  @include max-width($breakpoint-sm) {
+    > input { width: 100%; }
+  }
+}
+
+.filterDateLabel {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+}
+
+.filterDateInput {
+  padding: 6px 10px;
+  font-size: $font-size-xs;
+  border: 1px solid $border-medium;
+  border-radius: $radius-sm;
+  background: $bg-card;
+  color: $text-primary;
+  cursor: pointer;
+  transition: border-color $transition-fast;
+  outline: none;
+
+  &:hover, &:focus {
+    border-color: $primary;
+  }
+}
+
+.filterRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.filterPeriodBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: rgba($primary, 0.08);
+  color: $primary;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  white-space: nowrap;
+}
+
+// Overview cards
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+
+  @include max-width($breakpoint-xl) { grid-template-columns: repeat(3, 1fr); }
+  @include max-width($breakpoint-md) { grid-template-columns: repeat(2, 1fr); }
+  @include max-width($breakpoint-sm) { grid-template-columns: 1fr; }
+}
+
+.overviewCard {
+  @include admin-card;
+  padding: $spacing-lg;
+  transition: all $transition-fast;
+
+  &:hover { box-shadow: $shadow-md; transform: translateY(-2px); }
+}
+
+.overviewHeader {
+  @include flex-between;
+  margin-bottom: $spacing-sm;
+}
+
+.overviewLabel {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.overviewIcon {
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-md;
+}
+
+.overviewValue {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  margin-bottom: 4px;
+}
+
+.overviewTrend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+}
+
+.trendUp { color: $success; }
+.trendDown { color: $error; }
+
+.overviewSub {
+  font-size: 11px;
+  color: $text-light;
+  margin-left: $spacing-xs;
+}
+
+// Charts
+.chartsRow {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+
+  @include max-width($breakpoint-lg) { grid-template-columns: 1fr; }
+}
+
+.card {
+  @include admin-card;
+  padding: $spacing-lg;
+}
+
+.cardHeader {
+  @include flex-between;
+  margin-bottom: $spacing-lg;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.cardTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.cardSubtitle {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+}
+
+.chartContainer {
+  height: 320px;
+}
+
+.chartContainerSm {
+  height: 260px;
+}
+
+// Tabs
+.tabGroup {
+  display: flex;
+  background: $bg-body;
+  border-radius: $radius-md;
+  padding: 3px;
+}
+
+.tabBtn {
+  padding: 6px 14px;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  border: none;
+  background: transparent;
+  color: $text-secondary;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &.active {
+    background: $bg-card;
+    color: $text-primary;
+    box-shadow: $shadow-sm;
+  }
+}
+
+// Map / Countries
+.countriesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+
+  @include max-width($breakpoint-lg) { grid-template-columns: 1fr; }
+}
+
+.countryItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-sm 0;
+  border-bottom: 1px solid $border-light;
+
+  &:last-child { border-bottom: none; }
+}
+
+.countryFlag {
+  font-size: 24px;
+  width: 32px;
+  text-align: center;
+}
+
+.countryInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.countryName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.countryBar {
+  height: 6px;
+  background: $bg-body;
+  border-radius: $radius-full;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.countryBarFill {
+  height: 100%;
+  border-radius: $radius-full;
+  background: linear-gradient(90deg, $primary, $primary-light);
+  transition: width $transition-medium;
+}
+
+.countryValue {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  white-space: nowrap;
+}
+
+.countryPercent {
+  font-size: 11px;
+  color: $text-secondary;
+  white-space: nowrap;
+}
+
+// Metrics grid
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+
+  @include max-width($breakpoint-lg) { grid-template-columns: repeat(2, 1fr); }
+  @include max-width($breakpoint-sm) { grid-template-columns: 1fr; }
+}
+
+// Sources / Devices
+.sourceItem {
+  @include flex-between;
+  padding: 10px 0;
+  border-bottom: 1px solid $border-light;
+
+  &:last-child { border-bottom: none; }
+}
+
+.sourceLeft {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.sourceIcon {
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: $radius-md;
+}
+
+.sourceName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.sourceVisits {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+}
+
+.sourcePercent {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+}
+
+// Device bar
+.deviceBar {
+  display: flex;
+  height: 12px;
+  border-radius: $radius-full;
+  overflow: hidden;
+  margin: $spacing-lg 0 $spacing-md;
+}
+
+.deviceSegment {
+  height: 100%;
+  transition: width $transition-medium;
+}
+
+.deviceLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-lg;
+}
+
+.deviceLegendItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.deviceDot {
+  width: 10px;
+  height: 10px;
+  border-radius: $radius-full;
+}
+
+.deviceLabel {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+}
+
+.deviceValue {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+}
+
+// Pages populaires
+.pageItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: 10px 0;
+  border-bottom: 1px solid $border-light;
+
+  &:last-child { border-bottom: none; }
+}
+
+.pageRank {
+  @include flex-center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: $radius-full;
+  background: $bg-body;
+  font-size: 11px;
+  font-weight: $font-weight-bold;
+  color: $text-secondary;
+}
+
+.pageUrl {
+  flex: 1;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $primary;
+  @include truncate;
+}
+
+.pageViews {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  white-space: nowrap;
+}
+
+// Real-time
+.realtime {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.realtimeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  background: $success;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba($success, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba($success, 0); }
+}
+
+.realtimeValue {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+}
+
+.realtimeLabel {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+}

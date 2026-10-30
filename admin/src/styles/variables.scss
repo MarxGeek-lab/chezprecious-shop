@@ -1,0 +1,113 @@
+// ==============================================
+// VARIABLES SCSS - Admin Dashboard Theme
+// ==============================================
+
+// Couleur primaire (même que le site pour cohérence)
+$primary: #C8A24A;
+$primary-light: #C8A24A;
+$primary-lighter: #FFA54D;
+$primary-dark: #A34800;
+$primary-darker: #7A3600;
+
+// Couleurs secondaires
+$secondary: #1A1A2E;
+$secondary-light: #2D2D44;
+$secondary-dark: #0F0F1A;
+
+// Couleurs de fond admin
+$bg-body: #F4F1EC;
+$bg-sidebar: #0F172A;
+$bg-sidebar-hover: #1E293B;
+$bg-sidebar-active: rgba($primary, 0.15);
+$bg-card: #FFFFFF;
+$bg-gray: #F5F5F7;
+$bg-dark: #1A1A2E;
+
+// Couleurs de texte
+$text-primary: #1A1A2E;
+$text-secondary: #6B7280;
+$text-light: #9CA3AF;
+$text-white: #FFFFFF;
+$text-sidebar: #94A3B8;
+$text-sidebar-active: $primary-light;
+
+// Couleurs d'état
+$success: #10B981;
+$success-bg: #ECFDF5;
+$warning: #F59E0B;
+$warning-bg: #FFFBEB;
+$error: #EF4444;
+$error-bg: #FEF2F2;
+$info: #3B82F6;
+$info-bg: #EFF6FF;
+
+// Couleurs de bordure
+$border-light: #E5E7EB;
+$border-medium: #D1D5DB;
+$border-dark: #374151;
+
+// Ombres
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// Breakpoints
+$breakpoint-xs: 480px;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// Espacements
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+$spacing-3xl: 4rem;
+
+// Sidebar
+$sidebar-width: 280px;
+$sidebar-collapsed-width: 80px;
+$header-height: 64px;
+
+// Typographie
+$font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 1.875rem;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+
+// Border radius
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 0.75rem;
+$radius-xl: 1rem;
+$radius-full: 9999px;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-normal: 250ms ease;
+$transition-medium: 300ms ease;
+
+// Z-index
+$z-sidebar: 100;
+$z-header: 200;
+$z-dropdown: 300;
+$z-modal-backdrop: 400;
+$z-modal: 500;

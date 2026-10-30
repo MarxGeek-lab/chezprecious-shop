@@ -1,0 +1,667 @@
+@use '../../styles/_variables' as *;
+
+/* ── Layout général ── */
+.main {
+  min-height: 100vh;
+  background-color: $ivory;
+  padding-top: calc(64px + 30px); /* navbar + announcement */
+}
+
+/* ── Hero page shop ── */
+.pageHeader {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background-color: $black;
+
+  @media (min-width: $bp-md) { height: 400px; }
+}
+
+.pageHeaderBg {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: 0.38;
+}
+
+.pageHeaderOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(10,10,10,0.9) 0%,
+    rgba(10,10,10,0.45) 60%,
+    rgba(10,10,10,0.2) 100%
+  );
+}
+
+.pageHeaderInner {
+  position: absolute;
+  inset: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $space-8;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: $space-10;
+  gap: $space-2;
+}
+
+.pageTitle {
+  font-family: $font-display;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: $fw-bold;
+  color: $ivory;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.pageSubtitle {
+  font-size: $fs-sm;
+  color: rgba(244, 241, 236, 0.5);
+  letter-spacing: 0.08em;
+  font-style: italic;
+}
+
+.pageCount {
+  display: inline-block;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $gold;
+  border: 1px solid rgba(200,162,74,0.4);
+  padding: 3px $space-3;
+  margin-top: $space-3;
+  width: fit-content;
+}
+
+/* ── Layout sidebar + contenu ── */
+.layout {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: $space-8;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-8;
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: 260px 1fr;
+    align-items: start;
+  }
+}
+
+/* ── Sidebar desktop ── */
+.sidebar {
+  display: none;
+
+  @media (min-width: $bp-lg) {
+    display: block;
+    max-height: auto;
+    overflow-y: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+  }
+}
+
+/* ── Panneau filtres ── */
+.filters {
+  background-color: #fff;
+  border: 1px solid rgba(10, 10, 10, 0.08);
+  overflow: hidden;
+}
+
+.filtersHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-4 $space-5;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+}
+
+.filtersTitle {
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $black;
+}
+
+.filtersHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.clearAll {
+  font-size: $fs-xs;
+  color: $gold-dark;
+  text-decoration: underline;
+  transition: color $transition-fast;
+
+  &:hover { color: $black; }
+}
+
+.filtersClose {
+  color: rgba(10, 10, 10, 0.4);
+  transition: color $transition-fast;
+  display: flex;
+  align-items: center;
+
+  &:hover { color: $black; }
+}
+
+/* ── Accordion ── */
+.accordion {
+  border-bottom: 1px solid rgba(10, 10, 10, 0.07);
+}
+
+.accordionBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-4 $space-5;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $black;
+  transition: color $transition-fast;
+
+  &:hover { color: $gold; }
+}
+
+.accordionBody {
+  padding: $space-3 $space-5 $space-5;
+}
+
+/* ── Options de filtre ── */
+.filterOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.filterPill {
+  padding: $space-2 $space-3;
+  border: 1px solid rgba(10, 10, 10, 0.18);
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  color: rgba(10, 10, 10, 0.6);
+  transition: all $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    border-color: $black;
+    color: $black;
+  }
+}
+
+.filterPillActive {
+  background-color: $black;
+  border-color: $black;
+  color: $ivory;
+}
+
+/* Catégories — hauteur limitée + scroll custom */
+.filterCheckList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: $space-2;
+
+  /* Scrollbar custom */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(10,10,10,0.18) transparent;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(10,10,10,0.18);
+    border-radius: 99px;
+
+    &:hover { background-color: $gold; }
+  }
+}
+
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  cursor: pointer;
+  font-size: $fs-sm;
+  color: rgba(10, 10, 10, 0.7);
+  transition: color $transition-fast;
+  flex-shrink: 0;
+
+  &:hover { color: $black; }
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+  accent-color: $black;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checkCount {
+  margin-left: auto;
+  font-size: $fs-xs;
+  color: rgba(10, 10, 10, 0.35);
+}
+
+/* Prix — Slider MUI */
+.priceSliderWrap {
+  padding: 0 $space-2;
+}
+
+.priceLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  color: $black;
+  margin-bottom: $space-2;
+}
+
+.clearPrice {
+  display: block;
+  font-size: $fs-xs;
+  color: $gold-dark;
+  text-decoration: underline;
+  margin-top: $space-3;
+  text-align: left;
+  transition: color $transition-fast;
+
+  &:hover { color: $black; }
+}
+
+/* ── Toolbar ── */
+.content { min-width: 0; }
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin-bottom: $space-6;
+  flex-wrap: wrap;
+}
+
+.filterToggle {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  border: 1px solid rgba(10, 10, 10, 0.18);
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  letter-spacing: 0.08em;
+  color: $black;
+  position: relative;
+  transition: border-color $transition-fast;
+
+  &:hover { border-color: $black; }
+
+  @media (min-width: $bp-lg) { display: none; }
+}
+
+.filterBadge {
+  position: absolute;
+  top: -6px; right: -6px;
+  width: 16px; height: 16px;
+  background-color: $gold;
+  color: $black;
+  font-size: 9px;
+  font-weight: $fw-bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Chips actifs */
+.activeChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  flex: 1;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  padding: 3px $space-3;
+  background-color: $black;
+  color: $ivory;
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+
+  button {
+    display: flex;
+    align-items: center;
+    color: rgba(244, 241, 236, 0.6);
+    margin-left: 2px;
+    transition: color $transition-fast;
+
+    &:hover { color: $ivory; }
+  }
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin-left: auto;
+}
+
+/* Tri */
+.sortWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sortSelect {
+  appearance: none;
+  padding: $space-2 $space-8 $space-2 $space-3;
+  border: 1px solid rgba(10, 10, 10, 0.18);
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  font-family: $font-primary;
+  color: $black;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: border-color $transition-fast;
+
+  &:focus { border-color: $black; }
+}
+
+.sortArrow {
+  position: absolute;
+  right: $space-3;
+  pointer-events: none;
+  color: rgba(10, 10, 10, 0.4);
+}
+
+/* Vue */
+.viewBtns {
+  display: flex;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+}
+
+.viewBtn {
+  width: 34px; height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(10, 10, 10, 0.35);
+  transition: color $transition-fast, background-color $transition-fast;
+
+  &:hover { color: $black; }
+}
+
+.viewBtnActive {
+  background-color: $black;
+  color: $ivory;
+}
+
+/* ── Grille produits ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-4;
+  align-items: start; /* chaque carte suit sa propre hauteur, pas la plus grande */
+
+  @media (min-width: $bp-md) { grid-template-columns: repeat(3, 1fr); }
+
+  /* Force toutes les cards à occuper la même largeur sans déborder */
+  > * {
+    min-width: 0;
+  }
+}
+
+/* ── Vue liste ── */
+.listView {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.listRow {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: $space-5;
+  align-items: center;
+  padding: $space-4;
+  background-color: #fff;
+  border: 1px solid rgba(10, 10, 10, 0.08);
+  text-decoration: none;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    border-color: $black;
+    box-shadow: 3px 3px 0 $black;
+  }
+
+  @media (min-width: $bp-md) { grid-template-columns: 160px 1fr auto; }
+}
+
+.listImg {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background-color: rgba(10,10,10,0.04);
+}
+
+.listImgEl {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $transition-slow;
+
+  .listRow:hover & { transform: scale(1.04); }
+}
+
+.listBadge {
+  position: absolute;
+  top: $space-2; left: $space-2;
+  font-size: 9px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px $space-2;
+}
+
+.badgeNew  { background-color: $black; color: $ivory; }
+.badgeSale { background-color: $gold;  color: $black; }
+
+.listBody {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.listCategory {
+  font-size: $fs-xs;
+  color: rgba(10, 10, 10, 0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.listName {
+  font-family: $font-display;
+  font-size: $fs-lg;
+  font-weight: $fw-semibold;
+  color: $black;
+  line-height: 1.3;
+}
+
+.listRating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: $gold;
+}
+
+.listRatingNum {
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  color: $black;
+  margin-left: 2px;
+}
+
+.listRatingCount {
+  font-size: $fs-xs;
+  color: rgba(10, 10, 10, 0.35);
+}
+
+.listPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: $space-1;
+  flex-shrink: 0;
+}
+
+.listPriceMain {
+  font-size: $fs-lg;
+  font-weight: $fw-bold;
+  color: $black;
+}
+
+.listPriceOld {
+  font-size: $fs-sm;
+  color: rgba(10, 10, 10, 0.35);
+  text-decoration: line-through;
+}
+
+/* ── État vide ── */
+.empty {
+  padding: $space-20 $space-8;
+  text-align: center;
+}
+
+.emptyTitle {
+  font-size: $fs-base;
+  color: rgba(10, 10, 10, 0.5);
+  margin-bottom: $space-4;
+}
+
+.emptyBtn {
+  padding: $space-3 $space-6;
+  background-color: $black;
+  color: $ivory;
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background-color $transition-fast;
+
+  &:hover { background-color: $gold; color: $black; }
+}
+
+/* ── Pagination ── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  margin-top: $space-12;
+  padding-bottom: $space-8;
+}
+
+.pageBtn {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 $space-3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(10, 10, 10, 0.15);
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  color: $black;
+  background-color: #fff;
+  transition: all $transition-fast;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background-color: $black;
+    color: $ivory;
+    border-color: $black;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.pageBtnActive {
+  background-color: $black;
+  color: $ivory;
+  border-color: $black;
+}
+
+/* ── Drawer mobile (filtres) ── */
+.drawerOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 10, 10, 0.5);
+  z-index: 290;
+
+  @media (min-width: $bp-lg) { display: none; }
+}
+
+.drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(340px, 90vw);
+  background-color: $ivory;
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+
+  @media (min-width: $bp-lg) { display: none; }
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+.drawerApply {
+  padding: $space-5 $space-5 calc($space-5 + env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(10, 10, 10, 0.08);
+  background-color: $ivory;
+  position: sticky;
+  bottom: 0;
+}
+
+.applyBtn {
+  width: 100%;
+  padding: $space-4;
+  background-color: $black;
+  color: $ivory;
+  font-size: $fs-sm;
+  font-weight: $fw-bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background-color $transition-fast;
+
+  &:hover { background-color: $gold; color: $black; }
+}

@@ -1,0 +1,111 @@
+@use '../../../styles/_variables' as *;
+
+.section {
+  padding: 0 $space-8 $space-20;
+  background-color: $ivory;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-4;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 2px solid $black;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.7s ease;
+
+  .card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.7) 0%,
+    rgba(10, 10, 10, 0.1) 60%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: $space-8;
+  transition: background $transition-base;
+
+  .card:hover & {
+    background: linear-gradient(
+      to top,
+      rgba(10, 10, 10, 0.8) 0%,
+      rgba(10, 10, 10, 0.2) 60%
+    );
+  }
+}
+
+.tag {
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-2;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: $fs-3xl;
+  font-weight: $fw-bold;
+  color: $ivory;
+  line-height: 1;
+  margin-bottom: $space-4;
+
+  @media (min-width: 768px) {
+    font-size: $fs-4xl;
+  }
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $ivory;
+  border-bottom: 1px solid rgba(244, 241, 236, 0.5);
+  padding-bottom: 2px;
+  width: fit-content;
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity $transition-base, transform $transition-base, border-color $transition-fast;
+
+  .card:hover & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    border-color: $gold;
+    color: $gold;
+  }
+}

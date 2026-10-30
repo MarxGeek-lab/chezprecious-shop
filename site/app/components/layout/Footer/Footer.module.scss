@@ -1,0 +1,240 @@
+@use '../../../styles/_variables' as *;
+
+.footer {
+  background-color: $black;
+  color: $ivory;
+}
+
+.top {
+  padding: $space-16 $space-8 $space-12;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-12;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1.8fr 1fr 1fr 1.4fr;
+    gap: $space-8;
+  }
+}
+
+/* ── Branding ── */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.logo {
+  font-family: $font-display;
+  font-size: $fs-2xl;
+  font-weight: $fw-bold;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $ivory;
+
+  span {
+    color: $gold;
+  }
+}
+
+.tagline {
+  font-size: $fs-sm;
+  color: rgba(244, 241, 236, 0.45);
+  line-height: 1.7;
+  max-width: 260px;
+}
+
+.socials {
+  display: flex;
+  gap: $space-3;
+  margin-top: $space-2;
+}
+
+.socialBtn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(244, 241, 236, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(244, 241, 236, 0.5);
+  transition: border-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    border-color: $gold;
+    color: $gold;
+  }
+}
+
+/* ── Contact ── */
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  margin-top: $space-2;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-2;
+  font-size: $fs-xs;
+  color: rgba(244, 241, 236, 0.4);
+  line-height: 1.5;
+
+  svg { flex-shrink: 0; margin-top: 1px; }
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $fs-xs;
+  color: rgba(244, 241, 236, 0.4);
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  svg { flex-shrink: 0; }
+
+  &:hover { color: $gold; }
+}
+
+/* ── Colonnes liens ── */
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.colTitle {
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $gold;
+}
+
+.colLinks {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.colLink {
+  font-size: $fs-sm;
+  color: rgba(244, 241, 236, 0.5);
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $ivory;
+  }
+}
+
+/* ── Newsletter ── */
+.newsletterTitle {
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-1;
+}
+
+.newsletterSub {
+  font-size: $fs-sm;
+  color: rgba(244, 241, 236, 0.45);
+  line-height: 1.5;
+  margin-bottom: $space-4;
+}
+
+.newsletterForm {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.input {
+  width: 100%;
+  padding: $space-3 $space-4;
+  background-color: rgba(244, 241, 236, 0.06);
+  border: 1px solid rgba(244, 241, 236, 0.15);
+  color: $ivory;
+  font-size: $fs-sm;
+  font-family: $font-primary;
+  outline: none;
+  transition: border-color $transition-fast;
+
+  &::placeholder {
+    color: rgba(244, 241, 236, 0.3);
+  }
+
+  &:focus {
+    border-color: $gold;
+  }
+}
+
+.submitBtn {
+  padding: $space-3 $space-4;
+  background-color: $gold;
+  color: $black;
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+  font-family: $font-primary;
+
+  &:hover {
+    background-color: $gold-dark;
+  }
+}
+
+.newsletterSuccess {
+  font-size: 13px;
+  color: #10b981;
+  margin-top: 8px;
+}
+
+.newsletterError {
+  font-size: 12px;
+  color: #ef4444;
+  margin-top: 6px;
+  width: 100%;
+}
+
+/* ── Bottom ── */
+.bottom {
+  border-top: 1px solid rgba(244, 241, 236, 0.08);
+  padding: $space-6 $space-8;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-4;
+}
+
+.copy {
+  font-size: $fs-xs;
+  color: rgba(244, 241, 236, 0.3);
+}
+
+.legal {
+  display: flex;
+  gap: $space-6;
+}
+
+.legalLink {
+  font-size: $fs-xs;
+  color: rgba(244, 241, 236, 0.3);
+  transition: color $transition-fast;
+
+  &:hover {
+    color: rgba(244, 241, 236, 0.7);
+  }
+}

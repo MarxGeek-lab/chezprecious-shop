@@ -1,0 +1,649 @@
+@use '../../../styles/_variables' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+
+  &.scrolled {
+    box-shadow: 0 2px 16px rgba(10, 10, 10, 0.09);
+  }
+}
+
+.announcementBar {
+  background-color: $black;
+  color: $ivory;
+  text-align: center;
+  padding: 7px $space-4;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  span { color: $gold; }
+}
+
+/* ── Navbar ── */
+.navbar {
+  background-color: $ivory;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+  height: 64px;
+  padding: 0 $space-8;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: $fw-bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $black;
+  flex-shrink: 0;
+  text-decoration: none;
+  margin-right: $space-16;
+
+  span { color: $gold; }
+}
+
+.navLinks {
+  display: none;
+  align-items: center;
+  gap: $space-10;
+  flex: 1;
+
+  @media (min-width: 900px) { display: flex; }
+}
+
+.navLink {
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $black;
+  white-space: nowrap;
+  position: relative;
+  padding-bottom: 2px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background-color: $gold;
+    transition: width $transition-base;
+  }
+  &:hover::after { width: 100%; }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  flex-shrink: 0;
+  gap: $space-1;
+}
+
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $black;
+  transition: color $transition-fast;
+  position: relative;
+  text-decoration: none;
+  flex-shrink: 0;
+
+  &:hover { color: $gold; }
+
+  /* Cacher Search + Login sur mobile — ils sont dans la bottom nav / sidebar */
+  @media (max-width: 899px) {
+    &:not([aria-label="Panier"]):not([aria-label="Ouvrir le menu"]):not([aria-label="Fermer le menu"]) {
+      display: none;
+    }
+  }
+}
+
+.loginBtn {
+  width: auto;
+  gap: $space-2;
+  padding: 0 $space-3;
+}
+
+.loginLabel {
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  @media (max-width: 900px) { display: none; }
+}
+
+/* ── User avatar button ── */
+.avatarBtn {
+  width: auto !important;
+  gap: $space-2;
+  padding: 0 $space-2 !important;
+}
+
+.avatarCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: $black;
+  color: $ivory;
+  font-size: 11px;
+  font-weight: $fw-bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.chevron {
+  transition: transform $transition-fast;
+  color: rgba(10, 10, 10, 0.5);
+}
+
+.chevronUp {
+  transform: rotate(180deg);
+}
+
+/* ── User dropdown desktop ── */
+.userMenuWrap {
+  position: relative;
+}
+
+.userDropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 240px;
+  background: $ivory;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  box-shadow: 0 8px 32px rgba(10, 10, 10, 0.12);
+  z-index: 200;
+  animation: fadeSlideDown 0.15s ease;
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.userDropdownHeader {
+  padding: $space-4 $space-5;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.userDropdownName {
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: $black;
+}
+
+.userDropdownEmail {
+  font-size: $fs-xs;
+  color: rgba(10, 10, 10, 0.45);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userDropdownLinks {
+  padding: $space-2 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.userDropdownItem {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-2 $space-5;
+  font-size: $fs-sm;
+  color: rgba(10, 10, 10, 0.7);
+  text-decoration: none;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: rgba(10, 10, 10, 0.04);
+    color: $black;
+  }
+}
+
+.userDropdownFooter {
+  border-top: 1px solid rgba(10, 10, 10, 0.08);
+  padding: $space-2 0;
+}
+
+.userDropdownLogout {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  width: 100%;
+  padding: $space-2 $space-5;
+  background: none;
+  border: none;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  color: rgba(220, 38, 38, 0.8);
+  cursor: pointer;
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    background: rgba(220, 38, 38, 0.06);
+    color: #dc2626;
+  }
+}
+
+/* ── Sidebar user block ── */
+.sidebarUser {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-5 $space-6;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.06);
+  background: rgba(10, 10, 10, 0.02);
+}
+
+.sidebarAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: $black;
+  color: $ivory;
+  font-size: 13px;
+  font-weight: $fw-bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.sidebarUserInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sidebarUserName {
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: $black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebarUserEmail {
+  font-size: $fs-xs;
+  color: rgba(10, 10, 10, 0.45);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebarSectionLabel {
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.35);
+  margin-bottom: $space-1;
+}
+
+.sidebarLogout {
+  background: none;
+  border: none;
+  font-family: $font-primary;
+  cursor: pointer;
+  color: rgba(220, 38, 38, 0.7) !important;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+
+  &:hover { color: #dc2626 !important; }
+}
+
+.cartBadge {
+  position: absolute;
+  top: 5px; right: 5px;
+  width: 15px; height: 15px;
+  background-color: $gold;
+  color: $black;
+  font-size: 9px;
+  font-weight: $fw-bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.burgerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  color: $black;
+  transition: color $transition-fast;
+
+  &:hover { color: $gold; }
+
+  @media (min-width: 1024px) { display: none; }
+}
+
+/* ── Overlay de recherche ── */
+.searchOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 10, 10, 0.45);
+  z-index: 300;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 80px;
+  animation: fadeIn 0.18s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.searchBox {
+  width: 100%;
+  max-width: 640px;
+  background-color: $ivory;
+  box-shadow: 0 8px 48px rgba(10, 10, 10, 0.18);
+  animation: slideDown 0.2s ease;
+  overflow: hidden;
+  margin: 0 $space-4;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-12px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.searchInputRow {
+  display: flex;
+  align-items: center;
+  padding: 0 $space-4;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+  height: 56px;
+  gap: $space-3;
+}
+
+.searchIcon {
+  color: rgba(10, 10, 10, 0.35);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: $fs-base;
+  font-family: $font-primary;
+  color: $black;
+
+  &::placeholder { color: rgba(10, 10, 10, 0.3); }
+}
+
+.searchClose {
+  width: 32px; height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(10, 10, 10, 0.4);
+  flex-shrink: 0;
+  transition: color $transition-fast;
+
+  &:hover { color: $black; }
+}
+
+.suggestions { list-style: none; }
+
+.suggestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-3 $space-5;
+  transition: background-color $transition-fast;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.05);
+
+  &:last-child { border-bottom: none; }
+  &:hover { background-color: rgba(10, 10, 10, 0.03); }
+}
+
+.suggestionName {
+  font-size: $fs-sm;
+  color: $black;
+  font-weight: $fw-medium;
+}
+
+.suggestionMeta {
+  font-size: $fs-xs;
+  color: rgba(10, 10, 10, 0.4);
+  letter-spacing: 0.04em;
+}
+
+.noResults {
+  padding: $space-5;
+  font-size: $fs-sm;
+  color: rgba(10, 10, 10, 0.4);
+  text-align: center;
+}
+
+/* ── Sidebar mobile ── */
+.sidebarOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 10, 10, 0.5);
+  z-index: 250;
+  animation: fadeIn 0.22s ease;
+
+  @media (min-width: 1024px) { display: none; }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 85vw);
+  background-color: $ivory;
+  z-index: 260;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -8px 0 40px rgba(10, 10, 10, 0.12);
+
+  @media (min-width: 1024px) { display: none; }
+}
+
+.sidebarOpen {
+  transform: translateX(0);
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-5 $space-6;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+  height: 64px;
+}
+
+.sidebarLogo {
+  font-family: $font-display;
+  font-size: $fs-xl;
+  font-weight: $fw-bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $black;
+  text-decoration: none;
+
+  span { color: $gold; }
+}
+
+.sidebarClose {
+  width: 36px; height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(10, 10, 10, 0.45);
+  transition: color $transition-fast;
+
+  &:hover { color: $black; }
+}
+
+.sidebarNav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: $space-6 0;
+  overflow-y: auto;
+}
+
+.sidebarLink {
+  padding: $space-4 $space-6;
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $black;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.05);
+  transition: color $transition-fast, padding-left $transition-fast;
+
+  &:hover {
+    color: $gold;
+    padding-left: $space-8;
+  }
+}
+
+.sidebarFooter {
+  border-top: 1px solid rgba(10, 10, 10, 0.08);
+  padding: $space-5 $space-6;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.sidebarAction {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  font-size: $fs-sm;
+  color: rgba(10, 10, 10, 0.6);
+  text-decoration: none;
+  transition: color $transition-fast;
+  position: relative;
+
+  &:hover { color: $black; }
+}
+
+.sidebarBadge {
+  margin-left: auto;
+  background-color: $gold;
+  color: $black;
+  font-size: 10px;
+  font-weight: $fw-bold;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Bottom Nav mobile ── */
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: $ivory;
+  border-top: 1px solid rgba(10, 10, 10, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 190;
+  /* Safe area iOS */
+  padding-bottom: env(safe-area-inset-bottom);
+
+  @media (min-width: 1024px) { display: none; }
+}
+
+.bnItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: rgba(10, 10, 10, 0.45);
+  text-decoration: none;
+  transition: color $transition-fast;
+  position: relative;
+  font-size: 9px;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: $space-2 0;
+
+  &:hover { color: $black; }
+}
+
+
+.bnBadge {
+  position: absolute;
+  top: 4px;
+  right: calc(50% - 18px);
+  background-color: $gold;
+  color: $black;
+  font-size: 9px;
+  font-weight: $fw-bold;
+  min-width: 15px; height: 15px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+/* Bouton central recherche — pill doré */
+.bnSearch {
+  flex-shrink: 0;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background-color: $black;
+  color: $ivory;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 $space-2;
+  box-shadow: 0 4px 16px rgba(10, 10, 10, 0.2);
+  transition: background-color $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background-color: $gold;
+    transform: scale(1.06);
+  }
+}

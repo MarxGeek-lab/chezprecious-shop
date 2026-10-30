@@ -1,0 +1,2750 @@
+// ==============================================
+// DASHBOARD SELLER - Styles
+// ==============================================
+
+@use 'sass:color';
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+
+// ==============================================
+// LAYOUT
+// ==============================================
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: $bg-gray;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+}
+
+// ==============================================
+// SIDEBAR
+// ==============================================
+
+.drawer {
+  :global(.MuiDrawer-paper) {
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: $spacing-md;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md;
+  margin-bottom: $spacing-lg;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  text-decoration: none;
+  color: white;
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, $primary, color.adjust($primary, $lightness: -10%));
+  color: white;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-lg;
+  flex-shrink: 0;
+}
+
+.logoText {
+  h6 {
+    font-size: $font-size-lg !important;
+    font-weight: $font-weight-bold !important;
+    line-height: 1.2 !important;
+  }
+
+  span {
+    font-size: $font-size-xs;
+    color: rgba(white, 0.6);
+  }
+}
+
+.collapseBtn {
+  color: rgba(white, 0.6) !important;
+  padding: $spacing-xs !important;
+
+  &:hover {
+    color: white !important;
+    background: rgba(white, 0.1) !important;
+  }
+
+  .rotated {
+    transform: rotate(180deg);
+  }
+}
+
+// Navigation
+.navigation {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: $spacing-xs;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(white, 0.2);
+    border-radius: 2px;
+  }
+}
+
+.navSection {
+  margin-bottom: $spacing-lg;
+}
+
+.navSectionTitle {
+  font-size: $font-size-xs !important;
+  font-weight: $font-weight-semibold !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(white, 0.4);
+  padding: $spacing-sm $spacing-md;
+  margin-bottom: $spacing-xs;
+}
+
+.navItems {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-lg;
+  color: rgba(white, 0.7);
+  text-decoration: none;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  transition: all $transition-fast;
+  position: relative;
+
+  &:hover {
+    background: rgba(white, 0.08);
+    color: white;
+  }
+
+  &.active {
+    background: rgba($primary, 0.2);
+    color: $primary;
+
+    .navIcon {
+      color: $primary;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 60%;
+      background: $primary;
+      border-radius: 0 3px 3px 0;
+    }
+  }
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navLabel {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 $spacing-xs;
+  background: $primary;
+  color: white;
+  font-size: 10px;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-full;
+}
+
+.navBadgeCollapsed {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  background: $primary;
+  border-radius: $radius-full;
+}
+
+// User card
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  background: rgba(white, 0.05);
+  border-radius: $radius-xl;
+  margin-top: auto;
+}
+
+.userAvatar {
+  width: 40px !important;
+  height: 40px !important;
+  background: linear-gradient(135deg, $primary, color.adjust($primary, $lightness: 10%)) !important;
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-bold !important;
+}
+
+.userInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.userName {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-semibold !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userRole {
+  font-size: $font-size-xs !important;
+  color: rgba(white, 0.5);
+}
+
+.userSettings {
+  color: rgba(white, 0.5) !important;
+
+  &:hover {
+    color: white !important;
+    background: rgba(white, 0.1) !important;
+  }
+}
+
+// ==============================================
+// APP BAR
+// ==============================================
+
+.appBar {
+  background: white !important;
+  border-bottom: 1px solid $border-light;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-lg !important;
+  min-height: 64px !important;
+
+  @include mobile {
+    padding: $spacing-sm $spacing-md !important;
+  }
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex: 1;
+}
+
+.menuButton {
+  color: $text-primary !important;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  background: $bg-gray;
+  border-radius: $radius-lg;
+  max-width: 400px;
+  flex: 1;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.searchIcon {
+  color: $text-secondary;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: $font-size-sm;
+  color: $text-primary;
+  outline: none;
+
+  &::placeholder {
+    color: $text-secondary;
+  }
+}
+
+.searchShortcut {
+  font-size: 10px;
+  padding: 2px 6px;
+  background: white;
+  border: 1px solid $border-light;
+  border-radius: $radius-sm;
+  color: $text-secondary;
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.iconButton {
+  color: $text-secondary !important;
+  background: $bg-gray !important;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    background: $border-light !important;
+    color: $text-primary !important;
+  }
+}
+
+.profileButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-xs $spacing-md $spacing-xs $spacing-xs;
+  border-radius: $radius-xl;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $bg-gray;
+  }
+
+  @include mobile {
+    padding: $spacing-xs;
+  }
+}
+
+.profileAvatar {
+  width: 36px !important;
+  height: 36px !important;
+  background: linear-gradient(135deg, $primary, color.adjust($primary, $lightness: 10%)) !important;
+  font-size: $font-size-xs !important;
+  font-weight: $font-weight-bold !important;
+}
+
+.profileInfo {
+  @include mobile {
+    display: none;
+  }
+}
+
+.profileName {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+  line-height: 1.2 !important;
+}
+
+.profileRole {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+// ==============================================
+// CONTENT
+// ==============================================
+
+.content {
+  flex: 1;
+  padding: $spacing-lg $spacing-lg;
+  overflow-y: auto;
+  
+
+  @include mobile {
+    padding: $spacing-md;
+  }
+}
+
+// ==============================================
+// MENUS
+// ==============================================
+
+.profileMenu {
+  :global(.MuiPaper-root) {
+    min-width: 240px;
+    border-radius: $radius-xl !important;
+    box-shadow: 0 10px 40px rgba(black, 0.15) !important;
+    margin-top: $spacing-sm;
+  }
+
+  :global(.MuiMenuItem-root) {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+
+    &:hover {
+      background: $bg-gray;
+    }
+  }
+
+  :global(.MuiListItemIcon-root) {
+    min-width: 32px;
+    color: $text-secondary;
+  }
+}
+
+.menuHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+}
+
+.menuAvatar {
+  width: 48px !important;
+  height: 48px !important;
+  background: linear-gradient(135deg, $primary, color.adjust($primary, $lightness: 10%)) !important;
+}
+
+.menuName {
+  font-size: $font-size-base !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+}
+
+.menuEmail {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+.logoutItem {
+  color: $error !important;
+
+  :global(.MuiListItemIcon-root) {
+    color: $error !important;
+  }
+}
+
+// Notifications menu
+.notifMenu {
+  :global(.MuiPaper-root) {
+    width: 360px;
+    max-width: 90vw;
+    border-radius: $radius-xl !important;
+    box-shadow: 0 10px 40px rgba(black, 0.15) !important;
+    margin-top: $spacing-sm;
+  }
+}
+
+.notifHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md;
+
+  h6 {
+    font-size: $font-size-base !important;
+    font-weight: $font-weight-semibold !important;
+  }
+}
+
+.notifMarkRead {
+  font-size: $font-size-xs !important;
+  color: $primary;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.notifList {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.notifItem {
+  display: flex;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $bg-gray;
+  }
+}
+
+.notifIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-lg;
+  flex-shrink: 0;
+
+  &.order {
+    background: rgba($primary, 0.1);
+    color: $primary;
+  }
+
+  &.review {
+    background: rgba($warning, 0.1);
+    color: $warning;
+  }
+
+  &.stock {
+    background: rgba($error, 0.1);
+    color: $error;
+  }
+}
+
+.notifContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.notifTitle {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-medium !important;
+  color: $text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notifTime {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+.notifFooter {
+  padding: $spacing-md;
+  text-align: center;
+
+  a {
+    font-size: $font-size-sm;
+    color: $primary;
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// ==============================================
+// DASHBOARD PAGE
+// ==============================================
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+// ==============================================
+// STORE STATUS BANNER
+// ==============================================
+
+.statusBanner {
+  position: relative;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1A1A2E 0%, #2D2D5E 50%, #1A1A2E 100%);
+  background-size: 200% 200%;
+  animation: bannerShimmer 6s ease infinite;
+  border: 1px solid rgba(white, 0.08);
+}
+
+@keyframes bannerShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.statusBannerGlow {
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba($warning, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.statusBannerContent {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  padding: $spacing-lg $spacing-xl;
+  position: relative;
+  z-index: 1;
+
+  @include max-width($breakpoint-md) {
+    flex-direction: column;
+    text-align: center;
+    padding: $spacing-lg;
+  }
+}
+
+.statusBannerIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: $radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  background: rgba($warning, 0.15);
+  color: $warning;
+  border: 1px solid rgba($warning, 0.25);
+}
+
+.statusBannerPulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: $radius-lg;
+  border: 2px solid rgba($warning, 0.3);
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { opacity: 0; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.statusBannerText {
+  flex: 1;
+  min-width: 0;
+}
+
+.statusBannerTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: $font-size-base !important;
+  font-weight: $font-weight-bold !important;
+  color: white;
+  margin-bottom: 4px !important;
+
+  svg {
+    color: $warning;
+  }
+}
+
+.statusBannerDesc {
+  font-size: $font-size-sm !important;
+  color: rgba(white, 0.6);
+  line-height: $line-height-normal;
+}
+
+.statusBannerAction {
+  flex-shrink: 0;
+  background: $warning !important;
+  color: #1A1A2E !important;
+  font-weight: $font-weight-semibold !important;
+  text-transform: none !important;
+  border-radius: $radius-md !important;
+  padding: 8px 20px !important;
+  box-shadow: 0 4px 16px rgba($warning, 0.3) !important;
+  transition: all 0.2s !important;
+
+  &:hover {
+    background: color.adjust($warning, $lightness: 5%) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba($warning, 0.4) !important;
+  }
+}
+
+.statusBannerActionSuccess {
+  flex-shrink: 0;
+  background: $success !important;
+  color: white !important;
+  font-weight: $font-weight-semibold !important;
+  text-transform: none !important;
+  border-radius: $radius-md !important;
+  padding: 8px 20px !important;
+  box-shadow: 0 4px 16px rgba($success, 0.3) !important;
+  transition: all 0.2s !important;
+
+  &:hover {
+    background: color.adjust($success, $lightness: 5%) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba($success, 0.4) !important;
+  }
+}
+
+.statusBannerProgress {
+  height: 3px;
+  background: rgba(white, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.statusBannerProgressFill {
+  position: absolute;
+  height: 100%;
+  width: 60%;
+  background: linear-gradient(90deg, transparent, $warning, transparent);
+  animation: progressSlide 2.5s ease-in-out infinite;
+}
+
+@keyframes progressSlide {
+  0% { left: -60%; }
+  100% { left: 100%; }
+}
+
+// Approved variant
+.statusBannerApproved {
+  background: linear-gradient(135deg, #064E3B 0%, #065F46 50%, #064E3B 100%);
+  background-size: 200% 200%;
+  border-color: rgba($success, 0.2);
+}
+
+.statusIconApproved {
+  background: rgba($success, 0.15) !important;
+  color: $success !important;
+  border-color: rgba($success, 0.25) !important;
+}
+
+.statusBannerApproved .statusBannerTitle svg {
+  color: $success;
+}
+
+// Rejected variant
+.statusBannerRejected {
+  background: linear-gradient(135deg, #4A1520 0%, #5C1D2A 50%, #4A1520 100%);
+  background-size: 200% 200%;
+  border-color: rgba($error, 0.2);
+}
+
+.statusIconRejected {
+  background: rgba($error, 0.15) !important;
+  color: $error !important;
+  border-color: rgba($error, 0.25) !important;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.pageTitle {
+  h1 {
+    font-size: $font-size-2xl !important;
+    font-weight: $font-weight-bold !important;
+    color: $text-primary;
+    margin-bottom: $spacing-xs !important;
+  }
+
+  p {
+    font-size: $font-size-sm !important;
+    color: $text-secondary;
+  }
+}
+
+.pageActions {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.actionButton {
+  text-transform: none !important;
+  font-weight: $font-weight-medium !important;
+  border-radius: $radius-lg !important;
+  padding: $spacing-sm $spacing-lg !important;
+}
+
+.primaryButton {
+  @extend .actionButton;
+  background: linear-gradient(135deg, $primary, color.adjust($primary, $lightness: -10%)) !important;
+  box-shadow: 0 4px 16px rgba($primary, 0.3) !important;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba($primary, 0.4) !important;
+  }
+}
+
+.outlineButton {
+  @extend .actionButton;
+  border-color: $border-medium !important;
+  color: $text-primary !important;
+
+  &:hover {
+    background: $bg-gray !important;
+    border-color: $primary !important;
+  }
+}
+
+// Stats cards
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-lg;
+
+  @include max-width($breakpoint-xl) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statCard {
+  background: white;
+  border-radius: $radius-xl;
+  padding: $spacing-xl;
+  position: relative;
+  overflow: hidden;
+  transition: all $transition-fast;
+  border: 1px solid $border-light;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(black, 0.08);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+  }
+
+  &.revenue::before {
+    background: linear-gradient(90deg, $primary, color.adjust($primary, $lightness: 10%));
+  }
+
+  &.orders::before {
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  }
+
+  &.customers::before {
+    background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+  }
+
+  &.products::before {
+    background: linear-gradient(90deg, #10b981, #34d399);
+  }
+}
+
+.statHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-md;
+}
+
+.statIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-lg;
+
+  .revenue & {
+    background: rgba($primary, 0.1);
+    color: $primary;
+  }
+
+  .orders & {
+    background: rgba(#3b82f6, 0.1);
+    color: #3b82f6;
+  }
+
+  .customers & {
+    background: rgba(#8b5cf6, 0.1);
+    color: #8b5cf6;
+  }
+
+  .products & {
+    background: rgba(#10b981, 0.1);
+    color: #10b981;
+  }
+}
+
+.statTrend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  padding: 4px 8px;
+  border-radius: $radius-full;
+
+  &.up {
+    background: rgba($success, 0.1);
+    color: $success;
+  }
+
+  &.down {
+    background: rgba($error, 0.1);
+    color: $error;
+  }
+}
+
+.statValue {
+  font-size: $font-size-3xl !important;
+  font-weight: $font-weight-bold !important;
+  color: $text-primary;
+  line-height: 1.2 !important;
+  margin-bottom: $spacing-xs !important;
+}
+
+.statLabel {
+  font-size: $font-size-sm !important;
+  color: $text-secondary;
+}
+
+.statFooter {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-md;
+  padding-top: $spacing-md;
+  border-top: 1px solid $border-light;
+  font-size: $font-size-xs;
+  color: $text-secondary;
+
+  svg {
+    color: $primary;
+  }
+
+  a {
+    color: $primary;
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Charts section
+.chartsGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: $spacing-lg;
+
+  @include max-width($breakpoint-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chartCard {
+  background: white;
+  border-radius: $radius-xl;
+  padding: $spacing-xl;
+  border: 1px solid $border-light;
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+}
+
+.chartTitle {
+  font-size: $font-size-lg !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+}
+
+.chartPeriod {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.periodButton {
+  padding: $spacing-xs $spacing-md !important;
+  font-size: $font-size-xs !important;
+  text-transform: none !important;
+  border-radius: $radius-lg !important;
+  min-width: auto !important;
+  color: $text-secondary !important;
+
+  &.active {
+    background: $primary !important;
+    color: white !important;
+  }
+}
+
+.chartPlaceholder {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, $bg-gray 0%, white 100%);
+  border-radius: $radius-lg;
+  color: $text-secondary;
+  font-size: $font-size-sm;
+}
+
+// Recent orders
+.ordersCard {
+  background: white;
+  border-radius: $radius-xl;
+  border: 1px solid $border-light;
+  overflow: hidden;
+}
+
+.ordersHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-lg $spacing-xl;
+  border-bottom: 1px solid $border-light;
+}
+
+.ordersTitle {
+  font-size: $font-size-lg !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+}
+
+.ordersLink {
+  font-size: $font-size-sm;
+  color: $primary;
+  text-decoration: none;
+  font-weight: $font-weight-medium;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.ordersList {
+  display: flex;
+  flex-direction: column;
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md $spacing-xl;
+  border-bottom: 1px solid $border-light;
+  transition: background $transition-fast;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: $bg-gray;
+  }
+}
+
+.orderAvatar {
+  width: 40px !important;
+  height: 40px !important;
+  background: linear-gradient(135deg, $bg-gray, $border-light) !important;
+  color: $text-secondary !important;
+  font-size: $font-size-sm !important;
+}
+
+.orderInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.orderCustomer {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-medium !important;
+  color: $text-primary;
+}
+
+.orderId {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+.orderAmount {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+  text-align: right;
+}
+
+.orderDate {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+  text-align: right;
+}
+
+.orderStatus {
+  padding: 4px 10px;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+
+  &.pending {
+    background: rgba($warning, 0.1);
+    color: $warning;
+  }
+
+  &.processing {
+    background: rgba(#3b82f6, 0.1);
+    color: #3b82f6;
+  }
+
+  &.shipped {
+    background: rgba(#8b5cf6, 0.1);
+    color: #8b5cf6;
+  }
+
+  &.delivered {
+    background: rgba($success, 0.1);
+    color: $success;
+  }
+
+  &.cancelled {
+    background: rgba($error, 0.1);
+    color: $error;
+  }
+}
+
+// Top products
+.topProductsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.topProductItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $bg-gray;
+  border-radius: $radius-lg;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $border-light;
+  }
+}
+
+.topProductRank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: white;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  color: $text-secondary;
+  border: 1px solid $border-light;
+
+  &.gold {
+    background: linear-gradient(135deg, #ffd700, #ffb700);
+    color: white;
+    border: none;
+  }
+
+  &.silver {
+    background: linear-gradient(135deg, #c0c0c0, #a0a0a0);
+    color: white;
+    border: none;
+  }
+
+  &.bronze {
+    background: linear-gradient(135deg, #cd7f32, #b87333);
+    color: white;
+    border: none;
+  }
+}
+
+.topProductImage {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  background: white;
+}
+
+.topProductInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.topProductName {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-medium !important;
+  color: $text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topProductSales {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+.topProductRevenue {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-semibold !important;
+  color: $primary;
+}
+
+// Quick actions
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md;
+
+  @include max-width($breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quickAction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-xl;
+  background: white;
+  border: 1px solid $border-light;
+  border-radius: $radius-xl;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $primary;
+    box-shadow: 0 8px 24px rgba($primary, 0.1);
+    transform: translateY(-2px);
+
+    .quickActionIcon {
+      background: $primary;
+      color: white;
+    }
+  }
+}
+
+.quickActionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  border-radius: $radius-xl;
+  transition: all $transition-fast;
+}
+
+.quickActionLabel {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-medium !important;
+  color: $text-primary;
+}
+
+.quickActionDesc {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+  text-align: center;
+}
+
+// ==============================================
+// PRODUCT FORM PAGE
+// ==============================================
+
+.productFormCard {
+  background: white;
+  border-radius: $radius-xl;
+  border: 1px solid $border-light;
+  overflow: hidden;
+}
+
+.productTabs {
+  border-bottom: 1px solid $border-light;
+  padding: 0 $spacing-xl;
+
+  :global(.MuiTab-root) {
+    text-transform: none;
+    font-weight: $font-weight-medium;
+    min-height: 64px;
+    color: $text-secondary;
+
+    &:global(.Mui-selected) {
+      color: $primary;
+    }
+  }
+
+  :global(.MuiTabs-indicator) {
+    background: $primary;
+    height: 3px;
+  }
+}
+
+.formSection {
+  padding: $spacing-xl;
+  border-bottom: 1px solid $border-light;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.sectionTitle {
+  font-size: $font-size-lg !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+  margin-bottom: $spacing-lg !important;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.imageUploadArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3xl;
+  border: 2px dashed $border-medium;
+  border-radius: $radius-xl;
+  background: $bg-gray;
+  transition: all $transition-fast;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary;
+    background: rgba($primary, 0.02);
+  }
+
+  svg {
+    color: $text-secondary;
+    margin-bottom: $spacing-md;
+  }
+
+  h6 {
+    font-size: $font-size-base !important;
+    font-weight: $font-weight-medium !important;
+    color: $text-primary;
+    margin-bottom: $spacing-xs !important;
+  }
+}
+
+// Sidebar cards
+.sidebarCard {
+  background: white;
+  border-radius: $radius-xl;
+  border: 1px solid $border-light;
+  padding: $spacing-xl;
+  margin-bottom: $spacing-lg;
+}
+
+.sidebarTitle {
+  font-size: $font-size-base !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+  margin-bottom: $spacing-md !important;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.sidebarContent {
+  display: flex;
+  flex-direction: column;
+
+  :global(.MuiFormControlLabel-root) {
+    margin: 0;
+  }
+}
+
+// ==============================================
+// PRODUCTS LIST PAGE
+// ==============================================
+
+.productsStats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.productStatCard {
+  background: white;
+  padding: $spacing-lg;
+  border-radius: $radius-lg;
+  border: 1px solid $border-light;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.productStatIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-lg;
+  flex-shrink: 0;
+
+  &[data-color="primary"] {
+    background: rgba($primary, 0.1);
+    color: $primary;
+  }
+
+  &[data-color="success"] {
+    background: rgba($success, 0.1);
+    color: $success;
+  }
+
+  &[data-color="warning"] {
+    background: rgba($warning, 0.1);
+    color: $warning;
+  }
+
+  &[data-color="error"] {
+    background: rgba($error, 0.1);
+    color: $error;
+  }
+}
+
+.productStatValue {
+  font-size: $font-size-xl !important;
+  font-weight: $font-weight-bold !important;
+  color: $text-primary;
+}
+
+.productStatLabel {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+.productsCard {
+  background: white;
+  border-radius: $radius-xl;
+  border: 1px solid $border-light;
+  overflow: hidden;
+}
+
+.productsToolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-lg $spacing-xl;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.searchField {
+  flex: 1;
+  min-width: 300px;
+
+  :global(.MuiOutlinedInput-root) {
+    border-radius: $radius-lg;
+  }
+}
+
+.filterButton {
+  text-transform: none !important;
+  border-radius: $radius-lg !important;
+}
+
+.productsTabs {
+  border-bottom: 1px solid $border-light;
+  padding: 0 $spacing-xl;
+
+  :global(.MuiTab-root) {
+    text-transform: none;
+    font-weight: $font-weight-medium;
+    min-height: 48px;
+    color: $text-secondary;
+
+    &:global(.Mui-selected) {
+      color: $primary;
+    }
+  }
+
+  :global(.MuiTabs-indicator) {
+    background: $primary;
+  }
+}
+
+.productCell {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.productImage {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-md;
+  background: linear-gradient(135deg, $bg-gray, $border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-secondary;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.productName {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-medium !important;
+  color: $text-primary;
+}
+
+.productSku {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+  font-family: 'Courier New', monospace;
+}
+
+.productPrice {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3xl;
+  text-align: center;
+
+  svg {
+    color: $text-secondary;
+    margin-bottom: $spacing-lg;
+  }
+
+  h6 {
+    font-size: $font-size-lg !important;
+    font-weight: $font-weight-semibold !important;
+    margin-bottom: $spacing-xs !important;
+  }
+}
+
+// ==============================================
+// ORDERS PAGE
+// ==============================================
+
+.ordersStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.orderStatCard {
+  background: white;
+  padding: $spacing-lg;
+  border-radius: $radius-lg;
+  border: 1px solid $border-light;
+  text-align: center;
+}
+
+.orderStatValue {
+  font-size: $font-size-2xl !important;
+  font-weight: $font-weight-bold !important;
+  color: $text-primary;
+  margin-bottom: $spacing-xs !important;
+}
+
+.orderStatLabel {
+  font-size: $font-size-sm !important;
+  color: $text-secondary;
+  margin-bottom: $spacing-xs !important;
+}
+
+.orderStatAmount {
+  font-size: $font-size-base !important;
+  font-weight: $font-weight-semibold !important;
+  color: $primary;
+}
+
+.orderNumber {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+  font-family: 'Courier New', monospace;
+}
+
+.customerCell {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.customerAvatar {
+  width: 36px !important;
+  height: 36px !important;
+  background: linear-gradient(135deg, $primary, color.adjust($primary, $lightness: 10%)) !important;
+  font-size: $font-size-xs !important;
+}
+
+.customerName {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-medium !important;
+  color: $text-primary;
+}
+
+.customerEmail {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+.orderDate {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+.orderTotal {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+}
+
+
+// ==============================================
+// CUSTOMERS PAGE
+// ==============================================
+
+.customersStats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.customerStatCard {
+  background: white;
+  padding: $spacing-lg;
+  border-radius: $radius-lg;
+  border: 1px solid $border-light;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.statIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-lg;
+  flex-shrink: 0;
+
+  &[data-color="primary"] {
+    background: rgba($primary, 0.1);
+    color: $primary;
+  }
+
+  &[data-color="success"] {
+    background: rgba($success, 0.1);
+    color: $success;
+  }
+
+  &[data-color="warning"] {
+    background: rgba($warning, 0.1);
+    color: $warning;
+  }
+
+  &[data-color="info"] {
+    background: rgba(#3b82f6, 0.1);
+    color: #3b82f6;
+  }
+}
+
+.customerStatValue {
+  font-size: $font-size-xl !important;
+  font-weight: $font-weight-bold !important;
+  color: $text-primary;
+}
+
+.customerStatLabel {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+.customerPhone {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+  margin-top: $spacing-xs;
+}
+
+.customerSpent {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-semibold !important;
+  color: $primary;
+}
+
+
+// ==============================================
+// CATEGORIES PAGE
+// ==============================================
+
+.categoriesStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.categoryStatCard {
+  background: white;
+  padding: $spacing-lg;
+  border-radius: $radius-lg;
+  border: 1px solid $border-light;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.categoryStatIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  border-radius: $radius-lg;
+  flex-shrink: 0;
+}
+
+.categoryStatValue {
+  font-size: $font-size-xl !important;
+  font-weight: $font-weight-bold !important;
+  color: $text-primary;
+}
+
+.categoryStatLabel {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing-lg;
+}
+
+.categoryCard {
+  border-radius: $radius-xl !important;
+  border: 1px solid $border-light !important;
+  transition: all $transition-fast !important;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(black, 0.08) !important;
+    transform: translateY(-4px);
+  }
+}
+
+.categoryCardAdd {
+  @extend .categoryCard;
+  cursor: pointer;
+  border: 2px dashed $border-medium !important;
+  background: $bg-gray !important;
+
+  &:hover {
+    border-color: $primary !important;
+    background: rgba($primary, 0.02) !important;
+  }
+}
+
+.categoryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: $spacing-md;
+}
+
+.categoryAvatar {
+  width: 56px !important;
+  height: 56px !important;
+  font-size: 28px !important;
+}
+
+.categoryName {
+  font-size: $font-size-lg !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+  margin-bottom: $spacing-xs !important;
+}
+
+.categoryDescription {
+  font-size: $font-size-sm !important;
+  color: $text-secondary;
+  margin-bottom: $spacing-md !important;
+  line-height: 1.5 !important;
+}
+
+.categoryFooter {
+  display: flex;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+}
+
+.categoryAddContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-2xl 0;
+  color: $text-secondary;
+
+  svg {
+    margin-bottom: $spacing-md;
+  }
+}
+
+.categoryAddText {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-medium !important;
+  color: $text-secondary;
+}
+
+// Categories List (List View)
+.categoriesList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.categoryListCard {
+  border-radius: $radius-lg !important;
+  border: 1px solid $border-light !important;
+  transition: all $transition-fast !important;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(black, 0.06) !important;
+  }
+}
+
+.categoryListHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-md;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.categoryListInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex: 1;
+}
+
+.categoryListAvatar {
+  width: 48px !important;
+  height: 48px !important;
+  font-size: 24px !important;
+}
+
+.categoryListName {
+  font-size: $font-size-base !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+  margin-bottom: 0 !important;
+}
+
+.categoryListDescription {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+  margin: 0 !important;
+}
+
+.categoryListActions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  @include mobile {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+.subCategoriesList {
+  padding-top: $spacing-md;
+}
+
+
+// ==============================================
+// SETTINGS PAGE
+// ==============================================
+
+.settingsContent {
+  padding: $spacing-xl;
+
+  @include mobile {
+    padding: $spacing-md;
+  }
+}
+
+.settingsSection {
+  margin-bottom: $spacing-xl;
+}
+
+.avatarUpload {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.settingsAvatar {
+  background: linear-gradient(135deg, $primary, color.adjust($primary, $lightness: 10%)) !important;
+  font-size: $font-size-2xl !important;
+  font-weight: $font-weight-bold !important;
+}
+
+// ==============================================
+// MESSAGES PAGE
+// ==============================================
+
+.messagesStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.messagesContainer {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: $spacing-md;
+  height: calc(100vh - 350px);
+  min-height: 600px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+
+.conversationsList {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.conversationsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-lg;
+  border-bottom: 1px solid $border-light;
+}
+
+.conversationsListContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 !important;
+}
+
+.conversationItem {
+  border-bottom: 1px solid $border-light !important;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: $bg-gray !important;
+  }
+
+  &.Mui-selected {
+    background: rgba($primary, 0.05) !important;
+    border-left: 3px solid $primary;
+  }
+}
+
+.conversationAvatar {
+  width: 48px !important;
+  height: 48px !important;
+  background: linear-gradient(135deg, $primary, color.adjust($primary, $lightness: 10%)) !important;
+}
+
+.conversationName {
+  font-size: $font-size-sm !important;
+  color: $text-primary;
+}
+
+.conversationTime {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+.conversationPreview {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chatArea {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-lg;
+  border-bottom: 1px solid $border-light;
+}
+
+.chatAvatar {
+  width: 48px !important;
+  height: 48px !important;
+  background: linear-gradient(135deg, $primary, color.adjust($primary, $lightness: 10%)) !important;
+}
+
+.chatName {
+  font-size: $font-size-base !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+}
+
+.chatStatus {
+  font-size: $font-size-xs !important;
+  color: $success;
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-lg;
+  background: $bg-gray;
+}
+
+.messageWrapper {
+  display: flex;
+  margin-bottom: $spacing-md;
+
+  &.ownMessage {
+    justify-content: flex-end;
+
+    .messageBubble {
+      background: $primary;
+      color: white;
+      border-radius: $radius-lg $radius-lg 0 $radius-lg;
+    }
+  }
+
+  &.otherMessage {
+    justify-content: flex-start;
+
+    .messageBubble {
+      background: white;
+      border: 1px solid $border-light;
+      border-radius: $radius-lg $radius-lg $radius-lg 0;
+    }
+  }
+}
+
+.messageBubble {
+  max-width: 70%;
+  padding: $spacing-sm $spacing-md;
+}
+
+.messageText {
+  font-size: $font-size-sm !important;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.messageTime {
+  font-size: $font-size-xs !important;
+  opacity: 0.7;
+  margin-top: $spacing-xs;
+  text-align: right;
+}
+
+.chatInput {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-lg;
+  border-top: 1px solid $border-light;
+  background: white;
+}
+
+.sendButton {
+  min-width: auto !important;
+  padding: $spacing-sm $spacing-md !important;
+}
+
+.emptyChatState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: $text-secondary;
+}
+
+// ==============================================
+// PRODUCT MEDIA SECTION
+// ==============================================
+
+.mediaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md;
+
+  @include max-width($breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mediaItem {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 2px solid $border-light;
+  background: $bg-gray;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $primary;
+
+    .mediaOverlay {
+      opacity: 1;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.mediaOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(black, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  opacity: 0;
+  transition: opacity $transition-fast;
+}
+
+.mediaMainBadge {
+  position: absolute;
+  top: $spacing-xs;
+  left: $spacing-xs;
+  background: $primary;
+  color: white;
+  font-size: 10px;
+  font-weight: $font-weight-bold;
+  padding: 2px 8px;
+  border-radius: $radius-sm;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mediaAddButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border: 2px dashed $border-medium;
+  border-radius: $radius-lg;
+  background: $bg-gray;
+  cursor: pointer;
+  transition: all $transition-fast;
+  gap: $spacing-xs;
+  color: $text-secondary;
+
+  &:hover {
+    border-color: $primary;
+    background: rgba($primary, 0.02);
+    color: $primary;
+  }
+
+  span {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.mediaRemoveBtn {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  background: rgba(white, 0.9) !important;
+  color: $error !important;
+  border-radius: $radius-full !important;
+
+  &:hover {
+    background: $error !important;
+    color: white !important;
+  }
+}
+
+.mediaSetMainBtn {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  background: rgba(white, 0.9) !important;
+  color: $primary !important;
+  border-radius: $radius-full !important;
+
+  &:hover {
+    background: $primary !important;
+    color: white !important;
+  }
+}
+
+// Video slots
+.videoSlotsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-lg;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.videoSlot {
+  border: 2px solid $border-light;
+  border-radius: $radius-xl;
+  padding: $spacing-lg;
+  background: white;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: rgba($primary, 0.3);
+  }
+}
+
+.videoSlotHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-md;
+}
+
+.videoSlotTitle {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.videoSlotEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl $spacing-md;
+  border: 2px dashed $border-medium;
+  border-radius: $radius-lg;
+  background: $bg-gray;
+  cursor: pointer;
+  transition: all $transition-fast;
+  text-align: center;
+  gap: $spacing-sm;
+  color: $text-secondary;
+
+  &:hover {
+    border-color: $primary;
+    background: rgba($primary, 0.02);
+  }
+}
+
+.videoSlotPreview {
+  background: $bg-gray;
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+.videoPlayer {
+  width: 100%;
+  max-height: 220px;
+  display: block;
+  border-radius: $radius-lg;
+  background: black;
+}
+
+.videoSlotUrlPreview {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+}
+
+.videoSlotIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  border-radius: $radius-lg;
+  flex-shrink: 0;
+}
+
+.videoSlotInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.videoSlotName {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-medium !important;
+  color: $text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.videoSlotSize {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+}
+
+.videoToggle {
+  display: flex;
+  background: $bg-gray;
+  border-radius: $radius-lg;
+  padding: 3px;
+  margin-bottom: $spacing-md;
+}
+
+.videoToggleBtn {
+  flex: 1;
+  padding: $spacing-xs $spacing-md !important;
+  font-size: $font-size-xs !important;
+  text-transform: none !important;
+  border-radius: $radius-md !important;
+  min-height: 32px !important;
+  color: $text-secondary !important;
+  font-weight: $font-weight-medium !important;
+
+  &.active {
+    background: white !important;
+    color: $text-primary !important;
+    box-shadow: 0 1px 3px rgba(black, 0.1) !important;
+  }
+}
+
+// ==============================================
+// PRODUCT VARIANTS SECTION
+// ==============================================
+
+.variantsSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.variantOptionCard {
+  border: 1px solid $border-light;
+  border-radius: $radius-xl;
+  padding: $spacing-lg;
+  background: $bg-gray;
+}
+
+.variantOptionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-md;
+}
+
+.variantOptionName {
+  font-size: $font-size-base !important;
+  font-weight: $font-weight-semibold !important;
+  color: $text-primary;
+}
+
+.variantValues {
+  display: flex;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+  margin-top: $spacing-sm;
+}
+
+.variantAddOption {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  border: 2px dashed $border-medium;
+  border-radius: $radius-xl;
+  background: $bg-gray;
+  cursor: pointer;
+  transition: all $transition-fast;
+  color: $text-secondary;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+  }
+}
+
+.variantTable {
+  border: 1px solid $border-light;
+  border-radius: $radius-xl;
+  overflow: hidden;
+
+  :global(.MuiTableCell-head) {
+    background: $bg-gray;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: $text-secondary;
+    border-bottom: 1px solid $border-light;
+  }
+
+  :global(.MuiTableCell-body) {
+    font-size: $font-size-sm;
+    border-bottom: 1px solid $border-light;
+  }
+
+  :global(.MuiOutlinedInput-root) {
+    background: white;
+  }
+}
+
+.variantCombination {
+  display: flex;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+}
+
+.variantBulkActions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md $spacing-lg;
+  background: rgba($primary, 0.03);
+  border: 1px solid rgba($primary, 0.1);
+  border-radius: $radius-xl;
+}
+
+.variantBulkLabel {
+  font-size: $font-size-sm !important;
+  font-weight: $font-weight-medium !important;
+  color: $text-primary;
+  white-space: nowrap;
+}
+
+// ==============================================
+// LIVE PREVIEW CARD (Seller Product Form Sidebar)
+// ==============================================
+
+.previewCard {
+  @include admin-card;
+  overflow: hidden;
+  position: sticky;
+  top: $spacing-lg;
+}
+
+.previewImageArea {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: $bg-gray;
+}
+
+.previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.previewArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  background: rgba(white, 0.9) !important;
+  color: $text-primary !important;
+  box-shadow: $shadow-sm;
+  z-index: 2;
+
+  &:hover {
+    background: white !important;
+  }
+}
+
+.previewArrowLeft {
+  left: $spacing-xs;
+}
+
+.previewArrowRight {
+  right: $spacing-xs;
+}
+
+.previewDots {
+  position: absolute;
+  bottom: $spacing-sm;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.previewDot {
+  width: 6px;
+  height: 6px;
+  border-radius: $radius-full;
+  background: rgba(white, 0.5);
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba(white, 0.8);
+  }
+}
+
+.activeDot {
+  background: white;
+  width: 16px;
+  border-radius: 3px;
+}
+
+.previewBadge {
+  position: absolute;
+  top: $spacing-sm;
+  left: $spacing-sm;
+  background-color: $error !important;
+  color: white !important;
+  font-weight: $font-weight-semibold !important;
+  font-size: $font-size-xs !important;
+  z-index: 2;
+}
+
+.previewPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: $border-medium;
+  gap: $spacing-sm;
+}
+
+.previewWishlist {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  background: rgba(white, 0.9) !important;
+  color: $text-secondary !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  box-shadow: $shadow-sm;
+  z-index: 2;
+}
+
+.previewInfo {
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.previewCategory {
+  font-size: $font-size-xs !important;
+  color: $text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.previewName {
+  font-size: $font-size-base !important;
+  font-weight: $font-weight-medium !important;
+  color: $text-primary;
+  line-height: $line-height-tight !important;
+  @include truncate(2);
+}
+
+.previewRating {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  :global(.MuiRating-root) {
+    color: $warning;
+  }
+
+  :global(.MuiRating-iconEmpty) {
+    color: $border-medium;
+  }
+}
+
+.previewPriceRow {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-sm;
+  margin-top: $spacing-xs;
+}
+
+.previewPrice {
+  font-size: $font-size-lg !important;
+  font-weight: $font-weight-bold !important;
+  color: $primary;
+}
+
+.previewOriginalPrice {
+  font-size: $font-size-sm !important;
+  color: $text-secondary;
+  text-decoration: line-through;
+}
+
+// Preview thumbnails strip
+.previewThumbs {
+  display: flex;
+  gap: $spacing-xs;
+  padding: $spacing-sm;
+  overflow-x: auto;
+}
+
+.previewThumb {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color $transition-fast;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.previewThumbActive {
+  border-color: $primary;
+}

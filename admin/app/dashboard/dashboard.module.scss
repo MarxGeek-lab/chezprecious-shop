@@ -1,0 +1,354 @@
+// ==============================================
+// DASHBOARD PAGE
+// ==============================================
+
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+
+// KPI Cards
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+
+  @include max-width($breakpoint-xl) { grid-template-columns: repeat(2, 1fr); }
+  @include max-width($breakpoint-sm) { grid-template-columns: 1fr; }
+}
+
+.kpiCard {
+  @include admin-card;
+  padding: $spacing-lg;
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-lg;
+  transition: all $transition-fast;
+
+  @include max-width($breakpoint-sm) {
+    padding: $spacing-md;
+    gap: $spacing-sm;
+  }
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+.kpiIcon {
+  @include flex-center;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: $radius-lg;
+  font-size: $font-size-xl;
+}
+
+.kpiIconOrange { background: rgba($primary, 0.1); color: $primary; }
+.kpiIconBlue { background: rgba($info, 0.1); color: $info; }
+.kpiIconGreen { background: rgba($success, 0.1); color: $success; }
+.kpiIconPurple { background: rgba(#8B5CF6, 0.1); color: #8B5CF6; }
+
+.kpiInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.kpiLabel {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  margin-bottom: 4px;
+}
+
+.kpiValue {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  line-height: 1.2;
+
+  @include max-width($breakpoint-sm) {
+    font-size: $font-size-xl;
+  }
+}
+
+.kpiTrend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  padding: 2px 8px;
+  border-radius: $radius-full;
+}
+
+.trendUp { background: $success-bg; color: $success; }
+.trendDown { background: $error-bg; color: $error; }
+
+// Charts Section
+.chartsGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+
+  @include max-width($breakpoint-lg) { grid-template-columns: 1fr; }
+}
+
+.card {
+  @include admin-card;
+  padding: $spacing-lg;
+}
+
+.cardHeader {
+  @include flex-between;
+  margin-bottom: $spacing-lg;
+}
+
+.cardTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.chartContainer {
+  height: 300px;
+}
+
+// Recent Activity
+.activityGrid {
+  width: 100%;
+}
+
+// Orders Table
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.tableRow {
+  transition: background $transition-fast;
+
+  &:hover {
+    background: $bg-body;
+  }
+
+  td {
+    padding: 12px 0;
+    border-bottom: 1px solid $border-light;
+    font-size: $font-size-sm;
+    color: $text-primary;
+    vertical-align: middle;
+  }
+
+  &:last-child td {
+    border-bottom: none;
+  }
+}
+
+.orderId {
+  font-weight: $font-weight-semibold;
+  color: $primary;
+}
+
+.customer {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.customerName {
+  font-weight: $font-weight-medium;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: $radius-full;
+  font-size: 12px;
+  font-weight: $font-weight-semibold;
+}
+
+.statusPending { background: $warning-bg; color: $warning; }
+.statusProcessing { background: $info-bg; color: $info; }
+.statusDelivered { background: $success-bg; color: $success; }
+.statusCancelled { background: $error-bg; color: $error; }
+
+// Top Sellers
+.sellerItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md 0;
+  border-bottom: 1px solid $border-light;
+
+  &:last-child { border-bottom: none; }
+}
+
+.sellerRank {
+  @include flex-center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: $radius-full;
+  font-size: 12px;
+  font-weight: $font-weight-bold;
+}
+
+.rank1 { background: linear-gradient(135deg, #FFD700, #FFA000); color: white; }
+.rank2 { background: linear-gradient(135deg, #C0C0C0, #9E9E9E); color: white; }
+.rank3 { background: linear-gradient(135deg, #CD7F32, #A0522D); color: white; }
+.rankDefault { background: $bg-body; color: $text-secondary; }
+
+.sellerInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.sellerName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+  @include truncate;
+}
+
+.sellerProducts {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+}
+
+.sellerRevenue {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $success;
+  white-space: nowrap;
+}
+
+// Products grid (2 cols below charts)
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg;
+  margin-top: $spacing-xl;
+
+  @include max-width($breakpoint-lg) { grid-template-columns: 1fr; }
+}
+
+// Product item
+.productItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: 10px 0;
+  border-bottom: 1px solid $border-light;
+
+  &:last-child { border-bottom: none; }
+}
+
+.productRank {
+  @include flex-center;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  border-radius: $radius-full;
+  font-size: 11px;
+  font-weight: $font-weight-bold;
+}
+
+.productImg {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: $radius-md;
+  object-fit: cover;
+  background: $bg-body;
+  overflow: hidden;
+  @include flex-center;
+  color: $text-light;
+  font-size: 18px;
+}
+
+.productInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.productName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+  @include truncate;
+}
+
+.productSold {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+}
+
+.productRevenue {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $primary;
+  white-space: nowrap;
+}
+
+// Seller status dot
+.statusDot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  border-radius: $radius-full;
+}
+
+.dotApproved { background: $success; }
+.dotPending  { background: $warning; }
+.dotRejected { background: $error; }
+
+// Quick Actions
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+
+  @include max-width($breakpoint-md) { grid-template-columns: repeat(2, 1fr); }
+  @include max-width($breakpoint-sm) { grid-template-columns: repeat(2, 1fr); gap: $spacing-sm; }
+}
+
+.quickAction {
+  @include admin-card;
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: $spacing-lg;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $primary;
+    box-shadow: 0 0 0 2px rgba($primary, 0.1);
+    transform: translateY(-2px);
+
+    .quickActionIcon { background: $primary; color: $text-white; }
+  }
+}
+
+.quickActionIcon {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-lg;
+  background: $bg-body;
+  color: $text-secondary;
+  transition: all $transition-fast;
+}
+
+.quickActionLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $text-primary;
+  text-align: center;
+}

@@ -1,0 +1,48 @@
+@use '../../../styles/_variables' as *;
+
+.wrapper {
+  background-color: $black;
+  overflow: hidden;
+  padding: $space-4 0;
+  border-top: 1px solid rgba(244, 241, 236, 0.08);
+  border-bottom: 1px solid rgba(244, 241, 236, 0.08);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $space-6;
+  padding: 0 $space-6;
+  white-space: nowrap;
+}
+
+.text {
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: $ivory;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: $gold;
+  flex-shrink: 0;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

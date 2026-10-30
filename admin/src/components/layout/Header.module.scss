@@ -1,0 +1,436 @@
+// ==============================================
+// HEADER - Admin Dashboard
+// ==============================================
+
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  height: $header-height;
+  background: $bg-card;
+  border-bottom: 1px solid $border-light;
+  z-index: $z-header;
+  @include flex-between;
+  padding: 12px $spacing-xl;
+  gap: $spacing-lg;
+
+  @include max-width($breakpoint-sm) {
+    padding: 8px $spacing-md;
+    gap: $spacing-sm;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.menuButton {
+  display: none;
+  @include max-width($breakpoint-lg) {
+    display: flex;
+  }
+}
+
+.pageInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.pageTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.pageSubtitle {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+
+  @include max-width($breakpoint-sm) {
+    display: none;
+  }
+}
+
+// ── Search wrapper (position: relative for dropdowns) ──
+.searchWrapper {
+  flex: 1;
+  max-width: 460px;
+  position: relative;
+
+  @include max-width($breakpoint-md) {
+    display: none;
+  }
+}
+
+.searchBar {
+  @include flex-center;
+  gap: 6px;
+  width: 100%;
+  background: $bg-body;
+  border-radius: $radius-lg;
+  border: 1px solid transparent;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+  padding: 5px 10px;
+
+  &:focus-within {
+    border-color: $primary !important;
+    background: $bg-card;
+    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+  }
+}
+
+// Type selector button (inside search bar)
+.typeSelector {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba($primary, 0.08);
+  border: none;
+  border-radius: $radius-md;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $primary;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background $transition-fast;
+
+  &:hover { background: rgba($primary, 0.14); }
+}
+
+.typeDivider {
+  width: 1px;
+  height: 16px;
+  background: $border-light;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  font-size: $font-size-sm;
+  min-width: 0;
+
+  input { padding: 4px 0; }
+}
+
+// ── Type dropdown ──
+.typeDropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 160px;
+  border-radius: $radius-lg !important;
+  overflow: hidden;
+  z-index: $z-dropdown;
+  padding: 4px !important;
+}
+
+.typeOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  border-radius: $radius-md;
+  font-size: 13px;
+  color: $text-primary;
+  cursor: pointer;
+  text-align: left;
+  transition: background $transition-fast;
+
+  &:hover { background: $bg-body; }
+}
+
+.typeOptionActive {
+  background: rgba($primary, 0.08);
+  color: $primary;
+  font-weight: 600;
+}
+
+// ── Results dropdown ──
+.resultsDropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  border-radius: $radius-lg !important;
+  overflow: hidden;
+  z-index: $z-dropdown;
+  max-height: 480px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background: $border-light; border-radius: 2px; }
+}
+
+.searchHint {
+  padding: 16px;
+  font-size: 13px;
+  color: $text-secondary;
+  text-align: center;
+}
+
+.searchEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 16px;
+}
+
+.resultGroup {
+  padding: 8px 0 4px;
+
+  & + & {
+    border-top: 1px solid $border-light;
+  }
+}
+
+.resultGroupHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: $text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 7px 14px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background $transition-fast;
+
+  &:hover { background: $bg-body; }
+}
+
+.resultAvatar {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: $bg-body;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.resultInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.resultTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultSub {
+  font-size: 11px;
+  color: $text-secondary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultFooter {
+  padding: 8px 14px;
+  font-size: 11px;
+  color: $text-secondary;
+  border-top: 1px solid $border-light;
+  text-align: center;
+  background: $bg-body;
+}
+
+// Actions
+.right {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-lg !important;
+  color: $text-secondary !important;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $bg-body !important;
+    color: $text-primary !important;
+  }
+}
+
+.divider {
+  width: 1px;
+  height: 28px;
+  background: $border-light;
+  margin: 0 $spacing-xs;
+}
+
+// ── Notifications dropdown ──
+.notifDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 340px;
+  border-radius: $radius-lg !important;
+  overflow: hidden;
+  z-index: $z-dropdown;
+  display: flex;
+  flex-direction: column;
+  max-height: 480px;
+
+  @include max-width($breakpoint-sm) {
+    width: calc(100vw - 2 * #{$spacing-md});
+    right: 0;
+    max-width: 340px;
+  }
+}
+
+.notifHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid $border-light;
+  flex-shrink: 0;
+}
+
+.notifMarkAll {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  font-size: 11px;
+  font-weight: 600;
+  color: $primary;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: $radius-sm;
+  transition: background $transition-fast;
+
+  &:hover { background: rgba($primary, 0.08); }
+}
+
+.notifList {
+  overflow-y: auto;
+  flex: 1;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background: $border-light; border-radius: 2px; }
+}
+
+.notifEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+}
+
+.notifItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px solid $border-light;
+  transition: background $transition-fast;
+
+  &:hover { background: $bg-body; }
+  &:last-child { border-bottom: none; }
+}
+
+.notifItemUnread {
+  background: rgba($primary, 0.03);
+}
+
+.notifDot {
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  border-radius: 50%;
+  background: $primary;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.notifContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.notifTitle {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: $text-primary !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px !important;
+}
+
+.notifBody {
+  font-size: 12px !important;
+  color: $text-secondary !important;
+  line-height: 1.4 !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 4px !important;
+}
+
+.notifTime {
+  font-size: 11px !important;
+  color: $text-light !important;
+}
+
+.notifFooter {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  border-top: 1px solid $border-light;
+  background: $bg-body;
+  font-size: 12px;
+  font-weight: 600;
+  color: $primary;
+  cursor: pointer;
+  text-align: center;
+  transition: background $transition-fast;
+  flex-shrink: 0;
+
+  &:hover { background: rgba($primary, 0.06); }
+}

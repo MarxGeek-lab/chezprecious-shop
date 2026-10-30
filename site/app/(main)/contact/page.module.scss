@@ -1,0 +1,193 @@
+@use '../../styles/_variables' as *;
+
+.main { background: $ivory; min-height: 100vh; }
+
+/* ── Hero ── */
+.hero {
+  background: $black;
+  padding: 8rem $space-8 $space-20;
+  text-align: center;
+  color: $ivory;
+}
+.eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-4;
+}
+.heroTitle {
+  font-family: $font-display;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: $fw-regular;
+  line-height: 1.15;
+  margin: 0 0 $space-4;
+}
+.heroSub {
+  font-size: $fs-base;
+  opacity: 0.7;
+}
+
+/* ── Layout ── */
+.layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $space-16 $space-8;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: $space-12;
+  align-items: start;
+  @media (max-width: $bp-lg) { grid-template-columns: 1fr; }
+}
+
+/* ── Sidebar ── */
+.infoCard {
+  display: flex;
+  gap: $space-4;
+  align-items: flex-start;
+  padding: $space-5 0;
+  border-bottom: 1px solid rgba(10,10,10,0.08);
+  &:first-child { padding-top: 0; }
+}
+.infoIcon {
+  width: 40px;
+  height: 40px;
+  background: $black;
+  color: $ivory;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.infoLabel {
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-1;
+}
+.infoValue {
+  font-size: $fs-sm;
+  color: $black;
+  text-decoration: none;
+  &:hover { color: $gold; }
+}
+
+.mapBox {
+  margin-top: $space-8;
+  border: 1.5px solid $black;
+  overflow: hidden;
+  height: 220px;
+}
+.map { width: 100%; height: 100%; border: none; display: block; }
+
+/* ── Form ── */
+.formWrap {
+  background: #fff;
+  border: 1.5px solid $black;
+  padding: $space-10;
+  @media (max-width: $bp-sm) { padding: $space-6; }
+}
+.formTitle {
+  font-family: $font-display;
+  font-size: $fs-2xl;
+  font-weight: $fw-regular;
+  margin: 0 0 $space-8;
+}
+.form { display: flex; flex-direction: column; gap: $space-5; }
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-5;
+  @media (max-width: $bp-sm) { grid-template-columns: 1fr; }
+}
+.field { display: flex; flex-direction: column; gap: $space-2; }
+.label {
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(10,10,10,0.55);
+}
+.input {
+  border: 1.5px solid rgba(10,10,10,0.15);
+  padding: 12px $space-4;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  color: $black;
+  background: transparent;
+  outline: none;
+  transition: border-color $transition-fast;
+  appearance: none;
+  &:focus { border-color: $black; }
+  &::placeholder { color: rgba(10,10,10,0.35); }
+}
+.textarea { resize: vertical; min-height: 140px; }
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: 14px $space-8;
+  background: $black;
+  color: $ivory;
+  border: none;
+  font-family: $font-primary;
+  font-size: 11px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background $transition-fast, color $transition-fast;
+  align-self: flex-start;
+  &:hover:not(:disabled) { background: $gold; color: $black; }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+/* ── Success ── */
+.successBox {
+  text-align: center;
+  padding: $space-20 $space-8;
+}
+.successIcon {
+  width: 64px;
+  height: 64px;
+  background: $black;
+  color: $ivory;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto $space-6;
+}
+.successTitle {
+  font-family: $font-display;
+  font-size: $fs-2xl;
+  font-weight: $fw-regular;
+  margin: 0 0 $space-3;
+}
+.successText {
+  font-size: $fs-sm;
+  color: rgba(10,10,10,0.65);
+  margin-bottom: $space-8;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.successBtn {
+  padding: 12px $space-8;
+  background: $black;
+  color: $ivory;
+  border: none;
+  font-family: $font-primary;
+  font-size: 11px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background $transition-fast, color $transition-fast;
+  &:hover { background: $gold; color: $black; }
+}

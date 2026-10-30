@@ -1,0 +1,288 @@
+// ==============================================
+// STYLES PARTAGÉS - Pages de gestion admin
+// ==============================================
+
+@use '@/src/styles/variables' as *;
+@use '@/src/styles/mixins' as *;
+
+// Page header
+.pageHeader {
+  @include flex-between;
+  margin-bottom: $spacing-xl;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.pageHeaderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pageTitle {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+}
+
+.pageSubtitle {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+}
+
+.pageActions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+// Card conteneur
+.card {
+  @include admin-card;
+  padding: $spacing-lg;
+}
+
+.cardHeader {
+  @include flex-between;
+  margin-bottom: $spacing-lg;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.cardTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+// Toolbar (search + filters)
+.toolbar {
+  @include flex-between;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+  flex-wrap: wrap;
+
+  @include max-width($breakpoint-sm) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex: 1;
+  max-width: 400px;
+  background: $bg-body;
+  border-radius: $radius-lg;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  transition: all $transition-fast;
+
+  @include max-width($breakpoint-sm) {
+    max-width: 100%;
+  }
+
+  &:focus-within {
+    border-color: $primary;
+    background: $bg-card;
+    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+  }
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+// Table
+.tableContainer {
+  overflow-x: auto;
+  @include custom-scrollbar;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  th {
+    padding: 12px 16px;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $text-secondary;
+    background: $bg-body;
+    border-bottom: 1px solid $border-light;
+    white-space: nowrap;
+    text-align: left;
+
+    &:first-child { border-radius: $radius-md 0 0 $radius-md; }
+    &:last-child { border-radius: 0 $radius-md $radius-md 0; }
+  }
+
+  td {
+    padding: 14px 16px;
+    font-size: $font-size-sm;
+    color: $text-primary;
+    border-bottom: 1px solid $border-light;
+    vertical-align: middle;
+  }
+
+  tbody tr {
+    transition: background $transition-fast;
+
+    &:hover {
+      background: rgba($primary, 0.02);
+    }
+
+    &:last-child td { border-bottom: none; }
+  }
+}
+
+// Status badges
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: $radius-full;
+  font-size: 12px;
+  font-weight: $font-weight-semibold;
+  white-space: nowrap;
+}
+
+.badgeSuccess { background: $success-bg; color: $success; }
+.badgeWarning { background: $warning-bg; color: $warning; }
+.badgeError { background: $error-bg; color: $error; }
+.badgeInfo { background: $info-bg; color: $info; }
+.badgeDefault { background: $bg-body; color: $text-secondary; }
+
+// User row
+.userCell {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.userCellInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userCellName {
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.userCellEmail {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+}
+
+// Pagination
+.pagination {
+  @include flex-between;
+  margin-top: $spacing-lg;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.paginationInfo {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+}
+
+// Actions
+.actionBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: $radius-md !important;
+  color: $text-secondary !important;
+
+  &:hover {
+    background: $bg-body !important;
+    color: $primary !important;
+  }
+}
+
+.actionsCell {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+// Empty state
+.emptyState {
+  @include flex-center;
+  flex-direction: column;
+  padding: $spacing-3xl;
+  gap: $spacing-md;
+}
+
+.emptyIcon {
+  @include flex-center;
+  width: 64px;
+  height: 64px;
+  border-radius: $radius-full;
+  background: $bg-body;
+  color: $text-light;
+}
+
+.emptyTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.emptyText {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+}
+
+// Stats row mini
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+
+  @include max-width($breakpoint-md) { grid-template-columns: repeat(2, 1fr); }
+  @include max-width($breakpoint-sm) { grid-template-columns: repeat(2, 1fr); gap: $spacing-sm; }
+}
+
+.statCard {
+  @include admin-card;
+  padding: $spacing-md $spacing-lg;
+  @include flex-start;
+  gap: $spacing-md;
+
+  @include max-width($breakpoint-sm) {
+    padding: $spacing-sm $spacing-md;
+    gap: $spacing-sm;
+  }
+}
+
+.statIcon {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: $radius-md;
+}
+
+.statValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+}
+
+.statLabel {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+}

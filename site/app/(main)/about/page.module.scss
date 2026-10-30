@@ -1,0 +1,200 @@
+@use '../../styles/_variables' as *;
+
+.main { background: $ivory; }
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  height: 80vh;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.heroBg { position: absolute; inset: 0; }
+.heroBgImg { object-fit: cover; }
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.75) 0%, rgba(10,10,10,0.1) 60%);
+}
+.heroInner {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: $space-16 $space-8;
+  color: $ivory;
+}
+.heroTitle {
+  font-family: $font-display;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: $fw-regular;
+  line-height: 1.15;
+  margin: $space-3 0 $space-4;
+}
+.heroSub {
+  font-size: $fs-lg;
+  opacity: 0.85;
+  max-width: 520px;
+}
+
+/* ── Eyebrow ── */
+.eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: $space-4;
+}
+
+/* ── Story ── */
+.story {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $space-24 $space-8;
+}
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-16;
+  align-items: center;
+  @media (max-width: $bp-md) { grid-template-columns: 1fr; }
+}
+.storyImg {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border: 1.5px solid $black;
+}
+.storyImgEl { object-fit: cover; transition: transform 0.6s ease; &:hover { transform: scale(1.04); } }
+.storyText {
+  p {
+    font-size: $fs-base;
+    line-height: 1.8;
+    color: rgba(10,10,10,0.75);
+    margin-bottom: $space-4;
+  }
+}
+
+/* ── Section title ── */
+.sectionTitle {
+  font-family: $font-display;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-weight: $fw-regular;
+  color: $black;
+  margin: 0 0 $space-6;
+  line-height: 1.2;
+}
+
+/* ── Values ── */
+.values {
+  background: $black;
+  padding: $space-24 $space-8;
+}
+.valuesInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  .eyebrow { color: $gold; }
+  .sectionTitle { color: $ivory; }
+}
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-8;
+  margin-top: $space-12;
+  @media (max-width: $bp-md) { grid-template-columns: 1fr; }
+}
+.valueCard {
+  border-top: 1px solid rgba(244,241,236,0.15);
+  padding-top: $space-8;
+}
+.valueNum {
+  font-size: $fs-xs;
+  font-weight: $fw-bold;
+  letter-spacing: 0.15em;
+  color: $gold;
+}
+.valueLabel {
+  font-family: $font-display;
+  font-size: $fs-2xl;
+  font-weight: $fw-regular;
+  color: $ivory;
+  margin: $space-3 0 $space-4;
+}
+.valueText {
+  font-size: $fs-sm;
+  line-height: 1.8;
+  color: rgba(244,241,236,0.65);
+}
+
+/* ── Team ── */
+.team {
+  padding: $space-24 $space-8;
+}
+.teamInner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-8;
+  margin-top: $space-12;
+  @media (max-width: $bp-md) { grid-template-columns: 1fr; }
+}
+.memberCard { text-align: center; }
+.memberImg {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border: 1.5px solid $black;
+  margin-bottom: $space-4;
+}
+.memberImgEl { object-fit: cover; }
+.memberName {
+  font-family: $font-display;
+  font-size: $fs-lg;
+  font-weight: $fw-regular;
+  margin: 0 0 $space-1;
+}
+.memberRole {
+  font-size: $fs-xs;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $gold;
+}
+
+/* ── CTA ── */
+.cta {
+  background: $ivory-dark;
+  text-align: center;
+  padding: $space-24 $space-8;
+}
+.ctaTitle {
+  font-family: $font-display;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: $fw-regular;
+  margin: 0 0 $space-4;
+}
+.ctaSub {
+  font-size: $fs-base;
+  color: rgba(10,10,10,0.65);
+  margin-bottom: $space-8;
+}
+.ctaBtn {
+  display: inline-block;
+  padding: 14px $space-10;
+  background: $black;
+  color: $ivory;
+  font-size: 11px;
+  font-weight: $fw-bold;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background $transition-fast, color $transition-fast;
+  &:hover { background: $gold; color: $black; }
+}

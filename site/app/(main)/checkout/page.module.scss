@@ -1,0 +1,609 @@
+@use '../../styles/_variables' as *;
+
+.main {
+  padding-top: 101px;
+  padding-bottom: $space-24;
+  background-color: $ivory;
+  min-height: 100vh;
+}
+
+/* ── Stepper ── */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-8 0 $space-12;
+}
+
+.stepperItem {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.stepCircle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(10, 10, 10, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  color: rgba(10, 10, 10, 0.35);
+  flex-shrink: 0;
+  transition: all $transition-base;
+}
+
+.stepDone {
+  background-color: $gold;
+  border-color: $gold;
+  color: $black;
+}
+
+.stepActive {
+  background-color: $black;
+  border-color: $black;
+  color: $ivory;
+}
+
+.stepLabel {
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.35);
+
+  @media (max-width: $bp-sm) {
+    display: none;
+  }
+}
+
+.stepLabelActive {
+  color: $black;
+  font-weight: $fw-semibold;
+}
+
+.stepArrow {
+  color: rgba(10, 10, 10, 0.2);
+  margin: 0 $space-1;
+}
+
+/* ── Formulaire ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.formTitle {
+  font-family: $font-display;
+  font-size: $fs-2xl;
+  font-weight: $fw-semibold;
+  color: $black;
+  margin-bottom: $space-2;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-4;
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  span {
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(10, 10, 10, 0.55);
+  }
+}
+
+.input {
+  height: 48px;
+  padding: 0 $space-4;
+  border: 1.5px solid rgba(10, 10, 10, 0.18);
+  background: $ivory;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  color: $black;
+  outline: none;
+  transition: border-color $transition-fast;
+  appearance: none;
+
+  &:focus {
+    border-color: $black;
+  }
+
+  &::placeholder {
+    color: rgba(10, 10, 10, 0.25);
+  }
+}
+
+select.input {
+  cursor: pointer;
+}
+
+/* ── Modes de livraison ── */
+.shippingModes {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  margin-top: $space-2;
+}
+
+.shippingModesTitle {
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.55);
+  margin-bottom: $space-1;
+}
+
+.shippingMode {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4 $space-5;
+  border: 1.5px solid rgba(10, 10, 10, 0.14);
+  cursor: pointer;
+  transition: border-color $transition-fast, background $transition-fast;
+
+  input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    accent-color: $black;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  &:hover {
+    border-color: rgba(10, 10, 10, 0.35);
+  }
+}
+
+.shippingModeActive {
+  border-color: $black;
+  border-width: 2px;
+  background: rgba(10, 10, 10, 0.02);
+}
+
+.shippingModeBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  gap: $space-3;
+}
+
+.shippingModeName {
+  font-size: $fs-sm;
+  color: $black;
+}
+
+.shippingModePrice {
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: $black;
+  white-space: nowrap;
+}
+
+/* ── Note sécurité ── */
+.secureNote {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $fs-xs;
+  color: rgba(10, 10, 10, 0.4);
+  padding: $space-3 $space-4;
+  border: 1px solid rgba(10, 10, 10, 0.08);
+  background: rgba(10, 10, 10, 0.02);
+}
+
+/* ── Actions form ── */
+.formActions {
+  display: flex;
+  gap: $space-3;
+  align-items: center;
+  margin-top: $space-2;
+}
+
+.submitBtn {
+  width: 100%;
+  height: 52px !important;
+  background: $black;
+  color: $ivory;
+  border: 2px solid $black;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base, border-color $transition-base;
+
+  &:hover:not(:disabled) {
+    background: $gold;
+    border-color: $gold;
+    color: $black;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.backBtn {
+  height: 52px;
+  padding: 0 $space-6;
+  background: transparent;
+  border: 1.5px solid rgba(10, 10, 10, 0.25);
+  font-family: $font-primary;
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  color: rgba(10, 10, 10, 0.6);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    border-color: $black;
+    color: $black;
+  }
+}
+
+/* ── Récapitulatif sidebar ── */
+.summary {
+  background-color: $ivory-dark;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  @media (min-width: $bp-lg) {
+    position: sticky;
+    top: calc(101px + $space-6);
+  }
+}
+
+.summaryTitle {
+  font-family: $font-display;
+  font-size: $fs-lg;
+  font-weight: $fw-semibold;
+  color: $black;
+  padding-bottom: $space-4;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+.summaryItems {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  padding-bottom: $space-3;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: $space-3;
+}
+
+.summaryItemName {
+  font-size: $fs-xs;
+  color: rgba(10, 10, 10, 0.65);
+  line-height: 1.4;
+
+  em {
+    font-style: normal;
+    color: rgba(10, 10, 10, 0.4);
+  }
+}
+
+.summaryItemPrice {
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  color: $black;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.summaryLines {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.summaryLine {
+  display: flex;
+  justify-content: space-between;
+  font-size: $fs-sm;
+  color: rgba(10, 10, 10, 0.55);
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $space-4;
+  border-top: 1px solid rgba(10, 10, 10, 0.12);
+  font-size: $fs-base;
+  font-weight: $fw-bold;
+  color: $black;
+}
+
+/* ── Confirmation ── */
+.confirmation {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: $space-12 $space-4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: $space-6;
+}
+
+.confirmCheck {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: $gold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $black;
+}
+
+.confirmTitle {
+  font-family: $font-display;
+  font-size: $fs-3xl;
+  font-weight: $fw-semibold;
+  color: $black;
+}
+
+.confirmSub {
+  font-size: $fs-sm;
+  color: rgba(10, 10, 10, 0.55);
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+.confirmDetails {
+  width: 100%;
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  background: $ivory-dark;
+  padding: $space-6;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.confirmRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $fs-sm;
+  gap: $space-4;
+
+  span {
+    color: rgba(10, 10, 10, 0.5);
+  }
+
+  strong {
+    color: $black;
+    text-align: right;
+  }
+}
+
+.confirmBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: $space-4 $space-10;
+  background: $black;
+  color: $ivory;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: $space-4;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover {
+    background: $gold;
+    color: $black;
+  }
+}
+
+/* ── Confirmation actions ── */
+.confirmActions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  align-items: center;
+  width: 100%;
+  margin-top: $space-2;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 $space-8;
+  }
+}
+
+/* ── Méthodes de paiement ── */
+.paymentMethods {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.paymentMethod {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4 $space-5;
+  border: 1.5px solid rgba(10, 10, 10, 0.14);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: border-color $transition-fast, background $transition-fast;
+  font-family: $font-primary;
+
+  &:hover {
+    border-color: rgba(10, 10, 10, 0.35);
+  }
+}
+
+.paymentMethodActive {
+  border-color: $black;
+  border-width: 2px;
+  background: rgba(10, 10, 10, 0.02);
+}
+
+.paymentMethodIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(10, 10, 10, 0.05);
+  flex-shrink: 0;
+  color: $black;
+}
+
+.paymentMethodInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.paymentMethodLabel {
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  color: $black;
+}
+
+.paymentMethodNote {
+  font-size: $fs-xs;
+  color: rgba(10, 10, 10, 0.45);
+}
+
+.paymentMethodCheck {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: $gold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $black;
+  flex-shrink: 0;
+}
+
+.paymentFields {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding: $space-5;
+  background: rgba(10, 10, 10, 0.02);
+  border: 1px solid rgba(10, 10, 10, 0.08);
+}
+
+.paymentNote {
+  font-size: $fs-xs;
+  color: rgba(10, 10, 10, 0.55);
+  line-height: 1.6;
+}
+
+.externalPayInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+
+  p {
+    font-size: $fs-sm;
+    color: rgba(10, 10, 10, 0.65);
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.comingSoon {
+  font-size: $fs-xs !important;
+  color: rgba(10, 10, 10, 0.4) !important;
+  font-style: italic;
+}
+
+/* ── Textarea ── */
+.textarea {
+  height: auto !important;
+  padding: $space-3 $space-4 !important;
+  resize: vertical;
+}
+
+/* ── Error box ── */
+.errorBox {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-4;
+  background: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  font-size: $fs-xs;
+  color: #dc2626;
+  line-height: 1.5;
+}
+
+/* ── Summary image ── */
+.summaryItemLeft {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  flex: 1;
+  min-width: 0;
+}
+
+.summaryItemImg {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: rgba(10, 10, 10, 0.05);
+}
+
+.summaryItemImgEl {
+  object-fit: cover;
+}
+
+/* ── Spinner ── */
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
