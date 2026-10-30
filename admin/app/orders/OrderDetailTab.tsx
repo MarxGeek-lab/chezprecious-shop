@@ -113,7 +113,7 @@ export default function OrderDetailTab() {
         <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 2 }}>
           <Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 0.5 }}>
-              <Typography sx={{ fontSize: 20, fontWeight: 700, color: '#7B1E3A' }}>{order.orderNumber}</Typography>
+              <Typography sx={{ fontSize: 20, fontWeight: 700, color: '#FF2C2C' }}>{order.orderNumber}</Typography>
               <Chip label={os.label} size="small" sx={{ bgcolor: `${os.color}18`, color: os.color, fontWeight: 600, fontSize: 11 }} />
               <Chip label={ps.label} size="small" sx={{ bgcolor: `${ps.color}18`, color: ps.color, fontWeight: 600, fontSize: 11 }} />
             </Box>
@@ -124,7 +124,7 @@ export default function OrderDetailTab() {
           </Box>
           <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
             <Box sx={{ textAlign: 'center' }}>
-              <Typography sx={{ fontSize: 22, fontWeight: 700, color: '#7B1E3A' }}>{formatAmount(order.total)}</Typography>
+              <Typography sx={{ fontSize: 22, fontWeight: 700, color: '#FF2C2C' }}>{formatAmount(order.total)}</Typography>
               <Typography sx={{ fontSize: 11, color: '#9CA3AF' }}>Total</Typography>
             </Box>
             <Box sx={{ textAlign: 'center' }}>
@@ -145,8 +145,8 @@ export default function OrderDetailTab() {
           sx={{
             borderBottom: '1px solid #F3F4F6', px: 2,
             '& .MuiTab-root': { fontSize: 13, fontWeight: 600, textTransform: 'none', minWidth: 'auto', px: 2 },
-            '& .Mui-selected': { color: '#7B1E3A' },
-            '& .MuiTabs-indicator': { bgcolor: '#7B1E3A' },
+            '& .Mui-selected': { color: '#FF2C2C' },
+            '& .MuiTabs-indicator': { bgcolor: '#FF2C2C' },
           }}
         >
           <Tab label={`Articles (${order.items.length})`} icon={<Package size={14} />} iconPosition="start" />
@@ -256,7 +256,7 @@ export default function OrderDetailTab() {
               ))}
               <Box sx={{ display: 'flex', justifyContent: 'space-between', pt: 1.5 }}>
                 <Typography sx={{ fontSize: 15, fontWeight: 700 }}>Total</Typography>
-                <Typography sx={{ fontSize: 15, fontWeight: 700, color: '#7B1E3A' }}>{formatAmount(order.total)}</Typography>
+                <Typography sx={{ fontSize: 15, fontWeight: 700, color: '#FF2C2C' }}>{formatAmount(order.total)}</Typography>
               </Box>
               <Typography sx={{ fontSize: 11, color: '#9CA3AF', mt: 0.5 }}>{order.currency}</Typography>
             </Box>

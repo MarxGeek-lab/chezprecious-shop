@@ -1,5 +1,7 @@
 "use client";
 
+import { formatPrice } from "@/app/utils/format";
+import { getShippingCost, SHIPPING_COST } from "@/app/utils/shipping";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -145,23 +147,23 @@ function OrderSummary({ items, totalPrice, shippingCost, total }: OrderSummaryPr
                 {" "}×{item.quantity}
               </span>
             </div>
-            <span className={styles.summaryItemPrice}>{(item.price * item.quantity).toFixed(2)} €</span>
+            <span className={styles.summaryItemPrice}>{formatPrice((item.price * item.quantity))}</span>
           </div>
         ))}
       </div>
       <div className={styles.summaryLines}>
         <div className={styles.summaryLine}>
           <span>Sous-total</span>
-          <span>{totalPrice.toFixed(2)} €</span>
+          <span>{formatPrice(totalPrice)}</span>
         </div>
         <div className={styles.summaryLine}>
           <span>Livraison</span>
-          <span>{shippingCost === 0 ? "Offerte" : `${shippingCost.toFixed(2)} €`}</span>
+          <span>{shippingCost === 0 ? "Offerte" : `${formatPrice(shippingCost)}`}</span>
         </div>
       </div>
       <div className={styles.summaryTotal}>
         <span>Total TTC</span>
-        <span>{total.toFixed(2)} €</span>
+        <span>{formatPrice(total)}</span>
       </div>
       <div className={styles.secureNote}>
         <Lock size={12} strokeWidth={1.5} />
@@ -256,16 +258,8 @@ function StepLivraison({ shipping, totalPrice, onChange, onNext, onEmailChange }
           <div className={styles.shippingModeBody}>
             <span className={styles.shippingModeName}>Standard — 3 à 5 jours ouvrés</span>
             <span className={styles.shippingModePrice}>
-              {totalPrice >= 80 ? <strong>Offerte</strong> : "4,90 €"}
+              {getShippingCost(totalPrice) === 0 ? <strong>Offerte</strong> : formatPrice(SHIPPING_COST)}
             </span>
-          </div>
-        </label>
-        <label className={`${styles.shippingMode} ${shipping.mode === "express" ? styles.shippingModeActive : ""}`}>
-          <input type="radio" name="mode" value="express"
-            checked={shipping.mode === "express"} onChange={() => onChange("mode", "express")} />
-          <div className={styles.shippingModeBody}>
-            <span className={styles.shippingModeName}>Express — 24 à 48h</span>
-            <span className={styles.shippingModePrice}>9,90 €</span>
           </div>
         </label>
       </div>
@@ -403,7 +397,7 @@ function StepPaiement({
         <button type="submit" className={styles.submitBtn} disabled={!canSubmit || loading}>
           {loading
             ? <><Loader2 size={15} className={styles.spin} /> Traitement…</>
-            : <>Payer {total.toLocaleString("fr-FR", { style: "currency", currency: "EUR" })}</>
+            : <>Payer {total.toLocaleString("fr-FR", { style: "currency", currency: "XOF" })}</>
           }
         </button>
       </div>
@@ -443,7 +437,7 @@ function StepConfirmation({ orderResult, shipping, total }: StepConfirmationProp
           )}
           <div className={styles.confirmRow}>
             <span>Total payé</span>
-            <strong>{total.toLocaleString("fr-FR", { style: "currency", currency: "EUR" })}</strong>
+            <strong>{total.toLocaleString("fr-FR", { style: "currency", currency: "XOF" })}</strong>
           </div>
         </div>
       )}
@@ -476,7 +470,7 @@ export default function CheckoutPage() {
   const [error, setError] = useState("");
   const [orderResult, setOrderResult] = useState<{ orderNumber: string; email: string } | null>(null);
 
-  const shippingCost = shipping.mode === "express" ? 9.9 : totalPrice >= 80 ? 0 : 4.9;
+  const shippingCost = getShippingCost(totalPrice);
   const total = totalPrice + shippingCost;
   const stepIndex = STEPS.findIndex((s) => s.key === step);
 

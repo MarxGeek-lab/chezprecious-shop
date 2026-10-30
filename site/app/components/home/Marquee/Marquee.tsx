@@ -2,11 +2,11 @@ import styles from "./Marquee.module.scss";
 
 const ITEMS = [
   "Nouvelle collection",
-  "Livraison offerte dès 150 €",
+  "Livraison offerte dès 50 000 F CFA",
   "Qualité premium",
   "Retours gratuits",
   "ChezPrecious — 2025",
-  "Pièces exclusives",
+  "Produits 100 % naturels",
 ];
 
 export default function Marquee() {

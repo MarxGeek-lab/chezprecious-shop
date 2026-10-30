@@ -53,7 +53,7 @@ function UserAvatar({
     <Avatar
       sx={{
         width: size, height: size, borderRadius: radius,
-        bgcolor: 'rgba(123, 30, 58,0.15)', color: '#7B1E3A',
+        bgcolor: 'rgba(255, 44, 44,0.15)', color: '#FF2C2C',
         fontSize: size * 0.38, fontWeight: 700,
       }}
     >
@@ -77,10 +77,10 @@ function ConvItem({ conv, active, onClick }: {
       sx={{
         display: 'flex', alignItems: 'center', gap: 1.5,
         px: 2, py: 1.5, cursor: 'pointer',
-        bgcolor: active ? 'rgba(123, 30, 58,0.06)' : 'transparent',
-        borderLeft: active ? '3px solid #7B1E3A' : '3px solid transparent',
+        bgcolor: active ? 'rgba(255, 44, 44,0.06)' : 'transparent',
+        borderLeft: active ? '3px solid #FF2C2C' : '3px solid transparent',
         transition: 'all 0.15s',
-        '&:hover': { bgcolor: active ? 'rgba(123, 30, 58,0.06)' : '#F9FAFB' },
+        '&:hover': { bgcolor: active ? 'rgba(255, 44, 44,0.06)' : '#F9FAFB' },
       }}
     >
       <Box sx={{ position: 'relative', flexShrink: 0 }}>
@@ -89,7 +89,7 @@ function ConvItem({ conv, active, onClick }: {
         <Box sx={{
           position: 'absolute', bottom: -2, right: -2,
           width: 16, height: 16, borderRadius: '50%',
-          bgcolor: isSeller ? '#7B1E3A' : '#6366F1',
+          bgcolor: isSeller ? '#FF2C2C' : '#6366F1',
           border: '2px solid #fff',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
@@ -111,7 +111,7 @@ function ConvItem({ conv, active, onClick }: {
           )}
         </Box>
         {isSeller && user.store && (
-          <Typography sx={{ fontSize: 11, color: '#7B1E3A', fontWeight: 500 }} noWrap>
+          <Typography sx={{ fontSize: 11, color: '#FF2C2C', fontWeight: 500 }} noWrap>
             🏪 {user.store.name}
           </Typography>
         )}
@@ -130,7 +130,7 @@ function ConvItem({ conv, active, onClick }: {
 
       {conv.unreadByAdmin > 0 && (
         <Box sx={{
-          minWidth: 20, height: 20, borderRadius: '50%', bgcolor: '#7B1E3A',
+          minWidth: 20, height: 20, borderRadius: '50%', bgcolor: '#FF2C2C',
           color: '#fff', fontSize: 11, fontWeight: 700,
           display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
         }}>
@@ -205,8 +205,8 @@ function ChatPanel({
                     size="small"
                     sx={{
                       fontSize: 10, height: 18,
-                      bgcolor: isSeller ? 'rgba(123, 30, 58,0.1)' : 'rgba(99,102,241,0.1)',
-                      color:   isSeller ? '#7B1E3A' : '#6366F1',
+                      bgcolor: isSeller ? 'rgba(255, 44, 44,0.1)' : 'rgba(99,102,241,0.1)',
+                      color:   isSeller ? '#FF2C2C' : '#6366F1',
                       fontWeight: 600,
                     }}
                   />
@@ -235,7 +235,7 @@ function ChatPanel({
       }}>
         {isLoading ? (
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
-            <CircularProgress size={28} sx={{ color: '#7B1E3A' }} />
+            <CircularProgress size={28} sx={{ color: '#FF2C2C' }} />
           </Box>
         ) : messages.length === 0 ? (
           <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 1.5, color: '#9CA3AF' }}>
@@ -255,7 +255,7 @@ function ChatPanel({
                 <Box sx={{ maxWidth: '72%' }}>
                   <Box sx={{
                     px: 1.5, py: 1, borderRadius: '14px',
-                    bgcolor: isAdmin ? '#7B1E3A' : '#F3F4F6',
+                    bgcolor: isAdmin ? '#FF2C2C' : '#F3F4F6',
                     color: isAdmin ? '#fff' : '#111827',
                     borderBottomRightRadius: isAdmin ? 4 : 14,
                     borderBottomLeftRadius: isAdmin ? 14 : 4,
@@ -298,8 +298,8 @@ function ChatPanel({
           onClick={handleSend}
           disabled={!text.trim() || sendMut.isPending}
           sx={{
-            bgcolor: '#7B1E3A', color: '#fff', width: 40, height: 40, flexShrink: 0,
-            '&:hover': { bgcolor: '#5A1229' },
+            bgcolor: '#FF2C2C', color: '#fff', width: 40, height: 40, flexShrink: 0,
+            '&:hover': { bgcolor: '#D41E1E' },
             '&.Mui-disabled': { bgcolor: '#E5E7EB', color: '#9CA3AF' },
           }}
         >
@@ -354,7 +354,7 @@ function ContactsPanel({
       }}>
         {isLoading ? (
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
-            <CircularProgress size={24} sx={{ color: '#7B1E3A' }} />
+            <CircularProgress size={24} sx={{ color: '#FF2C2C' }} />
           </Box>
         ) : conversations.length === 0 ? (
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', py: 6, gap: 1, color: '#9CA3AF' }}>
@@ -431,7 +431,7 @@ export default function MessagesTab() {
   };
 
   const kpis = [
-    { icon: MessageSquare, label: 'Total messages',    value: stats?.totalMessages      ?? '—', color: '#7B1E3A', bg: 'rgba(123, 30, 58,0.1)'   },
+    { icon: MessageSquare, label: 'Total messages',    value: stats?.totalMessages      ?? '—', color: '#FF2C2C', bg: 'rgba(255, 44, 44,0.1)'   },
     { icon: Users,         label: 'Conversations',     value: stats?.totalConversations ?? '—', color: '#6366F1', bg: 'rgba(99,102,241,0.1)' },
     { icon: Inbox,         label: 'Non lus',           value: stats?.unreadByAdmin      ?? '—', color: '#D97706', bg: 'rgba(245,158,11,0.1)' },
     { icon: Clock,         label: 'Temps de réponse',  value: '< 5 min',                       color: '#10B981', bg: 'rgba(16,185,129,0.1)' },

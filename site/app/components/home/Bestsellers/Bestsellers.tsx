@@ -1,5 +1,6 @@
 "use client";
 
+import { categoryLabel, formatPrice } from "@/app/utils/format";
 import Link from "next/link";
 import Image from "next/image";
 import Container from "@mui/material/Container";
@@ -61,16 +62,16 @@ export default function Bestsellers() {
                 <div className={styles.heroOverlay} />
                 <div className={styles.heroContent}>
                   <span className={styles.rankBadge}>#1</span>
-                  <p className={styles.heroCategory}>{hero.category}</p>
+                  <p className={styles.heroCategory}>{categoryLabel(hero.category)}</p>
                   <p className={styles.heroName}>{hero.name}</p>
                   {hero.rating ? (
                     <div className={styles.ratingRow}>
-                      <Star size={12} strokeWidth={0} fill="#7B1E3A" />
+                      <Star size={12} strokeWidth={0} fill="#FF2C2C" />
                       <span className={styles.ratingVal}>{hero.rating.toFixed(1)}</span>
                       <span className={styles.ratingCount}>({hero.reviewCount} avis)</span>
                     </div>
                   ) : null}
-                  <p className={styles.heroPrice}>{hero.price} €</p>
+                  <p className={styles.heroPrice}>{formatPrice(hero.price)}</p>
                 </div>
               </div>
             </Link>
@@ -95,19 +96,19 @@ export default function Bestsellers() {
                       <span className={styles.rankBadgeSmall}>#{i + 2}</span>
                     </div>
                     <div className={styles.info}>
-                      <p className={styles.category}>{product.category}</p>
+                      <p className={styles.category}>{categoryLabel(product.category)}</p>
                       <p className={styles.name}>{product.name}</p>
                       {product.rating ? (
                         <div className={styles.ratingRow}>
-                          <Star size={10} strokeWidth={0} fill="#7B1E3A" />
+                          <Star size={10} strokeWidth={0} fill="#FF2C2C" />
                           <span className={styles.ratingVal}>{product.rating.toFixed(1)}</span>
                           <span className={styles.ratingCount}>({product.reviewCount})</span>
                         </div>
                       ) : null}
                       <div className={styles.priceRow}>
-                        <span className={styles.price}>{product.price} €</span>
+                        <span className={styles.price}>{formatPrice(product.price)}</span>
                         {product.comparePrice && (
-                          <span className={styles.priceOld}>{product.comparePrice} €</span>
+                          <span className={styles.priceOld}>{formatPrice(product.comparePrice)}</span>
                         )}
                       </div>
                     </div>

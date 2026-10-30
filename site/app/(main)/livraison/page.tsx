@@ -9,24 +9,13 @@ const SHIPPING = [
     icon: Truck,
     title: "Livraison standard",
     delay: "3 – 5 jours ouvrés",
-    price: "4,90 €",
-    note: "Gratuite dès 80 € d'achat",
-  },
-  {
-    icon: Clock,
-    title: "Livraison express",
-    delay: "24 – 48h",
-    price: "9,90 €",
-    note: "Commande avant 14h, jours ouvrés",
+    price: "2 500 F CFA",
+    note: "Gratuite dès 50 000 F CFA d'achat",
   },
 ];
 
 const ZONES = [
-  { country: "France métropolitaine", delay: "3 – 5 jours", price: "Gratuite dès 80 €" },
-  { country: "Belgique", delay: "4 – 6 jours", price: "6,90 €" },
-  { country: "Suisse", delay: "5 – 7 jours", price: "8,90 €" },
-  { country: "Luxembourg", delay: "4 – 6 jours", price: "6,90 €" },
-  { country: "Autres pays UE", delay: "5 – 8 jours", price: "9,90 €" },
+  { country: "Bénin", delay: "3 – 5 jours", price: "2 500 F CFA · offerte dès 50 000 F CFA" },
 ];
 
 const RETURN_STEPS = [

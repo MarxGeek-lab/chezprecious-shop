@@ -2,7 +2,7 @@ import { Truck, RotateCcw, ShieldCheck, Headphones } from "lucide-react";
 import styles from "./TrustBar.module.scss";
 
 const ITEMS = [
-  { icon: Truck, title: "Livraison rapide", text: "Offerte dès 80 € d'achat" },
+  { icon: Truck, title: "Livraison rapide", text: "Offerte dès 50 000 F CFA" },
   { icon: RotateCcw, title: "Retours faciles", text: "Gratuits sous 30 jours" },
   { icon: ShieldCheck, title: "Paiement sécurisé", text: "Transactions protégées" },
   { icon: Headphones, title: "Service client", text: "Une équipe à votre écoute" },

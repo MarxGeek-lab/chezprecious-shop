@@ -1,0 +1,356 @@
+/**
+ * Seed du catalogue ChezPrecious (produits SAG7 International).
+ *
+ * - copie les images de prisma/seed-assets/products vers public/uploads/products/catalogue
+ * - crée / met à jour les catégories et les produits (par slug, donc relançable)
+ * - remplace les images de chaque produit à chaque exécution
+ *
+ * Usage (dans le conteneur de l'API) :
+ *   node scripts/seed-products.mjs
+ */
+
+import { copyFileSync, mkdirSync, readdirSync } from 'node:fs'
+import { randomUUID } from 'node:crypto'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import pg from 'pg'
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..')
+const ASSETS_DIR = join(root, 'prisma', 'seed-assets', 'products')
+const UPLOAD_DIR = join(root, 'public', 'uploads', 'products', 'catalogue')
+const UPLOAD_URL = '/uploads/products/catalogue'
+
+const PRICE = 21000
+const STOCK = 50
+const BRAND = 'SAG7 International'
+
+const SUPPLEMENT_NOTICE =
+  'Complément alimentaire. Ne remplace pas une alimentation variée et équilibrée ni un avis ou un traitement médical. ' +
+  'Femmes enceintes ou allaitantes et personnes sous traitement : demandez conseil à votre médecin avant utilisation. ' +
+  'Ne pas dépasser la dose journalière recommandée. Tenir hors de portée des enfants.'
+
+// ─── Catégories ──────────────────────────────────────────────────────────────
+
+const CATEGORIES = [
+  {
+    slug: 'complements-alimentaires',
+    name: 'Compléments alimentaires',
+    description: 'Compléments naturels SAG7 pour l\'énergie, l\'immunité et l\'équilibre au quotidien.',
+    image: 'coffrets-sag7-floral.webp',
+  },
+  {
+    slug: 'soins-beaute',
+    name: 'Soins & beauté',
+    description: 'Soins aux ingrédients naturels pour une peau hydratée et lumineuse.',
+    image: 'cream7-eclat.webp',
+  },
+  {
+    slug: 'cafe-boissons',
+    name: 'Café & boissons',
+    description: 'Café premium enrichi en ingrédients naturels.',
+    image: 'royal-coffee-emballage.webp',
+  },
+]
+
+// ─── Produits ────────────────────────────────────────────────────────────────
+// Description : paragraphes séparés par une ligne vide, « ### » pour un titre,
+// « - » pour une liste (rendu sur la page produit).
+
+const PRODUCTS = [
+  {
+    slug: 'super7-brain-health',
+    name: 'SUPER7 Brain & Health',
+    category: 'complements-alimentaires',
+    tags: ['energie', 'immunite', 'concentration', 'antioxydant', 'mixte'],
+    isFeatured: true,
+    shortDescription:
+      'Complément en sachets au sel des 7 continents, champignon des neiges et AFA, enrichi en vitamines C et E, pour l\'énergie, la concentration et la vitalité au quotidien.',
+    description: `SUPER7 Brain & Health est un complément alimentaire en sachets signé SAG7 International. Sa formule associe le sel « Garam 7 Benua », le champignon des neiges et l'AFA, enrichis en vitamines C et E, avec un prémix de glutathion, miel, dattes, cerise acérola, baies et extrait de grenade.
+
+### Bienfaits
+- Protection cellulaire : contribue à lutter contre le stress oxydatif et le vieillissement prématuré des cellules.
+- Mémoire et concentration : aide à soutenir les fonctions cognitives au quotidien.
+- Énergie et vitalité : contribue à réduire la fatigue et favorise la récupération après l'effort.
+- Immunité : aide à soutenir les défenses naturelles, notamment lors des changements de saison.
+- Cœur et circulation : contribue au bien-être cardiovasculaire.
+- Os et équilibre minéral : le calcium et le magnésium contribuent au maintien d'une ossature normale.
+- Beauté de la peau : aide à préserver l'hydratation et l'éclat de la peau.
+- Sommeil et équilibre : contribue à un sommeil de qualité et à la détente nerveuse.
+
+### Composition
+- Garam 7 Benua (sel des 7 continents), champignon des neiges, AFA
+- Vitamines C et E, calcium, magnésium
+- Glutathion, miel, dattes, cerise acérola, baies, extrait de grenade
+
+### Format
+Boîte de 30 sachets de 3 g.
+
+### Précautions
+${SUPPLEMENT_NOTICE}`,
+    weight: 0.09,
+    images: [
+      'super7-boite.webp',
+      'w7-super7-sachets-verre.webp',
+      'thymoq-super7-scene.webp',
+      'w7-super7-rose-or.webp',
+      'coffrets-sag7-floral.webp',
+      'w7-super7-demonstration.webp',
+      'thymoq-super7-capsules.webp',
+      'coffrets-sag7-couple.webp',
+    ],
+  },
+  {
+    slug: 'women7-w7',
+    name: 'WOMEN7 (W7) Beauty · Balance · Beyond',
+    category: 'complements-alimentaires',
+    tags: ['femme', 'equilibre-hormonal', 'beaute', 'bien-etre'],
+    isFeatured: true,
+    shortDescription:
+      'Complément en sachets dédié au bien-être féminin : équilibre hormonal, confort intime, éclat de la peau et vitalité.',
+    description: `WOMEN7 (W7) est le complément alimentaire SAG7 International pensé pour les femmes. En sachets, enrichi en calcium, magnésium, vitamines et minéraux, il accompagne l'équilibre et la beauté au féminin, à chaque étape de la vie.
+
+### Bienfaits
+- Équilibre féminin : contribue à l'équilibre hormonal et au confort du cycle menstruel.
+- Confort intime : aide à atténuer la sécheresse intime et favorise le bien-être au quotidien.
+- Ménopause : aide à mieux vivre les inconforts liés à la ménopause.
+- Circulation : contribue au bien-être cardiovasculaire et à une bonne circulation sanguine.
+- Défenses naturelles : aide à soutenir l'immunité.
+- Beauté : contribue à unifier le teint, à préserver l'élasticité de la peau et à fortifier les cheveux.
+
+### Composition
+- Calcium, magnésium
+- Vitamines et minéraux
+
+### Format
+Boîte de 15 sachets de 3 g.
+
+### Précautions
+${SUPPLEMENT_NOTICE}`,
+    weight: 0.045,
+    images: [
+      'women7-boite.webp',
+      'w7-super7-sachets-verre.webp',
+      'w7-super7-rose-or.webp',
+      'w7-super7-demonstration.webp',
+      'coffrets-sag7-floral.webp',
+      'coffrets-sag7-couple.webp',
+    ],
+  },
+  {
+    slug: 'men7-m7',
+    name: 'MEN7 (M7) Power · Performance · Protection',
+    category: 'complements-alimentaires',
+    tags: ['homme', 'energie', 'endurance', 'vitalite'],
+    isFeatured: true,
+    shortDescription:
+      'Complément en sachets pour la vitalité masculine : énergie, endurance, performance et défenses naturelles.',
+    description: `MEN7 (M7) est le complément alimentaire SAG7 International dédié aux hommes. En sachets, enrichi en calcium, magnésium, vitamines et minéraux, il accompagne l'énergie, l'endurance et la vitalité au quotidien.
+
+### Bienfaits
+- Énergie et performance : contribue à la vitalité et à la vigueur au quotidien.
+- Vitalité masculine : aide à soutenir le bien-être intime et la vitalité reproductive.
+- Endurance et concentration : contribue à l'endurance physique et à la concentration.
+- Cœur et circulation : contribue au bien-être cardiovasculaire.
+- Défenses naturelles : aide à soutenir l'immunité ; ses antioxydants favorisent la récupération.
+- Équilibre émotionnel : aide à mieux gérer le stress et favorise la sérénité.
+- Peau et cheveux : contribue à préserver la santé des cheveux et l'hydratation de la peau.
+
+### Composition
+- Calcium, magnésium
+- Vitamines et minéraux
+
+### Format
+Boîte de 15 sachets de 3 g.
+
+### Précautions
+${SUPPLEMENT_NOTICE}`,
+    weight: 0.045,
+    images: ['men7-boite.webp'],
+  },
+  {
+    slug: 'thymoq-huile-de-nigelle',
+    name: 'thymoQ Huile de nigelle 500 mg',
+    category: 'complements-alimentaires',
+    tags: ['immunite', 'nigelle', 'omega', 'antioxydant', 'mixte'],
+    isFeatured: true,
+    shortDescription:
+      'Capsules d\'huile de nigelle (Nigella sativa) extraite par CO₂ supercritique, riches en thymoquinone et en oméga 3, 6 et 9.',
+    description: `thymoQ réunit en capsules molles l'huile de nigelle (graine noire, Nigella sativa), obtenue par extraction au fluide supercritique (SFE) pour préserver sa richesse en thymoquinone et en oméga 3, 6 et 9. Qualité garantie sans adultération.
+
+### Bienfaits
+- Soutien immunitaire : la nigelle contribue au bon fonctionnement des défenses naturelles.
+- Confort respiratoire : aide à apaiser la gorge et favorise une respiration plus fluide.
+- Action antioxydante : la thymoquinone contribue à protéger les cellules contre le stress oxydatif.
+- Apaisement : aide à apaiser les petits inconforts du quotidien.
+- Digestion : contribue au confort digestif et aide à réduire les ballonnements.
+- Énergie et vitalité : les oméga 3, 6 et 9 contribuent au tonus général et à la récupération.
+
+### Composition
+- Huile de nigelle (Nigella sativa) : 500 mg par capsule
+- Thymoquinone, oméga 3, oméga 6, oméga 9
+- Extraction au fluide supercritique (SFE)
+
+### Format
+Boîte de 30 capsules molles.
+
+### Précautions
+${SUPPLEMENT_NOTICE}`,
+    weight: 0.05,
+    images: [
+      'thymoq-boite.webp',
+      'thymoq-super7-scene.webp',
+      'thymoq-super7-capsules.webp',
+      'coffrets-sag7-floral.webp',
+      'coffrets-sag7-couple.webp',
+    ],
+  },
+  {
+    slug: 'cream7-refresh-restore-rejuvenate',
+    name: 'Cream7 Refresh · Restore · Rejuvenate',
+    category: 'soins-beaute',
+    tags: ['peau', 'hydratation', 'eclat', 'soin-visage'],
+    isFeatured: true,
+    shortDescription:
+      'Crème de soin aux ingrédients naturels (aloe vera, jojoba, datte, kigelia) pour une peau hydratée, ferme et lumineuse.',
+    description: `Cream7 est le soin SAG7 International qui rafraîchit, restaure et revitalise la peau. Sa texture fondante associe des ingrédients naturels sélectionnés pour hydrater, raffermir et révéler l'éclat du teint.
+
+### Bienfaits
+- Hydratation intense : l'aloe vera et le champignon trémelle hydratent et apaisent la peau.
+- Protection : l'huile de jojoba nourrit la peau et la protège du dessèchement.
+- Fermeté : le kigelia africana contribue à un effet tenseur et raffermissant.
+- Éclat : l'extrait de datte et la tourmaline aident à raviver l'éclat du teint.
+- Vitalité de la peau : le tongkat ali et la labisia pumila contribuent au tonus et à l'équilibre de la peau.
+
+### Ingrédients clés
+- Aloe vera, huile de jojoba, extrait de datte
+- Kigelia africana, tongkat ali, labisia pumila
+- Champignon trémelle, tourmaline
+
+### Conseils d'utilisation
+Appliquer sur une peau propre et sèche, en massant doucement jusqu'à pénétration complète.
+
+### Format
+Tube de 30 g.
+
+### Précautions
+Usage externe uniquement. Éviter le contact avec les yeux. Faire un essai sur une petite zone de peau avant la première utilisation.`,
+    weight: 0.03,
+    images: [
+      'cream7-coffret.webp',
+      'cream7-eclat.webp',
+      'cream7-ingredients.webp',
+      'cream7-application.webp',
+    ],
+  },
+  {
+    slug: 'royal-coffee-sacha-inchi',
+    name: 'Royal Coffee Sacha Inchi + Sarang Burung',
+    category: 'cafe-boissons',
+    tags: ['cafe', 'energie', 'omega', 'antioxydant', 'mixte'],
+    isFeatured: true,
+    shortDescription:
+      'Café premium enrichi au Sacha Inchi et à l\'extrait de nid d\'hirondelle, avec vitamines, minéraux et antioxydants naturels.',
+    description: `Royal Coffee est un café premium SAG7 International enrichi au Sacha Inchi et à l'extrait de nid d'hirondelle (Sarang Burung). Un café au goût riche et onctueux qui allie plaisir et bien-être.
+
+### Bienfaits
+- Énergie et concentration : le café aide à rester alerte et concentré.
+- Oméga 3, 6 et 9 : le Sacha Inchi apporte des acides gras qui contribuent au bien-être cardiovasculaire et à la forme physique.
+- Antioxydants naturels : contribuent à protéger les cellules contre le stress oxydatif.
+- Vitalité : les vitamines et minéraux contribuent à réduire la fatigue.
+- Plaisir au quotidien : une tasse gourmande à savourer chaque jour.
+
+### Composition
+- Café premium
+- Sacha Inchi, extrait de nid d'hirondelle (Sarang Burung)
+- Vitamines, minéraux et antioxydants naturels
+
+### Format
+Paquet de café en sachets individuels.
+
+### Précautions
+Contient de la caféine : déconseillé aux enfants et aux femmes enceintes ou allaitantes.`,
+    weight: null,
+    images: ['royal-coffee-emballage.webp'],
+  },
+]
+
+// ─── Exécution ───────────────────────────────────────────────────────────────
+
+function copyAssets() {
+  mkdirSync(UPLOAD_DIR, { recursive: true })
+  const files = readdirSync(ASSETS_DIR).filter((f) => f.endsWith('.webp'))
+  for (const file of files) copyFileSync(join(ASSETS_DIR, file), join(UPLOAD_DIR, file))
+  return new Set(files)
+}
+
+async function main() {
+  const available = copyAssets()
+  for (const p of PRODUCTS) {
+    for (const img of p.images) {
+      if (!available.has(img)) throw new Error(`Image manquante pour ${p.slug} : ${img}`)
+    }
+  }
+  console.log(`🖼️  ${available.size} images copiées dans ${UPLOAD_URL}`)
+
+  const client = new pg.Client({ connectionString: process.env.DATABASE_URL })
+  await client.connect()
+
+  try {
+    await client.query('BEGIN')
+
+    for (const [position, c] of CATEGORIES.entries()) {
+      await client.query(
+        `INSERT INTO categories (id, name, slug, description, image, position, is_active, created_at, updated_at)
+         VALUES ($1, $2, $3, $4, $5, $6, true, NOW(), NOW())
+         ON CONFLICT (slug) DO UPDATE
+           SET name = EXCLUDED.name, description = EXCLUDED.description, image = EXCLUDED.image,
+               position = EXCLUDED.position, is_active = true, updated_at = NOW()`,
+        [randomUUID(), c.name, c.slug, c.description, `${UPLOAD_URL}/${c.image}`, position]
+      )
+    }
+    console.log(`📂 ${CATEGORIES.length} catégories prêtes`)
+
+    for (const p of PRODUCTS) {
+      const { rows } = await client.query(
+        `INSERT INTO products (id, name, slug, short_description, description, category, brand,
+                               price, tax_rate, stock, low_stock_threshold, track_inventory,
+                               weight, tags, status, is_featured, created_at, updated_at)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 0, $9, 5, true, $10, $11, 'ACTIVE', $12, NOW(), NOW())
+         ON CONFLICT (slug) DO UPDATE
+           SET name = EXCLUDED.name, short_description = EXCLUDED.short_description,
+               description = EXCLUDED.description, category = EXCLUDED.category, brand = EXCLUDED.brand,
+               price = EXCLUDED.price, tax_rate = EXCLUDED.tax_rate, weight = EXCLUDED.weight,
+               tags = EXCLUDED.tags, status = 'ACTIVE', is_featured = EXCLUDED.is_featured, updated_at = NOW()
+         RETURNING id`,
+        [
+          randomUUID(), p.name, p.slug, p.shortDescription, p.description, p.category, BRAND,
+          PRICE, STOCK, p.weight, p.tags, p.isFeatured,
+        ]
+      )
+      const productId = rows[0].id
+
+      await client.query('DELETE FROM product_images WHERE product_id = $1', [productId])
+      for (const [i, img] of p.images.entries()) {
+        await client.query(
+          `INSERT INTO product_images (id, product_id, url, alt, position, is_primary, created_at)
+           VALUES ($1, $2, $3, $4, $5, $6, NOW())`,
+          [randomUUID(), productId, `${UPLOAD_URL}/${img}`, `${p.name} — visuel ${i + 1}`, i, i === 0]
+        )
+      }
+      console.log(`✅ ${p.name} (${p.images.length} image${p.images.length > 1 ? 's' : ''})`)
+    }
+
+    await client.query('COMMIT')
+    console.log(`\n🌱 Catalogue prêt : ${PRODUCTS.length} produits à ${PRICE.toLocaleString('fr-FR')} FCFA`)
+  } catch (e) {
+    await client.query('ROLLBACK')
+    throw e
+  } finally {
+    await client.end()
+  }
+}
+
+main().catch((e) => {
+  console.error('❌ Seed interrompu :', e.message)
+  process.exit(1)
+})

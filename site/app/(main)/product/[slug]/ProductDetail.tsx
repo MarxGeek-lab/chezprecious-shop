@@ -1,5 +1,6 @@
 "use client";
 
+import { formatPrice } from "@/app/utils/format";
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,8 +16,8 @@ import { useCart } from "@/app/store/cartStore";
 import { useWishlist } from "@/app/context/WishlistContext";
 import styles from "./page.module.scss";
 
-function AccordionItem({ title, children }: { title: string; children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
+function AccordionItem({ title, children, defaultOpen = false }: { title: string; children: React.ReactNode; defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(defaultOpen);
   return (
     <div className={styles.accordionItem}>
       <button className={styles.accordionHeader} onClick={() => setOpen((v) => !v)} aria-expanded={open}>
@@ -26,6 +27,47 @@ function AccordionItem({ title, children }: { title: string; children: React.Rea
       {open && <div className={styles.accordionContent}>{children}</div>}
     </div>
   );
+}
+
+// ─── Description structurée ──────────────────────────────────────────────────
+// Format saisi dans l'admin / le seed : paragraphes séparés par une ligne vide,
+// « ### Titre » pour démarrer une section, « - » pour une liste.
+
+type DescriptionSection = { title: string; blocks: string[] };
+
+function parseDescription(text: string): DescriptionSection[] {
+  const sections: DescriptionSection[] = [{ title: "Description", blocks: [] }];
+  for (const raw of text.split(/\n\s*\n/)) {
+    const block = raw.trim();
+    if (!block) continue;
+    const heading = block.match(/^###\s+(.+?)(?:\n([\s\S]*))?$/);
+    if (heading) {
+      sections.push({ title: heading[1].trim(), blocks: heading[2]?.trim() ? [heading[2].trim()] : [] });
+    } else {
+      sections[sections.length - 1].blocks.push(block);
+    }
+  }
+  return sections.filter((s) => s.blocks.length > 0);
+}
+
+function DescriptionBlock({ block }: { block: string }) {
+  const lines = block.split("\n").map((l) => l.trim()).filter(Boolean);
+  if (lines.every((l) => l.startsWith("- "))) {
+    return (
+      <ul className={styles.descList}>
+        {lines.map((l) => {
+          const item = l.slice(2);
+          const sep = item.indexOf(" : ");
+          return (
+            <li key={item}>
+              {sep > 0 ? <><strong>{item.slice(0, sep)}</strong> : {item.slice(sep + 3)}</> : item}
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+  return <p>{lines.join(" ")}</p>;
 }
 
 function Stars({ rating }: { rating: number }) {
@@ -58,7 +100,7 @@ function StarsInput({ value, onChange }: { value: number; onChange: (v: number) 
             size={22}
             fill={(hover || value) >= n ? "currentColor" : "none"}
             strokeWidth={1.5}
-            style={{ color: (hover || value) >= n ? "#7B1E3A" : "rgba(10,10,10,0.25)" }}
+            style={{ color: (hover || value) >= n ? "#FF2C2C" : "rgba(10,10,10,0.25)" }}
           />
         </button>
       ))}
@@ -278,13 +320,13 @@ export default function ProductDetail({ product }: { product: ApiProduct }) {
   const [mainImg, setMainImg] = useState(0);
   const [added, setAdded] = useState(false);
 
-  const isSale = comparePrice !== null && comparePrice !== undefined && comparePrice > price;
+  const isSale = comparePrice !== null && comparePrice !== undefined && Number(comparePrice) > Number(price);
 
   const handleAddToCart = () => {
     addItem({
       productId: id,
       name,
-      price: effectivePrice,
+      price: Number(effectivePrice),
       image: images?.[0]?.url ?? "",
       quantity: 1,
     });
@@ -388,8 +430,8 @@ export default function ProductDetail({ product }: { product: ApiProduct }) {
           <h1 className={styles.productName}>{name}</h1>
 
           <div className={styles.priceRow}>
-            <span className={styles.price}>{effectivePrice} €</span>
-            {isSale && <span className={styles.priceOld}>{comparePrice} €</span>}
+            <span className={styles.price}>{formatPrice(effectivePrice)}</span>
+            {isSale && <span className={styles.priceOld}>{formatPrice(comparePrice)}</span>}
           </div>
 
           {showStock && (
@@ -462,14 +504,13 @@ export default function ProductDetail({ product }: { product: ApiProduct }) {
           </div>
 
           <div className={styles.accordion}>
-            <AccordionItem title="Description">
-              <p>{description ?? "Pièce signature ChezPrecious, confectionnée avec soin."}</p>
-            </AccordionItem>
-            <AccordionItem title="Composition & Entretien">
-              <p>Matières naturelles sélectionnées. Lavage machine 30°C, cycle délicat. Ne pas essorer. Sécher à plat.</p>
-            </AccordionItem>
+            {parseDescription(description ?? "").map((section, i) => (
+              <AccordionItem key={section.title} title={section.title} defaultOpen={i < 2}>
+                {section.blocks.map((block) => <DescriptionBlock key={block} block={block} />)}
+              </AccordionItem>
+            ))}
             <AccordionItem title="Livraison & Retours">
-              <p>Livraison standard 3-5 jours ouvrés (8,90 €, offerte dès 150 €). Livraison express 24-48h (14,90 €). Retours gratuits sous 30 jours.</p>
+              <p>Livraison standard en 3 à 5 jours ouvrés : 2 500 F CFA, offerte dès 50 000 F CFA d'achat. Retours gratuits sous 30 jours.</p>
             </AccordionItem>
           </div>
         </div>

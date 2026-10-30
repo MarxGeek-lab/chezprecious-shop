@@ -7,8 +7,8 @@
   // Compense le header fixe (bandeau + barre)
   padding: calc(94px + #{$space-10}) 0 $space-16;
   background:
-    radial-gradient(circle at 85% 20%, rgba(123, 30, 58, 0.12), transparent 45%),
-    radial-gradient(circle at 10% 90%, rgba(123, 30, 58, 0.08), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(255, 44, 44, 0.12), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(255, 44, 44, 0.08), transparent 40%),
     linear-gradient(180deg, $primary-soft 0%, $ivory 100%);
 
   @include lg { padding: calc(94px + #{$space-12}) 0 $space-20; }
@@ -40,7 +40,7 @@
   font-weight: $fw-semibold;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 4px 14px rgba(123, 30, 58, 0.1);
+  box-shadow: 0 4px 14px rgba(255, 44, 44, 0.1);
 }
 
 .title {
@@ -64,7 +64,7 @@
       position: absolute;
       left: 0; right: 0; bottom: 0.08em;
       height: 0.18em;
-      background-color: rgba(123, 30, 58, 0.15);
+      background-color: rgba(255, 44, 44, 0.15);
       border-radius: 4px;
       z-index: -1;
     }
@@ -97,7 +97,7 @@
   color: $white;
   font-size: $fs-base;
   font-weight: $fw-semibold;
-  box-shadow: 0 12px 28px rgba(123, 30, 58, 0.3);
+  box-shadow: 0 12px 28px rgba(255, 44, 44, 0.3);
   transition: transform $transition-base, background-color $transition-base, box-shadow $transition-base;
 
   svg { transition: transform $transition-base; }
@@ -105,7 +105,7 @@
   &:hover {
     background-color: $primary-dark;
     transform: translateY(-2px);
-    box-shadow: 0 16px 34px rgba(123, 30, 58, 0.35);
+    box-shadow: 0 16px 34px rgba(255, 44, 44, 0.35);
 
     svg { transform: translateX(4px); }
   }
@@ -117,7 +117,7 @@
   height: 54px;
   padding: 0 $space-8;
   border-radius: $radius-pill;
-  border: 2px solid rgba(123, 30, 58, 0.25);
+  border: 2px solid rgba(255, 44, 44, 0.25);
   background-color: $white;
   color: $primary;
   font-size: $fs-base;
@@ -134,89 +134,155 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: $space-3;
+  gap: $space-3 $space-6;
   margin-top: $space-8;
   font-size: $fs-sm;
-  color: $muted;
+  font-weight: $fw-medium;
+  color: $black;
 
-  strong { color: $black; }
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  svg { color: $primary; }
 }
 
-.stars {
-  display: flex;
-  color: #E0A526;
-}
-
-/* ── Visuel ── */
+/* ── Visuel : carrousel des produits ── */
 .visual {
   position: relative;
-  min-height: 420px;
   animation: rise 0.8s 0.1s ease both;
-
-  @include md { min-height: 540px; }
 }
 
-.mainImage {
+.slider {
   position: relative;
-  margin-left: auto;
-  width: 82%;
-  aspect-ratio: 4 / 5;
-  border-radius: 240px 240px 28px 28px;
-  overflow: hidden;
-  box-shadow: 0 30px 60px rgba(90, 18, 41, 0.22);
-
-  img { object-fit: cover; }
+  padding-bottom: $space-10;
 }
 
-.sideImage {
-  position: absolute;
-  left: 0;
-  bottom: 8%;
-  width: 38%;
-  aspect-ratio: 3 / 4;
-  border-radius: 22px;
-  overflow: hidden;
-  border: 6px solid $ivory;
-  box-shadow: 0 20px 40px rgba(31, 20, 22, 0.18);
+.sliderSkeleton {
+  aspect-ratio: 1 / 1;
+  border-radius: 32px;
+  background: linear-gradient(110deg, $white 40%, $primary-soft 50%, $white 60%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
 
-  img { object-fit: cover; }
+.sliderStage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 32px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 45%, $white 0%, $white 45%, $primary-soft 100%);
+  box-shadow: 0 30px 60px rgba(212, 30, 30, 0.16);
+  border: 1px solid rgba(255, 44, 44, 0.1);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(0.92) translateX(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+
+  img {
+    object-fit: contain;
+    padding: 8%;
+  }
+}
+
+.slideActive {
+  opacity: 1;
+  transform: scale(1) translateX(0);
+  pointer-events: auto;
 }
 
 .floatCard {
   position: absolute;
-  top: 10%;
-  left: 4%;
+  left: $space-4;
+  right: $space-4;
+  bottom: $space-12;
   display: flex;
   align-items: center;
   gap: $space-3;
-  padding: $space-3 $space-5 $space-3 $space-3;
+  padding: $space-3 $space-4 $space-3 $space-3;
   border-radius: $radius;
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
   box-shadow: 0 14px 30px rgba(31, 20, 22, 0.14);
-  animation: float 5s ease-in-out infinite;
+  animation: cardIn 0.5s ease both;
+  transition: transform $transition-base;
+
+  &:hover { transform: translateY(-3px); }
+
+  @include md {
+    left: auto;
+    right: -$space-4;
+    max-width: 340px;
+  }
+}
+
+.floatIcon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background-color: $primary;
+  color: $white;
+}
+
+.floatText {
+  flex: 1;
+  min-width: 0;
 
   strong {
     display: block;
     font-size: $fs-sm;
     color: $black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   small {
-    font-size: $fs-xs;
+    font-size: $fs-sm;
     color: $primary;
-    font-weight: $fw-medium;
+    font-weight: $fw-bold;
   }
 }
 
-.floatIcon {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+.floatArrow {
+  flex-shrink: 0;
+  color: $primary;
+}
+
+.sliderDots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  gap: $space-2;
+}
+
+.sliderDot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-pill;
+  background-color: rgba(255, 44, 44, 0.25);
+  transition: width $transition-base, background-color $transition-base;
+
+  &:hover { background-color: rgba(255, 44, 44, 0.5); }
+}
+
+.sliderDotActive {
+  width: 28px;
   background-color: $primary;
-  color: $white;
 }
 
 @keyframes rise {
@@ -224,11 +290,16 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  to { background-position: -200% 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .content, .visual, .floatCard { animation: none; }
+  .content, .visual, .floatCard, .sliderSkeleton { animation: none; }
+  .slide { transition: none; }
 }

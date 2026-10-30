@@ -436,6 +436,40 @@
     font-size: $fs-sm;
     color: rgba(10, 10, 10, 0.65);
     line-height: 1.7;
+
+    & + p { margin-top: $space-3; }
+  }
+}
+
+.descList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  li {
+    position: relative;
+    padding-left: $space-6;
+    font-size: $fs-sm;
+    line-height: 1.6;
+    color: rgba(10, 10, 10, 0.7);
+
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: $primary-soft;
+      color: $primary;
+      font-size: 11px;
+      font-weight: $fw-bold;
+      display: grid;
+      place-items: center;
+    }
+
+    strong { color: $black; font-weight: $fw-semibold; }
   }
 }
 

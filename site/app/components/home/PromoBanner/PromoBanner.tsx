@@ -4,12 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Tag } from "lucide-react";
 import { usePromotions } from "@/app/hooks/useHomepage";
+import { formatPrice } from "@/app/utils/format";
 import styles from "./PromoBanner.module.scss";
 
 const IMAGE = "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&q=85";
-
-const formatPrice = (value: number) =>
-  value.toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
 
 export default function PromoBanner() {
   const { data: promos = [] } = usePromotions(2);
@@ -28,7 +26,7 @@ export default function PromoBanner() {
               Vos coups de cœur à <em>prix doux</em>
             </h2>
             <p className={styles.desc}>
-              Profitez de nos prix réduits sur une sélection de pièces — les quantités sont limitées,
+              Profitez de nos prix réduits sur une sélection de produits — les quantités sont limitées,
               ne tardez pas.
             </p>
             <div className={styles.actions}>
@@ -48,16 +46,16 @@ export default function PromoBanner() {
                 <Link key={p.id} href={`/product/${p.slug}`} className={styles.deal}>
                   <div className={styles.dealImage}>
                     <Image src={p.images[0].url} alt={p.name} fill sizes="(max-width: 768px) 45vw, 20vw" />
-                    {p.comparePrice && p.comparePrice > p.price && (
+                    {p.comparePrice && Number(p.comparePrice) > Number(p.price) && (
                       <span className={styles.dealBadge}>
-                        -{Math.round((1 - p.price / p.comparePrice) * 100)}%
+                        -{Math.round((1 - Number(p.price) / Number(p.comparePrice)) * 100)}%
                       </span>
                     )}
                   </div>
                   <p className={styles.dealName}>{p.name}</p>
                   <p className={styles.dealPrice}>
                     {formatPrice(p.price)}
-                    {p.comparePrice && p.comparePrice > p.price && <s>{formatPrice(p.comparePrice)}</s>}
+                    {p.comparePrice && Number(p.comparePrice) > Number(p.price) && <s>{formatPrice(p.comparePrice)}</s>}
                   </p>
                 </Link>
               ))}

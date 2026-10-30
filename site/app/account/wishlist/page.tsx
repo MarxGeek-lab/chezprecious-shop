@@ -25,7 +25,7 @@ import { useCart } from '@/app/context/CartContext';
 import styles from '../account.module.scss';
 
 const formatPrice = (amount: number) =>
-  new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(amount);
+  new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'XOF' }).format(amount);
 
 export default function WishlistPage() {
   const { items, removeItem, clearWishlist } = useWishlist();

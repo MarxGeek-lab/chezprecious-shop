@@ -78,7 +78,7 @@ const PRESETS = [
 // ─── Constantes ────────────────────────────────
 
 const PIE_COLORS = [
-  '#7B1E3A', '#3B82F6', '#10B981', '#8B5CF6',
+  '#FF2C2C', '#3B82F6', '#10B981', '#8B5CF6',
   '#F59E0B', '#EF4444', '#EC4899', '#14B8A6',
   '#F97316', '#6366F1',
 ];
@@ -280,8 +280,8 @@ export default function AnalyticsTab() {
           value={`${fmt(data?.kpis.totalRevenue ?? 0)} F`}
           sub="vs période précédente"
           icon={DollarSign}
-          color="#7B1E3A"
-          bg="rgba(123, 30, 58,0.1)"
+          color="#FF2C2C"
+          bg="rgba(255, 44, 44,0.1)"
           trend={data?.kpis.revenueThisMonth.trend}
           loading={isLoading}
         />
@@ -345,8 +345,8 @@ export default function AnalyticsTab() {
                 <AreaChart data={data?.revenueChart ?? []}>
                   <defs>
                     <linearGradient id="gradRevA" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#7B1E3A" stopOpacity={0.25} />
-                      <stop offset="95%" stopColor="#7B1E3A" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#FF2C2C" stopOpacity={0.25} />
+                      <stop offset="95%" stopColor="#FF2C2C" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
@@ -359,7 +359,7 @@ export default function AnalyticsTab() {
                   <Tooltip
                     formatter={(value: any, name: any) => [
                       name === 'revenue'
-                        ? `${value.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}`
+                        ? `${value.toLocaleString('fr-FR', { style: 'currency', currency: 'XOF' })}`
                         : `${value} commandes`,
                       name === 'revenue' ? 'CA' : 'Commandes',
                     ]}
@@ -368,7 +368,7 @@ export default function AnalyticsTab() {
                   <Area
                     type="monotone"
                     dataKey="revenue"
-                    stroke="#7B1E3A"
+                    stroke="#FF2C2C"
                     strokeWidth={2.5}
                     fill="url(#gradRevA)"
                     name="revenue"
@@ -438,7 +438,7 @@ export default function AnalyticsTab() {
                   <Box>
                     <Typography className={styles.sourceName}>{s.name}</Typography>
                     <Typography className={styles.sourceVisits}>
-                      {s.revenue.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}
+                      {s.revenue.toLocaleString('fr-FR', { style: 'currency', currency: 'XOF' })}
                     </Typography>
                   </Box>
                 </Box>
@@ -736,7 +736,7 @@ export default function AnalyticsTab() {
                   <Box>
                     <Typography className={styles.sourceName}>{s.name}</Typography>
                     <Typography className={styles.sourceVisits}>
-                      {s.revenue.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}
+                      {s.revenue.toLocaleString('fr-FR', { style: 'currency', currency: 'XOF' })}
                     </Typography>
                   </Box>
                 </Box>

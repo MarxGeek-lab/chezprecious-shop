@@ -1,5 +1,6 @@
 "use client";
 
+import { categoryLabel, formatPrice } from "@/app/utils/format";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -18,7 +19,7 @@ export default function ProductCard({ product }: { product: ApiProduct }) {
   const [added, setAdded] = useState(false);
 
   const mainImage = images?.[0]?.url ?? "";
-  const isSale = comparePrice !== null && comparePrice !== undefined && comparePrice > price;
+  const isSale = comparePrice !== null && comparePrice !== undefined && Number(comparePrice) > Number(price);
   const isNew = !isSale && product.isFeatured;
   const inWishlist = isInWishlist(id);
 
@@ -27,7 +28,7 @@ export default function ProductCard({ product }: { product: ApiProduct }) {
     addItem({
       productId: id,
       name,
-      price,
+      price: Number(price),
       image: mainImage,
       quantity: 1,
     });
@@ -54,7 +55,7 @@ export default function ProductCard({ product }: { product: ApiProduct }) {
         )}
         {isSale && (
           <span className={`${styles.badge} ${styles.sale}`}>
-            -{Math.round((1 - price / comparePrice!) * 100)}%
+            -{Math.round((1 - Number(price) / Number(comparePrice)) * 100)}%
           </span>
         )}
         {isNew && <span className={`${styles.badge} ${styles.new}`}>Nouveau</span>}
@@ -83,15 +84,15 @@ export default function ProductCard({ product }: { product: ApiProduct }) {
       <div className={styles.info}>
         <div className={styles.nameRow}>
           <p className={styles.name}>{name}</p>
-          <span className={styles.category}>{category}</span>
+          <span className={styles.category}>{categoryLabel(category)}</span>
         </div>
         <div className={styles.priceRow}>
-          <span className={styles.price}>{price.toLocaleString("fr-FR", { style: "currency", currency: "EUR" })}</span>
-          {isSale && <span className={styles.priceOld}>{comparePrice!.toLocaleString("fr-FR", { style: "currency", currency: "EUR" })}</span>}
+          <span className={styles.price}>{formatPrice(price)}</span>
+          {isSale && <span className={styles.priceOld}>{formatPrice(comparePrice!)}</span>}
         </div>
         {/* {showStock && ( */}
           <p className={`${styles.lowStock} ${stock === 0 ? styles.outOfStock : isLowStock ? styles.lowStockWarn : styles.inStock}`}>
-            {stock === 0 ? "Rupture de stock" : `Plus que ${stock} en stock`}
+            {stock === 0 ? "Rupture de stock" : isLowStock ? `Plus que ${stock} en stock` : "En stock"}
           </p>
         {/* )} */}
       </div>

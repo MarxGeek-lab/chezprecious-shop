@@ -194,13 +194,13 @@ function CategoryFormModal({
             <Avatar
               src={iconType === 'image' ? image : undefined}
               variant="rounded"
-              sx={{ width: 64, height: 64, bgcolor: 'rgba(123, 30, 58,0.15)' }}
+              sx={{ width: 64, height: 64, bgcolor: 'rgba(255, 44, 44,0.15)' }}
             >
               {iconType === 'icon' && (
                 icon ? (
                   <span style={{ fontSize: 32 }}>{icon}</span>
                 ) : (
-                  <FolderOpen size={32} color="#7B1E3A" />
+                  <FolderOpen size={32} color="#FF2C2C" />
                 )
               )}
             </Avatar>
@@ -302,7 +302,7 @@ function CategoryFormModal({
             >
               {/* Emoji preview + input */}
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0.5 }}>
-                <Avatar sx={{ width: 36, height: 36, bgcolor: 'rgba(123, 30, 58,0.1)', fontSize: 18 }}>
+                <Avatar sx={{ width: 36, height: 36, bgcolor: 'rgba(255, 44, 44,0.1)', fontSize: 18 }}>
                   {sub.icon || '📋'}
                 </Avatar>
                 <TextField
@@ -352,7 +352,7 @@ function CategoryFormModal({
           variant="contained" size="small" onClick={handleSave}
           disabled={isPending || !name.trim()}
           startIcon={isPending ? <CircularProgress size={14} /> : undefined}
-          sx={{ bgcolor: '#7B1E3A', '&:hover': { bgcolor: '#B34D00' } }}
+          sx={{ bgcolor: '#FF2C2C', '&:hover': { bgcolor: '#B34D00' } }}
         >
           {isEdit ? 'Enregistrer' : 'Créer'}
         </Button>
@@ -455,7 +455,7 @@ export default function CategoriesTab() {
           { icon: FolderTree, label: 'Catégories',   value: meta?.total        ?? '—', color: '#3B82F6', bg: 'rgba(59,130,246,0.1)' },
           { icon: FolderTree, label: 'Actives',       value: meta?.active       ?? '—', color: '#10B981', bg: 'rgba(16,185,129,0.1)' },
           { icon: FolderTree, label: 'Inactives',     value: (meta?.total != null && meta?.active != null) ? meta.total - meta.active : '—', color: '#F59E0B', bg: 'rgba(245,158,11,0.1)' },
-          { icon: Tag,        label: 'Produits liés', value: meta?.totalProducts ?? '—', color: '#7B1E3A', bg: 'rgba(123, 30, 58,0.1)' },
+          { icon: Tag,        label: 'Produits liés', value: meta?.totalProducts ?? '—', color: '#FF2C2C', bg: 'rgba(255, 44, 44,0.1)' },
         ].map((stat) => (
           <Box key={stat.label} className={styles.statCard}>
             <Box className={styles.statIcon} sx={{ background: stat.bg, color: stat.color }}>
@@ -486,7 +486,7 @@ export default function CategoriesTab() {
             startIcon={<Plus size={16} />}
             size="small"
             onClick={() => setShowForm(true)}
-            sx={{ bgcolor: '#7B1E3A', '&:hover': { bgcolor: '#B34D00' } }}
+            sx={{ bgcolor: '#FF2C2C', '&:hover': { bgcolor: '#B34D00' } }}
           >
             Ajouter
           </Button>
@@ -522,7 +522,7 @@ export default function CategoriesTab() {
                         <Avatar
                           src={cat.image ?? undefined}
                           variant="rounded"
-                          sx={{ width: 40, height: 40, bgcolor: 'rgba(123, 30, 58,0.1)', color: '#7B1E3A', fontSize: 18 }}
+                          sx={{ width: 40, height: 40, bgcolor: 'rgba(255, 44, 44,0.1)', color: '#FF2C2C', fontSize: 18 }}
                         >
                           {cat.icon ?? <FolderTree size={18} />}
                         </Avatar>

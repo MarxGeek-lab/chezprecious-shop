@@ -1,10 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Leaf, ShieldCheck, Sparkles } from "lucide-react";
+import HeroSlider from "./HeroSlider";
 import styles from "./Hero.module.scss";
-
-const MAIN_IMAGE = "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=85";
-const SIDE_IMAGE = "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=85";
 
 export default function Hero() {
   return (
@@ -12,68 +9,38 @@ export default function Hero() {
       <div className={styles.inner}>
         <div className={styles.content}>
           <span className={styles.tag}>
-            <Sparkles size={14} strokeWidth={2} />
-            Nouvelle collection
+            <Leaf size={14} strokeWidth={2} />
+            Produits 100 % naturels
           </span>
 
           <h1 className={styles.title}>
-            Révélez votre <em>élégance</em> au quotidien
+            Prenez soin de vous, <em>naturellement</em>
           </h1>
 
           <p className={styles.desc}>
-            Des pièces choisies avec soin, des coupes qui subliment et des matières
-            agréables à porter. Trouvez le style qui vous ressemble chez Precious.
+            Compléments alimentaires, soins et café enrichi SAG7 International : des produits
+            naturels pour votre énergie, votre équilibre et votre beauté au quotidien.
           </p>
 
           <div className={styles.actions}>
             <Link href="/shop" className={styles.btnPrimary}>
-              Découvrir la boutique
+              Découvrir nos produits
               <ArrowRight size={18} strokeWidth={2} />
             </Link>
-            <Link href="/shop?filter=new" className={styles.btnSecondary}>
-              Voir les nouveautés
+            <Link href="/shop?cat=complements-alimentaires" className={styles.btnSecondary}>
+              Compléments alimentaires
             </Link>
           </div>
 
-          <div className={styles.proof}>
-            <div className={styles.stars} aria-hidden>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} size={16} strokeWidth={0} fill="currentColor" />
-              ))}
-            </div>
-            <p>
-              <strong>Clientes ravies</strong> — qualité, coupe et service salués
-            </p>
-          </div>
+          <ul className={styles.proof}>
+            <li><Sparkles size={16} strokeWidth={2} /> Qualité premium</li>
+            <li><Leaf size={16} strokeWidth={2} /> Formules naturelles</li>
+            <li><ShieldCheck size={16} strokeWidth={2} /> Paiement sécurisé</li>
+          </ul>
         </div>
 
         <div className={styles.visual}>
-          <div className={styles.mainImage}>
-            <Image
-              src={MAIN_IMAGE}
-              alt="Nouvelle collection ChezPrecious"
-              fill
-              priority
-              sizes="(max-width: 1024px) 90vw, 40vw"
-            />
-          </div>
-
-          <div className={styles.sideImage}>
-            <Image
-              src={SIDE_IMAGE}
-              alt="Sélection ChezPrecious"
-              fill
-              sizes="(max-width: 1024px) 40vw, 18vw"
-            />
-          </div>
-
-          <Link href="/shop?filter=new" className={styles.floatCard}>
-            <span className={styles.floatIcon}><Sparkles size={18} strokeWidth={2} /></span>
-            <span>
-              <strong>Nouveautés</strong>
-              <small>Découvrir la sélection →</small>
-            </span>
-          </Link>
+          <HeroSlider />
         </div>
       </div>
     </section>

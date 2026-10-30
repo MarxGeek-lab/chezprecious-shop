@@ -16,8 +16,8 @@ const CATEGORIES = [
   {
     label: "Livraison",
     items: [
-      { q: "Quels sont les délais de livraison ?", a: "La livraison standard est effectuée sous 3 à 5 jours ouvrés. La livraison express (sous 24–48h) est disponible pour les commandes passées avant 14h." },
-      { q: "La livraison est-elle gratuite ?", a: "Oui ! La livraison standard est offerte pour toute commande supérieure à 80 €. En dessous de ce montant, les frais de livraison sont de 4,90 €." },
+      { q: "Quels sont les délais de livraison ?", a: "La livraison standard est effectuée sous 3 à 5 jours ouvrés." },
+      { q: "La livraison est-elle gratuite ?", a: "Oui ! La livraison standard est offerte pour toute commande à partir de 50 000 F CFA. En dessous de ce montant, les frais de livraison sont de 2 500 F CFA." },
       { q: "Livrez-vous partout en France ?", a: "Nous livrons dans toute la France métropolitaine ainsi qu'en Belgique, Suisse et Luxembourg. D'autres destinations européennes sont en cours d'ajout." },
     ],
   },

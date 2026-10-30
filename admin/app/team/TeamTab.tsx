@@ -19,7 +19,7 @@ import { useAdminAuth } from '@/src/context/AdminAuthContext';
 import styles from '@/src/styles/pages.module.scss';
 
 const ROLE_LABELS: Record<string, { label: string; color: string; bg: string }> = {
-  SUPER_ADMIN: { label: 'Super admin',  color: '#7B1E3A', bg: 'rgba(123, 30, 58,0.1)'   },
+  SUPER_ADMIN: { label: 'Super admin',  color: '#FF2C2C', bg: 'rgba(255, 44, 44,0.1)'   },
   ADMIN:       { label: 'Admin',        color: '#6366F1', bg: 'rgba(99,102,241,0.1)' },
   MODERATOR:   { label: 'Modérateur',   color: '#0891B2', bg: 'rgba(8,145,178,0.1)'  },
 };
@@ -132,7 +132,7 @@ export default function TeamTab() {
             variant="contained"
             startIcon={<UserPlus size={18} />}
             onClick={() => setInviteOpen(true)}
-            sx={{ bgcolor: '#7B1E3A', textTransform: 'none', borderRadius: '10px', fontWeight: 600, '&:hover': { bgcolor: '#5A1229' } }}
+            sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', fontWeight: 600, '&:hover': { bgcolor: '#D41E1E' } }}
           >
             Inviter un admin
           </Button>
@@ -155,7 +155,7 @@ export default function TeamTab() {
 
       {isLoading && (
         <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
-          <CircularProgress sx={{ color: '#7B1E3A' }} />
+          <CircularProgress sx={{ color: '#FF2C2C' }} />
         </Box>
       )}
 
@@ -199,7 +199,7 @@ export default function TeamTab() {
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, minWidth: 0 }}>
                         <Avatar sx={{
                           width: 40, height: 40,
-                          bgcolor: isSelf ? '#7B1E3A' : '#E5E7EB',
+                          bgcolor: isSelf ? '#FF2C2C' : '#E5E7EB',
                           color: isSelf ? '#fff' : '#6B7280',
                           fontSize: 14, fontWeight: 700,
                         }}>
@@ -213,7 +213,7 @@ export default function TeamTab() {
                               {member.fullName || 'Sans nom'}
                             </Typography>
                             {isSelf && (
-                              <Chip label="Vous" size="small" sx={{ height: 18, fontSize: 10, fontWeight: 700, bgcolor: 'rgba(123, 30, 58,0.1)', color: '#7B1E3A' }} />
+                              <Chip label="Vous" size="small" sx={{ height: 18, fontSize: 10, fontWeight: 700, bgcolor: 'rgba(255, 44, 44,0.1)', color: '#FF2C2C' }} />
                             )}
                           </Box>
                           <Typography sx={{ fontSize: 12, color: '#6B7280', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -271,7 +271,7 @@ export default function TeamTab() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, minWidth: 0 }}>
                       <Avatar sx={{
                         width: 40, height: 40,
-                        bgcolor: isSelf ? '#7B1E3A' : '#E5E7EB',
+                        bgcolor: isSelf ? '#FF2C2C' : '#E5E7EB',
                         color: isSelf ? '#fff' : '#6B7280',
                         fontSize: 14, fontWeight: 700,
                       }}>
@@ -287,7 +287,7 @@ export default function TeamTab() {
                           {isSelf && (
                             <Chip label="Vous" size="small" sx={{
                               height: 18, fontSize: 10, fontWeight: 700,
-                              bgcolor: 'rgba(123, 30, 58,0.1)', color: '#7B1E3A',
+                              bgcolor: 'rgba(255, 44, 44,0.1)', color: '#FF2C2C',
                             }} />
                           )}
                         </Box>
@@ -399,7 +399,7 @@ export default function TeamTab() {
           <Button
             variant="contained" onClick={handleInvite}
             disabled={!inviteEmail || inviteMutation.isPending}
-            sx={{ bgcolor: '#7B1E3A', textTransform: 'none', borderRadius: '10px', '&:hover': { bgcolor: '#5A1229' } }}
+            sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', '&:hover': { bgcolor: '#D41E1E' } }}
           >
             {inviteMutation.isPending ? <CircularProgress size={20} sx={{ color: '#fff' }} /> : 'Envoyer l\'invitation'}
           </Button>

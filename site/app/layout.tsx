@@ -45,8 +45,8 @@ function buildMetadata(title: string, description: string): Metadata {
   };
 }
 
-const DEFAULT_TITLE = "ChezPrecious — Boutique de mode en ligne";
-const DEFAULT_DESCRIPTION = "Des pièces choisies avec soin pour révéler votre élégance au quotidien. Livraison rapide et paiement sécurisé.";
+const DEFAULT_TITLE = "ChezPrecious — Produits naturels santé & beauté";
+const DEFAULT_DESCRIPTION = "Compléments alimentaires, soins et café enrichi SAG7 International. Des produits naturels pour votre énergie, votre équilibre et votre beauté. Livraison rapide au Bénin.";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

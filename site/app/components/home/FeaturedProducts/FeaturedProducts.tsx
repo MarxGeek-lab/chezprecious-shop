@@ -41,7 +41,7 @@ export default function FeaturedProducts() {
         <div className={styles.header}>
           <div className={styles.titleGroup}>
             <span className={styles.eyebrow}>Notre sélection</span>
-            <h2 className={styles.title}>Nos pièces <em>coup de cœur</em></h2>
+            <h2 className={styles.title}>Nos produits <em>coup de cœur</em></h2>
           </div>
 
           <nav className={styles.tabs} aria-label="Filtrer les produits">

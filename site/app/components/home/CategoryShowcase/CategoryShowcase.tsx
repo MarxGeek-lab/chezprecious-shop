@@ -8,35 +8,38 @@ import styles from "./CategoryShowcase.module.scss";
 
 type Tile = { name: string; href: string; image: string; count?: number };
 
-// Visuels de repli tant que les catégories n'ont pas d'image dans l'admin
-const FALLBACK_IMAGES = [
-  "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=1000&q=80",
-  "https://images.unsplash.com/photo-1617137968427-85924c800a22?w=800&q=80",
-  "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80",
-  "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80",
-];
+// Visuels du catalogue (copiés dans les uploads de l'API par le seed produits)
+const CATALOGUE = "/uploads/products/catalogue";
 
 const DEFAULT_TILES: Tile[] = [
-  { name: "Femme", href: "/shop?cat=femme", image: FALLBACK_IMAGES[0] },
-  { name: "Homme", href: "/shop?cat=homme", image: FALLBACK_IMAGES[1] },
-  { name: "Nouveautés", href: "/shop?filter=new", image: FALLBACK_IMAGES[2] },
-  { name: "Toute la boutique", href: "/shop", image: FALLBACK_IMAGES[3] },
+  { name: "Compléments alimentaires", href: "/shop?cat=complements-alimentaires", image: `${CATALOGUE}/coffrets-sag7-floral.webp` },
+  { name: "Soins & beauté", href: "/shop?cat=soins-beaute", image: `${CATALOGUE}/cream7-eclat.webp` },
+  { name: "Café & boissons", href: "/shop?cat=cafe-boissons", image: `${CATALOGUE}/royal-coffee-emballage.webp` },
 ];
+
+// Dernière tuile, toujours présente pour compléter la grille
+const ALL_PRODUCTS_TILE: Tile = {
+  name: "Toute la boutique",
+  href: "/shop",
+  image: `${CATALOGUE}/w7-super7-rose-or.webp`,
+};
 
 export default function CategoryShowcase() {
   const { data: categories = [] } = useCategories();
 
-  const tiles: Tile[] = categories.length > 0
+  const categoryTiles: Tile[] = categories.length > 0
     ? categories
         .filter((c) => c.isActive)
-        .slice(0, 4)
+        .slice(0, 3)
         .map((c, i) => ({
           name: c.name,
           href: `/shop?cat=${c.slug}`,
-          image: c.image || FALLBACK_IMAGES[i % FALLBACK_IMAGES.length],
+          image: c.image || DEFAULT_TILES[i % DEFAULT_TILES.length].image,
           count: c.productCount,
         }))
     : DEFAULT_TILES;
+
+  const tiles = [...categoryTiles, ALL_PRODUCTS_TILE];
 
   return (
     <section className={styles.section}>
@@ -60,7 +63,7 @@ export default function CategoryShowcase() {
               <span className={styles.label}>
                 <span>
                   <strong>{tile.name}</strong>
-                  {tile.count !== undefined && <small>{tile.count} article{tile.count > 1 ? "s" : ""}</small>}
+                  {tile.count !== undefined && <small>{tile.count} produit{tile.count > 1 ? "s" : ""}</small>}
                 </span>
                 <span className={styles.arrow}><ArrowUpRight size={18} strokeWidth={2} /></span>
               </span>

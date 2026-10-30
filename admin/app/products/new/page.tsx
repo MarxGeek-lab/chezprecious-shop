@@ -287,7 +287,7 @@ export default function NewProductPage() {
   const [videoModes, setVideoModes] = useState<('file' | 'url')[]>(['file', 'file']);
 
   // --- Pricing ---
-  const [currency, setCurrency] = useState('EUR');
+  const [currency, setCurrency] = useState('XOF');
   const [sku, setSku] = useState('');
   const [barcode, setBarcode] = useState('');
   const [price, setPrice] = useState('');
@@ -322,7 +322,7 @@ export default function NewProductPage() {
 
   // Computed: currency symbol
   const currencySymbol = useMemo(() => {
-    return currencies.find((c) => c.code === currency)?.symbol || currency || '€';
+    return currencies.find((c) => c.code === currency)?.symbol || currency || 'F CFA';
   }, [currency]);
 
   // Computed: categories and sub-categories from API
@@ -1001,7 +1001,7 @@ export default function NewProductPage() {
                       <Box className={styles.variantBulkActions} sx={{ mb: 2 }}>
                         <Typography className={styles.variantBulkLabel}>Appliquer à tous :</Typography>
                         <TextField size="small" placeholder="Prix" type="number" value={bulkPrice} onChange={(e) => setBulkPrice(e.target.value)}
-                          InputProps={{ startAdornment: <InputAdornment position="start">€</InputAdornment> }} sx={{ width: 130 }} />
+                          InputProps={{ startAdornment: <InputAdornment position="start">F CFA</InputAdornment> }} sx={{ width: 130 }} />
                         <TextField size="small" placeholder="Stock" type="number" value={bulkStock} onChange={(e) => setBulkStock(e.target.value)} sx={{ width: 100 }} />
                         <Button variant="outlined" size="small" onClick={handleBulkApply} startIcon={<Copy size={14} />} disabled={!bulkPrice && !bulkStock}>Appliquer</Button>
                       </Box>
@@ -1010,7 +1010,7 @@ export default function NewProductPage() {
                           <TableHead>
                             <TableRow>
                               <TableCell>Variante</TableCell>
-                              <TableCell sx={{ width: 130 }}>Prix (€)</TableCell>
+                              <TableCell sx={{ width: 130 }}>Prix (F CFA)</TableCell>
                               <TableCell sx={{ width: 100 }}>Stock</TableCell>
                               <TableCell sx={{ width: 160 }}>SKU</TableCell>
                               <TableCell sx={{ width: 70 }} align="center">Actif</TableCell>
@@ -1026,7 +1026,7 @@ export default function NewProductPage() {
                                 </TableCell>
                                 <TableCell>
                                   <TextField size="small" type="number" value={variant.price} onChange={(e) => handleVariantChange(variant.id, 'price', e.target.value)}
-                                    InputProps={{ startAdornment: <InputAdornment position="start">€</InputAdornment> }} sx={{ '& input': { py: 0.5 } }} />
+                                    InputProps={{ startAdornment: <InputAdornment position="start">F CFA</InputAdornment> }} sx={{ '& input': { py: 0.5 } }} />
                                 </TableCell>
                                 <TableCell>
                                   <TextField size="small" type="number" value={variant.stock} onChange={(e) => handleVariantChange(variant.id, 'stock', e.target.value)} sx={{ '& input': { py: 0.5 } }} />

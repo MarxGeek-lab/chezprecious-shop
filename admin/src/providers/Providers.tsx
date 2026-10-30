@@ -8,7 +8,7 @@ import { SnackbarProvider } from '@/src/context/SnackbarContext';
 
 const theme = createTheme({
   palette: {
-    primary: { main: '#7B1E3A', light: '#A23B5A', dark: '#5A1229' },
+    primary: { main: '#FF2C2C', light: '#FF5A5A', dark: '#D41E1E' },
     secondary: { main: '#1A1A2E', light: '#2D2D44', dark: '#0F0F1A' },
     success: { main: '#10B981' },
     warning: { main: '#F59E0B' },

@@ -47,8 +47,8 @@ export default function ForgotPasswordPage() {
     <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: '#F0F2F5', p: 2 }}>
       <Paper elevation={0} sx={{ width: '100%', maxWidth: 420, p: 4, borderRadius: 3, border: '1px solid #E5E7EB' }}>
         <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <Box sx={{ width: 56, height: 56, borderRadius: 2, bgcolor: '#F8E9ED', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
-            <ShieldCheck size={28} color="#7B1E3A" />
+          <Box sx={{ width: 56, height: 56, borderRadius: 2, bgcolor: '#FFECEC', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
+            <ShieldCheck size={28} color="#FF2C2C" />
           </Box>
           <Typography variant="h5" fontWeight={700} sx={{ color: '#1A1A2E' }}>
             Mot de passe oublié
@@ -67,7 +67,7 @@ export default function ForgotPasswordPage() {
             }}
           />
           <Button type="submit" fullWidth variant="contained" disabled={resetMutation.isPending || !email}
-            sx={{ py: 1.5, bgcolor: '#7B1E3A', '&:hover': { bgcolor: '#5A1229' }, fontSize: 15, fontWeight: 600, mb: 2 }}>
+            sx={{ py: 1.5, bgcolor: '#FF2C2C', '&:hover': { bgcolor: '#D41E1E' }, fontSize: 15, fontWeight: 600, mb: 2 }}>
             {resetMutation.isPending ? <CircularProgress size={22} sx={{ color: '#fff' }} /> : 'Envoyer le lien'}
           </Button>
         </form>

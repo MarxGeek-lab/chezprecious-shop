@@ -20,7 +20,7 @@ import {
 import styles from '@/src/styles/pages.module.scss';
 
 function fmt(n: number) {
-  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+  return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'XOF', maximumFractionDigits: 0 }).format(n);
 }
 
 const PERIOD_DAYS: Record<string, number> = {
@@ -75,8 +75,8 @@ export default function ReportsTab() {
       name: 'Export utilisateurs (CSV)',
       type: 'Utilisateurs',
       icon: Users,
-      iconColor: '#7B1E3A',
-      iconBg: 'rgba(123, 30, 58,0.1)',
+      iconColor: '#FF2C2C',
+      iconBg: 'rgba(255, 44, 44,0.1)',
       frequency: 'À la demande',
       onExport: () => exportUsersCsv(),
     },
@@ -156,7 +156,7 @@ export default function ReportsTab() {
         {isLoading && !quickStats
           ? Array.from({ length: 4 }).map((_, i) => (
               <Box key={i} className={styles.statCard} sx={{ justifyContent: 'center' }}>
-                <CircularProgress size={24} sx={{ color: '#7B1E3A' }} />
+                <CircularProgress size={24} sx={{ color: '#FF2C2C' }} />
               </Box>
             ))
           : (quickStats ?? []).map((stat) => (
@@ -198,7 +198,7 @@ export default function ReportsTab() {
                   }}>
                     <Box sx={{
                       position: 'absolute', bottom: 0, left: 0, right: 0,
-                      height: `${pct}%`, bgcolor: '#7B1E3A', borderRadius: '4px 4px 0 0',
+                      height: `${pct}%`, bgcolor: '#FF2C2C', borderRadius: '4px 4px 0 0',
                       transition: 'height 0.4s',
                     }} />
                   </Box>
@@ -300,7 +300,7 @@ export default function ReportsTab() {
                     variant="determinate" value={pct}
                     sx={{
                       height: 6, borderRadius: 3, bgcolor: '#F3F4F6',
-                      '& .MuiLinearProgress-bar': { bgcolor: '#7B1E3A', borderRadius: 3 },
+                      '& .MuiLinearProgress-bar': { bgcolor: '#FF2C2C', borderRadius: 3 },
                     }}
                   />
                 </Box>

@@ -1,5 +1,6 @@
 "use client";
 
+import { formatPrice } from "@/app/utils/format";
 import Image from "next/image";
 import Link from "next/link";
 import { Trash2, Minus, Plus, ShoppingBag, Lock } from "lucide-react";
@@ -8,8 +9,7 @@ import Grid from "@mui/material/Grid";
 import { useCart } from "@/app/store/cartStore";
 import styles from "./page.module.scss";
 
-const SHIPPING_THRESHOLD = 150;
-const SHIPPING_COST = 8.9;
+import { FREE_SHIPPING_THRESHOLD as SHIPPING_THRESHOLD, SHIPPING_COST } from "@/app/utils/shipping";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice } = useCart();
@@ -86,7 +86,7 @@ export default function CartPage() {
                           )}
                         </div>
                       </div>
-                      <p className={styles.itemPrice}>{(item.price * item.quantity).toFixed(2)} €</p>
+                      <p className={styles.itemPrice}>{formatPrice((item.price * item.quantity))}</p>
                     </div>
 
                     <div className={styles.itemBottom}>
@@ -137,24 +137,24 @@ export default function CartPage() {
               <div className={styles.summaryLines}>
                 <div className={styles.summaryLine}>
                   <span>Sous-total</span>
-                  <span>{totalPrice.toFixed(2)} €</span>
+                  <span>{formatPrice(totalPrice)}</span>
                 </div>
                 <div className={styles.summaryLine}>
                   <span>Livraison</span>
                   <span className={shipping === 0 ? styles.freeShipping : ""}>
-                    {shipping === 0 ? "Offerte" : `${SHIPPING_COST.toFixed(2)} €`}
+                    {shipping === 0 ? "Offerte" : `${formatPrice(SHIPPING_COST)}`}
                   </span>
                 </div>
                 {shipping > 0 && (
                   <p className={styles.shippingHint}>
-                    Plus que {(SHIPPING_THRESHOLD - totalPrice).toFixed(2)} € pour la livraison offerte
+                    Plus que {formatPrice((SHIPPING_THRESHOLD - totalPrice))} pour la livraison offerte
                   </p>
                 )}
               </div>
 
               <div className={styles.summaryTotal}>
                 <span>Total TTC</span>
-                <span>{total.toFixed(2)} €</span>
+                <span>{formatPrice(total)}</span>
               </div>
 
               <Link href="/checkout" className={styles.checkoutBtn}>

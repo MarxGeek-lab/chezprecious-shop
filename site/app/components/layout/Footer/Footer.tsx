@@ -10,9 +10,9 @@ const COLUMNS = [
   {
     title: "Boutique",
     items: [
-      { label: "Nouveautés", href: "/shop?filter=new" },
-      { label: "Femme", href: "/shop?cat=femme" },
-      { label: "Homme", href: "/shop?cat=homme" },
+      { label: "Compléments", href: "/shop?cat=complements-alimentaires" },
+      { label: "Soins & beauté", href: "/shop?cat=soins-beaute" },
+      { label: "Café", href: "/shop?cat=cafe-boissons" },
       { label: "Tous les produits", href: "/shop" },
     ],
   },
@@ -37,7 +37,7 @@ const COLUMNS = [
 ];
 
 const PERKS = [
-  { icon: Truck, label: "Livraison offerte dès 80 €" },
+  { icon: Truck, label: "Livraison offerte dès 50 000 F CFA" },
   { icon: RotateCcw, label: "Retours gratuits 30 jours" },
   { icon: ShieldCheck, label: "Paiement sécurisé" },
 ];
@@ -84,7 +84,7 @@ export default function Footer() {
   const { data: settings } = usePublicSettings();
 
   const siteName = settings?.siteName ?? "ChezPrecious";
-  const tagline = settings?.siteSlogan ?? "Des pièces choisies avec soin pour révéler votre élégance au quotidien.";
+  const tagline = settings?.siteSlogan ?? "Des produits naturels pour votre santé, votre énergie et votre beauté au quotidien.";
   const address = [settings?.address, settings?.city].filter(Boolean).join(", ") || null;
   const email = settings?.contactEmail ?? null;
   const phone = settings?.phoneMain ?? null;

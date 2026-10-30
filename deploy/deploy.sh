@@ -29,7 +29,9 @@ rsync -az --delete \
   --exclude '.codex' \
   --exclude '.claude' \
   --exclude '*.pdf' \
-  --exclude '*.jpeg' \
+  --exclude '/*.png' \
+  --exclude '/*.jpg' \
+  --exclude '/*.jpeg' \
   "$ROOT/" "$SERVER:$REMOTE_DIR/"
 
 ssh "$SERVER" bash -s -- "$REMOTE_DIR" <<'EOF'

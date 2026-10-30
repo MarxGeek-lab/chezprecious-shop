@@ -21,7 +21,7 @@ function toCsvRow(cells: string[]): string {
   return cells.map((c) => `"${String(c ?? '').replace(/"/g, '""')}"`).join(',');
 }
 
-function fmt(amount: number, currency = 'EUR'): string {
+function fmt(amount: number, currency = 'XOF'): string {
   return new Intl.NumberFormat('fr-FR', {
     style: 'currency', currency, maximumFractionDigits: 0,
   }).format(amount);

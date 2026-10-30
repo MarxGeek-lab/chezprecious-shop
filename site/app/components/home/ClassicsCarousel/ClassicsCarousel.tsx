@@ -47,7 +47,7 @@ function ClassicCard({ product }: { product: ApiProduct }) {
       </div>
       <div className={styles.info}>
         <p className={styles.name}>{product.name}</p>
-        <p className={styles.price}>{product.price.toLocaleString("fr-FR", { style: "currency", currency: "EUR" })}</p>
+        <p className={styles.price}>{product.price.toLocaleString("fr-FR", { style: "currency", currency: "XOF" })}</p>
       </div>
     </Link>
   );

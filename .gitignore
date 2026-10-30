@@ -1,1 +1,6 @@
 .env
+
+# Visuels originaux (les versions WebP utilisées sont dans api/prisma/seed-assets)
+/*.png
+/*.jpg
+/*.jpeg

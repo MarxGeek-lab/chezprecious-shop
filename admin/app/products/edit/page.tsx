@@ -299,7 +299,7 @@ export default function ProductEditPage() {
 
   // Computed: currency symbol
   const currencySymbol = useMemo(() => {
-    return currencies.find((c) => c.code === currency)?.symbol || currency || '€';
+    return currencies.find((c) => c.code === currency)?.symbol || currency || 'F CFA';
   }, [currency]);
 
   // Computed: categories and sub-categories from API

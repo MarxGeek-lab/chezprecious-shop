@@ -30,7 +30,7 @@ RUN npm ci --omit=dev && npm cache clean --force
 COPY --from=build /app/build ./
 COPY prisma ./prisma
 COPY prisma.config.ts ./
-COPY scripts/create-admin.mjs ./scripts/
+COPY scripts/create-admin.mjs scripts/seed-products.mjs ./scripts/
 COPY docker-entrypoint.sh ./
 RUN mkdir -p public/uploads tmp \
  && chown -R node:node public/uploads tmp \

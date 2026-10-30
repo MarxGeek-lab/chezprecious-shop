@@ -196,7 +196,7 @@ export default function OrdersTab() {
                 ))
                 : orders.map((order) => (
                   <tr key={order.id}>
-                    <td style={{ fontWeight: 600, color: '#7B1E3A', fontSize: 13 }}>
+                    <td style={{ fontWeight: 600, color: '#FF2C2C', fontSize: 13 }}>
                       {order.orderNumber}
                     </td>
                     <td>

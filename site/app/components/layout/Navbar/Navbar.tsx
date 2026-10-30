@@ -14,15 +14,15 @@ import type { AuthUser } from "@/app/lib/api";
 import styles from "./Navbar.module.scss";
 
 const ANNOUNCEMENTS = [
-  <>Livraison offerte dès <strong>80 €</strong> d&apos;achat</>,
+  <>Livraison offerte dès <strong>50 000 F CFA</strong> d&apos;achat</>,
   <>Retours gratuits sous <strong>30 jours</strong></>,
   <>Paiement <strong>100 % sécurisé</strong></>,
 ];
 
 const NAV_LINKS = [
-  { label: "Nouveautés", href: "/shop?filter=new" },
-  { label: "Femme", href: "/shop?cat=femme" },
-  { label: "Homme", href: "/shop?cat=homme" },
+  { label: "Compléments", href: "/shop?cat=complements-alimentaires" },
+  { label: "Soins & beauté", href: "/shop?cat=soins-beaute" },
+  { label: "Café", href: "/shop?cat=cafe-boissons" },
   { label: "Boutique", href: "/shop" },
   { label: "À propos", href: "/about" },
 ];

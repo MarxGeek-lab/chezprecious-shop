@@ -57,7 +57,7 @@ function InfoRow({ icon: Icon, label, value }: { icon: React.ElementType; label:
   );
 }
 
-function StatBox({ label, value, color = '#7B1E3A' }: { label: string; value: string | number; color?: string }) {
+function StatBox({ label, value, color = '#FF2C2C' }: { label: string; value: string | number; color?: string }) {
   return (
     <Box sx={{ textAlign: 'center', p: 2, bgcolor: '#F9FAFB', borderRadius: 2 }}>
       <Typography sx={{ fontSize: 22, fontWeight: 700, color }}>{value}</Typography>
@@ -100,7 +100,7 @@ function OrdersTab({ orders, stats }: { orders: any[]; stats: any }) {
               '&:hover': { bgcolor: '#F9FAFB' },
             }}>
               <Box>
-                <Typography sx={{ fontWeight: 600, fontSize: 14, color: '#7B1E3A' }}>{order.orderNumber}</Typography>
+                <Typography sx={{ fontWeight: 600, fontSize: 14, color: '#FF2C2C' }}>{order.orderNumber}</Typography>
                 <Typography sx={{ fontSize: 12, color: '#9CA3AF' }}>
                   {order.itemCount} article{order.itemCount > 1 ? 's' : ''} · {formatDate(order.createdAt)}
                 </Typography>
@@ -136,7 +136,7 @@ function StoreTab({ store }: { store: any }) {
         <Avatar
           src={store.logo ?? undefined}
           variant="rounded"
-          sx={{ width: 64, height: 64, bgcolor: 'rgba(123, 30, 58,0.1)', color: '#7B1E3A', fontWeight: 700, fontSize: 20 }}
+          sx={{ width: 64, height: 64, bgcolor: 'rgba(255, 44, 44,0.1)', color: '#FF2C2C', fontWeight: 700, fontSize: 20 }}
         >
           {store.name.slice(0, 2).toUpperCase()}
         </Avatar>
@@ -199,12 +199,12 @@ function ProfileTab({ user }: { user: any }) {
             {user.addresses.map((addr: any) => (
               <Box key={addr.id} sx={{
                 p: 2, border: '1px solid #F3F4F6', borderRadius: 2,
-                borderLeft: addr.isDefault ? '3px solid #7B1E3A' : '1px solid #F3F4F6',
+                borderLeft: addr.isDefault ? '3px solid #FF2C2C' : '1px solid #F3F4F6',
               }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
                   <Typography sx={{ fontSize: 13, fontWeight: 600 }}>{addr.label}</Typography>
                   {addr.isDefault && (
-                    <Chip label="Défaut" size="small" sx={{ bgcolor: 'rgba(123, 30, 58,0.1)', color: '#7B1E3A', fontSize: 10 }} />
+                    <Chip label="Défaut" size="small" sx={{ bgcolor: 'rgba(255, 44, 44,0.1)', color: '#FF2C2C', fontSize: 10 }} />
                   )}
                 </Box>
                 <Typography sx={{ fontSize: 13, color: '#4B5563' }}>{addr.street}</Typography>
@@ -226,7 +226,7 @@ function ProfileTab({ user }: { user: any }) {
             {user.reviews.map((rev: any) => (
               <Box key={rev.id} sx={{ p: 2, border: '1px solid #F3F4F6', borderRadius: 2 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
-                  <Typography sx={{ fontSize: 13, fontWeight: 600, color: '#7B1E3A' }}>{rev.product.name}</Typography>
+                  <Typography sx={{ fontSize: 13, fontWeight: 600, color: '#FF2C2C' }}>{rev.product.name}</Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                     <Star size={13} fill="#F59E0B" color="#F59E0B" />
                     <Typography sx={{ fontSize: 13, fontWeight: 700 }}>{rev.rating}</Typography>
@@ -288,7 +288,7 @@ export default function UserDetailPage() {
       }}>
         <Avatar
           src={user.avatar ?? undefined}
-          sx={{ width: 72, height: 72, bgcolor: '#7B1E3A', fontSize: 26, fontWeight: 700 }}
+          sx={{ width: 72, height: 72, bgcolor: '#FF2C2C', fontSize: 26, fontWeight: 700 }}
         >
           {getInitials(user.fullName, user.email)}
         </Avatar>
@@ -333,7 +333,7 @@ export default function UserDetailPage() {
           </Box>
           {isSeller && user.store && (
             <Box sx={{ textAlign: 'center' }}>
-              <Typography sx={{ fontSize: 18, fontWeight: 700, color: '#7B1E3A' }}>{user.store.productCount}</Typography>
+              <Typography sx={{ fontSize: 18, fontWeight: 700, color: '#FF2C2C' }}>{user.store.productCount}</Typography>
               <Typography sx={{ fontSize: 11, color: '#9CA3AF' }}>Produits</Typography>
             </Box>
           )}
@@ -348,8 +348,8 @@ export default function UserDetailPage() {
           sx={{
             borderBottom: '1px solid #F3F4F6', px: 2,
             '& .MuiTab-root': { fontSize: 13, fontWeight: 600, textTransform: 'none', minWidth: 'auto', px: 2 },
-            '& .Mui-selected': { color: '#7B1E3A' },
-            '& .MuiTabs-indicator': { bgcolor: '#7B1E3A' },
+            '& .Mui-selected': { color: '#FF2C2C' },
+            '& .MuiTabs-indicator': { bgcolor: '#FF2C2C' },
           }}
         >
           <Tab label="Profil" icon={<Shield size={14} />} iconPosition="start" />

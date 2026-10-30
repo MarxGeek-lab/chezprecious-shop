@@ -27,7 +27,7 @@ function formatDate(iso: string) {
 }
 
 function formatAmount(val: string | number) {
-  return Number(val).toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
+  return Number(val).toLocaleString('fr-FR', { style: 'currency', currency: 'XOF' });
 }
 
 function StatCard({ label, value, icon, color }: { label: string; value: string | number; icon: React.ReactNode; color: string }) {
@@ -119,8 +119,8 @@ function CartRow({ cart, onSendReminder, sending }: {
                 onClick={() => onSendReminder(cart.id, nextReminder)}
                 sx={{
                   fontSize: 11, fontWeight: 600, textTransform: 'none',
-                  borderColor: '#7B1E3A', color: '#7B1E3A',
-                  '&:hover': { background: '#FBF1F4', borderColor: '#7B1E3A' },
+                  borderColor: '#FF2C2C', color: '#FF2C2C',
+                  '&:hover': { background: '#FFF5F5', borderColor: '#FF2C2C' },
                 }}
               >
                 Relance {nextReminder}
@@ -206,9 +206,9 @@ export default function AbandonedCartsTab() {
             disabled={sendAll.isPending}
             onClick={handleSendAll}
             sx={{
-              background: '#7B1E3A', fontWeight: 600, textTransform: 'none',
+              background: '#FF2C2C', fontWeight: 600, textTransform: 'none',
               borderRadius: '8px', fontSize: 13,
-              '&:hover': { background: '#5A1229' },
+              '&:hover': { background: '#D41E1E' },
             }}
           >
             Relancer tous les paniers en attente
@@ -219,7 +219,7 @@ export default function AbandonedCartsTab() {
       {/* Stats */}
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' }, gap: 2, mb: 4 }}>
         <StatCard label="Total paniers" value={stats?.total ?? '—'} icon={<ShoppingCart size={20} />} color="#6366F1" />
-        <StatCard label="En attente" value={stats?.pending ?? '—'} icon={<Clock size={20} />} color="#7B1E3A" />
+        <StatCard label="En attente" value={stats?.pending ?? '—'} icon={<Clock size={20} />} color="#FF2C2C" />
         <StatCard label="Récupérés" value={stats?.recovered ?? '—'} icon={<CheckCircle size={20} />} color="#10B981" />
         <StatCard label="Panier moyen" value={stats ? formatAmount(stats.avgCartTotal) : '—'} icon={<Mail size={20} />} color="#8B5CF6" />
       </Box>

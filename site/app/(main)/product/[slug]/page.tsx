@@ -1,5 +1,6 @@
 "use client";
 
+import { categoryLabel } from "@/app/utils/format";
 import { use } from "react";
 import Link from "next/link";
 import Container from "@mui/material/Container";
@@ -31,7 +32,7 @@ export default function ProductPage({
         <Container maxWidth="xl">
           <div style={{ textAlign: "center", padding: "4rem 0" }}>
             <h1>Produit introuvable</h1>
-            <Link href="/shop" style={{ color: "#7B1E3A" }}>Retour à la boutique</Link>
+            <Link href="/shop" style={{ color: "#FF2C2C" }}>Retour à la boutique</Link>
           </div>
         </Container>
       </main>
@@ -46,7 +47,7 @@ export default function ProductPage({
           <span>/</span>
           <Link href="/shop">Shop</Link>
           <span>/</span>
-          <span>{product.category}</span>
+          <span>{categoryLabel(product.category)}</span>
         </nav>
 
         <ProductDetail product={product} />

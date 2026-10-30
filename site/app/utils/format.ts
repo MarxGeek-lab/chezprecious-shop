@@ -3,14 +3,13 @@
 // ==============================================
 
 /**
- * Formate un prix en euros
+ * Formate un prix en francs CFA (ex : 21000 -> "21 000 F CFA")
  */
 export const formatPrice = (price: number): string => {
   return new Intl.NumberFormat('fr-FR', {
     style: 'currency',
-    currency: 'EUR',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    currency: 'XOF',
+    maximumFractionDigits: 0,
   }).format(price);
 };
 
@@ -46,4 +45,19 @@ export const slugify = (text: string): string => {
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
+};
+
+// Noms affichés des catégories du catalogue (Product.category contient le slug)
+const CATEGORY_LABELS: Record<string, string> = {
+  'complements-alimentaires': 'Compléments alimentaires',
+  'soins-beaute': 'Soins & beauté',
+  'cafe-boissons': 'Café & boissons',
+};
+
+/**
+ * Nom lisible d'une catégorie à partir de son slug
+ */
+export const categoryLabel = (slug?: string | null): string => {
+  if (!slug) return '';
+  return CATEGORY_LABELS[slug] ?? slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ');
 };

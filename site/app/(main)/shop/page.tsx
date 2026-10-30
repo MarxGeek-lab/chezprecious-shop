@@ -1,5 +1,6 @@
 "use client";
 
+import { categoryLabel, formatPrice } from "@/app/utils/format";
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
@@ -15,7 +16,7 @@ import styles from "./page.module.scss";
 
 const PER_PAGE = 9;
 const PRICE_MIN = 0;
-const PRICE_MAX = 450;
+const PRICE_MAX = 100000;
 
 const SORT_OPTIONS = [
   { value: "newest",     label: "Nouveautés" },
@@ -148,28 +149,28 @@ function ShopContent() {
       <Accordion title="Prix">
         <div className={styles.priceSliderWrap}>
           <div className={styles.priceLabels}>
-            <span>{priceRange[0]} €</span>
-            <span>{priceRange[1] >= PRICE_MAX ? `${PRICE_MAX} €+` : `${priceRange[1]} €`}</span>
+            <span>{formatPrice(priceRange[0])}</span>
+            <span>{priceRange[1] >= PRICE_MAX ? `${formatPrice(PRICE_MAX)}+` : formatPrice(priceRange[1])}</span>
           </div>
           <Slider
             value={priceRange}
             onChange={(_, val) => { setPriceRange(val as [number, number]); resetPage(); }}
             min={PRICE_MIN}
             max={PRICE_MAX}
-            step={10}
+            step={1000}
             disableSwap
             sx={{
-              color: "#7B1E3A",
+              color: "#FF2C2C",
               height: 2,
               padding: "10px 0",
               "& .MuiSlider-thumb": {
                 width: 14,
                 height: 14,
-                backgroundColor: "#7B1E3A",
+                backgroundColor: "#FF2C2C",
                 border: "2px solid #fff",
-                boxShadow: "0 0 0 2px #7B1E3A",
+                boxShadow: "0 0 0 2px #FF2C2C",
                 "&:hover, &.Mui-active": {
-                  boxShadow: "0 0 0 3px rgba(123, 30, 58,0.25)",
+                  boxShadow: "0 0 0 3px rgba(255, 44, 44,0.25)",
                 },
               },
               "& .MuiSlider-rail": {
@@ -177,7 +178,7 @@ function ShopContent() {
                 opacity: 1,
               },
               "& .MuiSlider-track": {
-                backgroundColor: "#7B1E3A",
+                backgroundColor: "#FF2C2C",
                 border: "none",
               },
             }}
@@ -250,7 +251,7 @@ function ShopContent() {
               )}
               {priceActive && (
                 <span className={styles.chip}>
-                  {priceRange[0]}–{priceRange[1] >= PRICE_MAX ? `${PRICE_MAX}+` : priceRange[1]} €
+                  {formatPrice(priceRange[0])} – {priceRange[1] >= PRICE_MAX ? `${formatPrice(PRICE_MAX)}+` : formatPrice(priceRange[1])}
                   <button onClick={() => { setPriceRange([PRICE_MIN, PRICE_MAX]); resetPage(); }}><X size={11} /></button>
                 </span>
               )}
@@ -369,7 +370,7 @@ function ListRow({ product }: { product: ApiProduct }) {
         {isSale && <span className={`${styles.listBadge} ${styles.badgeSale}`}>Soldes</span>}
       </div>
       <div className={styles.listBody}>
-        <span className={styles.listCategory}>{category}</span>
+        <span className={styles.listCategory}>{categoryLabel(category)}</span>
         <h3 className={styles.listName}>{name}</h3>
         {rating ? (
           <div className={styles.listRating}>
@@ -383,8 +384,8 @@ function ListRow({ product }: { product: ApiProduct }) {
         ) : null}
       </div>
       <div className={styles.listPrice}>
-        <span className={styles.listPriceMain}>{price} €</span>
-        {isSale && <span className={styles.listPriceOld}>{comparePrice} €</span>}
+        <span className={styles.listPriceMain}>{formatPrice(price)}</span>
+        {isSale && <span className={styles.listPriceOld}>{formatPrice(comparePrice)}</span>}
       </div>
     </a>
   );

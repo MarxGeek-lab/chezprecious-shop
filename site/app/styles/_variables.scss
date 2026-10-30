@@ -1,14 +1,14 @@
 // ─── Couleurs ───────────────────────────────────────────────────────────────
-// Fond clair chaud, texte presque noir, couleur primaire rouge vin
+// Fond clair chaud, texte presque noir, couleur primaire rouge vif #FF2C2C
 $ivory:  #FFFAF7;
 $black:  #1F1416;
-$primary: #7B1E3A;
+$primary: #FF2C2C;
 
 $ivory-dark:    #F6ECE8;
-$primary-light: #A23B5A;
-$primary-dark:  #5A1229;
-$primary-soft:  #F8E9ED;
-$primary-on-dark: #F4BCCB; // accent lisible sur fond rouge vin foncé
+$primary-light: #FF5A5A;
+$primary-dark:  #D41E1E;
+$primary-soft:  #FFECEC;
+$primary-on-dark: #FFD3D3; // accent lisible sur fond rouge foncé
 $white:         #FFFFFF;
 $muted:         #6F6266;
 
@@ -59,9 +59,9 @@ $transition-slow:   0.4s ease;
 
 // ─── Cadres produit ─────────────────────────────────────────────────────────
 $frame-border:        1px solid rgba(31, 20, 22, 0.08);
-$frame-border-hover:  1px solid rgba(123, 30, 58, 0.35);
+$frame-border-hover:  1px solid rgba(255, 44, 44, 0.35);
 $frame-shadow:        0 2px 10px rgba(31, 20, 22, 0.05);
-$frame-shadow-hover:  0 14px 32px rgba(123, 30, 58, 0.14);
+$frame-shadow-hover:  0 14px 32px rgba(255, 44, 44, 0.14);
 $radius:              14px;
 $radius-sm:           8px;
 $radius-pill:         999px;

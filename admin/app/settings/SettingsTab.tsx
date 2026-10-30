@@ -155,7 +155,7 @@ function MediaUploadField({
           startIcon={isLoading ? <Loader size={16} className="spin" /> : <Upload size={16} />}
           disabled={isLoading}
           onClick={() => inputRef.current?.click()}
-          sx={{ bgcolor: '#7B1E3A', textTransform: 'none', borderRadius: '10px', '&:hover': { bgcolor: '#5A1229' } }}
+          sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', '&:hover': { bgcolor: '#D41E1E' } }}
         >
           {isLoading ? 'Envoi...' : label}
         </Button>
@@ -247,7 +247,7 @@ function SaveButton({ saving, onClick }: { saving: boolean; onClick: () => void 
       startIcon={saving ? <Loader size={16} className="spin" /> : <Save size={16} />}
       disabled={saving}
       onClick={onClick}
-      sx={{ bgcolor: '#7B1E3A', textTransform: 'none', borderRadius: '10px', '&:hover': { bgcolor: '#5A1229' } }}
+      sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', '&:hover': { bgcolor: '#D41E1E' } }}
     >
       {saving ? 'Enregistrement...' : 'Enregistrer'}
     </Button>
@@ -294,12 +294,12 @@ export default function SettingsTab() {
   const [tiktok, setTiktok] = useState('');
 
   // Appearance
-  const [primaryColor, setPrimaryColor] = useState('#7B1E3A');
+  const [primaryColor, setPrimaryColor] = useState('#FF2C2C');
   const [secondaryColor, setSecondaryColor] = useState('#1A1A2E');
   const [accentColor, setAccentColor] = useState('#10B981');
 
   // Commerce
-  const [currency, setCurrency] = useState('EUR');
+  const [currency, setCurrency] = useState('XOF');
   const [commission, setCommission] = useState('10');
   const [minOrder, setMinOrder] = useState('5000');
   const [freeShipping, setFreeShipping] = useState('50000');
@@ -408,10 +408,10 @@ export default function SettingsTab() {
     setYoutube(s.youtube || '');
     setLinkedin(s.linkedin || '');
     setTiktok(s.tiktok || '');
-    setPrimaryColor(s.primaryColor || '#7B1E3A');
+    setPrimaryColor(s.primaryColor || '#FF2C2C');
     setSecondaryColor(s.secondaryColor || '#1A1A2E');
     setAccentColor(s.accentColor || '#10B981');
-    setCurrency(s.currency || 'EUR');
+    setCurrency(s.currency || 'XOF');
     setCommission(String(s.commission ?? '10'));
     setMinOrder(String(s.minOrder ?? '5000'));
     setFreeShipping(String(s.freeShippingMin ?? '50000'));
@@ -464,7 +464,7 @@ export default function SettingsTab() {
 
   // Shared styles
   const btnOutline = { textTransform: 'none' as const, borderRadius: '10px', borderColor: '#E5E7EB', color: '#6B7280' };
-  const switchSx = { '& .MuiSwitch-switchBase.Mui-checked': { color: '#7B1E3A' }, '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#7B1E3A' } };
+  const switchSx = { '& .MuiSwitch-switchBase.Mui-checked': { color: '#FF2C2C' }, '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#FF2C2C' } };
 
   const legalPages = [
     { label: 'Conditions Générales (CGU)', value: cguContent, onChange: setCguContent, placeholder: 'Rédigez les conditions générales d\'utilisation...' },
@@ -479,7 +479,7 @@ export default function SettingsTab() {
   if (isLoading) {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 400, gap: 2 }}>
-        <CircularProgress sx={{ color: '#7B1E3A' }} size={36} />
+        <CircularProgress sx={{ color: '#FF2C2C' }} size={36} />
         <Typography sx={{ color: '#6B7280', fontSize: 14 }}>Chargement des paramètres...</Typography>
       </Box>
     );
@@ -779,10 +779,10 @@ export default function SettingsTab() {
             slotProps={{ input: { startAdornment: <Percent size={16} style={{ color: '#9CA3AF', marginRight: 8 }} /> } }} />
         </Grid> */}
         <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField fullWidth label="Montant min. commande (€)" value={minOrder} onChange={(e) => setMinOrder(e.target.value)} size="small" type="number" />
+          <TextField fullWidth label="Montant min. commande (F CFA)" value={minOrder} onChange={(e) => setMinOrder(e.target.value)} size="small" type="number" />
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField fullWidth label="Livraison gratuite à partir de (€)" value={freeShipping} onChange={(e) => setFreeShipping(e.target.value)} size="small" type="number" />
+          <TextField fullWidth label="Livraison gratuite à partir de (F CFA)" value={freeShipping} onChange={(e) => setFreeShipping(e.target.value)} size="small" type="number" />
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>
           <TextField fullWidth label="Taux de TVA (%)" value={taxRate} onChange={(e) => setTaxRate(e.target.value)} size="small" type="number" />
@@ -830,10 +830,8 @@ export default function SettingsTab() {
       </Box>
 
       {[
-        { label: 'Colissimo', desc: 'Standard (3-5 jours)', price: '4,90 €', enabled: true },
-        { label: 'Chronopost', desc: 'Express (24-48h)', price: '9,90 €', enabled: true },
-        { label: 'Point Relais', desc: 'Retrait en point relais', price: '3,90 €', enabled: true },
-        { label: 'Livraison locale', desc: 'Même ville', price: '2,90 €', enabled: true },
+        { label: 'Livraison standard', desc: 'Bénin (3-5 jours)', price: '2 500 F CFA', enabled: true },
+        { label: 'Livraison offerte', desc: 'Dès 50 000 F CFA d\'achat', price: 'Gratuit', enabled: true },
         { label: 'Retrait en magasin', desc: 'Click & Collect', price: 'Gratuit', enabled: false },
       ].map((carrier) => (
         <Box key={carrier.label} sx={{
@@ -845,7 +843,7 @@ export default function SettingsTab() {
             <Typography sx={{ fontWeight: 600, fontSize: 14 }}>{carrier.label}</Typography>
             <Typography sx={{ fontSize: 12, color: '#6B7280' }}>{carrier.desc}</Typography>
           </Box>
-          <Chip label={carrier.price} size="small" sx={{ mr: 2, fontWeight: 600, bgcolor: 'rgba(123, 30, 58,0.08)', color: '#7B1E3A' }} />
+          <Chip label={carrier.price} size="small" sx={{ mr: 2, fontWeight: 600, bgcolor: 'rgba(255, 44, 44,0.08)', color: '#FF2C2C' }} />
           <Switch defaultChecked={carrier.enabled} sx={switchSx} />
         </Box>
       ))}
@@ -899,7 +897,7 @@ export default function SettingsTab() {
             <Typography sx={{ fontSize: 14 }}>{template}</Typography>
           </Box>
           <Button size="small" endIcon={<ChevronRight size={14} />}
-            sx={{ textTransform: 'none', color: '#7B1E3A', fontSize: 13 }}>
+            sx={{ textTransform: 'none', color: '#FF2C2C', fontSize: 13 }}>
             Modifier
           </Button>
         </Box>
@@ -985,10 +983,10 @@ export default function SettingsTab() {
             key={page.label} label={page.label} onClick={() => setLegalTab(i)}
             sx={{
               fontWeight: legalTab === i ? 700 : 500, fontSize: 13, cursor: 'pointer',
-              bgcolor: legalTab === i ? 'rgba(123, 30, 58,0.1)' : '#F3F4F6',
-              color: legalTab === i ? '#7B1E3A' : '#6B7280',
-              border: legalTab === i ? '1px solid rgba(123, 30, 58,0.3)' : '1px solid transparent',
-              '&:hover': { bgcolor: legalTab === i ? 'rgba(123, 30, 58,0.15)' : '#E5E7EB' },
+              bgcolor: legalTab === i ? 'rgba(255, 44, 44,0.1)' : '#F3F4F6',
+              color: legalTab === i ? '#FF2C2C' : '#6B7280',
+              border: legalTab === i ? '1px solid rgba(255, 44, 44,0.3)' : '1px solid transparent',
+              '&:hover': { bgcolor: legalTab === i ? 'rgba(255, 44, 44,0.15)' : '#E5E7EB' },
             }}
           />
         ))}
@@ -1043,8 +1041,8 @@ export default function SettingsTab() {
           </Box>
           <Switch checked={setting.state} onChange={() => setting.setter(!setting.state)}
             sx={{
-              '& .MuiSwitch-switchBase.Mui-checked': { color: setting.danger ? '#EF4444' : '#7B1E3A' },
-              '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: setting.danger ? '#EF4444' : '#7B1E3A' },
+              '& .MuiSwitch-switchBase.Mui-checked': { color: setting.danger ? '#EF4444' : '#FF2C2C' },
+              '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: setting.danger ? '#EF4444' : '#FF2C2C' },
             }} />
         </Box>
       ))}
@@ -1170,7 +1168,7 @@ export default function SettingsTab() {
                     variant="contained"
                     startIcon={<Upload size={14} />}
                     component="label"
-                    sx={{ bgcolor: '#7B1E3A', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#5A1229' } }}
+                    sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#D41E1E' } }}
                   >
                     Uploader
                     <input
@@ -1234,7 +1232,7 @@ export default function SettingsTab() {
                   onChange={(e) => { const u = [...homepageBanners]; u[idx] = { ...u[idx], ctaLink: e.target.value }; setHomepageBanners(u); }} />
               </Grid>
               <Grid size={{ xs: 12, sm: 4 }}>
-                <TextField size="small" fullWidth label="Prix affiché (ex: 49,00 €)" value={banner.priceValue}
+                <TextField size="small" fullWidth label="Prix affiché (ex: 21 000 F CFA)" value={banner.priceValue}
                   onChange={(e) => { const u = [...homepageBanners]; u[idx] = { ...u[idx], priceValue: e.target.value }; setHomepageBanners(u); }} />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
@@ -1341,7 +1339,7 @@ export default function SettingsTab() {
                   value={adSectionConfig.largeBanner.imageUrl}
                   onChange={(e) => setAdSectionConfig({ ...adSectionConfig, largeBanner: { ...adSectionConfig.largeBanner, imageUrl: e.target.value } })} />
                 <Button size="small" variant="contained" startIcon={<Upload size={14} />} component="label"
-                  sx={{ bgcolor: '#7B1E3A', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#5A1229' } }}>
+                  sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#D41E1E' } }}>
                   Uploader
                   <input type="file" hidden accept="image/*" onChange={async (e) => {
                     const file = e.target.files?.[0]; if (!file) return;
@@ -1422,7 +1420,7 @@ export default function SettingsTab() {
                   value={adSectionConfig.newArrivalsBanner.imageUrl}
                   onChange={(e) => setAdSectionConfig({ ...adSectionConfig, newArrivalsBanner: { ...adSectionConfig.newArrivalsBanner, imageUrl: e.target.value } })} />
                 <Button size="small" variant="contained" startIcon={<Upload size={14} />} component="label"
-                  sx={{ bgcolor: '#7B1E3A', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#5A1229' } }}>
+                  sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#D41E1E' } }}>
                   Uploader
                   <input type="file" hidden accept="image/*" onChange={async (e) => {
                     const file = e.target.files?.[0]; if (!file) return;
