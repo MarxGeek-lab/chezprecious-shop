@@ -201,7 +201,7 @@ function ShopContent() {
       {/* En-tête hero */}
       <div className={styles.pageHeader}>
         <Image
-          src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1600&q=85"
+          src="/uploads/products/catalogue/coffrets-sag7-floral.webp"
           alt="ChezPrecious Boutique"
           fill
           className={styles.pageHeaderBg}

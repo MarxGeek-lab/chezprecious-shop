@@ -510,7 +510,7 @@ export default function ProductDetail({ product }: { product: ApiProduct }) {
               </AccordionItem>
             ))}
             <AccordionItem title="Livraison & Retours">
-              <p>Livraison standard en 3 à 5 jours ouvrés : 2 500 F CFA, offerte dès 50 000 F CFA d'achat. Retours gratuits sous 30 jours.</p>
+              <p>Livraison standard en 3 à 5 jours ouvrés : 2 500 F CFA, offerte à partir de 4 produits achetés. Retours gratuits sous 30 jours.</p>
             </AccordionItem>
           </div>
         </div>

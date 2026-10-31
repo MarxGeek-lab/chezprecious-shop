@@ -109,13 +109,16 @@
 }
 
 .thumbImg {
-  object-fit: cover;
+  object-fit: contain;
+  background-color: $white;
 }
 
 .mainImage {
   position: relative;
   aspect-ratio: 3 / 4;
-  border: 1.5px solid $black;
+  border: 1px solid rgba(31, 20, 22, 0.08);
+  border-radius: $radius;
+  background-color: $white;
   overflow: hidden;
   order: 2;
   grid-column: 2;
@@ -131,7 +134,8 @@
 }
 
 .mainImg {
-  object-fit: cover;
+  object-fit: contain;
+  padding: 5%;
   transition: transform 0.55s ease;
 
   .mainImage:hover & {

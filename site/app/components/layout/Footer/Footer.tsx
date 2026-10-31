@@ -37,7 +37,7 @@ const COLUMNS = [
 ];
 
 const PERKS = [
-  { icon: Truck, label: "Livraison offerte dès 50 000 F CFA" },
+  { icon: Truck, label: "Livraison offerte dès 4 produits achetés" },
   { icon: RotateCcw, label: "Retours gratuits 30 jours" },
   { icon: ShieldCheck, label: "Paiement sécurisé" },
 ];
@@ -179,11 +179,13 @@ export default function Footer() {
         <p className={styles.copy}>
           © {new Date().getFullYear()} {siteName}. Tous droits réservés.
         </p>
+        {/* Liens légaux masqués pour le moment (contenus à mettre à jour)
         <nav className={styles.legal}>
           <Link href="/mentions" className={styles.legalLink}>Mentions légales</Link>
           <Link href="/confidentialite" className={styles.legalLink}>Confidentialité</Link>
           <Link href="/livraison" className={styles.legalLink}>CGV & retours</Link>
         </nav>
+        */}
       </div>
     </footer>
   );

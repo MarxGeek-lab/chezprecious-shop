@@ -10,12 +10,12 @@ const SHIPPING = [
     title: "Livraison standard",
     delay: "3 – 5 jours ouvrés",
     price: "2 500 F CFA",
-    note: "Gratuite dès 50 000 F CFA d'achat",
+    note: "Gratuite à partir de 4 produits achetés",
   },
 ];
 
 const ZONES = [
-  { country: "Bénin", delay: "3 – 5 jours", price: "2 500 F CFA · offerte dès 50 000 F CFA" },
+  { country: "Bénin", delay: "3 – 5 jours", price: "2 500 F CFA · offerte dès 4 produits" },
 ];
 
 const RETURN_STEPS = [

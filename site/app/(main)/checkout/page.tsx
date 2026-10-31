@@ -1,7 +1,7 @@
 "use client";
 
 import { formatPrice } from "@/app/utils/format";
-import { getShippingCost, SHIPPING_COST } from "@/app/utils/shipping";
+import { getShippingCost } from "@/app/utils/shipping";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -175,12 +175,12 @@ function OrderSummary({ items, totalPrice, shippingCost, total }: OrderSummaryPr
 
 interface StepLivraisonProps {
   shipping: ShippingForm;
-  totalPrice: number;
+  shippingCost: number;
   onChange: (k: keyof ShippingForm, v: string) => void;
   onNext: () => void;
   onEmailChange?: (email: string) => void;
 }
-function StepLivraison({ shipping, totalPrice, onChange, onNext, onEmailChange }: StepLivraisonProps) {
+function StepLivraison({ shipping, shippingCost, onChange, onNext, onEmailChange }: StepLivraisonProps) {
   const valid = !!(shipping.firstName && shipping.lastName && shipping.email && shipping.address && shipping.zip && shipping.city);
 
   return (
@@ -258,7 +258,7 @@ function StepLivraison({ shipping, totalPrice, onChange, onNext, onEmailChange }
           <div className={styles.shippingModeBody}>
             <span className={styles.shippingModeName}>Standard — 3 à 5 jours ouvrés</span>
             <span className={styles.shippingModePrice}>
-              {getShippingCost(totalPrice) === 0 ? <strong>Offerte</strong> : formatPrice(SHIPPING_COST)}
+              {shippingCost === 0 ? <strong>Offerte</strong> : formatPrice(shippingCost)}
             </span>
           </div>
         </label>
@@ -456,7 +456,7 @@ function StepConfirmation({ orderResult, shipping, total }: StepConfirmationProp
 // ─── Page principale ──────────────────────────────────────────────────────────
 
 export default function CheckoutPage() {
-  const { items, totalPrice, clearCart } = useCart();
+  const { items, totalItems, totalPrice, clearCart } = useCart();
   const { saveCart, markConverted } = useAbandonedCart();
   const [step, setStep] = useState<Step>("livraison");
   const [shipping, setShipping] = useState<ShippingForm>(EMPTY_SHIPPING);
@@ -470,7 +470,7 @@ export default function CheckoutPage() {
   const [error, setError] = useState("");
   const [orderResult, setOrderResult] = useState<{ orderNumber: string; email: string } | null>(null);
 
-  const shippingCost = getShippingCost(totalPrice);
+  const shippingCost = getShippingCost(totalItems);
   const total = totalPrice + shippingCost;
   const stepIndex = STEPS.findIndex((s) => s.key === step);
 
@@ -565,7 +565,7 @@ export default function CheckoutPage() {
               {step === "livraison" && (
                 <StepLivraison
                   shipping={shipping}
-                  totalPrice={totalPrice}
+                  shippingCost={shippingCost}
                   onChange={handleShippingChange}
                   onNext={() => setStep("paiement")}
                   onEmailChange={handleEmailChange}

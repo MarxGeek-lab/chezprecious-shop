@@ -100,7 +100,8 @@
 }
 
 .itemImg {
-  object-fit: cover;
+  object-fit: contain;
+  background-color: $white;
 }
 
 .itemBody {

@@ -3,11 +3,11 @@
 // Doivent rester alignées sur le calcul de l'API (order_controller).
 // ==============================================
 
-/** Montant du panier à partir duquel la livraison est offerte */
-export const FREE_SHIPPING_THRESHOLD = 50000;
+/** Nombre de produits à partir duquel la livraison est offerte */
+export const FREE_SHIPPING_MIN_ITEMS = 4;
 
 /** Frais de livraison standard sous le seuil */
 export const SHIPPING_COST = 2500;
 
-export const getShippingCost = (subtotal: number): number =>
-  subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+export const getShippingCost = (itemCount: number): number =>
+  itemCount >= FREE_SHIPPING_MIN_ITEMS ? 0 : SHIPPING_COST;

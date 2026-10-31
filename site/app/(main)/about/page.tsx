@@ -24,7 +24,7 @@ export default function AboutPage() {
       <section className={styles.hero}>
         <div className={styles.heroBg}>
           <Image
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85"
+            src="/uploads/products/catalogue/thymoq-super7-scene.webp"
             alt="ChezPrecious atelier"
             fill
             className={styles.heroBgImg}
@@ -44,7 +44,7 @@ export default function AboutPage() {
         <div className={styles.storyGrid}>
           <div className={styles.storyImg}>
             <Image
-              src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=700&q=85"
+              src="/uploads/products/catalogue/cream7-ingredients.webp"
               alt="Atelier ChezPrecious"
               fill
               className={styles.storyImgEl}

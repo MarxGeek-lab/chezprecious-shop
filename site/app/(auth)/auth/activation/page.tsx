@@ -46,7 +46,7 @@ function ActivationContent() {
           <p className={styles.quoteAuthor}>— Yves Saint Laurent</p>
         </div>
         <Image
-          src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=85"
+          src="/uploads/products/catalogue/w7-super7-rose-or.webp"
           alt="Collection ChezPrecious"
           fill
           className={styles.leftImage}

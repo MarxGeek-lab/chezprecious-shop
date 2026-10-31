@@ -7,7 +7,7 @@ import { usePromotions } from "@/app/hooks/useHomepage";
 import { formatPrice } from "@/app/utils/format";
 import styles from "./PromoBanner.module.scss";
 
-const IMAGE = "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&q=85";
+const IMAGE = "/uploads/products/catalogue/thymoq-super7-scene.webp";
 
 export default function PromoBanner() {
   const { data: promos = [] } = usePromotions(2);

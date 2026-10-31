@@ -594,7 +594,8 @@ select.input {
 }
 
 .summaryItemImgEl {
-  object-fit: cover;
+  object-fit: contain;
+  background-color: $white;
 }
 
 /* ── Spinner ── */

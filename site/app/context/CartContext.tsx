@@ -101,7 +101,7 @@ export function CartProvider({ children }: CartProviderProps) {
   const [notification, setNotification] = useState<CartNotification | null>(null);
 
   // Constantes
-  const FREE_SHIPPING_THRESHOLD = 50000;
+  const FREE_SHIPPING_THRESHOLD = 50000; // non utilisé par l'affichage : voir utils/shipping.ts (règle à 4 produits)
   const SHIPPING_COST = 2500;
   const TAX_RATE = 0.18; // TVA 18%
 

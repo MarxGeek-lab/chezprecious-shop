@@ -3,10 +3,8 @@
 
 .footer {
   margin-top: auto;
-  background-color: $primary-dark;
-  background-image:
-    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.06), transparent 40%),
-    radial-gradient(circle at 0% 100%, rgba(0, 0, 0, 0.25), transparent 45%);
+  background-color: #141011;
+  background-image: radial-gradient(circle at 100% 0%, rgba(255, 44, 44, 0.1), transparent 40%);
   color: rgba(255, 255, 255, 0.82);
 
   // Laisse la place à la barre de navigation fixe en bas sur mobile
@@ -15,8 +13,9 @@
 
 /* ── Bandeau newsletter ── */
 .newsletterBand {
-  background-color: $primary-soft;
-  color: $black;
+  background-color: #1E1719;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: $white;
 }
 
 .newsletterInner {
@@ -35,7 +34,7 @@
   font-size: clamp(1.5rem, 2.6vw, 2.1rem);
   font-weight: $fw-bold;
   line-height: 1.2;
-  color: $black;
+  color: $white;
 
   em { font-style: italic; color: $primary; }
 }
@@ -43,7 +42,7 @@
 .newsletterSub {
   margin-top: $space-2;
   font-size: $fs-sm;
-  color: $muted;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .newsletterForm {
@@ -131,7 +130,7 @@
   color: $white;
   line-height: 1;
 
-  em { font-style: italic; color: $primary-on-dark; }
+  em { font-style: italic; color: $primary; }
 }
 
 .tagline {
@@ -156,7 +155,7 @@
   color: rgba(255, 255, 255, 0.8);
   transition: color $transition-fast;
 
-  svg { color: $primary-on-dark; flex-shrink: 0; }
+  svg { color: $primary; flex-shrink: 0; }
 
   &[href]:hover { color: $white; }
 }
@@ -233,7 +232,7 @@
   font-size: $fs-sm;
   color: rgba(255, 255, 255, 0.85);
 
-  svg { color: $primary-on-dark; }
+  svg { color: $primary; }
 }
 
 /* ── Bas de page ── */

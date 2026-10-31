@@ -9,12 +9,12 @@ import Grid from "@mui/material/Grid";
 import { useCart } from "@/app/store/cartStore";
 import styles from "./page.module.scss";
 
-import { FREE_SHIPPING_THRESHOLD as SHIPPING_THRESHOLD, SHIPPING_COST } from "@/app/utils/shipping";
+import { FREE_SHIPPING_MIN_ITEMS, getShippingCost, SHIPPING_COST } from "@/app/utils/shipping";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice } = useCart();
 
-  const shipping = totalPrice >= SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+  const shipping = getShippingCost(totalItems);
   const total = totalPrice + shipping;
 
   if (items.length === 0) {
@@ -147,7 +147,7 @@ export default function CartPage() {
                 </div>
                 {shipping > 0 && (
                   <p className={styles.shippingHint}>
-                    Plus que {formatPrice((SHIPPING_THRESHOLD - totalPrice))} pour la livraison offerte
+                    Plus que {FREE_SHIPPING_MIN_ITEMS - totalItems} produit{FREE_SHIPPING_MIN_ITEMS - totalItems > 1 ? "s" : ""} pour la livraison offerte
                   </p>
                 )}
               </div>

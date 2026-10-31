@@ -4,23 +4,28 @@
 .hero {
   position: relative;
   overflow: hidden;
-  // Compense le header fixe (bandeau + barre)
-  padding: calc(94px + #{$space-10}) 0 $space-16;
+  // Compense le header fixe (bandeau + barre) et tient dans l'écran sans défilement
+  padding: calc(94px + #{$space-5}) 0 $space-8;
   background:
     radial-gradient(circle at 85% 20%, rgba(255, 44, 44, 0.12), transparent 45%),
     radial-gradient(circle at 10% 90%, rgba(255, 44, 44, 0.08), transparent 40%),
     linear-gradient(180deg, $primary-soft 0%, $ivory 100%);
 
-  @include lg { padding: calc(94px + #{$space-12}) 0 $space-20; }
+  @include lg {
+    display: flex;
+    align-items: center;
+    min-height: 100svh;
+    padding: calc(94px + #{$space-6}) 0 $space-8;
+  }
 }
 
 .inner {
   @include container;
   display: grid;
-  gap: $space-12;
+  gap: $space-6;
   align-items: center;
 
-  @include lg { grid-template-columns: 1.05fr 1fr; gap: $space-16; }
+  @include lg { grid-template-columns: 1.05fr 1fr; gap: $space-12; }
 }
 
 /* ── Texte ── */
@@ -44,9 +49,9 @@
 }
 
 .title {
-  margin-top: $space-6;
+  margin-top: $space-4;
   font-family: $font-display;
-  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  font-size: clamp(2rem, 4.2vw, 3.6rem);
   font-weight: $fw-bold;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -72,9 +77,9 @@
 }
 
 .desc {
-  margin-top: $space-6;
+  margin-top: $space-4;
   max-width: 34rem;
-  font-size: $fs-lg;
+  font-size: $fs-base;
   line-height: 1.7;
   color: $muted;
 }
@@ -83,7 +88,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: $space-3;
-  margin-top: $space-8;
+  margin-top: $space-6;
 }
 
 .btnPrimary {
@@ -135,7 +140,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: $space-3 $space-6;
-  margin-top: $space-8;
+  margin-top: $space-6;
   font-size: $fs-sm;
   font-weight: $fw-medium;
   color: $black;
@@ -153,11 +158,19 @@
 .visual {
   position: relative;
   animation: rise 0.8s 0.1s ease both;
+  order: -1;
+
+  @include lg { order: 0; }
 }
 
+// Taille bornée par la hauteur de l'écran pour que le hero tienne sans défilement
 .slider {
   position: relative;
-  padding-bottom: $space-10;
+  width: min(100%, 42svh);
+  margin: 0 auto;
+  padding-bottom: $space-8;
+
+  @include lg { width: min(100%, calc(100svh - 230px)); }
 }
 
 .sliderSkeleton {

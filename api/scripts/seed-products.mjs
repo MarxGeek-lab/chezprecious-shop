@@ -20,6 +20,7 @@ const ASSETS_DIR = join(root, 'prisma', 'seed-assets', 'products')
 const UPLOAD_DIR = join(root, 'public', 'uploads', 'products', 'catalogue')
 const UPLOAD_URL = '/uploads/products/catalogue'
 
+// Valeurs par défaut, surchargées produit par produit (price, brand) si besoin
 const PRICE = 21000
 const STOCK = 50
 const BRAND = 'SAG7 International'
@@ -47,7 +48,7 @@ const CATEGORIES = [
   {
     slug: 'cafe-boissons',
     name: 'Café & boissons',
-    description: 'Café premium enrichi en ingrédients naturels.',
+    description: 'Café premium enrichi et eau alcaline pour une hydratation au quotidien.',
     image: 'royal-coffee-emballage.webp',
   },
 ]
@@ -272,6 +273,42 @@ Contient de la caféine : déconseillé aux enfants et aux femmes enceintes ou a
     weight: null,
     images: ['royal-coffee-emballage.webp'],
   },
+  {
+    slug: 'eau-alcaline-label-bien-etre',
+    name: 'Eau alcaline Label Bien-être pH 8+ (9 × 1,5 L)',
+    category: 'cafe-boissons',
+    brand: 'Label Bien-être',
+    price: 5000,
+    tags: ['eau', 'hydratation', 'alcaline', 'mixte'],
+    isFeatured: true,
+    shortDescription:
+      'Eau alcaline naturelle pH 8+, riche en minéraux et faible en sodium, pour une hydratation quotidienne de toute la famille.',
+    description: `Label Bien-être est une eau alcaline « source de vie » au pH de 8 et plus. Riche en minéraux naturels et faible en sodium, elle accompagne l'hydratation de toute la famille, au quotidien comme pendant l'effort.
+
+### Bienfaits
+- Hydratation quotidienne : idéale pour boire tout au long de la journée et après l'effort.
+- Équilibre acido-basique : son pH 8+ contribue à un bon équilibre acido-basique.
+- Minéraux naturels : apporte des minéraux qui participent au bien-être de l'organisme.
+- Action antioxydante : aide à protéger l'organisme contre le stress oxydatif.
+- Pour toute la famille : faible teneur en sodium, elle convient à tous les âges.
+
+### Caractéristiques
+- Eau alcaline, pH 8+
+- Riche en minéraux naturels
+- Faible teneur en sodium
+
+### Format
+Carton de 9 bouteilles de 1,5 L.
+
+### Conservation
+À conserver à l'abri de la lumière et de la chaleur. Après ouverture, à consommer rapidement.`,
+    weight: 13.5,
+    images: [
+      'eau-alcaline-carton.webp',
+      'eau-alcaline-bouteille.webp',
+      'eau-alcaline-eclaboussure.webp',
+    ],
+  },
 ]
 
 // ─── Exécution ───────────────────────────────────────────────────────────────
@@ -323,8 +360,8 @@ async function main() {
                tags = EXCLUDED.tags, status = 'ACTIVE', is_featured = EXCLUDED.is_featured, updated_at = NOW()
          RETURNING id`,
         [
-          randomUUID(), p.name, p.slug, p.shortDescription, p.description, p.category, BRAND,
-          PRICE, STOCK, p.weight, p.tags, p.isFeatured,
+          randomUUID(), p.name, p.slug, p.shortDescription, p.description, p.category, p.brand ?? BRAND,
+          p.price ?? PRICE, STOCK, p.weight, p.tags, p.isFeatured,
         ]
       )
       const productId = rows[0].id
@@ -341,7 +378,7 @@ async function main() {
     }
 
     await client.query('COMMIT')
-    console.log(`\n🌱 Catalogue prêt : ${PRODUCTS.length} produits à ${PRICE.toLocaleString('fr-FR')} FCFA`)
+    console.log(`\n🌱 Catalogue prêt : ${PRODUCTS.length} produits`)
   } catch (e) {
     await client.query('ROLLBACK')
     throw e

@@ -14,7 +14,7 @@ import type { AuthUser } from "@/app/lib/api";
 import styles from "./Navbar.module.scss";
 
 const ANNOUNCEMENTS = [
-  <>Livraison offerte dès <strong>50 000 F CFA</strong> d&apos;achat</>,
+  <>Livraison <strong>gratuite</strong> à partir de <strong>4 produits</strong> achetés</>,
   <>Retours gratuits sous <strong>30 jours</strong></>,
   <>Paiement <strong>100 % sécurisé</strong></>,
 ];

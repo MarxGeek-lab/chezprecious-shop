@@ -105,7 +105,9 @@ export default class OrderController {
         }
       })
 
-      const shippingCost = subtotal >= 50000 ? 0 : 2500
+      // Livraison offerte à partir de 4 produits achetés (règle reprise côté site : utils/shipping.ts)
+      const itemCount = data.items.reduce((sum, item) => sum + item.quantity, 0)
+      const shippingCost = itemCount >= 4 ? 0 : 2500
       const tax = 0
 
       // ── 3b. Appliquer le code promo ────────────────────────────────────

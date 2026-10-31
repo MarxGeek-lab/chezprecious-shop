@@ -2,7 +2,7 @@ import styles from "./Marquee.module.scss";
 
 const ITEMS = [
   "Nouvelle collection",
-  "Livraison offerte dès 50 000 F CFA",
+  "Livraison offerte dès 4 produits achetés",
   "Qualité premium",
   "Retours gratuits",
   "ChezPrecious — 2025",
