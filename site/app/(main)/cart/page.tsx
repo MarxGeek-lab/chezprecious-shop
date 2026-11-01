@@ -25,7 +25,7 @@ export default function CartPage() {
             <ShoppingBag size={56} strokeWidth={1} className={styles.emptyIcon} />
             <h1 className={styles.emptyTitle}>Votre panier est vide</h1>
             <p className={styles.emptyDesc}>
-              Découvrez nos collections et ajoutez vos pièces favorites.
+              Découvrez nos produits et ajoutez vos favoris à votre panier.
             </p>
             <Link href="/shop" className={styles.emptyBtn}>
               Découvrir la boutique

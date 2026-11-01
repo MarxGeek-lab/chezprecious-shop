@@ -8,14 +8,14 @@ export default function ConfidentialitePage() {
       <div className={styles.hero}>
         <span className={styles.eyebrow}>Vos données</span>
         <h1 className={styles.heroTitle}>Politique de confidentialité</h1>
-        <p className={styles.heroDate}>Dernière mise à jour : 1er janvier 2025</p>
+        <p className={styles.heroDate}>Dernière mise à jour : novembre 2026</p>
       </div>
 
       <div className={styles.content}>
 
         <section className={styles.section}>
           <h2 className={styles.h2}>1. Responsable du traitement</h2>
-          <p className={styles.para}>ChezPrecious, 12 rue du Commerce, Cotonou, Bénin. Email : contact@chezprecious.com. En tant que responsable du traitement, ChezPrecious s'engage à protéger vos données personnelles conformément aux réglementations applicables.</p>
+          <p className={styles.para}>ChezPrecious, Cotonou, Bénin. Email : contact@chezprecious.com. En tant que responsable du traitement, ChezPrecious s'engage à protéger vos données personnelles conformément aux réglementations applicables.</p>
         </section>
 
         <section className={styles.section}>
@@ -58,7 +58,7 @@ export default function ConfidentialitePage() {
           <ul className={styles.list}>
             <li className={styles.listItem}>Nos prestataires logistiques (uniquement les données nécessaires à la livraison)</li>
             <li className={styles.listItem}>Nos prestataires de paiement sécurisé</li>
-            <li className={styles.listItem}>Notre prestataire d'hébergement (Vercel Inc.)</li>
+            <li className={styles.listItem}>Notre prestataire d'hébergement</li>
           </ul>
         </section>
 
@@ -72,7 +72,7 @@ export default function ConfidentialitePage() {
             <li className={styles.listItem}><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données</li>
             <li className={styles.listItem}><strong>Droit à la portabilité :</strong> recevoir vos données dans un format structuré</li>
           </ul>
-          <p className={styles.para}>Pour exercer ces droits, contactez-nous à <a href="mailto:privacy@chezprecious.com" className={styles.link}>privacy@chezprecious.com</a>. Nous répondrons dans un délai maximum de 30 jours.</p>
+          <p className={styles.para}>Pour exercer ces droits, contactez-nous à <a href="mailto:contact@chezprecious.com" className={styles.link}>contact@chezprecious.com</a>. Nous répondrons dans un délai maximum de 30 jours.</p>
         </section>
 
         <section className={styles.section}>
@@ -87,7 +87,7 @@ export default function ConfidentialitePage() {
 
         <section className={styles.section}>
           <h2 className={styles.h2}>8. Contact</h2>
-          <p className={styles.para}>Pour toute question relative à cette politique de confidentialité ou à vos données personnelles, contactez notre Délégué à la Protection des Données à l'adresse suivante : <a href="mailto:privacy@chezprecious.com" className={styles.link}>privacy@chezprecious.com</a></p>
+          <p className={styles.para}>Pour toute question relative à cette politique de confidentialité ou à vos données personnelles, contactez-nous à l'adresse suivante : <a href="mailto:contact@chezprecious.com" className={styles.link}>contact@chezprecious.com</a></p>
         </section>
 
       </div>

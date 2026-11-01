@@ -135,7 +135,7 @@ export default function ContactPage() {
                   <option value="">Choisir un sujet…</option>
                   <option>Commande & livraison</option>
                   <option>Retour & remboursement</option>
-                  <option>Produit & taille</option>
+                  <option>Question sur un produit</option>
                   <option>Partenariat</option>
                   <option>Autre</option>
                 </select>

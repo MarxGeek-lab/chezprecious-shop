@@ -210,7 +210,7 @@ function ShopContent() {
         <div className={styles.pageHeaderOverlay} />
         <div className={styles.pageHeaderInner}>
           <h1 className={styles.pageTitle}>Boutique</h1>
-          <p className={styles.pageSubtitle}>Vêtements premium, design épuré</p>
+          <p className={styles.pageSubtitle}>Produits naturels pour votre santé et votre beauté</p>
           <span className={styles.pageCount}>{total} produit{total > 1 ? "s" : ""}</span>
         </div>
       </div>

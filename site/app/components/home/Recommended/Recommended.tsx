@@ -38,7 +38,7 @@ export default function Recommended() {
           </Link>
         </div>
 
-        <Grid container spacing={{ xs: 2, md: 3 }}>
+        <Grid container spacing={{ xs: 1, md: 3 }}>
             {isLoading ? (
               Array.from({ length: 4 }).map((_, i) => <ProductSkeleton key={i} />)
             ) : data.length > 0 ? (

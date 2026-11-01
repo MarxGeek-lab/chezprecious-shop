@@ -78,7 +78,7 @@ function ResetPasswordContent() {
         </div>
         <Image
           src="/uploads/products/catalogue/w7-super7-rose-or.webp"
-          alt="Collection ChezPrecious"
+          alt="Produits ChezPrecious"
           fill
           className={styles.leftImage}
           priority

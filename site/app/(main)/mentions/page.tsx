@@ -8,25 +8,23 @@ export default function MentionsPage() {
       <div className={styles.hero}>
         <span className={styles.eyebrow}>Informations légales</span>
         <h1 className={styles.heroTitle}>Mentions légales</h1>
-        <p className={styles.heroDate}>Dernière mise à jour : 1er janvier 2025</p>
+        <p className={styles.heroDate}>Dernière mise à jour : novembre 2026</p>
       </div>
 
       <div className={styles.content}>
 
         <section className={styles.section}>
           <h2 className={styles.h2}>Éditeur du site</h2>
-          <p className={styles.para}>Le site <strong>chezprecious.com</strong> est édité par la société <strong>ChezPrecious</strong>, société par actions simplifiée au capital de 10 000 €, immatriculée au RCS de Paris sous le numéro 123 456 789.</p>
+          <p className={styles.para}>Le site <strong>chezprecious.com</strong> est édité par <strong>ChezPrecious</strong>, boutique en ligne basée à Cotonou, Bénin.</p>
           <ul className={styles.list}>
-            <li className={styles.listItem}><strong>Siège social :</strong> 12 rue du Faubourg Saint-Antoine, 75012 Paris, France</li>
-            <li className={styles.listItem}><strong>Téléphone :</strong> +33 1 00 00 00 00</li>
+            <li className={styles.listItem}><strong>Localisation :</strong> Cotonou, Bénin</li>
             <li className={styles.listItem}><strong>Email :</strong> contact@chezprecious.com</li>
-            <li className={styles.listItem}><strong>Directeur de la publication :</strong> Awa Gansané</li>
           </ul>
         </section>
 
         <section className={styles.section}>
           <h2 className={styles.h2}>Hébergement</h2>
-          <p className={styles.para}>Le site est hébergé par <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 700, San Francisco, CA 94104, États-Unis. (<a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className={styles.link}>vercel.com</a>)</p>
+          <p className={styles.para}>Le site est hébergé sur un serveur privé dédié à son exploitation.</p>
         </section>
 
         <section className={styles.section}>

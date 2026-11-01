@@ -81,7 +81,7 @@ class MailService {
       <div style="font-family: 'Inter', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f5f5f7;">
         <div style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
           <!-- Header -->
-          <div style="background: linear-gradient(135deg, #D45D00 0%, #FF7A1A 100%); padding: 28px; text-align: center;">
+          <div style="background: linear-gradient(135deg, #FF2C2C 0%, #FF5A5A 100%); padding: 28px; text-align: center;">
             <h1 style="margin: 0; font-size: 28px; color: #ffffff; font-weight: 700;">ChezPrecious </h1>
           </div>
           <!-- Content -->
@@ -107,7 +107,7 @@ class MailService {
     const activationUrl = `${this.frontendUrl}/auth/activation?token=${token}`
 
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0;">
         Bienvenue ${fullName} !
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 24px 0;">
@@ -115,7 +115,7 @@ class MailService {
       </p>
       <div style="text-align: center; margin: 32px 0;">
         <a href="${activationUrl}"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(212, 93, 0, 0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44, 0.3);">
           Activer mon compte
         </a>
       </div>
@@ -147,7 +147,7 @@ class MailService {
     const resetUrl = `${this.frontendUrl}/auth/reset-password?token=${token}`
 
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0;">
         Réinitialisation du mot de passe
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 8px 0;">
@@ -158,7 +158,7 @@ class MailService {
       </p>
       <div style="text-align: center; margin: 32px 0;">
         <a href="${resetUrl}"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(212, 93, 0, 0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44, 0.3);">
           Réinitialiser mon mot de passe
         </a>
       </div>
@@ -188,7 +188,7 @@ class MailService {
   // ============================================
   async sendWelcomeEmail(email: string, fullName: string) {
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0;">
         Votre compte est actif !
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 24px 0;">
@@ -203,12 +203,11 @@ class MailService {
           <li>Parcourir notre catalogue de produits</li>
           <li>Ajouter des articles aux favoris</li>
           <li>Passer vos premières commandes</li>
-          <li>Devenir vendeur et ouvrir votre boutique</li>
         </ul>
       </div>
       <div style="text-align: center; margin: 32px 0;">
         <a href="${this.frontendUrl}"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(212, 93, 0, 0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44, 0.3);">
           Commencer mes achats
         </a>
       </div>
@@ -227,7 +226,7 @@ class MailService {
   // ============================================
   async sendSellerApplicationEmail(email: string, fullName: string, storeName: string) {
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0;">
         Demande vendeur reçue
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 24px 0;">
@@ -271,7 +270,7 @@ class MailService {
       <div style="text-align: center; margin-bottom: 24px;">
         <span style="font-size: 48px;">🎉</span>
       </div>
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0; text-align: center;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0; text-align: center;">
         Votre boutique est approuvée !
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 24px 0;">
@@ -291,7 +290,7 @@ class MailService {
       </div>
       <div style="text-align: center; margin: 32px 0;">
         <a href="${this.frontendUrl}/seller"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(212, 93, 0, 0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44, 0.3);">
           Accéder à mon espace vendeur
         </a>
       </div>
@@ -310,7 +309,7 @@ class MailService {
   // ============================================
   async sendSellerRejectedEmail(email: string, fullName: string, reason: string) {
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0;">
         Demande vendeur non approuvée
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 24px 0;">
@@ -326,7 +325,7 @@ class MailService {
       </p>
       <div style="text-align: center; margin: 32px 0;">
         <a href="${this.frontendUrl}/become-seller"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block;">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block;">
           Soumettre à nouveau
         </a>
       </div>
@@ -400,7 +399,7 @@ class MailService {
         </div>
       </div>
 
-      <h2 style="color: #1A1A2E; font-size: 24px; margin: 0 0 8px 0; text-align: center;">
+      <h2 style="color: #1F1416; font-size: 24px; margin: 0 0 8px 0; text-align: center;">
         Commande confirmée !
       </h2>
 
@@ -486,7 +485,7 @@ class MailService {
       <!-- Track Order Button -->
       <div style="text-align: center; margin: 32px 0;">
         <a href="${this.frontendUrl}/order-success?orderNumber=${orderData.orderNumber}"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(212, 93, 0, 0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44, 0.3);">
           Suivre ma commande
         </a>
       </div>
@@ -537,7 +536,7 @@ class MailService {
       + (orderData.paymentProvider ? ` — ${orderData.paymentProvider}` : '')
 
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 8px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 8px 0;">
         Nouvelle commande reçue
       </h2>
       <p style="font-size: 15px; color: #4b5563; margin: 0 0 24px 0;">
@@ -578,13 +577,13 @@ class MailService {
         </tr>
         <tr>
           <td style="padding: 14px 16px; font-size: 16px; color: #1f2937; font-weight: 700;">Total</td>
-          <td style="padding: 14px 16px; font-size: 20px; color: #D45D00; font-weight: 700; text-align: right;">${formatPrice(orderData.total)}</td>
+          <td style="padding: 14px 16px; font-size: 20px; color: #FF2C2C; font-weight: 700; text-align: right;">${formatPrice(orderData.total)}</td>
         </tr>
       </table>
 
       <div style="text-align: center; margin: 32px 0;">
         <a href="${this.frontendUrl}/admin/orders"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(212,93,0,0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44,0.3);">
           Voir la commande dans l'admin
         </a>
       </div>
@@ -610,7 +609,7 @@ class MailService {
     const date = new Date().toLocaleString('fr-FR', { timeZone: 'Africa/Porto-Novo' })
 
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0;">
         Nouvelle connexion à votre compte
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 8px 0;">
@@ -665,7 +664,7 @@ class MailService {
     const resetUrl = `${this.frontendUrl}/auth/reset-password?token=${resetToken}`
 
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0;">
         Votre compte a été créé !
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 8px 0;">
@@ -700,7 +699,7 @@ class MailService {
 
       <div style="text-align: center; margin: 32px 0;">
         <a href="${resetUrl}"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(212, 93, 0, 0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44, 0.3);">
           Définir mon mot de passe
         </a>
       </div>
@@ -747,7 +746,7 @@ class MailService {
     const subjectLabel = subjectLabels[data.subject] ?? data.subject
 
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 8px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 8px 0;">
         Nouveau message de contact
       </h2>
       <p style="font-size: 15px; color: #4b5563; margin: 0 0 24px 0;">
@@ -762,7 +761,7 @@ class MailService {
         <tr>
           <td style="padding: 12px 16px; font-size: 14px; color: #6b7280; border-bottom: 1px solid #e5e7eb;">Email</td>
           <td style="padding: 12px 16px; font-size: 14px; color: #1f2937; border-bottom: 1px solid #e5e7eb;">
-            <a href="mailto:${data.email}" style="color: #D45D00;">${data.email}</a>
+            <a href="mailto:${data.email}" style="color: #FF2C2C;">${data.email}</a>
           </td>
         </tr>
         ${data.phone ? `
@@ -785,7 +784,7 @@ class MailService {
 
       <div style="text-align: center; margin: 32px 0;">
         <a href="mailto:${data.email}?subject=Re: ${subjectLabel}"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(212, 93, 0, 0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44, 0.3);">
           Répondre à ${data.name}
         </a>
       </div>
@@ -802,7 +801,7 @@ class MailService {
 
     // Email de confirmation à l'expéditeur
     const confirmHtml = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0;">
         Message bien reçu !
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 8px 0;">
@@ -816,7 +815,7 @@ class MailService {
         <p style="margin: 0; font-size: 14px; color: #065f46;"><strong>Sujet :</strong> ${subjectLabel}</p>
       </div>
       <p style="font-size: 14px; color: #6b7280; line-height: 1.7;">
-        En attendant, vous pouvez consulter notre <a href="${this.frontendUrl}/faq" style="color: #D45D00;">FAQ</a> pour trouver des réponses rapides à vos questions.
+        En attendant, vous pouvez consulter notre <a href="${this.frontendUrl}/faq" style="color: #FF2C2C;">FAQ</a> pour trouver des réponses rapides à vos questions.
       </p>
     `)
 
@@ -841,7 +840,7 @@ class MailService {
     }
   ): Promise<{ success: boolean; error?: any }> {
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 20px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 20px; margin: 0 0 16px 0;">
         Nouveau message d'un client
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 8px 0;">
@@ -851,7 +850,7 @@ class MailService {
         <strong>${data.customerName}</strong> (${data.customerEmail}) vous a envoyé un message :
       </p>
       <div style="background-color: #EFF6FF; border-left: 4px solid #3b82f6; padding: 20px; border-radius: 0 8px 8px 0; margin: 0 0 24px 0;">
-        <p style="margin: 0; font-size: 15px; color: #1A1A2E; line-height: 1.7; white-space: pre-line;">${data.messageBody}</p>
+        <p style="margin: 0; font-size: 15px; color: #1F1416; line-height: 1.7; white-space: pre-line;">${data.messageBody}</p>
       </div>
       <p style="font-size: 13px; color: #9ca3af; line-height: 1.6;">
         Connectez-vous à votre dashboard vendeur pour répondre à ce message.
@@ -879,8 +878,8 @@ class MailService {
     }
   ): Promise<{ success: boolean; error?: any }> {
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 20px; margin: 0 0 16px 0;">
-        Nouveau message de <span style="color: #D45D00;">${data.storeName}</span>
+      <h2 style="color: #1F1416; font-size: 20px; margin: 0 0 16px 0;">
+        Nouveau message de <span style="color: #FF2C2C;">${data.storeName}</span>
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 8px 0;">
         Bonjour ${data.customerName},
@@ -888,8 +887,8 @@ class MailService {
       <p style="font-size: 14px; color: #6b7280; margin: 0 0 20px 0;">
         ${data.sellerName} vous a envoyé un message :
       </p>
-      <div style="background-color: #FFF4EC; border-left: 4px solid #D45D00; padding: 20px; border-radius: 0 8px 8px 0; margin: 0 0 24px 0;">
-        <p style="margin: 0; font-size: 15px; color: #1A1A2E; line-height: 1.7; white-space: pre-line;">${data.messageBody}</p>
+      <div style="background-color: #FFF4EC; border-left: 4px solid #FF2C2C; padding: 20px; border-radius: 0 8px 8px 0; margin: 0 0 24px 0;">
+        <p style="margin: 0; font-size: 15px; color: #1F1416; line-height: 1.7; white-space: pre-line;">${data.messageBody}</p>
       </div>
       <p style="font-size: 13px; color: #9ca3af; line-height: 1.6;">
         Vous pouvez répondre directement à cet email ou vous connecter à votre compte pour consulter vos messages.
@@ -910,7 +909,7 @@ class MailService {
     const resetUrl = `${this.adminUrl}/set-password?token=${token}`
 
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0;">
         Réinitialisation du mot de passe administrateur
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 8px 0;">
@@ -921,7 +920,7 @@ class MailService {
       </p>
       <div style="text-align: center; margin: 32px 0;">
         <a href="${resetUrl}"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(212, 93, 0, 0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44, 0.3);">
           Réinitialiser mon mot de passe
         </a>
       </div>
@@ -970,7 +969,7 @@ class MailService {
       : 'Vous êtes invité à rejoindre l\'équipe admin'
 
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 20px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 20px; margin: 0 0 16px 0;">
         ${headline}
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 8px 0;">
@@ -990,14 +989,14 @@ class MailService {
           <tr>
             <td style="padding: 4px 0; font-size: 14px; color: #6b7280;">Rôle :</td>
             <td style="padding: 4px 0; text-align: right;">
-              <span style="background: rgba(212,93,0,0.1); color: #D45D00; padding: 2px 10px; border-radius: 10px; font-size: 13px; font-weight: 600;">${roleLabel}</span>
+              <span style="background: rgba(255, 44, 44,0.1); color: #FF2C2C; padding: 2px 10px; border-radius: 10px; font-size: 13px; font-weight: 600;">${roleLabel}</span>
             </td>
           </tr>
         </table>
       </div>
       <div style="text-align: center; margin: 28px 0;">
         <a href="${data.setupUrl}"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(212,93,0,0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44,0.3);">
           Définir mon mot de passe
         </a>
       </div>
@@ -1035,21 +1034,21 @@ class MailService {
     }
   ): Promise<{ success: boolean; error?: any }> {
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 20px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 20px; margin: 0 0 16px 0;">
         Message de l'administration
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 20px 0;">
         Bonjour ${data.userName},
       </p>
-      <div style="background-color: #FFF4EC; border-left: 4px solid #D45D00; padding: 20px; border-radius: 0 8px 8px 0; margin: 0 0 24px 0;">
-        <p style="margin: 0; font-size: 15px; color: #1A1A2E; line-height: 1.8; white-space: pre-line;">${data.messageBody}</p>
+      <div style="background-color: #FFF4EC; border-left: 4px solid #FF2C2C; padding: 20px; border-radius: 0 8px 8px 0; margin: 0 0 24px 0;">
+        <p style="margin: 0; font-size: 15px; color: #1F1416; line-height: 1.8; white-space: pre-line;">${data.messageBody}</p>
       </div>
       <p style="font-size: 13px; color: #9ca3af; line-height: 1.6;">
         Vous pouvez vous connecter à votre compte pour consulter la conversation.
       </p>
       <div style="text-align: center; margin: 28px 0;">
         <a href="${this.frontendUrl}/account"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 13px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; display: inline-block; box-shadow: 0 4px 12px rgba(212,93,0,0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 13px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44,0.3);">
           Voir mes messages
         </a>
       </div>
@@ -1079,7 +1078,7 @@ class MailService {
     let failed = 0
 
     const html = this.wrapTemplate(`
-      <div style="margin-bottom: 12px; padding: 10px 14px; background: #FFF7ED; border-left: 4px solid #D45D00; border-radius: 0 8px 8px 0;">
+      <div style="margin-bottom: 12px; padding: 10px 14px; background: #FFF7ED; border-left: 4px solid #FF2C2C; border-radius: 0 8px 8px 0;">
         <p style="margin: 0; font-size: 12px; color: #92400e;">
           Message envoyé par <strong>${data.senderName}</strong> — boutique <strong>${data.storeName}</strong>
         </p>
@@ -1151,7 +1150,7 @@ class MailService {
         <p style="color: #374151; font-size: 14px;">Votre produit sera mis en avant sur la plateforme pendant toute la durée du boost. Bonne visibilité !</p>
 
         <div style="text-align: center; margin-top: 28px;">
-          <a href="${this.frontendUrl}/seller/promotions" style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #fff; text-decoration: none; padding: 13px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; display: inline-block;">
+          <a href="${this.frontendUrl}/seller/promotions" style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #fff; text-decoration: none; padding: 13px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; display: inline-block;">
             Voir mes boosts
           </a>
         </div>
@@ -1204,7 +1203,7 @@ class MailService {
         <p style="color: #374151; font-size: 14px;">Si vous pensez qu'il s'agit d'une erreur ou si vous souhaitez soumettre une nouvelle demande, n'hésitez pas à nous contacter.</p>
 
         <div style="text-align: center; margin-top: 28px;">
-          <a href="${this.frontendUrl}/seller/promotions" style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #fff; text-decoration: none; padding: 13px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; display: inline-block;">
+          <a href="${this.frontendUrl}/seller/promotions" style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #fff; text-decoration: none; padding: 13px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; display: inline-block;">
             Gérer mes boosts
           </a>
         </div>
@@ -1238,7 +1237,7 @@ class MailService {
       : `🎉 Vous êtes invité à rejoindre la boutique ${opts.storeName}`
 
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0;">
         ${opts.isResend ? 'Rappel d\'invitation' : 'Invitation à rejoindre une boutique'}
       </h2>
       <p style="color: #374151; font-size: 16px; line-height: 1.6; margin: 0 0 20px 0;">
@@ -1246,14 +1245,14 @@ class MailService {
         Vous avez été invité(e) à rejoindre la boutique <strong>${opts.storeName}</strong>
         en tant que <strong>${roleLabel}</strong>.
       </p>
-      <div style="background: #FFF7ED; border-left: 4px solid #D45D00; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 0 0 28px 0;">
+      <div style="background: #FFF7ED; border-left: 4px solid #FF2C2C; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 0 0 28px 0;">
         <p style="margin: 0; color: #92400E; font-size: 14px; font-weight: 600;">
           Ce lien est valable 72 heures. Définissez votre mot de passe pour accéder à votre espace vendeur.
         </p>
       </div>
       <div style="text-align: center; margin: 32px 0;">
         <a href="${opts.setupUrl}"
-           style="background: linear-gradient(135deg, #D45D00, #FF7A1A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(212, 93, 0, 0.3);">
+           style="background: linear-gradient(135deg, #FF2C2C, #FF5A5A); color: #ffffff; padding: 14px 36px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(255, 44, 44, 0.3);">
           Définir mon mot de passe
         </a>
       </div>
@@ -1276,7 +1275,7 @@ class MailService {
     const unsubscribeUrl = `${this.frontendUrl}/newsletter/unsubscribe?token=${unsubscribeToken}`
 
     const html = this.wrapTemplate(`
-      <h2 style="color: #1A1A2E; font-size: 22px; margin: 0 0 16px 0;">
+      <h2 style="color: #1F1416; font-size: 22px; margin: 0 0 16px 0;">
         Inscription confirmée ! 🎉
       </h2>
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 16px 0;">
@@ -1285,8 +1284,8 @@ class MailService {
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 24px 0;">
         Vous êtes maintenant abonné(e) à notre newsletter. Vous recevrez en avant-première nos offres exclusives, promotions et nouveautés.
       </p>
-      <div style="background: linear-gradient(135deg, #FFF3E0, #FFE0B2); border-radius: 10px; padding: 20px; margin: 24px 0; text-align: center;">
-        <p style="margin: 0; font-size: 16px; font-weight: 600; color: #D45D00;">
+      <div style="background: linear-gradient(135deg, #FFECEC, #FFE0B2); border-radius: 10px; padding: 20px; margin: 24px 0; text-align: center;">
+        <p style="margin: 0; font-size: 16px; font-weight: 600; color: #FF2C2C;">
           Bienvenue dans notre communauté !
         </p>
         <p style="margin: 8px 0 0; font-size: 14px; color: #6b7280;">
@@ -1295,7 +1294,7 @@ class MailService {
       </div>
       <p style="font-size: 12px; color: #9ca3af; margin: 24px 0 0; text-align: center;">
         Vous souhaitez vous désabonner ?
-        <a href="${unsubscribeUrl}" style="color: #D45D00;">Cliquez ici</a>
+        <a href="${unsubscribeUrl}" style="color: #FF2C2C;">Cliquez ici</a>
       </p>
     `)
 
@@ -1323,13 +1322,13 @@ class MailService {
       <p style="font-size: 15px; color: #4b5563; line-height: 1.7; margin: 0 0 16px 0;">
         Bonjour ${name || 'cher(e) abonné(e)'},
       </p>
-      <div style="font-size: 15px; color: #1A1A2E; line-height: 1.8;">
+      <div style="font-size: 15px; color: #1F1416; line-height: 1.8;">
         ${body.replace(/\n/g, '<br>')}
       </div>
       <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 32px 0;" />
       <p style="font-size: 12px; color: #9ca3af; text-align: center; margin: 0;">
         Vous recevez cet email car vous êtes abonné(e) à notre newsletter.<br>
-        <a href="${unsubscribeUrl}" style="color: #D45D00;">Se désabonner</a>
+        <a href="${unsubscribeUrl}" style="color: #FF2C2C;">Se désabonner</a>
       </p>
     `)
 
@@ -1357,7 +1356,7 @@ class MailService {
       : `🛒 Vous avez oublié quelque chose chez ChezPrecious`
 
     const urgencyBanner = isSecond
-      ? `<div style="background:#FEF3C7;border-left:4px solid #D45D00;padding:12px 16px;margin-bottom:24px;border-radius:4px;">
+      ? `<div style="background:#FEF3C7;border-left:4px solid #FF2C2C;padding:12px 16px;margin-bottom:24px;border-radius:4px;">
            <p style="margin:0;font-size:14px;color:#92400E;font-weight:600;">⚠️ Dernière relance — votre panier sera supprimé dans 24h.</p>
          </div>`
       : ''
@@ -1370,18 +1369,18 @@ class MailService {
           ${item.image ? `<img src="${item.image}" alt="${item.name}" width="56" height="56" style="border-radius:6px;object-fit:cover;display:block;" />` : ''}
         </td>
         <td style="padding:12px 8px;border-bottom:1px solid #f3f4f6;vertical-align:middle;">
-          <p style="margin:0;font-size:14px;font-weight:600;color:#1A1A2E;">${item.name}</p>
+          <p style="margin:0;font-size:14px;font-weight:600;color:#1F1416;">${item.name}</p>
           <p style="margin:4px 0 0;font-size:13px;color:#6b7280;">Qté : ${item.quantity}</p>
         </td>
         <td style="padding:12px 8px;border-bottom:1px solid #f3f4f6;vertical-align:middle;text-align:right;">
-          <p style="margin:0;font-size:14px;font-weight:700;color:#D45D00;">${(item.price * item.quantity).toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}</p>
+          <p style="margin:0;font-size:14px;font-weight:700;color:#FF2C2C;">${(item.price * item.quantity).toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}</p>
         </td>
       </tr>`
       )
       .join('')
 
     const html = this.wrapTemplate(`
-      <h2 style="color:#1A1A2E;font-size:22px;margin:0 0 8px 0;">Bonjour ${firstName} 👋</h2>
+      <h2 style="color:#1F1416;font-size:22px;margin:0 0 8px 0;">Bonjour ${firstName} 👋</h2>
       <p style="font-size:15px;color:#4b5563;line-height:1.7;margin:0 0 24px 0;">
         ${isSecond
           ? 'Vous avez laissé des articles dans votre panier. Ne laissez pas filer ces pépites !'
@@ -1400,15 +1399,15 @@ class MailService {
         <tbody>${itemsHtml}</tbody>
         <tfoot>
           <tr>
-            <td colspan="2" style="padding:12px 8px;font-size:15px;font-weight:700;color:#1A1A2E;text-align:right;">Total :</td>
-            <td style="padding:12px 8px;font-size:16px;font-weight:800;color:#D45D00;text-align:right;">${cartTotal}</td>
+            <td colspan="2" style="padding:12px 8px;font-size:15px;font-weight:700;color:#1F1416;text-align:right;">Total :</td>
+            <td style="padding:12px 8px;font-size:16px;font-weight:800;color:#FF2C2C;text-align:right;">${cartTotal}</td>
           </tr>
         </tfoot>
       </table>
 
       <div style="text-align:center;margin:32px 0;">
         <a href="${recoveryLink}"
-           style="display:inline-block;background:linear-gradient(135deg,#D45D00,#FF7A1A);color:#fff;text-decoration:none;padding:14px 36px;border-radius:8px;font-size:15px;font-weight:700;letter-spacing:.03em;">
+           style="display:inline-block;background:linear-gradient(135deg,#FF2C2C,#FF5A5A);color:#fff;text-decoration:none;padding:14px 36px;border-radius:8px;font-size:15px;font-weight:700;letter-spacing:.03em;">
           ✅ Finaliser ma commande
         </a>
       </div>

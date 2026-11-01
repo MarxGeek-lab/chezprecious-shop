@@ -295,8 +295,8 @@ export default function SettingsTab() {
 
   // Appearance
   const [primaryColor, setPrimaryColor] = useState('#FF2C2C');
-  const [secondaryColor, setSecondaryColor] = useState('#1A1A2E');
-  const [accentColor, setAccentColor] = useState('#10B981');
+  const [secondaryColor, setSecondaryColor] = useState('#1F1416');
+  const [accentColor, setAccentColor] = useState('#FFFAF7');
 
   // Commerce
   const [currency, setCurrency] = useState('XOF');
@@ -409,8 +409,8 @@ export default function SettingsTab() {
     setLinkedin(s.linkedin || '');
     setTiktok(s.tiktok || '');
     setPrimaryColor(s.primaryColor || '#FF2C2C');
-    setSecondaryColor(s.secondaryColor || '#1A1A2E');
-    setAccentColor(s.accentColor || '#10B981');
+    setSecondaryColor(s.secondaryColor || '#1F1416');
+    setAccentColor(s.accentColor || '#FFFAF7');
     setCurrency(s.currency || 'XOF');
     setCommission(String(s.commission ?? '10'));
     setMinOrder(String(s.minOrder ?? '5000'));

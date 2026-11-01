@@ -421,8 +421,10 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: $space-4;
+  gap: $space-2;
   align-items: start; /* chaque carte suit sa propre hauteur, pas la plus grande */
+
+  @media (min-width: $bp-md) { gap: $space-4; }
 
   @media (min-width: $bp-md) { grid-template-columns: repeat(3, 1fr); }
 

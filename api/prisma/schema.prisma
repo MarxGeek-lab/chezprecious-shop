@@ -473,9 +473,9 @@ model SiteSettings {
   linkedin        String?
   tiktok          String?
 
-  primaryColor    String   @default("#C8A24A") @map("primary_color")
-  secondaryColor  String   @default("#0A0A0A") @map("secondary_color")
-  accentColor     String   @default("#F4F1EC") @map("accent_color")
+  primaryColor    String   @default("#FF2C2C") @map("primary_color")
+  secondaryColor  String   @default("#1F1416") @map("secondary_color")
+  accentColor     String   @default("#FFFAF7") @map("accent_color")
 
   currency        String   @default("XOF")
   minOrder        Decimal  @default(0) @map("min_order") @db.Decimal(12, 2)

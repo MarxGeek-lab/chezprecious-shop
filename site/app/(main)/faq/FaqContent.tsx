@@ -24,17 +24,18 @@ const CATEGORIES = [
   {
     label: "Retours & Remboursements",
     items: [
-      { q: "Quelle est la politique de retour ?", a: "Vous disposez de 30 jours à compter de la réception de votre commande pour retourner un article non porté, dans son emballage d'origine. Les retours sont gratuits." },
+      { q: "Quelle est la politique de retour ?", a: "Vous disposez de 30 jours à compter de la réception de votre commande pour retourner un produit non ouvert, dans son emballage d'origine intact. Les retours sont gratuits." },
       { q: "Comment initier un retour ?", a: "Connectez-vous à votre espace compte, rendez-vous dans Mes commandes, sélectionnez l'article concerné et suivez les instructions. Une étiquette de retour vous sera envoyée par email." },
       { q: "Sous quel délai suis-je remboursé(e) ?", a: "Le remboursement est effectué sous 5 à 10 jours ouvrés après réception et vérification de l'article retourné, sur le moyen de paiement utilisé lors de la commande." },
     ],
   },
   {
-    label: "Produits & Tailles",
+    label: "Nos produits",
     items: [
-      { q: "Comment choisir ma taille ?", a: "Chaque fiche produit dispose d'un guide des tailles avec les mensurations correspondantes. En cas de doute, nous conseillons de prendre la taille au-dessus." },
+      { q: "Comment utiliser les compléments alimentaires ?", a: "Suivez le mode d'emploi et la dose journalière indiqués sur l'emballage. Les compléments accompagnent une alimentation variée et équilibrée, ils ne remplacent pas un avis ou un traitement médical." },
+      { q: "Puis-je en prendre si je suis enceinte ou sous traitement ?", a: "Demandez d'abord conseil à votre médecin ou à votre pharmacien. Les précautions d'emploi de chaque produit sont détaillées sur sa fiche." },
       { q: "Les produits sont-ils en stock ?", a: "Tous les articles affichés sur le site sont disponibles en stock. Si un article est épuisé, vous pouvez activer une alerte de disponibilité depuis la fiche produit." },
-      { q: "Les couleurs sur les photos sont-elles fidèles ?", a: "Nous faisons notre maximum pour que les couleurs affichées correspondent à la réalité. De légères variations peuvent exister selon les calibrages d'écran." },
+      { q: "Où trouver la composition d'un produit ?", a: "Chaque fiche produit présente la composition, les bienfaits, le format et les précautions d'emploi." },
     ],
   },
 ];
