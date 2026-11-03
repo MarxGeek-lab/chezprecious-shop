@@ -32,6 +32,7 @@ rsync -az --delete \
   --exclude '/*.png' \
   --exclude '/*.jpg' \
   --exclude '/*.jpeg' \
+  --exclude '/*.mp4' \
   "$ROOT/" "$SERVER:$REMOTE_DIR/"
 
 ssh "$SERVER" bash -s -- "$REMOTE_DIR" <<'EOF'

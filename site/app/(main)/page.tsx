@@ -1,5 +1,6 @@
 import Hero from "@/app/components/home/Hero/Hero";
 import FeaturedProducts from "@/app/components/home/FeaturedProducts/FeaturedProducts";
+import ProductVideos from "@/app/components/home/ProductVideos/ProductVideos";
 // Sections masquées pour le moment — décommenter pour les réafficher
 // import TrustBar from "@/app/components/home/TrustBar/TrustBar";
 // import CategoryShowcase from "@/app/components/home/CategoryShowcase/CategoryShowcase";
@@ -15,6 +16,7 @@ export default function HomePage() {
       {/* <TrustBar /> */}
       {/* <CategoryShowcase /> */}
       <FeaturedProducts />
+      <ProductVideos />
       {/* <PromoBanner /> */}
       {/* <Bestsellers /> */}
       {/* <Recommended /> */}

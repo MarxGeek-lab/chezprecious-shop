@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { CartProvider as StoreCartProvider } from "./store/cartStore";
@@ -17,6 +17,12 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
 });
+
+// Site conçu en clair : empêche les navigateurs mobiles (mode sombre forcé) d'inverser les couleurs
+export const viewport: Viewport = {
+  colorScheme: "only light",
+  themeColor: "#FFFAF7",
+};
 
 const SITE_URL = "https://chezprecious.com";
 const SITE_NAME = "ChezPrecious";

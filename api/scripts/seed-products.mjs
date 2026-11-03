@@ -19,6 +19,46 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const ASSETS_DIR = join(root, 'prisma', 'seed-assets', 'products')
 const UPLOAD_DIR = join(root, 'public', 'uploads', 'products', 'catalogue')
 const UPLOAD_URL = '/uploads/products/catalogue'
+const VIDEO_ASSETS_DIR = join(root, 'prisma', 'seed-assets', 'videos')
+const VIDEO_UPLOAD_DIR = join(UPLOAD_DIR, 'videos')
+const VIDEO_UPLOAD_URL = `${UPLOAD_URL}/videos`
+
+// Numéros affichés dans les publicités
+const CONTACT = {
+  phoneMain: '01 47 24 06 06',
+  phoneWhatsapp: '01 90 30 37 57',
+}
+
+// Ordre d'affichage partout (accueil, hero, boutique) : l'API trie par date de
+// création décroissante, le premier slug reçoit donc la date la plus récente.
+const DISPLAY_ORDER = [
+  'eau-alcaline-label-bien-etre',
+  'thymoq-huile-de-nigelle',
+  'super7-brain-health',
+  'women7-w7',
+  'men7-m7',
+  'royal-coffee-sacha-inchi',
+  'cream7-refresh-restore-rejuvenate',
+]
+
+// Vidéos publicitaires (fichier sans extension → .mp4 + miniature .jpg)
+const VIDEOS = {
+  'eau-alcaline': 'Eau alcaline Label Bien-être',
+  'thymoq-super7': 'thymoQ + SUPER7',
+  'women7-super7': 'WOMEN7 + SUPER7',
+  'men7-super7': 'MEN7 + SUPER7',
+  'trio-fertilite': 'Trio thymoQ + WOMEN7 + SUPER7',
+  'cream7': 'Cream7',
+}
+
+const PRODUCT_VIDEOS = {
+  'eau-alcaline-label-bien-etre': ['eau-alcaline'],
+  'thymoq-huile-de-nigelle': ['thymoq-super7', 'trio-fertilite'],
+  'super7-brain-health': ['thymoq-super7', 'women7-super7', 'men7-super7', 'trio-fertilite'],
+  'women7-w7': ['women7-super7', 'trio-fertilite'],
+  'men7-m7': ['men7-super7'],
+  'cream7-refresh-restore-rejuvenate': ['cream7'],
+}
 
 // Valeurs par défaut, surchargées produit par produit (price, brand) si besoin
 const PRICE = 21000
@@ -36,7 +76,7 @@ const CATEGORIES = [
   {
     slug: 'complements-alimentaires',
     name: 'Compléments alimentaires',
-    description: 'Compléments naturels SAG7 pour l\'énergie, l\'immunité et l\'équilibre au quotidien.',
+    description: 'Compléments naturels SAG7 pour l\'énergie, l\'immunité et l\'équilibre au quotidien, dont SUPER7, WOMEN7 et MEN7 aux cellules souches diplexifiées.',
     image: 'coffrets-sag7-floral.webp',
   },
   {
@@ -65,8 +105,8 @@ const PRODUCTS = [
     tags: ['energie', 'immunite', 'concentration', 'antioxydant', 'mixte'],
     isFeatured: true,
     shortDescription:
-      'Complément en sachets au sel des 7 continents, champignon des neiges et AFA, enrichi en vitamines C et E, pour l\'énergie, la concentration et la vitalité au quotidien.',
-    description: `SUPER7 Brain & Health est un complément alimentaire en sachets signé SAG7 International. Sa formule associe le sel « Garam 7 Benua », le champignon des neiges et l'AFA, enrichis en vitamines C et E, avec un prémix de glutathion, miel, dattes, cerise acérola, baies et extrait de grenade.
+      'Complément aux cellules souches diplexifiées, en sachets : sel des 7 continents, champignon des neiges et AFA, enrichi en vitamines C et E, pour l\'énergie, la concentration et la vitalité au quotidien.',
+    description: `SUPER7 Brain & Health est un complément alimentaire aux cellules souches diplexifiées, en sachets, signé SAG7 International. Sa formule associe le sel « Garam 7 Benua », le champignon des neiges et l'AFA, enrichis en vitamines C et E, avec un prémix de glutathion, miel, dattes, cerise acérola, baies et extrait de grenade.
 
 ### Bienfaits
 - Protection cellulaire : contribue à lutter contre le stress oxydatif et le vieillissement prématuré des cellules.
@@ -79,6 +119,7 @@ const PRODUCTS = [
 - Sommeil et équilibre : contribue à un sommeil de qualité et à la détente nerveuse.
 
 ### Composition
+- Cellules souches diplexifiées
 - Garam 7 Benua (sel des 7 continents), champignon des neiges, AFA
 - Vitamines C et E, calcium, magnésium
 - Glutathion, miel, dattes, cerise acérola, baies, extrait de grenade
@@ -107,8 +148,8 @@ ${SUPPLEMENT_NOTICE}`,
     tags: ['femme', 'equilibre-hormonal', 'beaute', 'bien-etre'],
     isFeatured: true,
     shortDescription:
-      'Complément en sachets dédié au bien-être féminin : équilibre hormonal, confort intime, éclat de la peau et vitalité.',
-    description: `WOMEN7 (W7) est le complément alimentaire SAG7 International pensé pour les femmes. En sachets, enrichi en calcium, magnésium, vitamines et minéraux, il accompagne l'équilibre et la beauté au féminin, à chaque étape de la vie.
+      'Complément aux cellules souches diplexifiées, en sachets, dédié au bien-être féminin : équilibre hormonal, confort intime, éclat de la peau et vitalité.',
+    description: `WOMEN7 (W7) est le complément alimentaire SAG7 International aux cellules souches diplexifiées, pensé pour les femmes. En sachets, enrichi en calcium, magnésium, vitamines et minéraux, il accompagne l'équilibre et la beauté au féminin, à chaque étape de la vie.
 
 ### Bienfaits
 - Équilibre féminin : contribue à l'équilibre hormonal et au confort du cycle menstruel.
@@ -119,6 +160,7 @@ ${SUPPLEMENT_NOTICE}`,
 - Beauté : contribue à unifier le teint, à préserver l'élasticité de la peau et à fortifier les cheveux.
 
 ### Composition
+- Cellules souches diplexifiées
 - Calcium, magnésium
 - Vitamines et minéraux
 
@@ -144,8 +186,8 @@ ${SUPPLEMENT_NOTICE}`,
     tags: ['homme', 'energie', 'endurance', 'vitalite'],
     isFeatured: true,
     shortDescription:
-      'Complément en sachets pour la vitalité masculine : énergie, endurance, performance et défenses naturelles.',
-    description: `MEN7 (M7) est le complément alimentaire SAG7 International dédié aux hommes. En sachets, enrichi en calcium, magnésium, vitamines et minéraux, il accompagne l'énergie, l'endurance et la vitalité au quotidien.
+      'Complément aux cellules souches diplexifiées, en sachets, pour la vitalité masculine : énergie, endurance, performance et défenses naturelles.',
+    description: `MEN7 (M7) est le complément alimentaire SAG7 International aux cellules souches diplexifiées, dédié aux hommes. En sachets, enrichi en calcium, magnésium, vitamines et minéraux, il accompagne l'énergie, l'endurance et la vitalité au quotidien.
 
 ### Bienfaits
 - Énergie et performance : contribue à la vitalité et à la vigueur au quotidien.
@@ -157,6 +199,7 @@ ${SUPPLEMENT_NOTICE}`,
 - Peau et cheveux : contribue à préserver la santé des cheveux et l'hydratation de la peau.
 
 ### Composition
+- Cellules souches diplexifiées
 - Calcium, magnésium
 - Vitamines et minéraux
 
@@ -317,6 +360,11 @@ function copyAssets() {
   mkdirSync(UPLOAD_DIR, { recursive: true })
   const files = readdirSync(ASSETS_DIR).filter((f) => f.endsWith('.webp'))
   for (const file of files) copyFileSync(join(ASSETS_DIR, file), join(UPLOAD_DIR, file))
+
+  mkdirSync(VIDEO_UPLOAD_DIR, { recursive: true })
+  for (const file of readdirSync(VIDEO_ASSETS_DIR)) {
+    copyFileSync(join(VIDEO_ASSETS_DIR, file), join(VIDEO_UPLOAD_DIR, file))
+  }
   return new Set(files)
 }
 
@@ -347,21 +395,30 @@ async function main() {
     }
     console.log(`📂 ${CATEGORIES.length} catégories prêtes`)
 
+    // Coordonnées affichées au footer et sur la page contact
+    await client.query(
+      `UPDATE site_settings SET phone_main = $1, phone_whatsapp = $2, updated_at = NOW()`,
+      [CONTACT.phoneMain, CONTACT.phoneWhatsapp]
+    )
+    console.log(`📞 Téléphone ${CONTACT.phoneMain} · WhatsApp ${CONTACT.phoneWhatsapp}`)
+
     for (const p of PRODUCTS) {
       const { rows } = await client.query(
         `INSERT INTO products (id, name, slug, short_description, description, category, brand,
                                price, tax_rate, stock, low_stock_threshold, track_inventory,
                                weight, tags, status, is_featured, created_at, updated_at)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 0, $9, 5, true, $10, $11, 'ACTIVE', $12, NOW(), NOW())
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 0, $9, 5, true, $10, $11, 'ACTIVE', $12, NOW() - make_interval(mins => $13), NOW())
          ON CONFLICT (slug) DO UPDATE
            SET name = EXCLUDED.name, short_description = EXCLUDED.short_description,
                description = EXCLUDED.description, category = EXCLUDED.category, brand = EXCLUDED.brand,
                price = EXCLUDED.price, tax_rate = EXCLUDED.tax_rate, weight = EXCLUDED.weight,
-               tags = EXCLUDED.tags, status = 'ACTIVE', is_featured = EXCLUDED.is_featured, updated_at = NOW()
+               tags = EXCLUDED.tags, status = 'ACTIVE', is_featured = EXCLUDED.is_featured, 
+               created_at = EXCLUDED.created_at, updated_at = NOW()
          RETURNING id`,
         [
           randomUUID(), p.name, p.slug, p.shortDescription, p.description, p.category, p.brand ?? BRAND,
           p.price ?? PRICE, STOCK, p.weight, p.tags, p.isFeatured,
+          DISPLAY_ORDER.indexOf(p.slug),
         ]
       )
       const productId = rows[0].id
@@ -374,7 +431,16 @@ async function main() {
           [randomUUID(), productId, `${UPLOAD_URL}/${img}`, `${p.name} — visuel ${i + 1}`, i, i === 0]
         )
       }
-      console.log(`✅ ${p.name} (${p.images.length} image${p.images.length > 1 ? 's' : ''})`)
+      await client.query('DELETE FROM product_videos WHERE product_id = $1', [productId])
+      const videos = PRODUCT_VIDEOS[p.slug] ?? []
+      for (const [i, file] of videos.entries()) {
+        await client.query(
+          `INSERT INTO product_videos (id, product_id, url, source, thumbnail, title, position, created_at)
+           VALUES ($1, $2, $3, 'upload', $4, $5, $6, NOW())`,
+          [randomUUID(), productId, `${VIDEO_UPLOAD_URL}/${file}.mp4`, `${VIDEO_UPLOAD_URL}/${file}.jpg`, VIDEOS[file], i]
+        )
+      }
+      console.log(`✅ ${p.name} (${p.images.length} image${p.images.length > 1 ? 's' : ''}, ${videos.length} vidéo${videos.length > 1 ? 's' : ''})`)
     }
 
     await client.query('COMMIT')

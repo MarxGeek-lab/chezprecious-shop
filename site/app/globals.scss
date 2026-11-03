@@ -6,6 +6,11 @@
   margin: 0;
 }
 
+:root {
+  // Fond clair forcé, même si le téléphone est en mode sombre
+  color-scheme: only light;
+}
+
 html {
   height: 100%;
   font-size: 16px;

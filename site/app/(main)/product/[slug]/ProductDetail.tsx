@@ -4,7 +4,7 @@ import { formatPrice } from "@/app/utils/format";
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, ChevronDown, ChevronUp, Heart, Share2, Copy, Check as CheckIcon, Quote } from "lucide-react";
+import { Star, ChevronDown, ChevronUp, Heart, Share2, Copy, Check as CheckIcon, Quote, Play } from "lucide-react";
 import Grid from "@mui/material/Grid";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import type { ApiProduct, ApiReview } from "@/app/lib/api";
@@ -318,6 +318,9 @@ export default function ProductDetail({ product }: { product: ApiProduct }) {
   const showStock = trackInventory;
 
   const [mainImg, setMainImg] = useState(0);
+  // Les vidéos du produit suivent les photos dans la galerie (index >= images.length)
+  const videos = product.videos ?? [];
+  const activeVideo = mainImg >= images.length ? videos[mainImg - images.length] : undefined;
   const [added, setAdded] = useState(false);
 
   const isSale = comparePrice !== null && comparePrice !== undefined && Number(comparePrice) > Number(price);
@@ -334,22 +337,51 @@ export default function ProductDetail({ product }: { product: ApiProduct }) {
     setTimeout(() => setAdded(false), 2000);
   };
 
+  // Miniatures de la galerie (desktop et mobile) : photos puis vidéos
+  const galleryThumbs = (
+    <>
+      {images.map((img, i) => (
+        <button key={img.id ?? i} className={`${styles.thumb} ${mainImg === i ? styles.thumbActive : ""}`}
+          onClick={() => setMainImg(i)} aria-label={`Image ${i + 1}`}>
+          <Image src={img.url} alt={`${name} vue ${i + 1}`} fill sizes="80px" className={styles.thumbImg} />
+        </button>
+      ))}
+      {videos.map((video, i) => {
+        const index = images.length + i;
+        return (
+          <button key={video.id} className={`${styles.thumb} ${styles.thumbVideo} ${mainImg === index ? styles.thumbActive : ""}`}
+            onClick={() => setMainImg(index)} aria-label={`Vidéo : ${video.title ?? name}`}>
+            {video.thumbnail && (
+              <Image src={video.thumbnail} alt={video.title ?? name} fill sizes="80px" className={styles.thumbVideoImg} />
+            )}
+            <span className={styles.thumbPlay}><Play size={14} strokeWidth={0} fill="currentColor" /></span>
+          </button>
+        );
+      })}
+    </>
+  );
+
   return (
     <>
       <div className={styles.productLayout}>
         {/* ── Galerie ── */}
         <div className={styles.gallery}>
           <div className={styles.thumbs}>
-            {images.map((img, i) => (
-              <button key={i} className={`${styles.thumb} ${mainImg === i ? styles.thumbActive : ""}`}
-                onClick={() => setMainImg(i)} aria-label={`Image ${i + 1}`}>
-                <Image src={img.url} alt={`${name} vue ${i + 1}`} fill sizes="80px" className={styles.thumbImg} />
-              </button>
-            ))}
+            {galleryThumbs}
           </div>
 
           <div className={styles.mainImage}>
-            {images[mainImg]?.url && (
+            {activeVideo ? (
+              <video
+                key={activeVideo.id}
+                className={styles.mainVideo}
+                src={activeVideo.url}
+                poster={activeVideo.thumbnail ?? undefined}
+                controls
+                autoPlay
+                playsInline
+              />
+            ) : images[mainImg]?.url && (
               <Image src={images[mainImg].url} alt={name} fill sizes="(max-width: 768px) 100vw, 55vw" priority className={styles.mainImg} />
             )}
             {isSale && <span className={`${styles.badge} ${styles.badgeSale}`}>Soldes</span>}
@@ -408,12 +440,7 @@ export default function ProductDetail({ product }: { product: ApiProduct }) {
           </div>
 
           <div className={styles.thumbsMobile}>
-            {images.map((img, i) => (
-              <button key={i} className={`${styles.thumb} ${mainImg === i ? styles.thumbActive : ""}`}
-                onClick={() => setMainImg(i)} aria-label={`Image ${i + 1}`}>
-                <Image src={img.url} alt={`${name} vue ${i + 1}`} fill sizes="80px" className={styles.thumbImg} />
-              </button>
-            ))}
+            {galleryThumbs}
           </div>
         </div>
 

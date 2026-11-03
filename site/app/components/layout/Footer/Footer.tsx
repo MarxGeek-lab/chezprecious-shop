@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, MapPin, Phone, ShieldCheck, Truck, RotateCcw } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, ShieldCheck, Truck, RotateCcw } from "lucide-react";
+import { whatsappLink } from "@/app/utils/format";
 import NewsletterForm from "./NewsletterForm";
 import { usePublicSettings } from "@/app/hooks/usePublicSettings";
 import styles from "./Footer.module.scss";
@@ -88,6 +89,7 @@ export default function Footer() {
   const address = [settings?.address, settings?.city].filter(Boolean).join(", ") || null;
   const email = settings?.contactEmail ?? null;
   const phone = settings?.phoneMain ?? null;
+  const whatsapp = settings?.phoneWhatsapp ?? null;
 
   const socials = SOCIAL_KEYS
     .map((key) => ({ key, label: key.charAt(0).toUpperCase() + key.slice(1), href: settings?.[key] }))
@@ -133,6 +135,12 @@ export default function Footer() {
               <a href={`tel:${phone.replace(/\s/g, "")}`} className={styles.contactItem}>
                 <Phone size={15} strokeWidth={1.75} />
                 {phone}
+              </a>
+            )}
+            {whatsapp && (
+              <a href={whatsappLink(whatsapp)} className={styles.contactItem} target="_blank" rel="noopener noreferrer">
+                <MessageCircle size={15} strokeWidth={1.75} />
+                WhatsApp : {whatsapp}
               </a>
             )}
           </div>

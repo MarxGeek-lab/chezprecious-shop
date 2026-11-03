@@ -61,3 +61,11 @@ export const categoryLabel = (slug?: string | null): string => {
   if (!slug) return '';
   return CATEGORY_LABELS[slug] ?? slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ');
 };
+
+/**
+ * Lien WhatsApp (wa.me) à partir d'un numéro béninois saisi localement (ex : "01 90 30 37 57")
+ */
+export const whatsappLink = (phone: string): string => {
+  const digits = phone.replace(/\D/g, '');
+  return `https://wa.me/${digits.startsWith('229') ? digits : `229${digits}`}`;
+};

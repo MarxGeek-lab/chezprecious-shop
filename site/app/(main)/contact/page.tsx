@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Mail, Phone, Clock, Send, Check } from "lucide-react";
+import { MapPin, Mail, Phone, Clock, Send, Check, MessageCircle } from "lucide-react";
+import { whatsappLink } from "@/app/utils/format";
 import { usePublicSettings } from "@/app/hooks/usePublicSettings";
 import styles from "./page.module.scss";
 
@@ -52,6 +53,12 @@ export default function ContactPage() {
               label: "Téléphone",
               value: settings?.phoneMain ?? null,
               href: settings?.phoneMain ? `tel:${settings.phoneMain.replace(/\s/g, "")}` : undefined,
+            },
+            {
+              icon: MessageCircle,
+              label: "WhatsApp",
+              value: settings?.phoneWhatsapp ?? null,
+              href: settings?.phoneWhatsapp ? whatsappLink(settings.phoneWhatsapp) : undefined,
             },
             {
               icon: Clock,

@@ -18,8 +18,8 @@ export default function Hero() {
           </h1>
 
           <p className={styles.desc}>
-            Compléments alimentaires, soins et café enrichi SAG7 International : des produits
-            naturels pour votre énergie, votre équilibre et votre beauté au quotidien.
+            Compléments alimentaires aux <strong>cellules souches diplexifiées</strong>, soins, café enrichi
+            et eau alcaline : des produits naturels pour votre énergie, votre équilibre et votre beauté au quotidien.
           </p>
 
           <div className={styles.actions}>
@@ -28,7 +28,10 @@ export default function Hero() {
               <ArrowRight size={18} strokeWidth={2} />
             </Link>
             <Link href="/shop?cat=complements-alimentaires" className={styles.btnSecondary}>
-              Compléments alimentaires
+              <span className={styles.btnStack}>
+                Compléments alimentaires
+                <small>aux cellules souches diplexifiées</small>
+              </span>
             </Link>
           </div>
 
