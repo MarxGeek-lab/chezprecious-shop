@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-// Favicon ChezPrecious : monogramme « CP » sur fond rouge vin
+// Favicon ChezPrecious : monogramme « CP » sur fond vert émeraude
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
@@ -15,7 +15,7 @@ export default function Icon() {
           alignItems: "center",
           justifyContent: "center",
           borderRadius: 14,
-          background: "#FF2C2C",
+          background: "#0F5C4A",
           color: "#FFFFFF",
           fontSize: 34,
           fontWeight: 700,

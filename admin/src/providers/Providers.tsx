@@ -8,13 +8,13 @@ import { SnackbarProvider } from '@/src/context/SnackbarContext';
 
 const theme = createTheme({
   palette: {
-    primary: { main: '#FF2C2C', light: '#FF5A5A', dark: '#D41E1E' },
+    primary: { main: '#0F5C4A', light: '#1A7A63', dark: '#0A4638' },
     secondary: { main: '#1A1A2E', light: '#2D2D44', dark: '#0F0F1A' },
     success: { main: '#10B981' },
     warning: { main: '#F59E0B' },
     error: { main: '#EF4444' },
     info: { main: '#3B82F6' },
-    background: { default: '#FBF7F5', paper: '#FFFFFF' },
+    background: { default: '#F7F9F7', paper: '#FFFFFF' },
   },
   typography: {
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",

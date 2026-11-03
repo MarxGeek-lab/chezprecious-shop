@@ -27,7 +27,7 @@ function LoadingSkeleton() {
         gap: 2,
       }}
     >
-      <CircularProgress size={40} sx={{ color: '#D45D00' }} />
+      <CircularProgress size={40} sx={{ color: '#0F5C4A' }} />
       <Typography color="text.secondary" sx={{ fontSize: 14 }}>
         Chargement....
       </Typography>

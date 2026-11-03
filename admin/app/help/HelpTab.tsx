@@ -14,7 +14,7 @@ import {
 import styles from '@/src/styles/pages.module.scss';
 
 const helpCategories = [
-  { icon: BookOpen, title: 'Démarrage', description: 'Guide de prise en main rapide', color: '#FF2C2C', bg: 'rgba(255, 44, 44,0.1)', articles: 8 },
+  { icon: BookOpen, title: 'Démarrage', description: 'Guide de prise en main rapide', color: '#0F5C4A', bg: 'rgba(15, 92, 74, 0.1)', articles: 8 },
   { icon: Users, title: 'Utilisateurs', description: 'Gestion des comptes et rôles', color: '#3B82F6', bg: 'rgba(59,130,246,0.1)', articles: 12 },
   { icon: ShoppingCart, title: 'Commandes', description: 'Traitement et suivi des commandes', color: '#10B981', bg: 'rgba(16,185,129,0.1)', articles: 15 },
   { icon: Package, title: 'Produits', description: 'Catalogue et gestion produits', color: '#8B5CF6', bg: 'rgba(139,92,246,0.1)', articles: 10 },
@@ -46,7 +46,7 @@ export default function HelpTab() {
     <Box>
       {/* Search hero */}
       <Box sx={{
-        bgcolor: 'rgba(255, 44, 44,0.04)', borderRadius: '16px', p: 4, mb: 3,
+        bgcolor: 'rgba(15, 92, 74, 0.04)', borderRadius: '16px', p: 4, mb: 3,
         textAlign: 'center',
       }}>
         <Typography sx={{ fontSize: 24, fontWeight: 800, color: '#1A1A2E', mb: 1 }}>
@@ -80,7 +80,7 @@ export default function HelpTab() {
               sx={{
                 p: 2.5, borderRadius: '14px', border: '1px solid #F3F4F6',
                 cursor: 'pointer', transition: 'all 0.2s',
-                '&:hover': { borderColor: '#FF2C2C', bgcolor: 'rgba(255, 44, 44,0.02)', transform: 'translateY(-2px)', boxShadow: '0 4px 12px rgba(0,0,0,0.06)' },
+                '&:hover': { borderColor: '#0F5C4A', bgcolor: 'rgba(15, 92, 74, 0.02)', transform: 'translateY(-2px)', boxShadow: '0 4px 12px rgba(0,0,0,0.06)' },
               }}
             >
               <Box sx={{
@@ -111,7 +111,7 @@ export default function HelpTab() {
             sx={{
               boxShadow: 'none', border: '1px solid #F3F4F6', borderRadius: '12px !important',
               mb: 1, '&:before': { display: 'none' },
-              '&.Mui-expanded': { borderColor: '#FF2C2C', bgcolor: 'rgba(255, 44, 44,0.02)' },
+              '&.Mui-expanded': { borderColor: '#0F5C4A', bgcolor: 'rgba(15, 92, 74, 0.02)' },
             }}
           >
             <AccordionSummary
@@ -119,7 +119,7 @@ export default function HelpTab() {
               sx={{ fontWeight: 600, fontSize: 14, py: 0.5 }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <HelpCircle size={18} color={expanded === i ? '#FF2C2C' : '#9CA3AF'} />
+                <HelpCircle size={18} color={expanded === i ? '#0F5C4A' : '#9CA3AF'} />
                 {faq.question}
               </Box>
             </AccordionSummary>
@@ -135,7 +135,7 @@ export default function HelpTab() {
       {/* Contact */}
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2, mt: 3 }}>
         {[
-          { icon: Mail, title: 'Email support', desc: 'contact@chezprecious.com', action: 'Envoyer un email', color: '#FF2C2C' },
+          { icon: Mail, title: 'Email support', desc: 'contact@chezprecious.com', action: 'Envoyer un email', color: '#0F5C4A' },
           { icon: MessageSquare, title: 'Chat en direct', desc: 'Disponible 9h-18h', action: 'Démarrer le chat', color: '#10B981' },
           { icon: FileText, title: 'Documentation', desc: 'Guide complet en ligne', action: 'Consulter', color: '#3B82F6' },
         ].map((item) => {

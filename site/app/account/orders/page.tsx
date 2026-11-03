@@ -112,7 +112,7 @@ export default function OrdersPage() {
   if (isLoading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 300, gap: 2 }}>
-        <CircularProgress size={28} sx={{ color: '#D45D00' }} />
+        <CircularProgress size={28} sx={{ color: '#0F5C4A' }} />
         <Typography color="text.secondary">Chargement des commandes...</Typography>
       </Box>
     );
@@ -257,7 +257,7 @@ export default function OrdersPage() {
               <Box key={order.id} className={styles.mobileCard} onClick={() => setSelectedOrder(order)}>
                 <Box
                   className={styles.mobileCardIcon}
-                  sx={{ bgcolor: 'rgba(212,93,0,0.1)', color: '#D45D00' }}
+                  sx={{ bgcolor: 'rgba(15,92,74,0.1)', color: '#0F5C4A' }}
                 >
                   <Package size={18} />
                 </Box>

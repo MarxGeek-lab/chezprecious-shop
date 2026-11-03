@@ -155,7 +155,7 @@ function MediaUploadField({
           startIcon={isLoading ? <Loader size={16} className="spin" /> : <Upload size={16} />}
           disabled={isLoading}
           onClick={() => inputRef.current?.click()}
-          sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', '&:hover': { bgcolor: '#D41E1E' } }}
+          sx={{ bgcolor: '#0F5C4A', textTransform: 'none', borderRadius: '10px', '&:hover': { bgcolor: '#0A4638' } }}
         >
           {isLoading ? 'Envoi...' : label}
         </Button>
@@ -247,7 +247,7 @@ function SaveButton({ saving, onClick }: { saving: boolean; onClick: () => void 
       startIcon={saving ? <Loader size={16} className="spin" /> : <Save size={16} />}
       disabled={saving}
       onClick={onClick}
-      sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', '&:hover': { bgcolor: '#D41E1E' } }}
+      sx={{ bgcolor: '#0F5C4A', textTransform: 'none', borderRadius: '10px', '&:hover': { bgcolor: '#0A4638' } }}
     >
       {saving ? 'Enregistrement...' : 'Enregistrer'}
     </Button>
@@ -294,9 +294,9 @@ export default function SettingsTab() {
   const [tiktok, setTiktok] = useState('');
 
   // Appearance
-  const [primaryColor, setPrimaryColor] = useState('#FF2C2C');
-  const [secondaryColor, setSecondaryColor] = useState('#1F1416');
-  const [accentColor, setAccentColor] = useState('#FFFAF7');
+  const [primaryColor, setPrimaryColor] = useState('#0F5C4A');
+  const [secondaryColor, setSecondaryColor] = useState('#1F2933');
+  const [accentColor, setAccentColor] = useState('#FAFAF7');
 
   // Commerce
   const [currency, setCurrency] = useState('XOF');
@@ -408,9 +408,9 @@ export default function SettingsTab() {
     setYoutube(s.youtube || '');
     setLinkedin(s.linkedin || '');
     setTiktok(s.tiktok || '');
-    setPrimaryColor(s.primaryColor || '#FF2C2C');
-    setSecondaryColor(s.secondaryColor || '#1F1416');
-    setAccentColor(s.accentColor || '#FFFAF7');
+    setPrimaryColor(s.primaryColor || '#0F5C4A');
+    setSecondaryColor(s.secondaryColor || '#1F2933');
+    setAccentColor(s.accentColor || '#FAFAF7');
     setCurrency(s.currency || 'XOF');
     setCommission(String(s.commission ?? '10'));
     setMinOrder(String(s.minOrder ?? '5000'));
@@ -464,7 +464,7 @@ export default function SettingsTab() {
 
   // Shared styles
   const btnOutline = { textTransform: 'none' as const, borderRadius: '10px', borderColor: '#E5E7EB', color: '#6B7280' };
-  const switchSx = { '& .MuiSwitch-switchBase.Mui-checked': { color: '#FF2C2C' }, '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#FF2C2C' } };
+  const switchSx = { '& .MuiSwitch-switchBase.Mui-checked': { color: '#0F5C4A' }, '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#0F5C4A' } };
 
   const legalPages = [
     { label: 'Conditions Générales (CGU)', value: cguContent, onChange: setCguContent, placeholder: 'Rédigez les conditions générales d\'utilisation...' },
@@ -479,7 +479,7 @@ export default function SettingsTab() {
   if (isLoading) {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 400, gap: 2 }}>
-        <CircularProgress sx={{ color: '#FF2C2C' }} size={36} />
+        <CircularProgress sx={{ color: '#0F5C4A' }} size={36} />
         <Typography sx={{ color: '#6B7280', fontSize: 14 }}>Chargement des paramètres...</Typography>
       </Box>
     );
@@ -843,7 +843,7 @@ export default function SettingsTab() {
             <Typography sx={{ fontWeight: 600, fontSize: 14 }}>{carrier.label}</Typography>
             <Typography sx={{ fontSize: 12, color: '#6B7280' }}>{carrier.desc}</Typography>
           </Box>
-          <Chip label={carrier.price} size="small" sx={{ mr: 2, fontWeight: 600, bgcolor: 'rgba(255, 44, 44,0.08)', color: '#FF2C2C' }} />
+          <Chip label={carrier.price} size="small" sx={{ mr: 2, fontWeight: 600, bgcolor: 'rgba(15, 92, 74, 0.08)', color: '#0F5C4A' }} />
           <Switch defaultChecked={carrier.enabled} sx={switchSx} />
         </Box>
       ))}
@@ -897,7 +897,7 @@ export default function SettingsTab() {
             <Typography sx={{ fontSize: 14 }}>{template}</Typography>
           </Box>
           <Button size="small" endIcon={<ChevronRight size={14} />}
-            sx={{ textTransform: 'none', color: '#FF2C2C', fontSize: 13 }}>
+            sx={{ textTransform: 'none', color: '#0F5C4A', fontSize: 13 }}>
             Modifier
           </Button>
         </Box>
@@ -983,10 +983,10 @@ export default function SettingsTab() {
             key={page.label} label={page.label} onClick={() => setLegalTab(i)}
             sx={{
               fontWeight: legalTab === i ? 700 : 500, fontSize: 13, cursor: 'pointer',
-              bgcolor: legalTab === i ? 'rgba(255, 44, 44,0.1)' : '#F3F4F6',
-              color: legalTab === i ? '#FF2C2C' : '#6B7280',
-              border: legalTab === i ? '1px solid rgba(255, 44, 44,0.3)' : '1px solid transparent',
-              '&:hover': { bgcolor: legalTab === i ? 'rgba(255, 44, 44,0.15)' : '#E5E7EB' },
+              bgcolor: legalTab === i ? 'rgba(15, 92, 74, 0.1)' : '#F3F4F6',
+              color: legalTab === i ? '#0F5C4A' : '#6B7280',
+              border: legalTab === i ? '1px solid rgba(15, 92, 74, 0.3)' : '1px solid transparent',
+              '&:hover': { bgcolor: legalTab === i ? 'rgba(15, 92, 74, 0.15)' : '#E5E7EB' },
             }}
           />
         ))}
@@ -1041,8 +1041,8 @@ export default function SettingsTab() {
           </Box>
           <Switch checked={setting.state} onChange={() => setting.setter(!setting.state)}
             sx={{
-              '& .MuiSwitch-switchBase.Mui-checked': { color: setting.danger ? '#EF4444' : '#FF2C2C' },
-              '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: setting.danger ? '#EF4444' : '#FF2C2C' },
+              '& .MuiSwitch-switchBase.Mui-checked': { color: setting.danger ? '#EF4444' : '#0F5C4A' },
+              '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: setting.danger ? '#EF4444' : '#0F5C4A' },
             }} />
         </Box>
       ))}
@@ -1168,7 +1168,7 @@ export default function SettingsTab() {
                     variant="contained"
                     startIcon={<Upload size={14} />}
                     component="label"
-                    sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#D41E1E' } }}
+                    sx={{ bgcolor: '#0F5C4A', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#0A4638' } }}
                   >
                     Uploader
                     <input
@@ -1339,7 +1339,7 @@ export default function SettingsTab() {
                   value={adSectionConfig.largeBanner.imageUrl}
                   onChange={(e) => setAdSectionConfig({ ...adSectionConfig, largeBanner: { ...adSectionConfig.largeBanner, imageUrl: e.target.value } })} />
                 <Button size="small" variant="contained" startIcon={<Upload size={14} />} component="label"
-                  sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#D41E1E' } }}>
+                  sx={{ bgcolor: '#0F5C4A', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#0A4638' } }}>
                   Uploader
                   <input type="file" hidden accept="image/*" onChange={async (e) => {
                     const file = e.target.files?.[0]; if (!file) return;
@@ -1420,7 +1420,7 @@ export default function SettingsTab() {
                   value={adSectionConfig.newArrivalsBanner.imageUrl}
                   onChange={(e) => setAdSectionConfig({ ...adSectionConfig, newArrivalsBanner: { ...adSectionConfig.newArrivalsBanner, imageUrl: e.target.value } })} />
                 <Button size="small" variant="contained" startIcon={<Upload size={14} />} component="label"
-                  sx={{ bgcolor: '#FF2C2C', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#D41E1E' } }}>
+                  sx={{ bgcolor: '#0F5C4A', textTransform: 'none', borderRadius: '10px', whiteSpace: 'nowrap', '&:hover': { bgcolor: '#0A4638' } }}>
                   Uploader
                   <input type="file" hidden accept="image/*" onChange={async (e) => {
                     const file = e.target.files?.[0]; if (!file) return;

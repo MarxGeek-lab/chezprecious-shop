@@ -51,7 +51,7 @@ export default function ProtectedRoute({
           gap: 2,
         }}
       >
-        <CircularProgress sx={{ color: '#D45D00' }} />
+        <CircularProgress sx={{ color: '#0F5C4A' }} />
         <Typography color="text.secondary">Chargement...</Typography>
       </Box>
     );

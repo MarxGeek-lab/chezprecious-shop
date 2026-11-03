@@ -7,8 +7,8 @@
   // Compense le header fixe (bandeau + barre) et tient dans l'écran sans défilement
   padding: calc(94px + #{$space-5}) 0 $space-8;
   background:
-    radial-gradient(circle at 85% 20%, rgba(255, 44, 44, 0.12), transparent 45%),
-    radial-gradient(circle at 10% 90%, rgba(255, 44, 44, 0.08), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(15, 92, 74, 0.12), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(15, 92, 74, 0.08), transparent 40%),
     linear-gradient(180deg, $primary-soft 0%, $ivory 100%);
 
   @include lg {
@@ -45,7 +45,7 @@
   font-weight: $fw-semibold;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 4px 14px rgba(255, 44, 44, 0.1);
+  box-shadow: 0 4px 14px rgba(15, 92, 74, 0.1);
 }
 
 .title {
@@ -69,7 +69,7 @@
       position: absolute;
       left: 0; right: 0; bottom: 0.08em;
       height: 0.18em;
-      background-color: rgba(255, 44, 44, 0.15);
+      background-color: rgba(15, 92, 74, 0.15);
       border-radius: 4px;
       z-index: -1;
     }
@@ -102,7 +102,7 @@
   color: $white;
   font-size: $fs-base;
   font-weight: $fw-semibold;
-  box-shadow: 0 12px 28px rgba(255, 44, 44, 0.3);
+  box-shadow: 0 12px 28px rgba(15, 92, 74, 0.3);
   transition: transform $transition-base, background-color $transition-base, box-shadow $transition-base;
 
   svg { transition: transform $transition-base; }
@@ -110,7 +110,7 @@
   &:hover {
     background-color: $primary-dark;
     transform: translateY(-2px);
-    box-shadow: 0 16px 34px rgba(255, 44, 44, 0.35);
+    box-shadow: 0 16px 34px rgba(15, 92, 74, 0.35);
 
     svg { transform: translateX(4px); }
   }
@@ -122,7 +122,7 @@
   height: 54px;
   padding: 0 $space-8;
   border-radius: $radius-pill;
-  border: 2px solid rgba(255, 44, 44, 0.25);
+  border: 2px solid rgba(15, 92, 74, 0.25);
   background-color: $white;
   color: $primary;
   font-size: $fs-base;
@@ -189,7 +189,7 @@
   background:
     radial-gradient(circle at 50% 45%, $white 0%, $white 45%, $primary-soft 100%);
   box-shadow: 0 30px 60px rgba(212, 30, 30, 0.16);
-  border: 1px solid rgba(255, 44, 44, 0.1);
+  border: 1px solid rgba(15, 92, 74, 0.1);
 }
 
 .slide {
@@ -224,7 +224,7 @@
   border-radius: $radius;
   background-color: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
-  box-shadow: 0 14px 30px rgba(31, 20, 22, 0.14);
+  box-shadow: 0 14px 30px rgba(31, 41, 51, 0.14);
   animation: cardIn 0.5s ease both;
   transition: transform $transition-base;
 
@@ -287,10 +287,10 @@
   width: 8px;
   height: 8px;
   border-radius: $radius-pill;
-  background-color: rgba(255, 44, 44, 0.25);
+  background-color: rgba(15, 92, 74, 0.25);
   transition: width $transition-base, background-color $transition-base;
 
-  &:hover { background-color: rgba(255, 44, 44, 0.5); }
+  &:hover { background-color: rgba(15, 92, 74, 0.5); }
 }
 
 .sliderDotActive {

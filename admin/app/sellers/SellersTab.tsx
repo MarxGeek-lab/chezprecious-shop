@@ -233,7 +233,7 @@ export default function SellersTab() {
                         <Avatar
                           src={seller.logo ?? undefined}
                           variant="rounded"
-                          sx={{ width: 38, height: 38, bgcolor: 'rgba(255, 44, 44,0.1)', color: '#FF2C2C', fontWeight: 700, fontSize: 13 }}
+                          sx={{ width: 38, height: 38, bgcolor: 'rgba(15, 92, 74, 0.1)', color: '#0F5C4A', fontWeight: 700, fontSize: 13 }}
                         >
                           {seller.name.slice(0, 2).toUpperCase()}
                         </Avatar>

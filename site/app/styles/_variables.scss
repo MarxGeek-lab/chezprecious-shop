@@ -1,16 +1,18 @@
 // ─── Couleurs ───────────────────────────────────────────────────────────────
-// Fond clair chaud, texte presque noir, couleur primaire rouge vif #FF2C2C
-$ivory:  #FFFAF7;
-$black:  #1F1416;
-$primary: #FF2C2C;
+// Fond clair, texte anthracite, couleur primaire vert émeraude profond #0F5C4A + accent or
+$ivory:  #FAFAF7;
+$black:  #1F2933;
+$primary: #0F5C4A;
 
-$ivory-dark:    #F6ECE8;
-$primary-light: #FF5A5A;
-$primary-dark:  #D41E1E;
-$primary-soft:  #FFECEC;
-$primary-on-dark: #FFD3D3; // accent lisible sur fond rouge foncé
+$ivory-dark:    #EEF2EE;
+$primary-light: #1A7A63;
+$primary-dark:  #0A4638;
+$primary-soft:  #EAF3EF;
+$primary-on-dark: #CDE6DC; // accent lisible sur fond vert foncé
+$gold:          #C9A45C; // accent or (étoiles, badges, détails)
+$gold-soft:     #F5ECD7;
 $white:         #FFFFFF;
-$muted:         #6F6266;
+$muted:         #5E6A66;
 
 // ─── Typographie ────────────────────────────────────────────────────────────
 $font-primary:   var(--font-inter), sans-serif;
@@ -58,10 +60,10 @@ $transition-base:   0.25s ease;
 $transition-slow:   0.4s ease;
 
 // ─── Cadres produit ─────────────────────────────────────────────────────────
-$frame-border:        1px solid rgba(31, 20, 22, 0.08);
-$frame-border-hover:  1px solid rgba(255, 44, 44, 0.35);
-$frame-shadow:        0 2px 10px rgba(31, 20, 22, 0.05);
-$frame-shadow-hover:  0 14px 32px rgba(255, 44, 44, 0.14);
+$frame-border:        1px solid rgba(31, 41, 51, 0.08);
+$frame-border-hover:  1px solid rgba(15, 92, 74, 0.35);
+$frame-shadow:        0 2px 10px rgba(31, 41, 51, 0.05);
+$frame-shadow-hover:  0 14px 32px rgba(15, 92, 74, 0.14);
 $radius:              14px;
 $radius-sm:           8px;
 $radius-pill:         999px;

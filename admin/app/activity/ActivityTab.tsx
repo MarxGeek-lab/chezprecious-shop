@@ -94,7 +94,7 @@ export default function ActivityTab() {
       <Box className={styles.pageHeader}>
         <Box>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
-            <ClipboardList size={22} color="#FF2C2C" />
+            <ClipboardList size={22} color="#0F5C4A" />
             <Typography className={styles.pageTitle}>Journal d&apos;activité</Typography>
           </Box>
           <Typography className={styles.pageSubtitle}>
@@ -185,7 +185,7 @@ export default function ActivityTab() {
                   </TableCell>
                   <TableCell>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <Avatar sx={{ width: 28, height: 28, fontSize: 11, bgcolor: '#FF2C2C' }}>
+                      <Avatar sx={{ width: 28, height: 28, fontSize: 11, bgcolor: '#0F5C4A' }}>
                         {getInitials(log.adminEmail)}
                       </Avatar>
                       <Box>

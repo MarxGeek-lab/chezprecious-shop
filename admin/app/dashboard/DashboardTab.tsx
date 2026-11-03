@@ -40,7 +40,7 @@ import { useAdminDashboard } from '@/src/hooks/useAdminData';
 
 // ─── Constantes ───────────────────────────────
 
-const PIE_COLORS = ['#FF2C2C', '#3B82F6', '#10B981', '#8B5CF6', '#F59E0B', '#EF4444'];
+const PIE_COLORS = ['#0F5C4A', '#C9A45C', '#3B82F6', '#8B5CF6', '#F59E0B', '#EF4444'];
 
 const statusClasses: Record<string, string> = {
   PENDING:    styles.statusPending,
@@ -203,8 +203,8 @@ export default function DashboardTab() {
                 <AreaChart data={data?.revenueChart ?? []}>
                   <defs>
                     <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#FF2C2C" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#FF2C2C" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#0F5C4A" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#0F5C4A" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
@@ -221,7 +221,7 @@ export default function DashboardTab() {
                   <Area
                     type="monotone"
                     dataKey="revenue"
-                    stroke="#FF2C2C"
+                    stroke="#0F5C4A"
                     strokeWidth={2.5}
                     fill="url(#colorRevenue)"
                   />
@@ -291,7 +291,7 @@ export default function DashboardTab() {
             </Box>
             <Box
               onClick={() => setActiveTab('orders')}
-              sx={{ display: 'flex', alignItems: 'center', gap: 0.5, fontSize: 13, color: '#FF2C2C', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+              sx={{ display: 'flex', alignItems: 'center', gap: 0.5, fontSize: 13, color: '#0F5C4A', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
             >
               Voir tout <ArrowUpRight size={14} />
             </Box>
@@ -344,7 +344,7 @@ export default function DashboardTab() {
             </Box>
             <Box
               onClick={() => setActiveTab('sellers')}
-              sx={{ display: 'flex', alignItems: 'center', gap: 0.5, fontSize: 13, color: '#FF2C2C', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+              sx={{ display: 'flex', alignItems: 'center', gap: 0.5, fontSize: 13, color: '#0F5C4A', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
             >
               Voir tout <ArrowUpRight size={14} />
             </Box>
@@ -412,7 +412,7 @@ export default function DashboardTab() {
             </Box>
             <Box
               onClick={() => setActiveTab('products')}
-              sx={{ display: 'flex', alignItems: 'center', gap: 0.5, fontSize: 13, color: '#FF2C2C', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+              sx={{ display: 'flex', alignItems: 'center', gap: 0.5, fontSize: 13, color: '#0F5C4A', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
             >
               Voir tout <ArrowUpRight size={14} />
             </Box>
@@ -485,7 +485,7 @@ export default function DashboardTab() {
               : (data?.categoryChart ?? []).slice(0, 6).map((cat, i) => {
                 const max = data?.categoryChart?.[0]?.value ?? 1;
                 const pct = Math.round((cat.value / max) * 100);
-                const colors = ['#FF2C2C', '#3B82F6', '#10B981', '#8B5CF6', '#F59E0B', '#EF4444'];
+                const colors = ['#0F5C4A', '#C9A45C', '#3B82F6', '#8B5CF6', '#F59E0B', '#EF4444'];
                 return (
                   <Box key={cat.name} sx={{ mb: 1.5 }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
@@ -510,14 +510,14 @@ export default function DashboardTab() {
               justifyContent: 'center',
               gap: 1,
               padding: '10px 16px',
-              background: 'rgba(255, 44, 44,0.08)',
+              background: 'rgba(15, 92, 74, 0.08)',
               borderRadius: 2,
-              color: '#FF2C2C',
+              color: '#0F5C4A',
               fontWeight: 600,
               fontSize: 13,
               cursor: 'pointer',
               transition: 'background 0.2s',
-              '&:hover': { background: 'rgba(255, 44, 44,0.15)' },
+              '&:hover': { background: 'rgba(15, 92, 74, 0.15)' },
             }}
           >
             Voir les analytics complètes <ArrowUpRight size={15} />

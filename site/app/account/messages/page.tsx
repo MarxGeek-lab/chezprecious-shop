@@ -90,7 +90,7 @@ export default function CustomerMessagesPage() {
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-            <Avatar sx={{ bgcolor: '#FFF7ED', color: '#D45D00', width: 40, height: 40, fontWeight: 700 }}>
+            <Avatar sx={{ bgcolor: '#EAF3EF', color: '#0F5C4A', width: 40, height: 40, fontWeight: 700 }}>
               SC
             </Avatar>
             <Box>
@@ -125,7 +125,7 @@ export default function CustomerMessagesPage() {
         >
           {isLoading ? (
             <Box sx={{ display: 'flex', justifyContent: 'center', pt: 4 }}>
-              <CircularProgress size={28} sx={{ color: '#D45D00' }} />
+              <CircularProgress size={28} sx={{ color: '#0F5C4A' }} />
             </Box>
           ) : threadMessages.length === 0 ? (
             <Box sx={{ textAlign: 'center', py: 6, color: 'text.secondary' }}>
@@ -153,8 +153,8 @@ export default function CustomerMessagesPage() {
                       sx={{
                         width: 28,
                         height: 28,
-                        bgcolor: '#FFF7ED',
-                        color: '#D45D00',
+                        bgcolor: '#EAF3EF',
+                        color: '#0F5C4A',
                         flexShrink: 0,
                         fontSize: 11,
                         fontWeight: 700,
@@ -169,7 +169,7 @@ export default function CustomerMessagesPage() {
                       px: 2,
                       py: 1,
                       borderRadius: isOwn ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
-                      bgcolor: isOwn ? '#D45D00' : 'white',
+                      bgcolor: isOwn ? '#0F5C4A' : 'white',
                       border: isOwn ? 'none' : '1px solid #E5E7EB',
                       boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
                     }}
@@ -220,10 +220,10 @@ export default function CustomerMessagesPage() {
               width: 44,
               height: 40,
               p: 0,
-              bgcolor: '#D45D00',
+              bgcolor: '#0F5C4A',
               alignSelf: 'flex-end',
               borderRadius: 2,
-              '&:hover': { bgcolor: '#B34D00' },
+              '&:hover': { bgcolor: '#0A4638' },
               '&:disabled': { bgcolor: '#E5E7EB' },
               flexShrink: 0,
             }}

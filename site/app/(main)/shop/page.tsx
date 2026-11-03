@@ -160,17 +160,17 @@ function ShopContent() {
             step={1000}
             disableSwap
             sx={{
-              color: "#FF2C2C",
+              color: "#0F5C4A",
               height: 2,
               padding: "10px 0",
               "& .MuiSlider-thumb": {
                 width: 14,
                 height: 14,
-                backgroundColor: "#FF2C2C",
+                backgroundColor: "#0F5C4A",
                 border: "2px solid #fff",
-                boxShadow: "0 0 0 2px #FF2C2C",
+                boxShadow: "0 0 0 2px #0F5C4A",
                 "&:hover, &.Mui-active": {
-                  boxShadow: "0 0 0 3px rgba(255, 44, 44,0.25)",
+                  boxShadow: "0 0 0 3px rgba(15, 92, 74, 0.25)",
                 },
               },
               "& .MuiSlider-rail": {
@@ -178,7 +178,7 @@ function ShopContent() {
                 opacity: 1,
               },
               "& .MuiSlider-track": {
-                backgroundColor: "#FF2C2C",
+                backgroundColor: "#0F5C4A",
                 border: "none",
               },
             }}

@@ -232,7 +232,7 @@ export default function SecurityPage() {
                     width: 6,
                     height: 6,
                     borderRadius: '50%',
-                    bgcolor: '#D45D00',
+                    bgcolor: '#0F5C4A',
                     mt: 0.8,
                     flexShrink: 0,
                   }}

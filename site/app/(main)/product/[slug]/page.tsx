@@ -32,7 +32,7 @@ export default function ProductPage({
         <Container maxWidth="xl">
           <div style={{ textAlign: "center", padding: "4rem 0" }}>
             <h1>Produit introuvable</h1>
-            <Link href="/shop" style={{ color: "#FF2C2C" }}>Retour à la boutique</Link>
+            <Link href="/shop" style={{ color: "#0F5C4A" }}>Retour à la boutique</Link>
           </div>
         </Container>
       </main>

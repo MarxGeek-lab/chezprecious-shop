@@ -100,7 +100,7 @@ function StarsInput({ value, onChange }: { value: number; onChange: (v: number) 
             size={22}
             fill={(hover || value) >= n ? "currentColor" : "none"}
             strokeWidth={1.5}
-            style={{ color: (hover || value) >= n ? "#FF2C2C" : "rgba(10,10,10,0.25)" }}
+            style={{ color: (hover || value) >= n ? "#C9A45C" : "rgba(10,10,10,0.25)" }}
           />
         </button>
       ))}

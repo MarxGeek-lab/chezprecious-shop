@@ -10,9 +10,9 @@ import { ThemeProvider as MUIThemeProvider, createTheme, CssBaseline } from '@mu
 // Couleurs du thème
 const colors = {
   primary: {
-    main: '#D45D00',
-    light: '#FF7A1A',
-    dark: '#A34800',
+    main: '#0F5C4A',
+    light: '#1A7A63',
+    dark: '#0A4638',
     contrastText: '#FFFFFF',
   },
   secondary: {

@@ -100,7 +100,7 @@ export default function AccountDashboard() {
             <Button
               endIcon={<ArrowRight size={16} />}
               size="small"
-              sx={{ color: '#D45D00', textTransform: 'none' }}
+              sx={{ color: '#0F5C4A', textTransform: 'none' }}
               onClick={() => setActiveTab('orders')}
             >
               Tout voir
@@ -178,7 +178,7 @@ export default function AccountDashboard() {
                     <Box key={order.id} className={styles.mobileCard} onClick={() => setActiveTab('orders')}>
                       <Box
                         className={styles.mobileCardIcon}
-                        sx={{ bgcolor: 'rgba(212,93,0,0.1)', color: '#D45D00' }}
+                        sx={{ bgcolor: 'rgba(15,92,74,0.1)', color: '#0F5C4A' }}
                       >
                         <ShoppingBag size={18} />
                       </Box>
@@ -209,7 +209,7 @@ export default function AccountDashboard() {
             <Button
               endIcon={<ArrowRight size={16} />}
               size="small"
-              sx={{ color: '#D45D00', textTransform: 'none' }}
+              sx={{ color: '#0F5C4A', textTransform: 'none' }}
               onClick={() => setActiveTab('reviews')}
             >
               Tout voir

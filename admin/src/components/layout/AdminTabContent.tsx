@@ -43,7 +43,7 @@ const AbandonedCartsPage = lazy(() => import('@/app/abandoned-carts/AbandonedCar
 function LoadingFallback() {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh' }}>
-      <CircularProgress sx={{ color: '#FF2C2C' }} />
+      <CircularProgress sx={{ color: '#0F5C4A' }} />
     </Box>
   );
 }

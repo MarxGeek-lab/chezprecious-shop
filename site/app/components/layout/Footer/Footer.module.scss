@@ -3,8 +3,8 @@
 
 .footer {
   margin-top: auto;
-  background-color: #141011;
-  background-image: radial-gradient(circle at 100% 0%, rgba(255, 44, 44, 0.1), transparent 40%);
+  background-color: #0C1714;
+  background-image: radial-gradient(circle at 100% 0%, rgba(15, 92, 74, 0.1), transparent 40%);
   color: rgba(255, 255, 255, 0.82);
 
   // Laisse la place à la barre de navigation fixe en bas sur mobile
@@ -13,7 +13,7 @@
 
 /* ── Bandeau newsletter ── */
 .newsletterBand {
-  background-color: #1E1719;
+  background-color: #13211D;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   color: $white;
 }
@@ -52,7 +52,7 @@
   padding: 6px;
   border-radius: $radius-pill;
   background-color: $white;
-  box-shadow: 0 10px 30px rgba(255, 44, 44, 0.12);
+  box-shadow: 0 10px 30px rgba(15, 92, 74, 0.12);
 }
 
 .input {
@@ -67,7 +67,7 @@
   font-size: $fs-sm;
   color: $black;
 
-  &::placeholder { color: rgba(31, 20, 22, 0.45); }
+  &::placeholder { color: rgba(31, 41, 51, 0.45); }
   &:focus { outline: none; }
 }
 

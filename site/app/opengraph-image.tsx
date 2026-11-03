@@ -16,7 +16,7 @@ export default function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #FF2C2C 0%, #D41E1E 100%)",
+          background: "linear-gradient(135deg, #0F5C4A 0%, #0A4638 100%)",
           color: "#FFFFFF",
           fontFamily: "serif",
         }}
@@ -36,7 +36,7 @@ export default function OpengraphImage() {
         </div>
         <div style={{ display: "flex", marginTop: 36, fontSize: 132, fontWeight: 700 }}>
           Chez
-          <span style={{ color: "#FFD3D3", fontStyle: "italic", marginLeft: 8 }}>Precious</span>
+          <span style={{ color: "#CDE6DC", fontStyle: "italic", marginLeft: 8 }}>Precious</span>
         </div>
         <div style={{ display: "flex", marginTop: 24, fontSize: 34, color: "rgba(255,255,255,0.85)" }}>
           Produits naturels · Santé · Énergie · Beauté

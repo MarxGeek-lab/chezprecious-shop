@@ -119,8 +119,8 @@ function CartRow({ cart, onSendReminder, sending }: {
                 onClick={() => onSendReminder(cart.id, nextReminder)}
                 sx={{
                   fontSize: 11, fontWeight: 600, textTransform: 'none',
-                  borderColor: '#FF2C2C', color: '#FF2C2C',
-                  '&:hover': { background: '#FFF5F5', borderColor: '#FF2C2C' },
+                  borderColor: '#0F5C4A', color: '#0F5C4A',
+                  '&:hover': { background: '#F2F8F5', borderColor: '#0F5C4A' },
                 }}
               >
                 Relance {nextReminder}
@@ -206,9 +206,9 @@ export default function AbandonedCartsTab() {
             disabled={sendAll.isPending}
             onClick={handleSendAll}
             sx={{
-              background: '#FF2C2C', fontWeight: 600, textTransform: 'none',
+              background: '#0F5C4A', fontWeight: 600, textTransform: 'none',
               borderRadius: '8px', fontSize: 13,
-              '&:hover': { background: '#D41E1E' },
+              '&:hover': { background: '#0A4638' },
             }}
           >
             Relancer tous les paniers en attente
@@ -219,7 +219,7 @@ export default function AbandonedCartsTab() {
       {/* Stats */}
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' }, gap: 2, mb: 4 }}>
         <StatCard label="Total paniers" value={stats?.total ?? '—'} icon={<ShoppingCart size={20} />} color="#6366F1" />
-        <StatCard label="En attente" value={stats?.pending ?? '—'} icon={<Clock size={20} />} color="#FF2C2C" />
+        <StatCard label="En attente" value={stats?.pending ?? '—'} icon={<Clock size={20} />} color="#0F5C4A" />
         <StatCard label="Récupérés" value={stats?.recovered ?? '—'} icon={<CheckCircle size={20} />} color="#10B981" />
         <StatCard label="Panier moyen" value={stats ? formatAmount(stats.avgCartTotal) : '—'} icon={<Mail size={20} />} color="#8B5CF6" />
       </Box>

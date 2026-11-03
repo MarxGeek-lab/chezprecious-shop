@@ -94,7 +94,7 @@ export default function ReviewsPage() {
   if (isLoading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 300, gap: 2 }}>
-        <CircularProgress size={28} sx={{ color: '#D45D00' }} />
+        <CircularProgress size={28} sx={{ color: '#0F5C4A' }} />
         <Typography color="text.secondary">Chargement des avis...</Typography>
       </Box>
     );

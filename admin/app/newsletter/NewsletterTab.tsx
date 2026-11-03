@@ -142,7 +142,7 @@ function SubscribersTab() {
           sx={{ minWidth: 240, '& .MuiOutlinedInput-root': { borderRadius: 2 } }}
         />
         <Button variant="outlined" size="small" onClick={handleSearch}
-          sx={{ borderRadius: 2, borderColor: '#FF2C2C', color: '#FF2C2C' }}>
+          sx={{ borderRadius: 2, borderColor: '#0F5C4A', color: '#0F5C4A' }}>
           Rechercher
         </Button>
         <Box sx={{ display: 'flex', gap: 1 }}>
@@ -153,7 +153,7 @@ function SubscribersTab() {
               onClick={() => { setStatusFilter(s); setPage(1); }}
               color={statusFilter === s ? 'primary' : 'default'}
               size="small"
-              sx={{ cursor: 'pointer', ...(statusFilter === s ? { bgcolor: '#FF2C2C', color: '#fff' } : {}) }}
+              sx={{ cursor: 'pointer', ...(statusFilter === s ? { bgcolor: '#0F5C4A', color: '#fff' } : {}) }}
             />
           ))}
         </Box>
@@ -173,7 +173,7 @@ function SubscribersTab() {
           </TableHead>
           <TableBody>
             {isLoading ? (
-              <TableRow><TableCell colSpan={5} align="center" sx={{ py: 4 }}><CircularProgress size={28} sx={{ color: '#FF2C2C' }} /></TableCell></TableRow>
+              <TableRow><TableCell colSpan={5} align="center" sx={{ py: 4 }}><CircularProgress size={28} sx={{ color: '#0F5C4A' }} /></TableCell></TableRow>
             ) : data?.data.length === 0 ? (
               <TableRow><TableCell colSpan={5} align="center" sx={{ py: 4, color: '#9CA3AF' }}>Aucun abonné trouvé</TableCell></TableRow>
             ) : data?.data.map((sub) => {
@@ -206,7 +206,7 @@ function SubscribersTab() {
             count={data?.meta.totalPages}
             page={page}
             onChange={(_, v) => setPage(v)}
-            sx={{ '& .MuiPaginationItem-root.Mui-selected': { bgcolor: '#FF2C2C', color: '#fff' } }}
+            sx={{ '& .MuiPaginationItem-root.Mui-selected': { bgcolor: '#0F5C4A', color: '#fff' } }}
           />
         </Box>
       )}
@@ -305,7 +305,7 @@ function CampaignsTab() {
           variant="contained"
           size="small"
           onClick={() => handleOpenCreate()}
-          sx={{ bgcolor: '#FF2C2C', borderRadius: 2, fontWeight: 700, '&:hover': { bgcolor: '#D41E1E' } }}
+          sx={{ bgcolor: '#0F5C4A', borderRadius: 2, fontWeight: 700, '&:hover': { bgcolor: '#0A4638' } }}
         >
           Nouvelle campagne
         </Button>
@@ -332,7 +332,7 @@ function CampaignsTab() {
           </TableHead>
           <TableBody>
             {isLoading ? (
-              <TableRow><TableCell colSpan={6} align="center" sx={{ py: 4 }}><CircularProgress size={28} sx={{ color: '#FF2C2C' }} /></TableCell></TableRow>
+              <TableRow><TableCell colSpan={6} align="center" sx={{ py: 4 }}><CircularProgress size={28} sx={{ color: '#0F5C4A' }} /></TableCell></TableRow>
             ) : data?.data.length === 0 ? (
               <TableRow><TableCell colSpan={6} align="center" sx={{ py: 4, color: '#9CA3AF' }}>Aucune campagne</TableCell></TableRow>
             ) : data?.data.map((c) => {
@@ -387,7 +387,7 @@ function CampaignsTab() {
             count={data?.meta.totalPages}
             page={page}
             onChange={(_, v) => setPage(v)}
-            sx={{ '& .MuiPaginationItem-root.Mui-selected': { bgcolor: '#FF2C2C', color: '#fff' } }}
+            sx={{ '& .MuiPaginationItem-root.Mui-selected': { bgcolor: '#0F5C4A', color: '#fff' } }}
           />
         </Box>
       )}
@@ -423,7 +423,7 @@ function CampaignsTab() {
             variant="contained"
             onClick={handleSave}
             disabled={!subject.trim() || !body.trim() || createMutation.isPending || updateMutation.isPending}
-            sx={{ bgcolor: '#FF2C2C', borderRadius: 2, fontWeight: 700, '&:hover': { bgcolor: '#D41E1E' } }}
+            sx={{ bgcolor: '#0F5C4A', borderRadius: 2, fontWeight: 700, '&:hover': { bgcolor: '#0A4638' } }}
           >
             Sauvegarder
           </Button>
@@ -478,8 +478,8 @@ export default function NewsletterTab() {
     <Box>
       {/* Header */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3, flexWrap: 'wrap' }}>
-        <Box sx={{ width: 44, height: 44, bgcolor: '#FFECEC', borderRadius: 2.5, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Mail size={22} color="#FF2C2C" />
+        <Box sx={{ width: 44, height: 44, bgcolor: '#EAF3EF', borderRadius: 2.5, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Mail size={22} color="#0F5C4A" />
         </Box>
         <Box>
           <Typography variant="h5" sx={{ fontWeight: 800, color: '#1A1A2E', lineHeight: 1.2 }}>
@@ -501,8 +501,8 @@ export default function NewsletterTab() {
           mb: 3,
           borderBottom: '2px solid #E5E7EB',
           '& .MuiTab-root': { fontWeight: 600, textTransform: 'none', minWidth: 120 },
-          '& .Mui-selected': { color: '#FF2C2C !important' },
-          '& .MuiTabs-indicator': { bgcolor: '#FF2C2C' },
+          '& .Mui-selected': { color: '#0F5C4A !important' },
+          '& .MuiTabs-indicator': { bgcolor: '#0F5C4A' },
         }}
       >
         <Tab icon={<Users size={16} />} iconPosition="start" label="Abonnés" />

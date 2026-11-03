@@ -159,7 +159,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
         <Box className={styles.searchWrapper} ref={anchorRef}>
           <Box
             className={styles.searchBar}
-            sx={{ borderColor: focused ? '#FF2C2C !important' : undefined }}
+            sx={{ borderColor: focused ? '#0F5C4A !important' : undefined }}
           >
             {/* Type selector */}
             <button

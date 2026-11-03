@@ -19,7 +19,7 @@ import {
 import styles from '@/src/styles/pages.module.scss';
 
 const TYPE_CONFIG: Record<string, { label: string; icon: React.ElementType; color: string; bg: string }> = {
-  ORDER_NEW:     { label: 'Nouvelle commande', icon: ShoppingCart, color: '#FF2C2C', bg: 'rgba(255, 44, 44,0.1)' },
+  ORDER_NEW:     { label: 'Nouvelle commande', icon: ShoppingCart, color: '#0F5C4A', bg: 'rgba(15, 92, 74, 0.1)' },
   ORDER_PAID:    { label: 'Commande payée',    icon: CreditCard,   color: '#10B981', bg: 'rgba(16,185,129,0.1)' },
   ORDER_STATUS:  { label: 'Statut commande',   icon: Package,      color: '#3B82F6', bg: 'rgba(59,130,246,0.1)' },
   REVIEW_NEW:    { label: 'Nouvel avis',        icon: Star,         color: '#F59E0B', bg: 'rgba(245,158,11,0.1)' },
@@ -48,8 +48,8 @@ function NotifRow({ notif }: { notif: AdminNotification }) {
       sx={{
         display: 'flex', alignItems: 'flex-start', gap: 2, p: 2,
         borderRadius: '12px',
-        bgcolor: notif.isRead ? 'transparent' : 'rgba(255, 44, 44,0.03)',
-        borderLeft: notif.isRead ? '3px solid transparent' : '3px solid #FF2C2C',
+        bgcolor: notif.isRead ? 'transparent' : 'rgba(15, 92, 74, 0.03)',
+        borderLeft: notif.isRead ? '3px solid transparent' : '3px solid #0F5C4A',
         transition: 'all 0.2s',
         '&:hover': { bgcolor: '#F9FAFB' },
       }}
@@ -67,7 +67,7 @@ function NotifRow({ notif }: { notif: AdminNotification }) {
             {notif.title}
           </Typography>
           {!notif.isRead && (
-            <Box sx={{ width: 8, height: 8, borderRadius: '50%', bgcolor: '#FF2C2C', flexShrink: 0 }} />
+            <Box sx={{ width: 8, height: 8, borderRadius: '50%', bgcolor: '#0F5C4A', flexShrink: 0 }} />
           )}
         </Box>
         <Typography sx={{ fontSize: 13, color: '#6B7280', mb: 0.5 }}>{notif.body}</Typography>
@@ -77,7 +77,7 @@ function NotifRow({ notif }: { notif: AdminNotification }) {
           </Typography>
           {notif.user && (
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-              <Avatar src={notif.user.avatar ?? undefined} sx={{ width: 16, height: 16, fontSize: 9, bgcolor: '#FF2C2C' }}>
+              <Avatar src={notif.user.avatar ?? undefined} sx={{ width: 16, height: 16, fontSize: 9, bgcolor: '#0F5C4A' }}>
                 {(notif.user.fullName ?? notif.user.email).charAt(0).toUpperCase()}
               </Avatar>
               <Typography sx={{ fontSize: 11, color: '#9CA3AF' }}>
@@ -143,7 +143,7 @@ export default function NotificationsTab() {
     <Box>
       <Box className={styles.statsRow} sx={{ gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' } }}>
         {[
-          { icon: Bell,      label: 'Non lues',          value: isLoading ? '…' : unread.toString(), color: '#FF2C2C', bg: 'rgba(255, 44, 44,0.1)' },
+          { icon: Bell,      label: 'Non lues',          value: isLoading ? '…' : unread.toString(), color: '#0F5C4A', bg: 'rgba(15, 92, 74, 0.1)' },
           { icon: CheckCheck,label: 'Total notifications',value: isLoading ? '…' : total.toString(),  color: '#3B82F6', bg: 'rgba(59,130,246,0.1)' },
           { icon: AlertTriangle, label: 'Alertes critiques', value: isLoading ? '…' : (data?.notifications.filter((n) => n.type === 'STOCK_LOW').length ?? 0).toString(), color: '#EF4444', bg: 'rgba(239,68,68,0.1)' },
         ].map((stat) => (
@@ -162,7 +162,7 @@ export default function NotificationsTab() {
       <Box className={styles.card}>
         <Tabs
           value={tab} onChange={(_, v) => setTab(v)}
-          sx={{ mb: 3, '& .MuiTab-root': { textTransform: 'none', fontWeight: 600 }, '& .Mui-selected': { color: '#FF2C2C' }, '& .MuiTabs-indicator': { bgcolor: '#FF2C2C' } }}
+          sx={{ mb: 3, '& .MuiTab-root': { textTransform: 'none', fontWeight: 600 }, '& .Mui-selected': { color: '#0F5C4A' }, '& .MuiTabs-indicator': { bgcolor: '#0F5C4A' } }}
         >
           <Tab label={`Notifications (${unread} non lues)`} />
           <Tab label="Paramètres" />
@@ -205,7 +205,7 @@ export default function NotificationsTab() {
                   onClick={() => setSendOpen(true)}
                   fullWidth={isMobile}
                   sx={{
-                    bgcolor: '#FF2C2C', '&:hover': { bgcolor: '#D41E1E' },
+                    bgcolor: '#0F5C4A', '&:hover': { bgcolor: '#0A4638' },
                     textTransform: 'none', borderRadius: '10px',
                   }}
                 >
@@ -216,7 +216,7 @@ export default function NotificationsTab() {
 
             {isLoading ? (
               <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
-                <CircularProgress sx={{ color: '#FF2C2C' }} />
+                <CircularProgress sx={{ color: '#0F5C4A' }} />
               </Box>
             ) : (
               <>
@@ -238,7 +238,7 @@ export default function NotificationsTab() {
                       count={data.meta.totalPages} page={page}
                       onChange={(_, v) => setPage(v)}
                       shape="rounded"
-                      sx={{ '& .MuiPaginationItem-root.Mui-selected': { bgcolor: '#FF2C2C', color: '#fff' } }}
+                      sx={{ '& .MuiPaginationItem-root.Mui-selected': { bgcolor: '#0F5C4A', color: '#fff' } }}
                     />
                   </Box>
                 )}
@@ -268,7 +268,7 @@ export default function NotificationsTab() {
                 <Switch
                   checked={setting.enabled}
                   onChange={() => toggleSetting(i)}
-                  sx={{ '& .MuiSwitch-switchBase.Mui-checked': { color: '#FF2C2C' }, '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#FF2C2C' } }}
+                  sx={{ '& .MuiSwitch-switchBase.Mui-checked': { color: '#0F5C4A' }, '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: '#0F5C4A' } }}
                 />
               </Box>
             ))}
@@ -310,7 +310,7 @@ export default function NotificationsTab() {
             variant="contained"
             onClick={handleSend}
             disabled={isSending || !sendTitle || !sendBody}
-            sx={{ bgcolor: '#FF2C2C', '&:hover': { bgcolor: '#D41E1E' }, textTransform: 'none' }}
+            sx={{ bgcolor: '#0F5C4A', '&:hover': { bgcolor: '#0A4638' }, textTransform: 'none' }}
           >
             {isSending ? <CircularProgress size={18} sx={{ color: '#fff' }} /> : 'Envoyer'}
           </Button>

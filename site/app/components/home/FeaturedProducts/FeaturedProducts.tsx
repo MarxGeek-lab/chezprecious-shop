@@ -19,7 +19,7 @@ type TabKey = (typeof TABS)[number]["key"];
 export function ProductSkeleton() {
   return (
     <Grid size={{ xs: 6, sm: 4, md: 3 }}>
-      <div style={{ aspectRatio: "3/4", background: "#F6ECE8", borderRadius: 14 }} />
+      <div style={{ aspectRatio: "3/4", background: "#EEF2EE", borderRadius: 14 }} />
     </Grid>
   );
 }

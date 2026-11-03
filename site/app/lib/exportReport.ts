@@ -144,8 +144,8 @@ export function exportReportPDF(data: ExportData, filename = 'rapport-vendeur'):
     body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1a1a2e; font-size: 12px; line-height: 1.5; padding: 32px; }
 
     /* Header */
-    .report-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #D45D00; padding-bottom: 16px; margin-bottom: 24px; }
-    .report-title { font-size: 22px; font-weight: 800; color: #D45D00; }
+    .report-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #0F5C4A; padding-bottom: 16px; margin-bottom: 24px; }
+    .report-title { font-size: 22px; font-weight: 800; color: #0F5C4A; }
     .report-sub { font-size: 12px; color: #6B7280; margin-top: 4px; }
     .meta { font-size: 11px; color: #6B7280; margin-top: 2px; }
     .meta strong { color: #1a1a2e; }
@@ -153,21 +153,21 @@ export function exportReportPDF(data: ExportData, filename = 'rapport-vendeur'):
 
     /* Section titles */
     .section-title {
-      font-size: 13px; font-weight: 700; color: #D45D00;
-      border-left: 4px solid #D45D00; padding-left: 10px;
+      font-size: 13px; font-weight: 700; color: #0F5C4A;
+      border-left: 4px solid #0F5C4A; padding-left: 10px;
       margin: 24px 0 12px;
       text-transform: uppercase; letter-spacing: 0.05em;
     }
 
     /* Tables */
     table { width: 100%; border-collapse: collapse; font-size: 11px; }
-    thead tr { background: #FFF4EC; }
-    th { padding: 8px 10px; text-align: left; font-weight: 700; color: #D45D00; border-bottom: 2px solid #F5E6D5; }
+    thead tr { background: #EAF3EF; }
+    th { padding: 8px 10px; text-align: left; font-weight: 700; color: #0F5C4A; border-bottom: 2px solid #F5E6D5; }
     td { padding: 7px 10px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
     tr:last-child td { border-bottom: none; }
     tr:nth-child(even) td { background: #FAFAFA; }
     .val { text-align: right; font-weight: 600; }
-    .rank { font-weight: 800; color: #D45D00; text-align: center; width: 36px; }
+    .rank { font-weight: 800; color: #0F5C4A; text-align: center; width: 36px; }
 
     /* KPI table */
     .kpi-table td:first-child { color: #6B7280; }
@@ -178,7 +178,7 @@ export function exportReportPDF(data: ExportData, filename = 'rapport-vendeur'):
     .status-pending    { background: #FEF3C7; color: #92400E; }
     .status-paid       { background: #DBEAFE; color: #1E40AF; }
     .status-processing { background: #EDE9FE; color: #5B21B6; }
-    .status-shipped    { background: #FFF4EC; color: #D45D00; }
+    .status-shipped    { background: #EAF3EF; color: #0F5C4A; }
     .status-delivered  { background: #D1FAE5; color: #065F46; }
     .status-cancelled  { background: #FEE2E2; color: #991B1B; }
 

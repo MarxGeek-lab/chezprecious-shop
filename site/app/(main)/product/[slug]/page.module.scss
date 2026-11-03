@@ -116,7 +116,7 @@
 .mainImage {
   position: relative;
   aspect-ratio: 3 / 4;
-  border: 1px solid rgba(31, 20, 22, 0.08);
+  border: 1px solid rgba(31, 41, 51, 0.08);
   border-radius: $radius;
   background-color: $white;
   overflow: hidden;
@@ -183,7 +183,7 @@
   display: flex;
   align-items: center;
   gap: 2px;
-  color: $primary;
+  color: $gold;
 }
 
 .ratingNum {

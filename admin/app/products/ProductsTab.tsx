@@ -243,7 +243,7 @@ export default function ProductsTab() {
                         <Box className={styles.userCellInfo}>
                           <Typography className={styles.userCellName}>{product.name}</Typography>
                           {product.isFeatured && (
-                            <Typography sx={{ fontSize: 10, color: '#FF2C2C', fontWeight: 700 }}>⭐ Vedette</Typography>
+                            <Typography sx={{ fontSize: 10, color: '#0F5C4A', fontWeight: 700 }}>⭐ Vedette</Typography>
                           )}
                         </Box>
                       </Box>
@@ -257,7 +257,7 @@ export default function ProductsTab() {
                             label={product.category}
                             size="small"
                             variant="outlined"
-                            sx={{ fontSize: 11, borderColor: '#FF2C2C40', color: '#374151' }}
+                            sx={{ fontSize: 11, borderColor: '#0F5C4A40', color: '#374151' }}
                           />
                         )
                         : <Typography sx={{ fontSize: 12, color: '#9CA3AF' }}>—</Typography>
@@ -271,7 +271,7 @@ export default function ProductsTab() {
                           <Typography
                             sx={{
                               fontSize: 13, color: '#6B7280', cursor: 'pointer', display: 'inline',
-                              '&:hover': { color: '#FF2C2C', textDecoration: 'underline' },
+                              '&:hover': { color: '#0F5C4A', textDecoration: 'underline' },
                             }}
                             onClick={() => {
                               setStoreFilter(product.store!.id);
@@ -392,7 +392,7 @@ export default function ProductsTab() {
               label={storeFilterName}
               size="small"
               onDelete={() => { setStoreFilter(''); setStoreFilterName(''); setPage(1); }}
-              sx={{ bgcolor: 'rgba(255, 44, 44,0.1)', color: '#FF2C2C', fontWeight: 600, fontSize: 11 }}
+              sx={{ bgcolor: 'rgba(15, 92, 74, 0.1)', color: '#0F5C4A', fontWeight: 600, fontSize: 11 }}
             />
           </Box>
         )}

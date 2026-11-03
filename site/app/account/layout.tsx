@@ -175,9 +175,9 @@ function AccountLayoutInner() {
               component={Link}
               href="/seller"
               className={styles.navItem}
-              sx={{ color: '#D45D00' }}
+              sx={{ color: '#0F5C4A' }}
             >
-              <ListItemIcon className={styles.navIcon} sx={{ color: '#D45D00' }}>
+              <ListItemIcon className={styles.navIcon} sx={{ color: '#0F5C4A' }}>
                 <Store size={20} />
               </ListItemIcon>
               <ListItemText

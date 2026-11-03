@@ -128,7 +128,7 @@ export default function SecurityTab() {
           value={tab} onChange={(_, v) => setTab(v)}
           variant="scrollable"
           scrollButtons="auto"
-          sx={{ mb: 3, '& .MuiTab-root': { textTransform: 'none', fontWeight: 600 }, '& .Mui-selected': { color: '#FF2C2C' }, '& .MuiTabs-indicator': { bgcolor: '#FF2C2C' } }}
+          sx={{ mb: 3, '& .MuiTab-root': { textTransform: 'none', fontWeight: 600 }, '& .Mui-selected': { color: '#0F5C4A' }, '& .MuiTabs-indicator': { bgcolor: '#0F5C4A' } }}
         >
           <Tab label="Paramètres" />
           <Tab label="Journal d'activité" />
@@ -139,7 +139,7 @@ export default function SecurityTab() {
         {tab === 0 && (
           settingsLoading ? (
             <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
-              <CircularProgress sx={{ color: '#FF2C2C' }} />
+              <CircularProgress sx={{ color: '#0F5C4A' }} />
             </Box>
           ) : (
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
@@ -190,7 +190,7 @@ export default function SecurityTab() {
                   startIcon={updateSecurity.isPending ? <CircularProgress size={16} sx={{ color: '#fff' }} /> : <Save size={16} />}
                   disabled={updateSecurity.isPending}
                   onClick={handleSave}
-                  sx={{ bgcolor: '#FF2C2C', '&:hover': { bgcolor: '#D41E1E' }, textTransform: 'none', borderRadius: '10px' }}
+                  sx={{ bgcolor: '#0F5C4A', '&:hover': { bgcolor: '#0A4638' }, textTransform: 'none', borderRadius: '10px' }}
                 >
                   {updateSecurity.isPending ? 'Enregistrement...' : 'Enregistrer'}
                 </Button>
@@ -203,7 +203,7 @@ export default function SecurityTab() {
         {tab === 1 && (
           logsLoading ? (
             <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
-              <CircularProgress sx={{ color: '#FF2C2C' }} />
+              <CircularProgress sx={{ color: '#0F5C4A' }} />
             </Box>
           ) : (
             <>
@@ -261,7 +261,7 @@ export default function SecurityTab() {
                     count={logsData.meta.totalPages} page={page}
                     onChange={(_, v) => setPage(v)}
                     shape="rounded"
-                    sx={{ '& .MuiPaginationItem-root.Mui-selected': { bgcolor: '#FF2C2C', color: '#fff' } }}
+                    sx={{ '& .MuiPaginationItem-root.Mui-selected': { bgcolor: '#0F5C4A', color: '#fff' } }}
                   />
                 </Box>
               )}

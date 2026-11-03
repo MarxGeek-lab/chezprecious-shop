@@ -88,7 +88,7 @@ export default function WishlistPage() {
             component={Link}
             href="/catalog"
             variant="contained"
-            sx={{ mt: 2, bgcolor: '#D45D00', '&:hover': { bgcolor: '#A34800' } }}
+            sx={{ mt: 2, bgcolor: '#0F5C4A', '&:hover': { bgcolor: '#0A4638' } }}
           >
             Découvrir les produits
           </Button>
@@ -168,7 +168,7 @@ export default function WishlistPage() {
                     startIcon={<ShoppingCart size={16} />}
                     disabled={!product.inStock}
                     onClick={() => addToCart(product, 1)}
-                    sx={{ flex: 1, textTransform: 'none', bgcolor: '#D45D00', '&:hover': { bgcolor: '#A34800' } }}
+                    sx={{ flex: 1, textTransform: 'none', bgcolor: '#0F5C4A', '&:hover': { bgcolor: '#0A4638' } }}
                   >
                     Ajouter au panier
                   </Button>

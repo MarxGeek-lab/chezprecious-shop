@@ -21,7 +21,7 @@ const playfair = Playfair_Display({
 // Site conçu en clair : empêche les navigateurs mobiles (mode sombre forcé) d'inverser les couleurs
 export const viewport: Viewport = {
   colorScheme: "only light",
-  themeColor: "#FFFAF7",
+  themeColor: "#FAFAF7",
 };
 
 const SITE_URL = "https://chezprecious.com";

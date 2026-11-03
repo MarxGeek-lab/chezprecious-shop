@@ -16,7 +16,7 @@ export default function Recommended() {
     return (
       <section className={styles.section}>
         <Container maxWidth="xl">
-          <div style={{ height: 300, background: "#F6ECE8", borderRadius: 14 }} />
+          <div style={{ height: 300, background: "#EEF2EE", borderRadius: 14 }} />
         </Container>
       </section>
     );

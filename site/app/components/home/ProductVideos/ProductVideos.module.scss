@@ -47,7 +47,7 @@
   border-radius: 18px;
   overflow: hidden;
   background-color: $black;
-  box-shadow: 0 14px 30px rgba(31, 20, 22, 0.16);
+  box-shadow: 0 14px 30px rgba(31, 41, 51, 0.16);
 }
 
 .video {
@@ -89,7 +89,7 @@
   border-radius: 50%;
   background-color: $primary;
   color: $white;
-  box-shadow: 0 10px 26px rgba(255, 44, 44, 0.45);
+  box-shadow: 0 10px 26px rgba(15, 92, 74, 0.45);
   transform: translate(-50%, -50%);
   transition: transform $transition-base;
 
@@ -114,7 +114,7 @@
   padding: 3px 10px;
   border-radius: $radius-pill;
   background-color: $white;
-  border: 1px solid rgba(255, 44, 44, 0.25);
+  border: 1px solid rgba(15, 92, 74, 0.25);
   color: $primary;
   font-size: $fs-xs;
   font-weight: $fw-semibold;

@@ -224,7 +224,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           <Box className={styles.userCard}>
             <Avatar
               src={admin?.avatar ?? undefined}
-              sx={{ width: 36, height: 36, bgcolor: '#FF2C2C', fontSize: 14 }}
+              sx={{ width: 36, height: 36, bgcolor: '#0F5C4A', fontSize: 14 }}
             >
               {admin ? getInitials(admin.fullName, admin.email) : '?'}
             </Avatar>

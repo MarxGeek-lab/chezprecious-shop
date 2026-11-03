@@ -51,7 +51,7 @@ function RecoverContent() {
     }}>
       {status === "loading" && (
         <>
-          <Loader2 size={40} style={{ animation: "spin 1s linear infinite", color: "#D45D00" }} />
+          <Loader2 size={40} style={{ animation: "spin 1s linear infinite", color: "#0F5C4A" }} />
           <p style={{ fontSize: "16px", color: "#6b7280" }}>Récupération de votre panier…</p>
         </>
       )}
@@ -60,7 +60,7 @@ function RecoverContent() {
           <CheckCircle size={48} style={{ color: "#2a7a3b" }} strokeWidth={1.5} />
           <h1 style={{ fontSize: "22px", fontWeight: 700, margin: 0, color: "#1A1A2E" }}>Panier récupéré !</h1>
           <p style={{ fontSize: "15px", color: "#6b7280", margin: 0 }}>Vous allez être redirigé vers votre panier…</p>
-          <ShoppingBag size={20} style={{ color: "#D45D00" }} strokeWidth={1.5} />
+          <ShoppingBag size={20} style={{ color: "#0F5C4A" }} strokeWidth={1.5} />
         </>
       )}
       {status === "error" && (
@@ -71,7 +71,7 @@ function RecoverContent() {
           <a href="/shop" style={{
             marginTop: "8px",
             padding: "12px 28px",
-            background: "#D45D00",
+            background: "#0F5C4A",
             color: "#fff",
             borderRadius: "6px",
             textDecoration: "none",

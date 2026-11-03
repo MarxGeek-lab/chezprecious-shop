@@ -87,7 +87,7 @@ function OrderDetailDialog({ orderId, onClose }: { orderId: string; onClose: () 
       <DialogContent dividers>
         {isLoading ? (
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
-            <CircularProgress size={28} sx={{ color: '#FF2C2C' }} />
+            <CircularProgress size={28} sx={{ color: '#0F5C4A' }} />
           </Box>
         ) : !order ? (
           <Typography color="text.secondary">Commande introuvable.</Typography>
@@ -138,7 +138,7 @@ function OrderDetailDialog({ orderId, onClose }: { orderId: string; onClose: () 
               </Grid>
               <Box sx={{ mt: 1.5, pt: 1.5, borderTop: '1px solid', borderColor: 'divider', display: 'flex', justifyContent: 'space-between' }}>
                 <Typography sx={{ fontWeight: 700 }}>Total</Typography>
-                <Typography sx={{ fontWeight: 800, color: '#FF2C2C', fontSize: 16 }}>
+                <Typography sx={{ fontWeight: 800, color: '#0F5C4A', fontSize: 16 }}>
                   {fmtPrice(order.total, order.currency)}
                 </Typography>
               </Box>
@@ -200,7 +200,7 @@ export default function PaymentsTab() {
 
   const kpis = [
     { icon: DollarSign,    label: 'CA (page)',     value: fmtPrice(completedRevenue), color: '#059669', bg: 'rgba(5,150,105,0.1)'   },
-    { icon: CreditCard,    label: 'Transactions',  value: String(meta.total ?? 0),    color: '#FF2C2C', bg: 'rgba(255, 44, 44,0.1)'    },
+    { icon: CreditCard,    label: 'Transactions',  value: String(meta.total ?? 0),    color: '#0F5C4A', bg: 'rgba(15, 92, 74, 0.1)'    },
     { icon: TrendingUp,    label: 'En attente',    value: String(meta.pending ?? 0),  color: '#D97706', bg: 'rgba(245,158,11,0.1)'  },
     { icon: AlertTriangle, label: 'Annulées',      value: String(meta.cancelled ?? 0),color: '#DC2626', bg: 'rgba(239,68,68,0.1)'   },
   ];
@@ -250,7 +250,7 @@ export default function PaymentsTab() {
           </Box>
 
           {/* Search */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flex: 1, minWidth: 180, border: '1px solid', borderColor: 'divider', borderRadius: '10px', px: 1.5, py: 0.75, '&:focus-within': { borderColor: '#FF2C2C' } }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flex: 1, minWidth: 180, border: '1px solid', borderColor: 'divider', borderRadius: '10px', px: 1.5, py: 0.75, '&:focus-within': { borderColor: '#0F5C4A' } }}>
             <Search size={15} color="#9CA3AF" />
             <InputBase
               placeholder="N° commande, client, email…"
@@ -269,7 +269,7 @@ export default function PaymentsTab() {
             startIcon={exporting ? <CircularProgress size={14} /> : <Download size={15} />}
             disabled={exporting}
             onClick={handleExport}
-            sx={{ textTransform: 'none', borderRadius: '8px', fontSize: 13, borderColor: 'divider', color: 'text.secondary', flexShrink: 0, '&:hover': { borderColor: '#FF2C2C', color: '#FF2C2C' } }}
+            sx={{ textTransform: 'none', borderRadius: '8px', fontSize: 13, borderColor: 'divider', color: 'text.secondary', flexShrink: 0, '&:hover': { borderColor: '#0F5C4A', color: '#0F5C4A' } }}
           >
             Exporter CSV
           </Button>
@@ -278,7 +278,7 @@ export default function PaymentsTab() {
         {/* Table */}
         {isLoading ? (
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
-            <CircularProgress size={32} sx={{ color: '#FF2C2C' }} />
+            <CircularProgress size={32} sx={{ color: '#0F5C4A' }} />
           </Box>
         ) : orders.length === 0 ? (
           <Box sx={{ textAlign: 'center', py: 6, color: 'text.secondary' }}>
@@ -310,7 +310,7 @@ export default function PaymentsTab() {
                   return (
                     <tr key={o.id}>
                       <td>
-                        <Typography sx={{ fontFamily: 'monospace', fontWeight: 700, fontSize: 13, color: '#FF2C2C' }}>
+                        <Typography sx={{ fontFamily: 'monospace', fontWeight: 700, fontSize: 13, color: '#0F5C4A' }}>
                           {o.orderNumber}
                         </Typography>
                       </td>
