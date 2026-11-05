@@ -160,7 +160,11 @@
   animation: rise 0.8s 0.1s ease both;
   order: -1;
 
-  @include lg { order: 0; }
+  @include lg {
+    order: 0;
+    // Les cartes voisines s'arrêtent au bord de la colonne et ne passent pas sur le texte
+    clip-path: inset(-30% -50vw -30% 0);
+  }
 }
 
 // Taille bornée par la hauteur de l'écran pour que le hero tienne sans défilement
@@ -170,7 +174,9 @@
   margin: 0 auto;
   padding-bottom: $space-8;
 
-  @include lg { width: min(100%, calc(100svh - 230px)); }
+  @include lg {
+    width: min(100%, calc(100svh - 230px));
+  }
 }
 
 .sliderSkeleton {
@@ -181,35 +187,180 @@
   animation: shimmer 1.4s linear infinite;
 }
 
+/* ── Scène 3D ── */
+$hero-gold: #C99A39; // or du logo
+
 .sliderStage {
   position: relative;
   aspect-ratio: 1 / 1;
-  border-radius: 32px;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 45%, $white 0%, $white 45%, $primary-soft 100%);
-  box-shadow: 0 30px 60px rgba(212, 30, 30, 0.16);
-  border: 1px solid rgba(15, 92, 74, 0.1);
 }
 
-.slide {
+// Lueur émeraude diffuse
+.glow {
   position: absolute;
-  inset: 0;
-  opacity: 0;
-  transform: scale(0.92) translateX(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none;
+  inset: 6%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(15, 92, 74, 0.22) 0%, rgba(201, 154, 57, 0.12) 40%, transparent 68%);
+  filter: blur(18px);
+}
 
-  img {
-    object-fit: contain;
-    padding: 8%;
+// Halo doré en rotation lente
+.halo {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 88%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  translate: -50% -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0 12%,
+    rgba($hero-gold, 0.95) 22%,
+    transparent 36%,
+    transparent 52%,
+    rgba($hero-gold, 0.55) 66%,
+    transparent 80%
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  filter: drop-shadow(0 0 6px rgba($hero-gold, 0.7));
+  animation: haloSpin 16s linear infinite;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 7%;
+    border-radius: 50%;
+    border: 1px dashed rgba($hero-gold, 0.35);
   }
 }
 
-.slideActive {
-  opacity: 1;
-  transform: scale(1) translateX(0);
-  pointer-events: auto;
+// Particules dorées
+.sparkles span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF6DC 0%, $hero-gold 60%, transparent 70%);
+  box-shadow: 0 0 10px rgba($hero-gold, 0.8);
+  opacity: 0;
+  animation: sparkle 5s ease-in-out infinite;
+
+  &:nth-child(1) { left: 8%;  top: 22%; animation-delay: 0s; }
+  &:nth-child(2) { left: 88%; top: 16%; animation-delay: 0.8s; width: 4px; height: 4px; }
+  &:nth-child(3) { left: 94%; top: 58%; animation-delay: 1.6s; }
+  &:nth-child(4) { left: 4%;  top: 66%; animation-delay: 2.4s; width: 4px; height: 4px; }
+  &:nth-child(5) { left: 50%; top: 4%;  animation-delay: 3.2s; width: 5px; height: 5px; }
+  &:nth-child(6) { left: 22%; top: 88%; animation-delay: 4s; width: 4px; height: 4px; }
+  &:nth-child(7) { left: 76%; top: 86%; animation-delay: 1.2s; width: 5px; height: 5px; }
+}
+
+// Ombre au sol sous la carte active
+.floor {
+  position: absolute;
+  left: 50%;
+  bottom: 9%;
+  width: 58%;
+  height: 7%;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(15, 92, 74, 0.35) 0%, transparent 70%);
+  filter: blur(6px);
+}
+
+.deck {
+  position: absolute;
+  inset: 0;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+// Position de chaque carte selon son écart (--offset) et sa profondeur (--depth)
+.card {
+  --shift: 60%;
+  --turn: -32deg;
+
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  transform-style: preserve-3d;
+  transform:
+    translate(-50%, -50%)
+    translateX(calc(var(--offset) * var(--shift)))
+    translateZ(calc(var(--depth) * -160px))
+    rotateY(calc(var(--offset) * var(--turn)));
+  opacity: calc(1 - var(--depth) * 0.2);
+  transition:
+    transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.9s ease;
+  cursor: pointer;
+
+  &[data-hidden] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @include lg {
+    --shift: 50%;
+    --turn: -36deg;
+    width: 64%;
+  }
+}
+
+.cardInner {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 40%, #FFFFFF 0%, #FFFFFF 55%, #F6F2E8 100%);
+  border: 1px solid rgba($hero-gold, 0.28);
+  box-shadow:
+    0 24px 50px -24px rgba(15, 92, 74, 0.45),
+    0 8px 18px -10px rgba(31, 41, 51, 0.2);
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  filter: saturate(calc(1 - var(--depth) * 0.25)) brightness(calc(1 - var(--depth) * 0.04));
+  transition: transform 0.25s ease-out, box-shadow 0.9s ease, filter 0.9s ease;
+
+  img {
+    object-fit: contain;
+    padding: 9%;
+  }
+}
+
+.cardActive .cardInner {
+  border-color: rgba($hero-gold, 0.65);
+  box-shadow:
+    0 0 0 1px rgba($hero-gold, 0.25),
+    0 40px 70px -30px rgba(15, 92, 74, 0.55),
+    0 30px 60px -40px rgba($hero-gold, 0.6);
+  -webkit-box-reflect: below 10px linear-gradient(transparent 76%, rgba(255, 255, 255, 0.22));
+
+  img { animation: floatY 6s ease-in-out infinite; }
+}
+
+// Reflet qui suit la souris + balayage doré à chaque changement
+.cardSheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--gx, 30%) var(--gy, 18%), rgba(255, 255, 255, 0.55) 0%, transparent 45%);
+  mix-blend-mode: soft-light;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background: linear-gradient(105deg, transparent 40%, rgba(255, 236, 190, 0.55) 50%, transparent 60%);
+    transform: translateX(-120%);
+  }
+}
+
+.cardActive .cardSheen::after {
+  animation: sweep 1.4s 0.35s ease-out both;
 }
 
 .floatCard {
@@ -225,6 +376,7 @@
   background-color: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
   box-shadow: 0 14px 30px rgba(31, 41, 51, 0.14);
+  z-index: 20;
   animation: cardIn 0.5s ease both;
   transition: transform $transition-base;
 
@@ -284,6 +436,8 @@
 }
 
 .sliderDot {
+  position: relative;
+  overflow: hidden;
   width: 8px;
   height: 8px;
   border-radius: $radius-pill;
@@ -294,8 +448,20 @@
 }
 
 .sliderDotActive {
-  width: 28px;
-  background-color: $primary;
+  width: 36px;
+  background-color: rgba(15, 92, 74, 0.2);
+}
+
+.sliderDotFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, $primary, $hero-gold);
+  transform-origin: left;
+  animation: dotFill var(--interval) linear both;
+
+  &[data-paused] { animation: none; }
 }
 
 @keyframes rise {
@@ -308,13 +474,39 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes haloSpin {
+  to { rotate: 360deg; }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: translateY(6px) scale(0.6); }
+  50%      { opacity: 1; transform: translateY(-6px) scale(1); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes sweep {
+  from { transform: translateX(-120%); }
+  to   { transform: translateX(120%); }
+}
+
+@keyframes dotFill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
 @keyframes shimmer {
   to { background-position: -200% 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .content, .visual, .floatCard, .sliderSkeleton { animation: none; }
-  .slide { transition: none; }
+  .card, .cardInner { transition: none; }
+  .halo, .sparkles span, .cardActive .cardInner img,
+  .cardActive .cardSheen::after, .sliderDotFill { animation: none; }
 }
 
 /* Libellé sur deux lignes (bouton « Compléments alimentaires ») */

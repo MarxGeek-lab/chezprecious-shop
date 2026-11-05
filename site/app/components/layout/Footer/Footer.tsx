@@ -115,7 +115,7 @@ export default function Footer() {
         {/* Marque + contact */}
         <div className={styles.brand}>
           <Link href="/" className={styles.logo} aria-label="ChezPrecious — Accueil">
-            <Image src="/logo-light.png" alt="Golden Precious" width={900} height={271} />
+            <Image src="/logo-light.png" alt="Golden Precious" width={900} height={271} sizes="200px" />
           </Link>
           <p className={styles.tagline}>{tagline}</p>
 

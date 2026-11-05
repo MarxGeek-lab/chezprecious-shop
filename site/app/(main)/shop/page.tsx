@@ -4,7 +4,6 @@ import { categoryLabel, formatPrice } from "@/app/utils/format";
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-import Image from "next/image";
 import { SlidersHorizontal, X, ChevronDown, ChevronUp, LayoutGrid, LayoutList, Star } from "lucide-react";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
@@ -198,22 +197,7 @@ function ShopContent() {
 
   return (
     <main className={styles.main}>
-      {/* En-tête hero */}
-      <div className={styles.pageHeader}>
-        <Image
-          src="/uploads/products/catalogue/coffrets-sag7-floral.webp"
-          alt="ChezPrecious Boutique"
-          fill
-          className={styles.pageHeaderBg}
-          priority
-        />
-        <div className={styles.pageHeaderOverlay} />
-        <div className={styles.pageHeaderInner}>
-          <h1 className={styles.pageTitle}>Boutique</h1>
-          <p className={styles.pageSubtitle}>Produits naturels pour votre santé et votre beauté</p>
-          <span className={styles.pageCount}>{total} produit{total > 1 ? "s" : ""}</span>
-        </div>
-      </div>
+      <h1 className={styles.srOnly}>Boutique</h1>
 
       <div className={styles.layout}>
         {/* Sidebar desktop */}

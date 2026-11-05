@@ -7,84 +7,25 @@
   padding-top: calc(64px + 30px); /* navbar + announcement */
 }
 
-/* ── Hero page shop ── */
-.pageHeader {
-  position: relative;
-  height: 220px;
+// Titre lu par les lecteurs d'écran et les moteurs de recherche uniquement
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
-  background-color: $primary-dark;
-
-  @media (min-width: $bp-md) { height: 400px; }
-}
-
-.pageHeaderBg {
-  position: absolute;
-  inset: 0;
-  object-fit: cover;
-  object-position: center 30%;
-  opacity: 0.38;
-}
-
-.pageHeaderOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    rgba(10,10,10,0.9) 0%,
-    rgba(10,10,10,0.45) 60%,
-    rgba(10,10,10,0.2) 100%
-  );
-}
-
-.pageHeaderInner {
-  position: absolute;
-  inset: 0;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 $space-8;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: $space-10;
-  gap: $space-2;
-}
-
-.pageTitle {
-  font-family: $font-display;
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  font-weight: $fw-bold;
-  color: $ivory;
-  letter-spacing: -0.01em;
-  line-height: 1;
-}
-
-.pageSubtitle {
-  font-size: $fs-sm;
-  color: rgba(244, 241, 236, 0.5);
-  letter-spacing: 0.08em;
-  font-style: italic;
-}
-
-.pageCount {
-  display: inline-block;
-  font-size: $fs-xs;
-  font-weight: $fw-semibold;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: $primary-on-dark;
-  border: 1px solid rgba(255, 211, 211, 0.45);
-  padding: 3px $space-3;
-  margin-top: $space-3;
-  width: fit-content;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 /* ── Layout sidebar + contenu ── */
 .layout {
   max-width: 1400px;
   margin: 0 auto;
-  padding: $space-8;
+  padding: $space-4;
   display: grid;
   grid-template-columns: 1fr;
+
+  @media (min-width: $bp-md) { padding: $space-6 $space-8 $space-8; }
   gap: $space-8;
 
   @media (min-width: $bp-lg) {

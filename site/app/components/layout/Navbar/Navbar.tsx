@@ -155,7 +155,7 @@ export default function Navbar() {
 
         <nav className={styles.navbar}>
           <Link href="/" className={styles.logo} aria-label="ChezPrecious — Accueil">
-            <Image src="/logo.png" alt="Golden Precious" width={900} height={271} priority />
+            <Image src="/logo.png" alt="Golden Precious" width={900} height={271} sizes="160px" priority />
           </Link>
 
           <div className={styles.navLinks}>
@@ -282,7 +282,7 @@ export default function Navbar() {
       <aside className={`${styles.sidebar} ${menuOpen ? styles.sidebarOpen : ""}`} aria-hidden={!menuOpen}>
         <div className={styles.sidebarHeader}>
           <Link href="/" className={styles.sidebarLogo} onClick={closeMenu} aria-label="ChezPrecious — Accueil">
-            <Image src="/logo.png" alt="Golden Precious" width={900} height={271} />
+            <Image src="/logo.png" alt="Golden Precious" width={900} height={271} sizes="160px" />
           </Link>
           <button className={styles.sidebarClose} onClick={closeMenu} aria-label="Fermer">
             <X size={20} strokeWidth={1.5} />
