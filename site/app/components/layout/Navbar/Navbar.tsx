@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
   Search, ShoppingBag, User, Menu, X, LogIn, Home, Tag, Heart,
@@ -154,7 +155,7 @@ export default function Navbar() {
 
         <nav className={styles.navbar}>
           <Link href="/" className={styles.logo} aria-label="ChezPrecious — Accueil">
-            Chez<em>Precious</em>
+            <Image src="/logo.png" alt="Golden Precious" width={900} height={271} priority />
           </Link>
 
           <div className={styles.navLinks}>
@@ -280,7 +281,9 @@ export default function Navbar() {
       {menuOpen && <div className={styles.sidebarOverlay} onClick={closeMenu} aria-hidden="true" />}
       <aside className={`${styles.sidebar} ${menuOpen ? styles.sidebarOpen : ""}`} aria-hidden={!menuOpen}>
         <div className={styles.sidebarHeader}>
-          <Link href="/" className={styles.sidebarLogo} onClick={closeMenu}>ChezPrecious</Link>
+          <Link href="/" className={styles.sidebarLogo} onClick={closeMenu} aria-label="ChezPrecious — Accueil">
+            <Image src="/logo.png" alt="Golden Precious" width={900} height={271} />
+          </Link>
           <button className={styles.sidebarClose} onClick={closeMenu} aria-label="Fermer">
             <X size={20} strokeWidth={1.5} />
           </button>

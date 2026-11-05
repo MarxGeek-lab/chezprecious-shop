@@ -6,7 +6,7 @@ import {
   Box, Paper, Typography, TextField, Button, Alert,
   CircularProgress, InputAdornment, IconButton,
 } from '@mui/material';
-import { Eye, EyeOff, Lock, Mail, ShieldCheck } from 'lucide-react';
+import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { useAdminAuth } from '@/src/context/AdminAuthContext';
 
 export default function AdminLoginPage() {
@@ -64,14 +64,12 @@ export default function AdminLoginPage() {
       >
         {/* Header */}
         <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <Box sx={{
-            width: 56, height: 56, borderRadius: 2,
-            bgcolor: '#EAF3EF', display: 'flex',
-            alignItems: 'center', justifyContent: 'center',
-            mx: 'auto', mb: 2,
-          }}>
-            <ShieldCheck size={28} color="#0F5C4A" />
-          </Box>
+          <Box
+            component="img"
+            src="/logo.png"
+            alt="Golden Precious"
+            sx={{ display: 'block', height: 64, width: 'auto', mx: 'auto', mb: 3 }}
+          />
           <Typography variant="h5" fontWeight={700} sx={{ color: '#1A1A2E' }}>
             Administration
           </Typography>

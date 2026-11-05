@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, MapPin, MessageCircle, Phone, ShieldCheck, Truck, RotateCcw } from "lucide-react";
 import { whatsappLink } from "@/app/utils/format";
 import NewsletterForm from "./NewsletterForm";
@@ -113,8 +114,8 @@ export default function Footer() {
       <div className={styles.top}>
         {/* Marque + contact */}
         <div className={styles.brand}>
-          <Link href="/" className={styles.logo}>
-            Chez<em>Precious</em>
+          <Link href="/" className={styles.logo} aria-label="ChezPrecious — Accueil">
+            <Image src="/logo-light.png" alt="Golden Precious" width={900} height={271} />
           </Link>
           <p className={styles.tagline}>{tagline}</p>
 

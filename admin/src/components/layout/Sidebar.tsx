@@ -142,9 +142,9 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
       <Box className={`${styles.sidebar} ${open ? styles.open : ''}`}>
         {/* Logo */}
         <Box className={styles.logoArea}>
-          <Typography className={styles.logoText}>
-            Chez<span>Precious</span>
-          </Typography>
+          {/* biome-ignore lint/performance/noImgElement: logo statique */}
+          <img src="/logo-light.png" alt="Golden Precious" className={styles.logoImg} width={900} height={271} />
+          <Typography className={styles.logoBadge}>Admin</Typography>
         </Box>
 
         {/* Navigation */}

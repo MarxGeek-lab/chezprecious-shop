@@ -82,7 +82,7 @@ class MailService {
         <div style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
           <!-- Header -->
           <div style="background: linear-gradient(135deg, #0F5C4A 0%, #1A7A63 100%); padding: 28px; text-align: center;">
-            <h1 style="margin: 0; font-size: 28px; color: #ffffff; font-weight: 700;">ChezPrecious </h1>
+            <img src="https://chezprecious.com/logo-light.png" alt="Golden Precious" width="200" height="60" style="display: block; margin: 0 auto; width: 200px; height: auto; border: 0;" />
           </div>
           <!-- Content -->
           <div style="padding: 32px;">

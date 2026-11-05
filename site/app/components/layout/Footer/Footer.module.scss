@@ -129,8 +129,13 @@
   font-weight: $fw-bold;
   color: $white;
   line-height: 1;
+  display: inline-flex;
 
-  em { font-style: italic; color: $primary; }
+  img {
+    display: block;
+    height: 58px;
+    width: auto;
+  }
 }
 
 .tagline {

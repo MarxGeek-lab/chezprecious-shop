@@ -6,7 +6,7 @@ import {
   Box, Paper, Typography, TextField, Button, Alert,
   CircularProgress, InputAdornment,
 } from '@mui/material';
-import { Mail, ArrowLeft, ShieldCheck, CheckCircle } from 'lucide-react';
+import { Mail, ArrowLeft, CheckCircle } from 'lucide-react';
 import { useRequestPasswordReset } from '@/src/hooks/useTeam';
 
 export default function ForgotPasswordPage() {
@@ -47,9 +47,7 @@ export default function ForgotPasswordPage() {
     <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: '#F0F2F5', p: 2 }}>
       <Paper elevation={0} sx={{ width: '100%', maxWidth: 420, p: 4, borderRadius: 3, border: '1px solid #E5E7EB' }}>
         <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <Box sx={{ width: 56, height: 56, borderRadius: 2, bgcolor: '#EAF3EF', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
-            <ShieldCheck size={28} color="#0F5C4A" />
-          </Box>
+          <Box component="img" src="/logo.png" alt="Golden Precious" sx={{ display: 'block', height: 64, width: 'auto', mx: 'auto', mb: 3 }} />
           <Typography variant="h5" fontWeight={700} sx={{ color: '#1A1A2E' }}>
             Mot de passe oublié
           </Typography>
