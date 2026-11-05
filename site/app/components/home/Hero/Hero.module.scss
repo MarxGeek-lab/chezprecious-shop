@@ -1,6 +1,22 @@
 @use '../../../styles/_variables' as *;
 @use '../../../styles/_mixins' as *;
 
+/* ── Épinglage du hero pendant le défilement (HeroPin) ── */
+.pinWrap {
+  position: relative;
+}
+
+// Distance de défilement pendant laquelle le hero reste épinglé
+// (un bloc et non un padding : sticky ne se déplace que dans la zone de contenu du parent)
+.pinSpacer {
+  height: var(--pin-extra, 0px);
+}
+
+.pinSticky {
+  position: sticky;
+  top: var(--pin-top, 0px);
+}
+
 .hero {
   position: relative;
   overflow: hidden;
@@ -225,6 +241,8 @@ $hero-gold: #C99A39; // or du logo
   -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
   mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
   filter: drop-shadow(0 0 6px rgba($hero-gold, 0.7));
+  // Rotation continue + accélération pilotée par le défilement (--hero-p de 0 à 1)
+  transform: rotate(calc(var(--hero-p, 0) * 540deg));
   animation: haloSpin 16s linear infinite;
 
   &::after {

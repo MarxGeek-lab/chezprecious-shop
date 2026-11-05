@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ArrowRight, Leaf } from "lucide-react";
 import { useFeaturedProducts } from "@/app/hooks/useHomepage";
 import { formatPrice } from "@/app/utils/format";
+import { HERO_SCROLL_EVENT } from "./HeroPin";
 import styles from "./Hero.module.scss";
 
 const INTERVAL_MS = 4000;
@@ -21,7 +22,7 @@ function offsetOf(i: number, current: number, n: number) {
 
 // Vitrine 3D des produits phares : carte active au premier plan, voisines en perspective
 export default function HeroSlider() {
-  const { data = [], isLoading } = useFeaturedProducts(8);
+  const { data = [], isLoading } = useFeaturedProducts(12);
   const products = data.filter((p) => p.images?.length > 0);
   const n = products.length;
   const [current, setCurrent] = useState(0);
@@ -34,6 +35,17 @@ export default function HeroSlider() {
     const id = setTimeout(() => setCurrent((i) => (i + 1) % n), INTERVAL_MS);
     return () => clearTimeout(id);
   }, [paused, n, current]);
+
+  // Défilement de la page sur le hero épinglé : un produit par palier (en arrière si on remonte)
+  useEffect(() => {
+    if (n < 2) return;
+    const onStep = (e: Event) => {
+      const delta = (e as CustomEvent<number>).detail;
+      setCurrent((i) => (((i + delta) % n) + n) % n);
+    };
+    window.addEventListener(HERO_SCROLL_EVENT, onStep);
+    return () => window.removeEventListener(HERO_SCROLL_EVENT, onStep);
+  }, [n]);
 
   if (isLoading || n === 0) {
     return <div className={`${styles.slider} ${styles.sliderSkeleton}`} aria-hidden />;
@@ -64,8 +76,12 @@ export default function HeroSlider() {
   return (
     <div
       className={styles.slider}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => {
+      // Pause au survol de la souris uniquement : sur mobile, un toucher ne doit jamais figer le carrousel
+      onPointerEnter={(e) => {
+        if (e.pointerType === "mouse") setPaused(true);
+      }}
+      onPointerLeave={(e) => {
+        if (e.pointerType !== "mouse") return;
         setPaused(false);
         resetTilt();
       }}

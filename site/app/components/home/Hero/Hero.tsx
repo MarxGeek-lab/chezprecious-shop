@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { ArrowRight, Leaf, ShieldCheck, Sparkles } from "lucide-react";
+import HeroPin from "./HeroPin";
 import HeroSlider from "./HeroSlider";
 import styles from "./Hero.module.scss";
 
 export default function Hero() {
   return (
+    <HeroPin>
     <section className={styles.hero}>
       <div className={styles.inner}>
         <div className={styles.content}>
@@ -47,5 +49,6 @@ export default function Hero() {
         </div>
       </div>
     </section>
+    </HeroPin>
   );
 }

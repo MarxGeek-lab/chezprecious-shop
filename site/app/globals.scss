@@ -20,6 +20,8 @@ html {
 html, body {
   max-width: 100vw;
   overflow-x: hidden;
+  // clip (et non hidden) : ne crée pas de conteneur de défilement, sinon position: sticky ne fonctionne plus
+  overflow-x: clip;
 }
 
 body {
