@@ -13,6 +13,8 @@ type VideoProduct = { name: string; slug: string };
 
 const PRODUCTS = {
   eau: { name: "Eau alcaline", slug: "eau-alcaline-label-bien-etre" },
+  hemorozime: { name: "Hémorozime", slug: "hemorozime-cocktail-fruits-legumes" },
+  cleanshield: { name: "Clean Shield", slug: "label-clean-shield" },
   thymoq: { name: "thymoQ", slug: "thymoq-huile-de-nigelle" },
   super7: { name: "SUPER7", slug: "super7-brain-health" },
   women7: { name: "WOMEN7", slug: "women7-w7" },
@@ -20,9 +22,10 @@ const PRODUCTS = {
   cream7: { name: "Cream7", slug: "cream7-refresh-restore-rejuvenate" },
 } satisfies Record<string, VideoProduct>;
 
-// Même ordre que les produits : eau, thymoQ, SUPER7, WOMEN7, MEN7, café, Cream7
+// Même ordre que les produits : eau, Hémorozime, Clean Shield, thymoQ, SUPER7, WOMEN7, MEN7, café, Cream7
 const VIDEOS: { file: string; title: string; products: VideoProduct[] }[] = [
   { file: "eau-alcaline", title: "Eau alcaline Label Bien-être", products: [PRODUCTS.eau] },
+  { file: "hemorozime-cleanshield", title: "Hémorozime et l'eau Clean Shield", products: [PRODUCTS.hemorozime, PRODUCTS.cleanshield] },
   { file: "thymoq-super7", title: "Le duo thymoQ + SUPER7", products: [PRODUCTS.thymoq, PRODUCTS.super7] },
   { file: "women7-super7", title: "Le duo WOMEN7 + SUPER7", products: [PRODUCTS.women7, PRODUCTS.super7] },
   { file: "men7-super7", title: "Le duo MEN7 + SUPER7", products: [PRODUCTS.men7, PRODUCTS.super7] },

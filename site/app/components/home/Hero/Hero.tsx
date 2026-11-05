@@ -18,8 +18,8 @@ export default function Hero() {
           </h1>
 
           <p className={styles.desc}>
-            Compléments alimentaires aux <strong>cellules souches diplexifiées</strong>, soins, café enrichi
-            et eau alcaline : des produits naturels pour votre énergie, votre équilibre et votre beauté au quotidien.
+            Compléments alimentaires aux <strong>cellules souches diplexifiées</strong>, cocktail de plantes Hémorozime,
+            soins, café enrichi, eau alcaline et eau Clean Shield : des produits naturels pour votre énergie, votre équilibre et votre beauté au quotidien.
           </p>
 
           <div className={styles.actions}>

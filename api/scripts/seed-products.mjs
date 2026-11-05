@@ -33,6 +33,8 @@ const CONTACT = {
 // création décroissante, le premier slug reçoit donc la date la plus récente.
 const DISPLAY_ORDER = [
   'eau-alcaline-label-bien-etre',
+  'hemorozime-cocktail-fruits-legumes',
+  'label-clean-shield',
   'thymoq-huile-de-nigelle',
   'super7-brain-health',
   'women7-w7',
@@ -49,10 +51,13 @@ const VIDEOS = {
   'men7-super7': 'MEN7 + SUPER7',
   'trio-fertilite': 'Trio thymoQ + WOMEN7 + SUPER7',
   'cream7': 'Cream7',
+  'hemorozime-cleanshield': 'Hémorozime + Label Clean Shield',
 }
 
 const PRODUCT_VIDEOS = {
   'eau-alcaline-label-bien-etre': ['eau-alcaline'],
+  'hemorozime-cocktail-fruits-legumes': ['hemorozime-cleanshield'],
+  'label-clean-shield': ['hemorozime-cleanshield'],
   'thymoq-huile-de-nigelle': ['thymoq-super7', 'trio-fertilite'],
   'super7-brain-health': ['thymoq-super7', 'women7-super7', 'men7-super7', 'trio-fertilite'],
   'women7-w7': ['women7-super7', 'trio-fertilite'],
@@ -88,7 +93,7 @@ const CATEGORIES = [
   {
     slug: 'cafe-boissons',
     name: 'Café & boissons',
-    description: 'Café premium enrichi et eau alcaline pour une hydratation au quotidien.',
+    description: 'Café premium enrichi, eau alcaline et eau Clean Shield pour une hydratation au quotidien.',
     image: 'royal-coffee-emballage.webp',
   },
 ]
@@ -321,7 +326,7 @@ Contient de la caféine : déconseillé aux enfants et aux femmes enceintes ou a
     name: 'Eau alcaline Label Bien-être pH 8+ (9 × 1,5 L)',
     category: 'cafe-boissons',
     brand: 'Label Bien-être',
-    price: 5000,
+    price: 6500,
     tags: ['eau', 'hydratation', 'alcaline', 'mixte'],
     isFeatured: true,
     shortDescription:
@@ -350,6 +355,77 @@ Carton de 9 bouteilles de 1,5 L.
       'eau-alcaline-carton.webp',
       'eau-alcaline-bouteille.webp',
       'eau-alcaline-eclaboussure.webp',
+    ],
+  },
+  {
+    slug: 'hemorozime-cocktail-fruits-legumes',
+    name: 'Hémorozime — Cocktail de fruits et légumes (1 L)',
+    category: 'complements-alimentaires',
+    brand: 'Label Bien-être',
+    price: 12500,
+    tags: ['digestion', 'detox', 'antioxydant', 'plantes', 'mixte'],
+    isFeatured: true,
+    shortDescription:
+      'Cocktail 100 % naturel de plus de 22 plantes médicinales (kaïcédrat, moringa, kinkéliba, gingembre…), antioxydant, pour le confort digestif, intime et général.',
+    description: `Fatigué, ballonné, mal dans votre corps ? Hémorozime est le cocktail de fruits et légumes de Label Bien-être. Il associe plus de 22 plantes médicinales (feuilles, écorces, racines et fruits), dont le kaïcédrat, le moringa, le kinkéliba et le gingembre. Analysé et certifié par le LCSSA.
+
+### Bienfaits
+- Action antioxydante : aide à protéger l'organisme contre le stress oxydatif.
+- Propriétés anti-inflammatoires et antibactériennes des plantes qui le composent.
+- Hémorroïdes : accompagne l'organisme en cas d'hémorroïdes.
+- Transit et digestion : aide en cas de constipation, de ballonnements et de troubles digestifs.
+- Confort féminin : accompagne l'organisme en cas de troubles menstruels.
+- Vitalité masculine : soutient l'organisme en cas de faiblesse sexuelle et contribue au confort de la prostate.
+
+### Composition
+- Plus de 22 plantes médicinales : feuilles, écorces, racines et fruits
+- Dont kaïcédrat, moringa, kinkéliba, gingembre
+- 100 % naturel
+
+### Format
+Bouteille de 1 L.
+
+### Précautions
+${SUPPLEMENT_NOTICE}`,
+    weight: 1.05,
+    images: [
+      'hemorozime-bouteille.webp',
+      'hemorozime-degustation.webp',
+      'hemorozime-cleanshield-duo.webp',
+    ],
+  },
+  {
+    slug: 'label-clean-shield',
+    name: 'Eau Label Clean Shield (75 cl)',
+    category: 'cafe-boissons',
+    brand: 'Label Bien-être',
+    price: 12500,
+    tags: ['eau', 'detox', 'alcaline', 'antioxydant', 'mixte'],
+    isFeatured: true,
+    shortDescription:
+      'Eau alcalinisante micro-moléculaire 100 % naturelle qui aide à désintoxiquer l\'organisme, neutraliser l\'acidité et renforcer les défenses naturelles.',
+    description: `Pour purifier votre corps : l'eau Label Clean Shield est une eau alcalinisante micro-moléculaire, 100 % naturelle, signée Label Bien-être, « la garantie d'une meilleure santé au quotidien ».
+
+### Bienfaits
+- Détox : aide à désintoxiquer l'organisme.
+- Action antioxydante : contribue à éliminer les radicaux libres.
+- Équilibre acido-basique : aide à neutraliser l'acidité.
+- Immunité : contribue à renforcer le système immunitaire.
+
+### Caractéristiques
+- Eau alcalinisante micro-moléculaire
+- Antitoxique, antioxydante
+- 100 % naturelle
+
+### Format
+Bouteille de 75 cl.
+
+### Précautions
+Ne remplace pas un avis ou un traitement médical. À conserver à l'abri de la lumière et de la chaleur.`,
+    weight: 0.8,
+    images: [
+      'cleanshield-bouteille.webp',
+      'hemorozime-cleanshield-duo.webp',
     ],
   },
 ]

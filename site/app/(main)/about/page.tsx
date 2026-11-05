@@ -47,7 +47,7 @@ export default function AboutPage() {
           <div className={styles.storyText}>
             <span className={styles.eyebrow}>Notre sélection</span>
             <h2 className={styles.sectionTitle}>Des produits choisis pour votre bien-être</h2>
-            <p>Compléments alimentaires, soins de la peau, café enrichi et eau alcaline : chaque produit de notre boutique est sélectionné pour ses ingrédients naturels et sa qualité.</p>
+            <p>Compléments alimentaires, cocktail de plantes Hémorozime, soins de la peau, café enrichi, eau alcaline et eau Clean Shield : chaque produit de notre boutique est sélectionné pour ses ingrédients naturels et sa qualité.</p>
             <p>Sur chaque fiche, retrouvez la composition, les bienfaits et les précautions d'emploi pour choisir en toute confiance. Nos compléments alimentaires accompagnent une alimentation variée et un mode de vie sain, sans remplacer l'avis d'un professionnel de santé.</p>
           </div>
         </div>
