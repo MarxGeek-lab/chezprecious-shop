@@ -166,7 +166,7 @@
 // Taille bornée par la hauteur de l'écran pour que le hero tienne sans défilement
 .slider {
   position: relative;
-  width: min(100%, 42svh);
+  width: min(100%, 48svh);
   margin: 0 auto;
   padding-bottom: $space-8;
 
